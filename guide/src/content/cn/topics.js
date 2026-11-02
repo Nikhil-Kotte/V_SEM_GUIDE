@@ -114,7 +114,6 @@ export default {
         ['Header checksum', '16', 'Covers the header only'], ['Source / destination address', '32 + 32', 'IP addresses'], ['Options', '0–40 bytes', 'Security, routing, timestamps…'],
       ] } },
       { h: 'Options' },
-      { img: 'cn-p26' },
       { h: 'Fragmentation' },
       'If a datagram is bigger than a link\'s **MTU**, a router splits it. Each fragment gets the same identification, its own offset, and MF = 1 except the last. Reassembly happens only at the destination.',
       'Example (Dec \'23): 1000-byte datagram (20-byte header, 980 data bytes), MTU 100 → each fragment can carry 100 − 20 = 80 bytes (a multiple of 8) → 980 ÷ 80 = 12.25 → **13 fragments** (12 × 80 + one of 20 bytes).',

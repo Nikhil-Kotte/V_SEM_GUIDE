@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useStore } from '../lib/storage.js'
 import Blocks from './Blocks.jsx'
 import Inline from './Inline.jsx'
+import SpringCheck from './bits/SpringCheck.jsx'
 
 export default function TopicCard({ subject, topic, content, pyqs }) {
   const store = useStore()
@@ -23,10 +24,22 @@ export default function TopicCard({ subject, topic, content, pyqs }) {
             {topic.covers && <span className="chip">{topic.covers}</span>}
           </div>
         </div>
-        <button type="button" className="done-btn" aria-pressed={done} onClick={() => store.toggleDone(topic.id)}>
-          <span className="box" aria-hidden="true">{done ? '✓' : ''}</span>
-          {done ? 'Done' : 'Mark done'}
-        </button>
+        <div className="done-check">
+          <SpringCheck
+            label={done ? 'Done' : 'Mark done'}
+            checked={done}
+            onChange={() => store.toggleDone(topic.id)}
+            color="var(--text)"
+            fillColor="#3f7a5a"
+            checkColor="#ffffff"
+            boxSize={24}
+            boxRadius={12}
+            fontSize={15}
+            strike="none"
+            doneOpacity={1}
+            ariaLabel={`Mark ${topic.title} as done`}
+          />
+        </div>
       </div>
 
       {content ? (

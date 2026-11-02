@@ -32,7 +32,7 @@ export default function Home() {
           <Suspense fallback={<div className="hero-bg static" />}><HeroBackground /></Suspense>
         ) : <div className="hero-bg static" />}
         <div className="container hero-inner">
-          <span className="label">01 / V Sem · Mid-2 study guide</span>
+          <span className="label">01 / V-SEM · Mid-2 study guide</span>
           {fancy
             ? <Suspense fallback={<h1>Mid-2, made simple.</h1>}><HeroTitle /></Suspense>
             : <h1>Mid-2, made simple.</h1>}

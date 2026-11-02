@@ -5,6 +5,17 @@ import { sortByRecent } from '../lib/rank.js'
 import { useStore } from '../lib/storage.js'
 import { rawUrl } from '../config.js'
 import Blocks from './Blocks.jsx'
+import GlideSelect from './bits/GlideSelect.jsx'
+
+// GlideSelect colours follow the site theme through CSS variables.
+const GLIDE_THEME = {
+  surfaceColor: 'var(--surface)',
+  highlightColor: 'var(--surface-2)',
+  textColor: 'var(--text)',
+  accentColor: 'var(--coral-deep)',
+  size: 'md',
+  radius: 14,
+}
 
 export default function PyqTab({ subject, data, focus }) {
   const [params, setParams] = useSearchParams()
@@ -59,16 +70,22 @@ export default function PyqTab({ subject, data, focus }) {
           <button type="button" aria-pressed={sort === 'repeated'} onClick={() => setSort('repeated')}>Most repeated</button>
           <button type="button" aria-pressed={sort === 'recent'} onClick={() => setSort('recent')}>Most recent</button>
         </div>
-        <label className="sr-only" htmlFor="unit-filter">Unit</label>
-        <select id="unit-filter" className="select" value={unit} onChange={(e) => { setUnit(e.target.value); setTopic('all') }}>
-          <option value="all">All units</option>
-          {data.units.map((u) => <option key={u.unit} value={u.unit}>Unit {u.unit}</option>)}
-        </select>
-        <label className="sr-only" htmlFor="topic-filter">Topic</label>
-        <select id="topic-filter" className="select" value={topic} onChange={(e) => setTopic(e.target.value)} style={{ maxWidth: '100%' }}>
-          <option value="all">All topics</option>
-          {topicsInUnit.map((t) => <option key={t.id} value={t.id}>{t.title}</option>)}
-        </select>
+        <GlideSelect
+          ariaLabel="Unit"
+          value={unit}
+          onChange={(v) => { setUnit(v); setTopic('all') }}
+          options={[{ value: 'all', label: 'All units' }, ...data.units.map((u) => ({ value: u.unit, label: `Unit ${u.unit}`, tag: `${u.topics.length}` }))]}
+          {...GLIDE_THEME}
+          menuWidth={200}
+        />
+        <GlideSelect
+          ariaLabel="Topic"
+          value={topic}
+          onChange={setTopic}
+          options={[{ value: 'all', label: 'All topics' }, ...topicsInUnit.map((t) => ({ value: t.id, label: t.title }))]}
+          {...GLIDE_THEME}
+          menuWidth={340}
+        />
         <label className="toggle"><input type="checkbox" checked={numOnly} onChange={(e) => setNumOnly(e.target.checked)} /> Numericals only</label>
         <label className="toggle"><input type="checkbox" checked={hidePractised} onChange={(e) => setHidePractised(e.target.checked)} /> Hide practised</label>
       </div>

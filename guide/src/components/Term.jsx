@@ -1,19 +1,10 @@
-import { useId, useState } from 'react'
+import WarmTooltip from './bits/WarmTooltip.jsx'
 
-// Glossary chip: hover, focus or tap to see the definition.
+// Glossary chip: hover, focus or long-press to see the definition (WarmTooltip from React Bits).
 export default function Term({ term, def }) {
-  const [open, setOpen] = useState(false)
-  const id = useId()
   return (
-    <span className="term-wrap">
-      <button
-        type="button" className="term" aria-describedby={open ? id : undefined} aria-expanded={open}
-        onClick={() => setOpen((o) => !o)} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}
-        onFocus={() => setOpen(true)} onBlur={() => setOpen(false)}
-      >
-        {term}
-      </button>
-      {open && <span role="tooltip" id={id} className="term-tip">{def}</span>}
-    </span>
+    <WarmTooltip content={def} side="top" size="md" surfaceColor="#f9db6d" inkColor="#182d2a" radius={10} delay={250}>
+      <button type="button" className="term">{term}</button>
+    </WarmTooltip>
   )
 }

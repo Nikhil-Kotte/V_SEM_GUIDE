@@ -1,7 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../lib/storage.js'
 import TopicCard from './TopicCard.jsx'
+import RevealHeading from './RevealHeading.jsx'
+import BranchedMenu from './bits/BranchedMenu.jsx'
+import StatusMark from './bits/StatusMark.jsx'
+
+// Unit completion as a StatusMark: dashed ring → progress arc → check.
+function UnitProgress({ topics, store }) {
+  const done = topics.filter((t) => store.done(t.id)).length
+  const status = done === 0 ? 'pending' : done === topics.length ? 'done' : 'running'
+  return (
+    <span className="unit-progress">
+      <StatusMark status={status} progress={status === 'running' ? done / topics.length : undefined}
+        size={22} doneColor="#3f7a5a" strike={false} label={`${done}/${topics.length} done`} fontSize={14} />
+    </span>
+  )
+}
 
 export default function LearnTab({ subject, data, focus }) {
   const store = useStore()
@@ -41,26 +56,26 @@ export default function LearnTab({ subject, data, focus }) {
 
   const goTo = (id) => navigate(`/s/${subject.id}/learn/${encodeURIComponent(id)}`, { replace: true })
 
+  const menuItems = useMemo(() => data.units.map((u) => ({
+    label: `Unit ${u.unit} · ${u.title}`,
+    children: u.topics.map((t) => ({ value: t.id, label: `${store.done(t.id) ? '✓ ' : ''}${t.title}` })),
+  })), [data, store]) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="layout">
       <aside className="outline" aria-label="Topics">
-        {data.units.map((u) => (
-          <div key={u.unit}>
-            <div className="unit-title">Unit {u.unit}</div>
-            <ul>
-              {u.topics.map((t) => (
-                <li key={t.id}>
-                  <a href={`#/s/${subject.id}/learn/${encodeURIComponent(t.id)}`} className={active === t.id ? 'active' : undefined}
-                    aria-current={active === t.id ? 'location' : undefined}
-                    onClick={(e) => { e.preventDefault(); goTo(t.id); document.getElementById(t.id)?.scrollIntoView({ block: 'start' }) }}>
-                    <span>{t.title}</span>
-                    {store.done(t.id) && <span className="tick" aria-label="done">✓</span>}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <BranchedMenu
+          items={menuItems}
+          active={active}
+          defaultOpen={data.units.map((_, i) => i)}
+          onSelect={(id) => { goTo(id); document.getElementById(id)?.scrollIntoView({ block: 'start' }) }}
+          color="var(--text)"
+          accentColor="var(--coral-deep)"
+          lineColor="var(--line-strong)"
+          width={290}
+          rowHeight={34}
+          fontSize={14.5}
+        />
       </aside>
 
       <main>
@@ -79,7 +94,8 @@ export default function LearnTab({ subject, data, focus }) {
           <section key={u.unit} aria-labelledby={`unit-${u.unit}`}>
             <div className="unit-head" style={ui === 0 ? { marginTop: 24 } : undefined}>
               <span className="label">Unit {u.unit}</span>
-              <h2 id={`unit-${u.unit}`}>{u.title}</h2>
+              <div id={`unit-${u.unit}`}><RevealHeading text={u.title} /></div>
+              <UnitProgress topics={u.topics} store={store} />
             </div>
             {u.topics.map((t) => (
               <TopicCard key={t.id} subject={subject} topic={t} content={data.topics[t.id]} pyqs={data.bySyllabus[t.id] || []} />

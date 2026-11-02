@@ -7,6 +7,8 @@ import PyqTab from '../components/PyqTab.jsx'
 import NumericalsTab from '../components/NumericalsTab.jsx'
 import RevisionTab from '../components/RevisionTab.jsx'
 import DownloadsTab from '../components/DownloadsTab.jsx'
+import FoldText from '../components/bits/FoldText.jsx'
+import DecryptedText from '../components/bits/DecryptedText.jsx'
 
 const TABS = [
   ['learn', 'Learn'],
@@ -35,8 +37,15 @@ export default function Subject() {
         <div className="band-bg static" />
         <div className="container band-inner">
           <div className="crumbs"><Link to="/">Home</Link> / {subject.short}</div>
-          <h1>{subject.name}</h1>
-          <div className="code">{subject.code} · Mid-2 syllabus</div>
+          <h1 aria-label={subject.name}>
+            <FoldText key={subj} text={subject.name} foldStyle="paper" splitBy="char" hinge="top" trigger="mount"
+              stagger={0.03} duration={0.6} hoverRefold refoldRadius={110} refoldAngle={35}
+              fontSize="inherit" fontWeight={800} color="currentColor" />
+          </h1>
+          <div className="code">
+            <DecryptedText key={subj} text={`${subject.code} · Mid-2 syllabus`} animateOn="view" sequential
+              revealDirection="start" speed={35} useOriginalCharsOnly={false} characters="0123456789ABCDEFX/#" />
+          </div>
           <div className="band-stats">
             <span><b>{topicIds.length || '…'}</b>topics</span>
             <span><b>{data ? pyqCount : '…'}</b>{subj === 'fds' ? 'related past questions' : 'past questions'}</span>

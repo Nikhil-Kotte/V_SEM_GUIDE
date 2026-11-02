@@ -19,17 +19,24 @@ export default function LearnTab({ subject, data, focus }) {
   }, [focus])
 
   // Scroll-spy: highlight the topic currently being read.
+  // The active topic is the last one whose top edge has scrolled past a line ~35% down the screen.
   useEffect(() => {
     const els = data.units.flatMap((u) => u.topics.map((t) => document.getElementById(t.id))).filter(Boolean)
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-        if (visible[0]) setActive(visible[0].target.id)
-      },
-      { rootMargin: '-140px 0px -60% 0px' },
-    )
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const line = window.innerHeight * 0.35
+      let current = els[0]
+      for (const el of els) {
+        if (el.getBoundingClientRect().top <= line) current = el
+        else break
+      }
+      if (current) setActive(current.id)
+    }
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    update()
+    return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(frame) }
   }, [data])
 
   const goTo = (id) => navigate(`/s/${subject.id}/learn/${encodeURIComponent(id)}`, { replace: true })

@@ -1,0 +1,332 @@
+[
+ {
+  "id": "os-addr-translation",
+  "subject": "os",
+  "syllabusId": "os.u3.address-translation",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 34,
+  "caption": "Dynamic relocation: the MMU adds the relocation register (14000) to every logical address (346) to get the physical address (14346).",
+  "credit": "OS Unit-3 slides, slide 34",
+  "verified": true
+ },
+ {
+  "id": "os-paging-model",
+  "subject": "os",
+  "syllabusId": "os.u3.paging",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 58,
+  "caption": "Paging in one picture: a process is cut into equal pages, memory into equal frames, and any page can sit in any free frame.",
+  "credit": "OS Unit-3 slides, slide 58",
+  "verified": true
+ },
+ {
+  "id": "os-paging-hw",
+  "subject": "os",
+  "syllabusId": "os.u3.paging",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 63,
+  "caption": "Paging hardware: the page number *p* indexes the page table to get frame *f*; the offset *d* is copied as-is.",
+  "credit": "OS Unit-3 slides, slide 63",
+  "verified": true
+ },
+ {
+  "id": "os-paging-example",
+  "subject": "os",
+  "syllabusId": "os.u3.paging",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 65,
+  "caption": "Paging example: a 16-byte logical memory with 4-byte pages mapped into a 32-byte physical memory through the page table (5, 6, 1, 2).",
+  "credit": "OS Unit-3 slides, slide 65",
+  "verified": true
+ },
+ {
+  "id": "os-tlb",
+  "subject": "os",
+  "syllabusId": "os.u3.paging",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 70,
+  "caption": "Paging hardware with a TLB: on a TLB hit the frame number comes straight from the TLB; on a miss the page table is consulted.",
+  "credit": "OS Unit-3 slides, slide 70",
+  "verified": true
+ },
+ {
+  "id": "os-valid-bit",
+  "subject": "os",
+  "syllabusId": "os.u3.sharing-permissions",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 74,
+  "caption": "Valid (v) / invalid (i) bit in the page table: pages 6 and 7 are not part of the process, so touching them traps.",
+  "credit": "OS Unit-3 slides, slide 74",
+  "verified": true
+ },
+ {
+  "id": "os-page-fault",
+  "subject": "os",
+  "syllabusId": "os.u3.page-faults",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 79,
+  "caption": "Steps in handling a page fault: trap → find the page on disk → load it into a free frame → fix the page table → restart the instruction.",
+  "credit": "OS Unit-3 slides, slide 79",
+  "verified": true
+ },
+ {
+  "id": "os-seg-hw",
+  "subject": "os",
+  "syllabusId": "os.u3.segmentation",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 85,
+  "caption": "Segmentation hardware: the segment number picks a (limit, base) pair; the offset must be less than the limit, then base + offset is the physical address.",
+  "credit": "OS Unit-3 slides, slide 85",
+  "verified": true
+ },
+ {
+  "id": "os-page-replacement",
+  "subject": "os",
+  "syllabusId": "os.u3.page-replacement",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 94,
+  "caption": "Page replacement: swap out a victim page, mark it invalid, swap in the needed page, reset the page table.",
+  "credit": "OS Unit-3 slides, slide 94",
+  "verified": true
+ },
+ {
+  "id": "os-swapping",
+  "subject": "os",
+  "syllabusId": "os.u3.swapping",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 31,
+  "caption": "Swapping: a whole process is moved out to secondary memory and another is brought into main memory.",
+  "credit": "OS Unit-3 slides, slide 31",
+  "verified": true
+ },
+ {
+  "id": "os-disk-fcfs",
+  "subject": "os",
+  "syllabusId": "os.u3.disk-scheduling",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 130,
+  "caption": "FCFS disk scheduling for queue 98, 183, 37, 122, 14, 124, 65, 67 with head at 53: total head movement 640 cylinders.",
+  "credit": "OS Unit-3 slides, slide 130",
+  "verified": true
+ },
+ {
+  "id": "os-disk-sstf",
+  "subject": "os",
+  "syllabusId": "os.u3.disk-scheduling",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 133,
+  "caption": "SSTF on the same queue: always serve the nearest request. Total head movement 236 cylinders.",
+  "credit": "OS Unit-3 slides, slide 133",
+  "verified": true
+ },
+ {
+  "id": "os-disk-scan",
+  "subject": "os",
+  "syllabusId": "os.u3.disk-scheduling",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 136,
+  "caption": "SCAN (elevator) moving towards 0 first: the head sweeps to the end, then reverses. Total 236 cylinders.",
+  "credit": "OS Unit-3 slides, slide 136",
+  "verified": true
+ },
+ {
+  "id": "os-disk-cscan",
+  "subject": "os",
+  "syllabusId": "os.u3.disk-scheduling",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 139,
+  "caption": "C-SCAN: sweep one way to the end, jump back to the other end, and continue in the same direction. Total 382 (this figure counts the return jump).",
+  "credit": "OS Unit-3 slides, slide 139",
+  "verified": true
+ },
+ {
+  "id": "os-disk-clook",
+  "subject": "os",
+  "syllabusId": "os.u3.disk-scheduling",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 144,
+  "caption": "C-LOOK: go up only as far as the last request (183), jump back to the lowest pending request (14), and continue upwards.",
+  "credit": "OS Unit-3 slides, slide 144",
+  "verified": true
+ },
+ {
+  "id": "os-demand-paging",
+  "subject": "os",
+  "syllabusId": "os.u3.page-faults",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 78,
+  "caption": "Demand paging: only pages A, C and F are in memory (valid); the rest stay on disk until they are needed.",
+  "credit": "OS Unit-3 slides, slide 78",
+  "verified": true
+ },
+ {
+  "id": "os-page-table",
+  "subject": "os",
+  "syllabusId": "os.u3.paging",
+  "src": "Material/OS/Unit - 3.pptx",
+  "slide": 67,
+  "caption": "Free-frame list before (a) and after (b) a new 4-page process is loaded: pages land in frames 14, 13, 18 and 20.",
+  "credit": "OS Unit-3 slides, slide 67",
+  "verified": true
+ },
+ {
+  "id": "os-many-to-one",
+  "subject": "os",
+  "syllabusId": "os.u4.threads",
+  "src": "Material/OS/Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "slide": 18,
+  "caption": "Many-to-one model: many user threads share one kernel thread, so one blocking call blocks them all.",
+  "credit": "OS Unit-4 slides, slide 18",
+  "verified": true
+ },
+ {
+  "id": "os-one-to-one",
+  "subject": "os",
+  "syllabusId": "os.u4.threads",
+  "src": "Material/OS/Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "slide": 19,
+  "caption": "One-to-one model: every user thread gets its own kernel thread (Linux, Windows).",
+  "credit": "OS Unit-4 slides, slide 19",
+  "verified": true
+ },
+ {
+  "id": "os-many-to-many",
+  "subject": "os",
+  "syllabusId": "os.u4.threads",
+  "src": "Material/OS/Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "slide": 20,
+  "caption": "Many-to-many model: many user threads are multiplexed onto a smaller or equal number of kernel threads.",
+  "credit": "OS Unit-4 slides, slide 20",
+  "verified": true
+ },
+ {
+  "id": "os-bounded-buffer",
+  "subject": "os",
+  "syllabusId": "os.u4.classical",
+  "src": "Material/OS/Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "slide": 59,
+  "caption": "Bounded buffer: the producer fills slots, the consumer empties them, and the buffer has only *n* slots.",
+  "credit": "OS Unit-4 slides, slide 59",
+  "verified": true
+ },
+ {
+  "id": "os-rag",
+  "subject": "os",
+  "syllabusId": "os.u4.rag",
+  "src": "Material/OS/Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "slide": 83,
+  "caption": "A resource allocation graph with no cycle, so no deadlock. Request edges point P → R; assignment edges point R → P.",
+  "credit": "OS Unit-4 slides, slide 83",
+  "verified": true
+ },
+ {
+  "id": "os-rag-deadlock",
+  "subject": "os",
+  "syllabusId": "os.u4.rag",
+  "src": "Material/OS/Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "slide": 84,
+  "caption": "Top: a RAG with a cycle and a deadlock. Bottom: a RAG with a cycle but no deadlock, because R1 and R2 have spare instances.",
+  "credit": "OS Unit-4 slides, slide 84",
+  "verified": true
+ },
+ {
+  "id": "os-safe-state",
+  "subject": "os",
+  "syllabusId": "os.u4.deadlock-avoidance",
+  "src": "Material/OS/Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "slide": 92,
+  "caption": "Safe, unsafe and deadlocked states: deadlock lies inside the unsafe region; staying in safe states guarantees no deadlock.",
+  "credit": "OS Unit-4 slides, slide 92",
+  "verified": true
+ },
+ {
+  "id": "os-contiguous",
+  "subject": "os",
+  "syllabusId": "os.u5.allocation",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 15,
+  "caption": "Contiguous allocation: each file occupies consecutive blocks; the directory stores the start block and length.",
+  "credit": "OS Unit-5 slides, slide 15",
+  "verified": true
+ },
+ {
+  "id": "os-linked",
+  "subject": "os",
+  "syllabusId": "os.u5.allocation",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 17,
+  "caption": "Linked allocation: each block holds a pointer to the next block of the file.",
+  "credit": "OS Unit-5 slides, slide 17",
+  "verified": true
+ },
+ {
+  "id": "os-indexed",
+  "subject": "os",
+  "syllabusId": "os.u5.allocation",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 21,
+  "caption": "Indexed allocation: one index block holds the addresses of all the file's data blocks (file jeep → index block 19).",
+  "credit": "OS Unit-5 slides, slide 21",
+  "verified": true
+ },
+ {
+  "id": "os-dir-single",
+  "subject": "os",
+  "syllabusId": "os.u5.directory",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 33,
+  "caption": "Single-level directory: every file of every user sits in one directory.",
+  "credit": "OS Unit-5 slides, slide 33",
+  "verified": true
+ },
+ {
+  "id": "os-dir-two",
+  "subject": "os",
+  "syllabusId": "os.u5.directory",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 35,
+  "caption": "Two-level directory: a master file directory points to a separate user file directory for each user.",
+  "credit": "OS Unit-5 slides, slide 35",
+  "verified": true
+ },
+ {
+  "id": "os-dir-tree",
+  "subject": "os",
+  "syllabusId": "os.u5.directory",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 37,
+  "caption": "Tree-structured directory: directories can contain subdirectories, giving every file a path.",
+  "credit": "OS Unit-5 slides, slide 37",
+  "verified": true
+ },
+ {
+  "id": "os-dir-acyclic",
+  "subject": "os",
+  "syllabusId": "os.u5.directory",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 39,
+  "caption": "Acyclic-graph directory: a file or directory can be shared (linked) from two places, but cycles are not allowed.",
+  "credit": "OS Unit-5 slides, slide 39",
+  "verified": true
+ },
+ {
+  "id": "os-dir-general",
+  "subject": "os",
+  "syllabusId": "os.u5.directory",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 41,
+  "caption": "General-graph directory: links may create cycles, so the OS needs garbage collection and cycle-safe traversal.",
+  "credit": "OS Unit-5 slides, slide 41",
+  "verified": true
+ },
+ {
+  "id": "os-attacks",
+  "subject": "os",
+  "syllabusId": "os.u5.threats",
+  "src": "Material/OS/unit 5.pptx",
+  "slide": 48,
+  "caption": "Masquerade: Darth sends a message that appears to come from Bob. This is one of the standard security attacks.",
+  "credit": "OS Unit-5 slides, slide 48",
+  "verified": true
+ }
+]

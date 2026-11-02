@@ -1087,5 +1087,181 @@
   "caption": "The sweet spot of innovation: desirable to people, feasible with technology, viable for business.",
   "credit": "DT Unit-5 notes, page 1",
   "verified": true
+ },
+ {
+  "id": "fds-linreg",
+  "subject": "fds",
+  "syllabusId": "fds.u5.linear",
+  "src": "Material/FDS/Unit-5.1(FDS).pptx",
+  "slide": 20,
+  "pick": 1,
+  "caption": "Linear regression fits the straight line that best follows the scatter of points.",
+  "credit": "FDS Unit-5.1 slides, slide 20",
+  "verified": true
+ },
+ {
+  "id": "fds-logcurve",
+  "subject": "fds",
+  "syllabusId": "fds.u5.logistic",
+  "src": "Material/FDS/Unit-5.1(FDS).pptx",
+  "slide": 57,
+  "pick": 1,
+  "caption": "The sigmoid function σ(x) = 1 / (1 + e^(−x)) squashes any number into the range 0 to 1.",
+  "credit": "FDS Unit-5.1 slides, slide 57",
+  "verified": true
+ },
+ {
+  "id": "fds-sigmoid",
+  "subject": "fds",
+  "syllabusId": "fds.u5.logistic",
+  "src": "Material/FDS/Unit-5.1(FDS).pptx",
+  "slide": 58,
+  "pick": 3,
+  "caption": "Logistic regression: the S-curve gives the probability of class 1; points above 0.5 are predicted 1, below are predicted 0.",
+  "credit": "FDS Unit-5.1 slides, slide 58",
+  "verified": true
+ },
+ {
+  "id": "fds-clustering",
+  "subject": "fds",
+  "syllabusId": "fds.u5.kmeans",
+  "src": "Material/FDS/Unit-5.2(FDS).pptx",
+  "slide": 15,
+  "pick": 1,
+  "caption": "Clustering: an algorithm groups unlabelled raw data into clusters of similar items.",
+  "credit": "FDS Unit-5.2 slides, slide 15",
+  "verified": true
+ },
+ {
+  "id": "fds-ctypes",
+  "subject": "fds",
+  "syllabusId": "fds.u5.kmeans",
+  "src": "Material/FDS/Unit-5.2(FDS).pptx",
+  "slide": 21,
+  "pick": 1,
+  "caption": "Types of clustering: partitioning (k-means), hierarchical (agglomerative, divisive), density-based (DBSCAN) and spectral.",
+  "credit": "FDS Unit-5.2 slides, slide 21",
+  "verified": true
+ },
+ {
+  "id": "fds-silhouette",
+  "subject": "fds",
+  "syllabusId": "fds.u5.num-clusters",
+  "src": "Material/FDS/Unit-5.2(FDS).pptx",
+  "slide": 26,
+  "pick": 1,
+  "caption": "Silhouette: a(i) is the average distance to points in its own cluster, b(i) to points in the nearest other cluster.",
+  "credit": "FDS Unit-5.2 slides, slide 26",
+  "verified": true
+ },
+ {
+  "id": "fds-kmeans",
+  "subject": "fds",
+  "syllabusId": "fds.u5.kmeans",
+  "src": "Material/FDS/Unit-5.3-clustering algorithms(FDS).pptx",
+  "slide": 6,
+  "pick": 1,
+  "caption": "K-means steps: unlabelled data → choose k and initial centroids → assign each point to the nearest centroid → recompute centroids → repeat.",
+  "credit": "FDS Unit-5.3 slides, slide 6",
+  "verified": true
+ },
+ {
+  "id": "fds-agglo",
+  "subject": "fds",
+  "syllabusId": "fds.u5.hierarchical",
+  "src": "Material/FDS/Unit-5.3-clustering algorithms(FDS).pptx",
+  "slide": 17,
+  "pick": 1,
+  "caption": "Dendrogram: agglomerative clustering merges bottom-up; divisive clustering splits top-down.",
+  "credit": "FDS Unit-5.3 slides, slide 17",
+  "verified": true
+ },
+ {
+  "id": "fds-spectral",
+  "subject": "fds",
+  "syllabusId": "fds.u5.spectral",
+  "src": "Material/FDS/Unit-5.3-clustering algorithms(FDS).pptx",
+  "slide": 30,
+  "pick": 1,
+  "caption": "Spectral clustering pipeline: data → similarity matrix → graph → Laplacian → eigenvector features → k-means clusters.",
+  "credit": "FDS Unit-5.3 slides, slide 30",
+  "verified": true
+ },
+ {
+  "id": "fds-inner",
+  "subject": "fds",
+  "syllabusId": "fds.u3.group-join",
+  "src": "Material/FDS/Unit-3.2-Pandas(FDS).pptx",
+  "slide": 29,
+  "pick": 1,
+  "caption": "Inner join keeps only the EmpNr values present in both tables.",
+  "credit": "FDS Unit-3.2 pandas slides, slide 29",
+  "verified": true
+ },
+ {
+  "id": "fds-outer",
+  "subject": "fds",
+  "syllabusId": "fds.u3.group-join",
+  "src": "Material/FDS/Unit-3.2-Pandas(FDS).pptx",
+  "slide": 30,
+  "pick": 1,
+  "caption": "Full outer join keeps every EmpNr from both tables and fills gaps with NaN.",
+  "credit": "FDS Unit-3.2 pandas slides, slide 30",
+  "verified": true
+ },
+ {
+  "id": "fds-pivot",
+  "subject": "fds",
+  "syllabusId": "fds.u3.pivot",
+  "src": "Material/FDS/Unit-3.2-Pandas(FDS).pptx",
+  "slide": 40,
+  "pick": 1,
+  "caption": "A pivot table: average marks by department (rows) and gender (columns).",
+  "credit": "FDS Unit-3.2 pandas slides, slide 40",
+  "verified": true
+ },
+ {
+  "id": "fds-iv4",
+  "subject": "fds",
+  "syllabusId": "fds.u4.cleaning",
+  "src": "Material/FDS/Unit-IV-FDS-copy.pptx",
+  "slide": 4,
+  "pick": 0,
+  "caption": "The data cleaning process: raw data → missing values → duplicates → outliers → formats → encoding → irrelevant features → clean data.",
+  "credit": "FDS Unit-IV slides, slide 4",
+  "verified": true
+ },
+ {
+  "id": "fds-iv26",
+  "subject": "fds",
+  "syllabusId": "fds.u4.outliers",
+  "src": "Material/FDS/Unit-IV-FDS-copy.pptx",
+  "slide": 26,
+  "pick": 0,
+  "caption": "Box plot: the box spans Q1–Q3 (the IQR); points beyond the whiskers are outliers.",
+  "credit": "FDS Unit-IV slides, slide 26",
+  "verified": true
+ },
+ {
+  "id": "fds-iv52",
+  "subject": "fds",
+  "syllabusId": "fds.u4.correlation",
+  "src": "Material/FDS/Unit-IV-FDS-copy.pptx",
+  "slide": 52,
+  "pick": 0,
+  "caption": "Scatter plots for perfect, high, low and no correlation, positive and negative.",
+  "credit": "FDS Unit-IV slides, slide 52",
+  "verified": true
+ },
+ {
+  "id": "fds-iv64",
+  "subject": "fds",
+  "syllabusId": "fds.u4.titanic",
+  "src": "Material/FDS/Unit-IV-FDS-copy.pptx",
+  "slide": 64,
+  "pick": 0,
+  "caption": "A correlation heatmap: each cell is the correlation between two columns; the diagonal is always 1.",
+  "credit": "FDS Unit-IV slides, slide 64",
+  "verified": true
  }
 ]

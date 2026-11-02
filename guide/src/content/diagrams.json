@@ -916,5 +916,149 @@
   "verified": true,
   "w": 825,
   "h": 518
+ },
+ "fds-linreg": {
+  "file": "diagrams/fds/fds-linreg.webp",
+  "caption": "Linear regression fits the straight line that best follows the scatter of points.",
+  "credit": "FDS Unit-5.1 slides, slide 20",
+  "syllabusId": "fds.u5.linear",
+  "verified": true,
+  "w": 628,
+  "h": 484
+ },
+ "fds-logcurve": {
+  "file": "diagrams/fds/fds-logcurve.webp",
+  "caption": "The sigmoid function σ(x) = 1 / (1 + e^(−x)) squashes any number into the range 0 to 1.",
+  "credit": "FDS Unit-5.1 slides, slide 57",
+  "syllabusId": "fds.u5.logistic",
+  "verified": true,
+  "w": 769,
+  "h": 523
+ },
+ "fds-sigmoid": {
+  "file": "diagrams/fds/fds-sigmoid.webp",
+  "caption": "Logistic regression: the S-curve gives the probability of class 1; points above 0.5 are predicted 1, below are predicted 0.",
+  "credit": "FDS Unit-5.1 slides, slide 58",
+  "syllabusId": "fds.u5.logistic",
+  "verified": true,
+  "w": 573,
+  "h": 481
+ },
+ "fds-clustering": {
+  "file": "diagrams/fds/fds-clustering.webp",
+  "caption": "Clustering: an algorithm groups unlabelled raw data into clusters of similar items.",
+  "credit": "FDS Unit-5.2 slides, slide 15",
+  "syllabusId": "fds.u5.kmeans",
+  "verified": true,
+  "w": 1400,
+  "h": 732
+ },
+ "fds-ctypes": {
+  "file": "diagrams/fds/fds-ctypes.webp",
+  "caption": "Types of clustering: partitioning (k-means), hierarchical (agglomerative, divisive), density-based (DBSCAN) and spectral.",
+  "credit": "FDS Unit-5.2 slides, slide 21",
+  "syllabusId": "fds.u5.kmeans",
+  "verified": true,
+  "w": 1400,
+  "h": 933
+ },
+ "fds-silhouette": {
+  "file": "diagrams/fds/fds-silhouette.webp",
+  "caption": "Silhouette: a(i) is the average distance to points in its own cluster, b(i) to points in the nearest other cluster.",
+  "credit": "FDS Unit-5.2 slides, slide 26",
+  "syllabusId": "fds.u5.num-clusters",
+  "verified": true,
+  "w": 1071,
+  "h": 612
+ },
+ "fds-kmeans": {
+  "file": "diagrams/fds/fds-kmeans.webp",
+  "caption": "K-means steps: unlabelled data → choose k and initial centroids → assign each point to the nearest centroid → recompute centroids → repeat.",
+  "credit": "FDS Unit-5.3 slides, slide 6",
+  "syllabusId": "fds.u5.kmeans",
+  "verified": true,
+  "w": 1117,
+  "h": 303
+ },
+ "fds-agglo": {
+  "file": "diagrams/fds/fds-agglo.webp",
+  "caption": "Dendrogram: agglomerative clustering merges bottom-up; divisive clustering splits top-down.",
+  "credit": "FDS Unit-5.3 slides, slide 17",
+  "syllabusId": "fds.u5.hierarchical",
+  "verified": true,
+  "w": 1039,
+  "h": 577
+ },
+ "fds-spectral": {
+  "file": "diagrams/fds/fds-spectral.webp",
+  "caption": "Spectral clustering pipeline: data → similarity matrix → graph → Laplacian → eigenvector features → k-means clusters.",
+  "credit": "FDS Unit-5.3 slides, slide 30",
+  "syllabusId": "fds.u5.spectral",
+  "verified": true,
+  "w": 451,
+  "h": 511
+ },
+ "fds-inner": {
+  "file": "diagrams/fds/fds-inner.webp",
+  "caption": "Inner join keeps only the EmpNr values present in both tables.",
+  "credit": "FDS Unit-3.2 pandas slides, slide 29",
+  "syllabusId": "fds.u3.group-join",
+  "verified": true,
+  "w": 226,
+  "h": 94
+ },
+ "fds-outer": {
+  "file": "diagrams/fds/fds-outer.webp",
+  "caption": "Full outer join keeps every EmpNr from both tables and fills gaps with NaN.",
+  "credit": "FDS Unit-3.2 pandas slides, slide 30",
+  "syllabusId": "fds.u3.group-join",
+  "verified": true,
+  "w": 210,
+  "h": 150
+ },
+ "fds-pivot": {
+  "file": "diagrams/fds/fds-pivot.webp",
+  "caption": "A pivot table: average marks by department (rows) and gender (columns).",
+  "credit": "FDS Unit-3.2 pandas slides, slide 40",
+  "syllabusId": "fds.u3.pivot",
+  "verified": true,
+  "w": 253,
+  "h": 108
+ },
+ "fds-iv4": {
+  "file": "diagrams/fds/fds-iv4.webp",
+  "caption": "The data cleaning process: raw data → missing values → duplicates → outliers → formats → encoding → irrelevant features → clean data.",
+  "credit": "FDS Unit-IV slides, slide 4",
+  "syllabusId": "fds.u4.cleaning",
+  "verified": true,
+  "w": 960,
+  "h": 720
+ },
+ "fds-iv26": {
+  "file": "diagrams/fds/fds-iv26.webp",
+  "caption": "Box plot: the box spans Q1–Q3 (the IQR); points beyond the whiskers are outliers.",
+  "credit": "FDS Unit-IV slides, slide 26",
+  "syllabusId": "fds.u4.outliers",
+  "verified": true,
+  "w": 960,
+  "h": 720
+ },
+ "fds-iv52": {
+  "file": "diagrams/fds/fds-iv52.webp",
+  "caption": "Scatter plots for perfect, high, low and no correlation, positive and negative.",
+  "credit": "FDS Unit-IV slides, slide 52",
+  "syllabusId": "fds.u4.correlation",
+  "verified": true,
+  "w": 960,
+  "h": 720
+ },
+ "fds-iv64": {
+  "file": "diagrams/fds/fds-iv64.webp",
+  "caption": "A correlation heatmap: each cell is the correlation between two columns; the diagonal is always 1.",
+  "credit": "FDS Unit-IV slides, slide 64",
+  "syllabusId": "fds.u4.titanic",
+  "verified": true,
+  "w": 960,
+  "h": 720
  }
 }

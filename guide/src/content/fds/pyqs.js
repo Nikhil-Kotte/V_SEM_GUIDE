@@ -9,6 +9,8 @@ export default [
   R('fds-lin-vs-log', 'fds.u5.logistic', 'Differentiate linear regression and logistic regression.'),
   R('fds-linear-predict', 'fds.u5.linear', 'Explain how linear regression is used to predict a continuous outcome. Implement it on a sample dataset.'),
   R('fds-kmeans-sample', 'fds.u5.kmeans', 'Apply k-means clustering to a sample dataset and interpret the results.'),
+  R('fds-summary-stats', 'fds.u3.describe', 'Mention the role of summary statistics in data exploration.'),
+  R('fds-summary-problems', 'fds.u4.cleaning', 'Describe typical problems revealed by data summaries.'),
   R('fds-missing-methods', 'fds.u4.missing', 'Explain methods for handling missing data and how each affects the analysis.'),
 
   // Unit III — pandas

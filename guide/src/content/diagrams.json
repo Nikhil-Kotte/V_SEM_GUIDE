@@ -502,5 +502,230 @@
   "verified": true,
   "w": 624,
   "h": 383
+ },
+ "cn-p7": {
+  "file": "diagrams/cn/cn-p7.webp",
+  "caption": "Link state routing: (a) a 6-router network with link costs, (b) the link state packet each router floods (sequence, age, neighbours and costs).",
+  "credit": "CN Notes3, page 7",
+  "syllabusId": "cn.u3.link-state",
+  "verified": true,
+  "w": 473,
+  "h": 140
+ },
+ "cn-p9": {
+  "file": "diagrams/cn/cn-p9.webp",
+  "caption": "Hierarchical routing: routers grouped into regions shrink router 1A's table from 17 entries to 7.",
+  "credit": "CN Notes3, page 9",
+  "syllabusId": "cn.u3.link-state",
+  "verified": true,
+  "w": 486,
+  "h": 331
+ },
+ "cn-p18": {
+  "file": "diagrams/cn/cn-p18.webp",
+  "caption": "How demanding different applications are in bandwidth, delay, jitter and loss — the four QoS parameters.",
+  "credit": "CN Notes3, page 18",
+  "syllabusId": "cn.u3.qos",
+  "verified": true,
+  "w": 468,
+  "h": 221
+ },
+ "cn-p21": {
+  "file": "diagrams/cn/cn-p21.webp",
+  "caption": "Tunnelling IPv6 over IPv4: the IPv6 packet rides inside an IPv4 packet across the IPv4-only network.",
+  "credit": "CN Notes3, page 21",
+  "syllabusId": "cn.u3.qos",
+  "verified": true,
+  "w": 532,
+  "h": 189
+ },
+ "cn-ipv4": {
+  "file": "diagrams/cn/cn-ipv4.webp",
+  "caption": "The IPv4 header: 20 bytes of fixed fields plus optional options.",
+  "credit": "CN Notes3, page 24",
+  "syllabusId": "cn.u3.ipv4",
+  "verified": true,
+  "w": 591,
+  "h": 254
+ },
+ "cn-p27a": {
+  "file": "diagrams/cn/cn-p27a.webp",
+  "caption": "One IPv4 address in binary, dotted-decimal and hexadecimal notation.",
+  "credit": "CN Notes3, page 27",
+  "syllabusId": "cn.u3.ip-addresses",
+  "verified": true,
+  "w": 352,
+  "h": 143
+ },
+ "cn-p28": {
+  "file": "diagrams/cn/cn-p28.webp",
+  "caption": "Classful addressing: classes A–E, how much of the space each takes, and their first-byte ranges.",
+  "credit": "CN Notes3, page 28",
+  "syllabusId": "cn.u3.ip-addresses",
+  "verified": true,
+  "w": 537,
+  "h": 245
+ },
+ "cn-p31": {
+  "file": "diagrams/cn/cn-p31.webp",
+  "caption": "A CIDR block: the first address has the suffix all 0s, the last all 1s; the block has 2^(32−n) addresses.",
+  "credit": "CN Notes3, page 31",
+  "syllabusId": "cn.u3.ip-addresses",
+  "verified": true,
+  "w": 555,
+  "h": 172
+ },
+ "cn-ipv6": {
+  "file": "diagrams/cn/cn-ipv6.webp",
+  "caption": "The IPv6 fixed header (40 bytes): version, traffic class, flow label, payload length, next header, hop limit, 128-bit addresses.",
+  "credit": "CN Notes3, page 34",
+  "syllabusId": "cn.u3.ipv6",
+  "verified": true,
+  "w": 395,
+  "h": 283
+ },
+ "cn-p37": {
+  "file": "diagrams/cn/cn-p37.webp",
+  "caption": "The five OSPF message types.",
+  "credit": "CN Notes3, page 37",
+  "syllabusId": "cn.u3.ospf",
+  "verified": true,
+  "w": 383,
+  "h": 118
+ },
+ "cn-bgp": {
+  "file": "diagrams/cn/cn-bgp.webp",
+  "caption": "BGP route propagation: each AS adds itself to the AS path it advertises, so C learns paths like (AS2, AS3) to reach other networks.",
+  "credit": "CN Notes3, page 38",
+  "syllabusId": "cn.u3.bgp",
+  "verified": true,
+  "w": 436,
+  "h": 227
+ },
+ "cn-p39": {
+  "file": "diagrams/cn/cn-p39.webp",
+  "caption": "Where the protocols sit in the TCP/IP suite.",
+  "credit": "CN Notes3, page 39",
+  "syllabusId": "cn.u3.bgp",
+  "verified": true,
+  "w": 486,
+  "h": 219
+ },
+ "cn-p40": {
+  "file": "diagrams/cn/cn-p40.webp",
+  "caption": "IPv4 datagram format with field sizes in bits.",
+  "credit": "CN Notes3, page 40",
+  "syllabusId": "cn.u3.bgp",
+  "verified": true,
+  "w": 504,
+  "h": 332
+ },
+ "cn-p59": {
+  "file": "diagrams/cn/cn-p59.webp",
+  "caption": "Three-way handshake: (a) normal case, (b) old duplicate CR appears, (c) duplicate CR and duplicate ACK — the sequence numbers let the hosts reject both.",
+  "credit": "CN Notes3, page 59",
+  "syllabusId": "cn.u4.tcp-connect",
+  "verified": true,
+  "w": 549,
+  "h": 545
+ },
+ "cn-p60": {
+  "file": "diagrams/cn/cn-p60.webp",
+  "caption": "Abrupt release: after one side sends DR, data still in transit is lost — why a symmetric/negotiated release is needed.",
+  "credit": "CN Notes3, page 60",
+  "syllabusId": "cn.u4.tcp-connect",
+  "verified": true,
+  "w": 335,
+  "h": 331
+ },
+ "cn-p61": {
+  "file": "diagrams/cn/cn-p61.webp",
+  "caption": "Multiplexing: (a) many transport connections share one network address, (b) inverse multiplexing spreads one connection over several paths.",
+  "credit": "CN Notes3, page 61",
+  "syllabusId": "cn.u4.tcp-release",
+  "verified": true,
+  "w": 752,
+  "h": 371
+ },
+ "cn-p64": {
+  "file": "diagrams/cn/cn-p64.webp",
+  "caption": "Flow control vs congestion control: (a) a fast network feeding a small receiver (flow control), (b) a slow network feeding a big receiver (congestion control).",
+  "credit": "CN Notes3, page 64",
+  "syllabusId": "cn.u4.congestion",
+  "verified": true,
+  "w": 749,
+  "h": 569
+ },
+ "cn-udp": {
+  "file": "diagrams/cn/cn-udp.webp",
+  "caption": "The 8-byte UDP header: source port, destination port, length, checksum.",
+  "credit": "CN Notes3, page 65",
+  "syllabusId": "cn.u4.udp",
+  "verified": true,
+  "w": 764,
+  "h": 136
+ },
+ "cn-p70": {
+  "file": "diagrams/cn/cn-p70.webp",
+  "caption": "Well-known ports and the protocols that use them.",
+  "credit": "CN Notes3, page 70",
+  "syllabusId": "cn.u4.tcp-intro",
+  "verified": true,
+  "w": 575,
+  "h": 338
+ },
+ "cn-tcp-header": {
+  "file": "diagrams/cn/cn-tcp-header.webp",
+  "caption": "The TCP segment header (20 bytes + options): ports, sequence and acknowledgement numbers, header length, flags, window, checksum, urgent pointer.",
+  "credit": "CN Notes3, page 72",
+  "syllabusId": "cn.u4.tcp-header",
+  "verified": true,
+  "w": 792,
+  "h": 490
+ },
+ "cn-ftp": {
+  "file": "diagrams/cn/cn-ftp.webp",
+  "caption": "FTP uses two connections: a control connection (commands, port 21) and a data connection (files, port 20).",
+  "credit": "CN Notes3, page 86",
+  "syllabusId": "cn.u5.ftp",
+  "verified": true,
+  "w": 728,
+  "h": 257
+ },
+ "cn-email": {
+  "file": "diagrams/cn/cn-email.webp",
+  "caption": "E-mail architecture: UA → MTA client → MTA server (spool) → MTA → mailbox, then the MAA (POP3/IMAP) delivers to Bob's UA.",
+  "credit": "CN Notes3, page 88",
+  "syllabusId": "cn.u5.email-arch",
+  "verified": true,
+  "w": 714,
+  "h": 359
+ },
+ "cn-p96a": {
+  "file": "diagrams/cn/cn-p96a.webp",
+  "caption": "Each node has a label; its domain name is the labels read up to the root (aComputer.bDept.topUniversity.edu.).",
+  "credit": "CN Notes3, page 96",
+  "syllabusId": "cn.u5.dns-namespace",
+  "verified": true,
+  "w": 515,
+  "h": 354
+ },
+ "cn-p96b": {
+  "file": "diagrams/cn/cn-p96b.webp",
+  "caption": "The DNS name space is an inverted tree split into domains and subdomains.",
+  "credit": "CN Notes3, page 96",
+  "syllabusId": "cn.u5.dns-namespace",
+  "verified": true,
+  "w": 624,
+  "h": 250
+ },
+ "cn-snmp": {
+  "file": "diagrams/cn/cn-snmp.webp",
+  "caption": "SNMP: a manager station queries and controls agents running on routers and hosts.",
+  "credit": "CN Notes3, page 97",
+  "syllabusId": "cn.u5.snmp",
+  "verified": true,
+  "w": 551,
+  "h": 198
  }
 }

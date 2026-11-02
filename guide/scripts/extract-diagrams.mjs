@@ -58,11 +58,33 @@ async function toWebp(buffer, outFile) {
   return { w: info.width, h: info.height }
 }
 
-function pdfImage(src, page, index) {
+// index: nth extracted image, or "WxH" to pick the image with exactly those pixel dimensions
+// (some PDFs store each figure several times with soft masks, so indexes are unreliable).
+async function pdfImage(src, page, index) {
   rmSync(TMP, { recursive: true, force: true })
   mkdirSync(TMP, { recursive: true })
   execFileSync('pdfimages', ['-f', String(page), '-l', String(page), '-png', join(ROOT, src), join(TMP, 'img')])
   const files = readdirSync(TMP).filter((f) => f.endsWith('.png')).sort()
+  if (typeof index === 'string') {
+    // A figure may appear as [blank placeholder, real RGB image, grey soft mask]: take the biggest
+    // RGB file of that size, and if a grey mask of the same size exists, use it as the alpha channel.
+    const [w, h] = index.split('x').map(Number)
+    const same = []
+    for (const f of files) {
+      const buf = readFileSync(join(TMP, f))
+      const meta = await sharp(buf).metadata()
+      if (meta.width === w && meta.height === h) same.push({ buf, channels: meta.channels })
+    }
+    const color = same.filter((x) => x.channels >= 3).sort((a, b) => b.buf.length - a.buf.length)[0]
+    const mask = same.find((x) => x.channels < 3)
+    if (color && mask) {
+      // In these PDFs the drawing lives in the soft mask (ink = 0) and the colour layer is just a fill,
+      // so the inverted mask on its own is the clean black-on-white figure.
+      return sharp(mask.buf).extractChannel(0).negate().png().toBuffer()
+    }
+    if (color || mask) return (color || mask).buf
+    throw new Error(`${src} p${page}: no ${index} image`)
+  }
   if (!files[index]) throw new Error(`${src} p${page}: no image #${index} (found ${files.length})`)
   return readFileSync(join(TMP, files[index]))
 }
@@ -90,7 +112,7 @@ async function extractOne(d) {
     buffer = zip(d.src).readFile(d.media)
     if (!buffer) throw new Error(`${d.id}: ${d.media} not found in ${d.src}`)
   } else if (d.page && d.pdfimage != null) {
-    buffer = pdfImage(d.src, d.page, d.pdfimage)
+    buffer = await pdfImage(d.src, d.page, d.pdfimage)
   } else if (d.page) {
     buffer = pdfPage(d.src, d.page, d.crop, d.dpi)
   } else throw new Error(`${d.id}: no slide/media/page`)

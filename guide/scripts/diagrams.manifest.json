@@ -558,5 +558,315 @@
   "caption": "Risk management = risk assessment (identify, analyse, prioritise) + risk control (plan, monitor, resolve).",
   "credit": "SE Unit 3 notes (docx)",
   "verified": true
+ },
+ {
+  "id": "cn-p7",
+  "subject": "cn",
+  "syllabusId": "cn.u3.link-state",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 7,
+  "pdfimage": "473x140",
+  "caption": "Link state routing: (a) a 6-router network with link costs, (b) the link state packet each router floods (sequence, age, neighbours and costs).",
+  "credit": "CN Notes3, page 7",
+  "verified": true
+ },
+ {
+  "id": "cn-p9",
+  "subject": "cn",
+  "syllabusId": "cn.u3.link-state",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 9,
+  "pdfimage": "486x331",
+  "caption": "Hierarchical routing: routers grouped into regions shrink router 1A's table from 17 entries to 7.",
+  "credit": "CN Notes3, page 9",
+  "verified": true
+ },
+ {
+  "id": "cn-p18",
+  "subject": "cn",
+  "syllabusId": "cn.u3.qos",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 18,
+  "pdfimage": "468x221",
+  "caption": "How demanding different applications are in bandwidth, delay, jitter and loss — the four QoS parameters.",
+  "credit": "CN Notes3, page 18",
+  "verified": true
+ },
+ {
+  "id": "cn-p21",
+  "subject": "cn",
+  "syllabusId": "cn.u3.qos",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 21,
+  "pdfimage": "532x189",
+  "caption": "Tunnelling IPv6 over IPv4: the IPv6 packet rides inside an IPv4 packet across the IPv4-only network.",
+  "credit": "CN Notes3, page 21",
+  "verified": true
+ },
+ {
+  "id": "cn-ipv4",
+  "subject": "cn",
+  "syllabusId": "cn.u3.ipv4",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 24,
+  "pdfimage": "591x254",
+  "caption": "The IPv4 header: 20 bytes of fixed fields plus optional options.",
+  "credit": "CN Notes3, page 24",
+  "verified": true
+ },
+ {
+  "id": "cn-p27a",
+  "subject": "cn",
+  "syllabusId": "cn.u3.ip-addresses",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 27,
+  "pdfimage": "352x143",
+  "caption": "One IPv4 address in binary, dotted-decimal and hexadecimal notation.",
+  "credit": "CN Notes3, page 27",
+  "verified": true
+ },
+ {
+  "id": "cn-p28",
+  "subject": "cn",
+  "syllabusId": "cn.u3.ip-addresses",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 28,
+  "pdfimage": "537x245",
+  "caption": "Classful addressing: classes A–E, how much of the space each takes, and their first-byte ranges.",
+  "credit": "CN Notes3, page 28",
+  "verified": true
+ },
+ {
+  "id": "cn-p31",
+  "subject": "cn",
+  "syllabusId": "cn.u3.ip-addresses",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 31,
+  "pdfimage": "555x172",
+  "caption": "A CIDR block: the first address has the suffix all 0s, the last all 1s; the block has 2^(32−n) addresses.",
+  "credit": "CN Notes3, page 31",
+  "verified": true
+ },
+ {
+  "id": "cn-ipv6",
+  "subject": "cn",
+  "syllabusId": "cn.u3.ipv6",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 34,
+  "pdfimage": "395x283",
+  "caption": "The IPv6 fixed header (40 bytes): version, traffic class, flow label, payload length, next header, hop limit, 128-bit addresses.",
+  "credit": "CN Notes3, page 34",
+  "verified": true
+ },
+ {
+  "id": "cn-p37",
+  "subject": "cn",
+  "syllabusId": "cn.u3.ospf",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 37,
+  "pdfimage": "383x118",
+  "caption": "The five OSPF message types.",
+  "credit": "CN Notes3, page 37",
+  "verified": true
+ },
+ {
+  "id": "cn-bgp",
+  "subject": "cn",
+  "syllabusId": "cn.u3.bgp",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 38,
+  "pdfimage": "436x227",
+  "caption": "BGP route propagation: each AS adds itself to the AS path it advertises, so C learns paths like (AS2, AS3) to reach other networks.",
+  "credit": "CN Notes3, page 38",
+  "verified": true
+ },
+ {
+  "id": "cn-p39",
+  "subject": "cn",
+  "syllabusId": "cn.u3.bgp",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 39,
+  "pdfimage": "486x219",
+  "caption": "Where the protocols sit in the TCP/IP suite.",
+  "credit": "CN Notes3, page 39",
+  "verified": true
+ },
+ {
+  "id": "cn-p40",
+  "subject": "cn",
+  "syllabusId": "cn.u3.bgp",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 40,
+  "pdfimage": "504x332",
+  "caption": "IPv4 datagram format with field sizes in bits.",
+  "credit": "CN Notes3, page 40",
+  "verified": true
+ },
+ {
+  "id": "cn-p59",
+  "subject": "cn",
+  "syllabusId": "cn.u4.tcp-connect",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 59,
+  "pdfimage": "549x545",
+  "caption": "Three-way handshake: (a) normal case, (b) old duplicate CR appears, (c) duplicate CR and duplicate ACK — the sequence numbers let the hosts reject both.",
+  "credit": "CN Notes3, page 59",
+  "verified": true
+ },
+ {
+  "id": "cn-p60",
+  "subject": "cn",
+  "syllabusId": "cn.u4.tcp-connect",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 60,
+  "pdfimage": "335x331",
+  "caption": "Abrupt release: after one side sends DR, data still in transit is lost — why a symmetric/negotiated release is needed.",
+  "credit": "CN Notes3, page 60",
+  "verified": true
+ },
+ {
+  "id": "cn-p61",
+  "subject": "cn",
+  "syllabusId": "cn.u4.tcp-release",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 61,
+  "pdfimage": "752x371",
+  "caption": "Multiplexing: (a) many transport connections share one network address, (b) inverse multiplexing spreads one connection over several paths.",
+  "credit": "CN Notes3, page 61",
+  "verified": true
+ },
+ {
+  "id": "cn-p64",
+  "subject": "cn",
+  "syllabusId": "cn.u4.congestion",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 64,
+  "pdfimage": "749x569",
+  "caption": "Flow control vs congestion control: (a) a fast network feeding a small receiver (flow control), (b) a slow network feeding a big receiver (congestion control).",
+  "credit": "CN Notes3, page 64",
+  "verified": true
+ },
+ {
+  "id": "cn-udp",
+  "subject": "cn",
+  "syllabusId": "cn.u4.udp",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 65,
+  "pdfimage": "764x136",
+  "caption": "The 8-byte UDP header: source port, destination port, length, checksum.",
+  "credit": "CN Notes3, page 65",
+  "verified": true
+ },
+ {
+  "id": "cn-p70",
+  "subject": "cn",
+  "syllabusId": "cn.u4.tcp-intro",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 70,
+  "pdfimage": "575x338",
+  "caption": "Well-known ports and the protocols that use them.",
+  "credit": "CN Notes3, page 70",
+  "verified": true
+ },
+ {
+  "id": "cn-tcp-header",
+  "subject": "cn",
+  "syllabusId": "cn.u4.tcp-header",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 72,
+  "pdfimage": "792x490",
+  "caption": "The TCP segment header (20 bytes + options): ports, sequence and acknowledgement numbers, header length, flags, window, checksum, urgent pointer.",
+  "credit": "CN Notes3, page 72",
+  "verified": true
+ },
+ {
+  "id": "cn-ftp",
+  "subject": "cn",
+  "syllabusId": "cn.u5.ftp",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 86,
+  "caption": "FTP uses two connections: a control connection (commands, port 21) and a data connection (files, port 20).",
+  "credit": "CN Notes3, page 86",
+  "verified": true,
+  "crop": {
+   "x": 290,
+   "y": 940,
+   "w": 840,
+   "h": 290
+  },
+  "dpi": 150,
+  "trim": true
+ },
+ {
+  "id": "cn-email",
+  "subject": "cn",
+  "syllabusId": "cn.u5.email-arch",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 88,
+  "caption": "E-mail architecture: UA → MTA client → MTA server (spool) → MTA → mailbox, then the MAA (POP3/IMAP) delivers to Bob's UA.",
+  "credit": "CN Notes3, page 88",
+  "verified": true,
+  "crop": {
+   "x": 300,
+   "y": 485,
+   "w": 750,
+   "h": 375
+  },
+  "dpi": 150,
+  "trim": true
+ },
+ {
+  "id": "cn-p96a",
+  "subject": "cn",
+  "syllabusId": "cn.u5.dns-namespace",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 96,
+  "caption": "Each node has a label; its domain name is the labels read up to the root (aComputer.bDept.topUniversity.edu.).",
+  "credit": "CN Notes3, page 96",
+  "verified": true,
+  "crop": {
+   "x": 425,
+   "y": 1090,
+   "w": 550,
+   "h": 385
+  },
+  "dpi": 150,
+  "trim": true
+ },
+ {
+  "id": "cn-p96b",
+  "subject": "cn",
+  "syllabusId": "cn.u5.dns-namespace",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 96,
+  "caption": "The DNS name space is an inverted tree split into domains and subdomains.",
+  "credit": "CN Notes3, page 96",
+  "verified": true,
+  "crop": {
+   "x": 335,
+   "y": 150,
+   "w": 820,
+   "h": 250
+  },
+  "dpi": 150,
+  "trim": true
+ },
+ {
+  "id": "cn-snmp",
+  "subject": "cn",
+  "syllabusId": "cn.u5.snmp",
+  "src": "Material/CN/CN - Notes3.pdf",
+  "page": 97,
+  "caption": "SNMP: a manager station queries and controls agents running on routers and hosts.",
+  "credit": "CN Notes3, page 97",
+  "verified": true,
+  "crop": {
+   "x": 375,
+   "y": 655,
+   "w": 590,
+   "h": 225
+  },
+  "dpi": 150,
+  "trim": true
  }
 ]

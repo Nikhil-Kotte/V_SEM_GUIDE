@@ -328,5 +328,235 @@
   "caption": "Masquerade: Darth sends a message that appears to come from Bob. This is one of the standard security attacks.",
   "credit": "OS Unit-5 slides, slide 48",
   "verified": true
+ },
+ {
+  "id": "se-cohesion-types",
+  "subject": "se",
+  "syllabusId": "se.u4.coupling-cohesion",
+  "src": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "slide": 7,
+  "caption": "Cohesion from best to worst: functional, sequential, communicational, procedural, temporal, logical, coincidental.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 7",
+  "verified": true
+ },
+ {
+  "id": "se-coupling-types",
+  "subject": "se",
+  "syllabusId": "se.u4.coupling-cohesion",
+  "src": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "slide": 16,
+  "caption": "Coupling from best (no direct coupling) to worst (content coupling): data, stamp, control, external, common, content.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 16",
+  "verified": true
+ },
+ {
+  "id": "se-sc-elements",
+  "subject": "se",
+  "syllabusId": "se.u4.function-oriented",
+  "src": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "slide": 29,
+  "caption": "Structure chart notation: modules as boxes, call lines, data parameters (hollow circle), control flags (filled circle), loops and decisions.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 29",
+  "verified": true
+ },
+ {
+  "id": "se-sc-example",
+  "subject": "se",
+  "syllabusId": "se.u4.function-oriented",
+  "src": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "slide": 30,
+  "caption": "Structure chart example: Main calls Configure, Process and UpdateReport; Process calls GetInput, CalculateArea and CalculateVolume.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 30",
+  "verified": true
+ },
+ {
+  "id": "se-arch-data-centred",
+  "subject": "se",
+  "syllabusId": "se.u4.arch-styles",
+  "src": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "slide": 36,
+  "caption": "Data-centred (repository/blackboard) architecture: independent client components share one central data store.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 36",
+  "verified": true
+ },
+ {
+  "id": "se-arch-data-flow",
+  "subject": "se",
+  "syllabusId": "se.u4.arch-styles",
+  "src": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "slide": 38,
+  "caption": "Data-flow (pipes and filters) architecture: data passes through a series of filters connected by pipes.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 38",
+  "verified": true
+ },
+ {
+  "id": "se-arch-call-return",
+  "subject": "se",
+  "syllabusId": "se.u4.arch-styles",
+  "src": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "slide": 40,
+  "caption": "Call-and-return (main program/subprogram) architecture: a hierarchy of control from the main program down.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 40",
+  "verified": true
+ },
+ {
+  "id": "se-arch-layered",
+  "subject": "se",
+  "syllabusId": "se.u4.arch-styles",
+  "src": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "slide": 42,
+  "caption": "Layered architecture: core, utility, application and user-interface layers; each layer serves the one above it.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 42",
+  "verified": true
+ },
+ {
+  "id": "se-gantt",
+  "subject": "se",
+  "syllabusId": "se.u3.schedule-staffing",
+  "src": "Material/SE/Unit-III/unit3-effort esti.pptx",
+  "slide": 15,
+  "caption": "A Gantt (timeline) chart: each task is a bar on a calendar, so overlaps and dependencies are easy to see.",
+  "credit": "SE Unit-3 effort estimation slides, slide 15",
+  "verified": true
+ },
+ {
+  "id": "se-dfd-symbols",
+  "subject": "se",
+  "syllabusId": "se.u4.dfd",
+  "src": "Material/SE/Unit-IV/Unit 4.docx",
+  "media": "word/media/image2.jpeg",
+  "caption": "DFD symbols: data flow (arrow), process (circle), external entity (rectangle) and data store (open rectangle / parallel lines).",
+  "credit": "SE Unit 4 notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-dfd-l0-library",
+  "subject": "se",
+  "syllabusId": "se.u4.dfd",
+  "src": "Material/SE/Unit-IV/Unit 4.docx",
+  "media": "word/media/image4.png",
+  "caption": "Level-0 DFD (context diagram) of a library system: the whole system is one process talking to Student and Librarian.",
+  "credit": "SE Unit 4 notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-dfd-l0-result",
+  "subject": "se",
+  "syllabusId": "se.u4.dfd",
+  "src": "Material/SE/Unit-IV/Unit 4.docx",
+  "media": "word/media/image5.jpeg",
+  "caption": "Level-0 DFD of a student result management system with its external entities and outputs.",
+  "credit": "SE Unit 4 notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-dfd-l1",
+  "subject": "se",
+  "syllabusId": "se.u4.dfd",
+  "src": "Material/SE/Unit-IV/Unit 4.docx",
+  "media": "word/media/image6.png",
+  "caption": "Level-1 DFD of the library system: the single process splits into 1.0 Issue Book and 2.0 Return Book, with data stores.",
+  "credit": "SE Unit 4 notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-dfd-l2",
+  "subject": "se",
+  "syllabusId": "se.u4.dfd",
+  "src": "Material/SE/Unit-IV/Unit 4.docx",
+  "media": "word/media/image8.png",
+  "caption": "Level-2 DFD: process 1.0 Issue Book decomposed into 1.1–1.4.",
+  "credit": "SE Unit 4 notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-u4-img1",
+  "subject": "se",
+  "syllabusId": "se.u4.function-oriented",
+  "src": "Material/SE/Unit-IV/Unit 4.docx",
+  "media": "word/media/image1.png",
+  "caption": "DFD of an ATM system: authenticate customer, process transaction, with account and transaction databases.",
+  "credit": "SE Unit 4 notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-inspection",
+  "subject": "se",
+  "syllabusId": "se.u4.code-inspection",
+  "src": "Material/SE/Unit-IV/Software Architecture_Unit 4.docx",
+  "media": "word/media/image23.png",
+  "caption": "Code inspection process: planning → preparation → inspection meeting → rework → follow-up.",
+  "credit": "SE Software Architecture notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-sa-img21",
+  "subject": "se",
+  "syllabusId": "se.u4.component-design",
+  "src": "Material/SE/Unit-IV/Software Architecture_Unit 4.docx",
+  "media": "word/media/image21.png",
+  "caption": "Incremental development of a student system: each increment adds a feature and re-tests everything built so far.",
+  "credit": "SE Software Architecture notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-mccall",
+  "subject": "se",
+  "syllabusId": "se.u5.quality-models",
+  "src": "Material/SE/Unit-V/Testing Unit V.docx",
+  "media": "word/media/image39.png",
+  "caption": "McCall's quality triangle: product operation (bottom), product revision (left) and product transition (right).",
+  "credit": "SE Testing Unit V notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-t-img9",
+  "subject": "se",
+  "syllabusId": "se.u5.strategies",
+  "src": "Material/SE/Unit-V/Testing Unit V.docx",
+  "media": "word/media/image9.png",
+  "caption": "Sandwich (hybrid) integration: top-down and bottom-up integration run at the same time and meet in the middle.",
+  "credit": "SE Testing Unit V notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-t-img17",
+  "subject": "se",
+  "syllabusId": "se.u5.strategies",
+  "src": "Material/SE/Unit-V/Testing Unit V.docx",
+  "media": "word/media/image17.png",
+  "caption": "The family tree of software testing: manual vs automation, white/black/grey box, functional vs non-functional.",
+  "credit": "SE Testing Unit V notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-t-img19",
+  "subject": "se",
+  "syllabusId": "se.u5.strategies",
+  "src": "Material/SE/Unit-V/Testing Unit V.docx",
+  "media": "word/media/image19.png",
+  "caption": "Levels of testing: unit → integration → system testing on the application code.",
+  "credit": "SE Testing Unit V notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-t-img16",
+  "subject": "se",
+  "syllabusId": "se.u5.validation",
+  "src": "Material/SE/Unit-V/Testing Unit V.docx",
+  "media": "word/media/image16.jpeg",
+  "caption": "The software testing process as a cycle: set up environment → test cases → test data → execute → report defects → regression → log → retest.",
+  "credit": "SE Testing Unit V notes (docx)",
+  "verified": true
+ },
+ {
+  "id": "se-risk",
+  "subject": "se",
+  "syllabusId": "se.u3.risk",
+  "src": "Material/SE/Unit-III/Unit 3.docx",
+  "media": "word/media/image2.png",
+  "caption": "Risk management = risk assessment (identify, analyse, prioritise) + risk control (plan, monitor, resolve).",
+  "credit": "SE Unit 3 notes (docx)",
+  "verified": true
  }
 ]

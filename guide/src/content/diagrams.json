@@ -295,5 +295,212 @@
   "verified": true,
   "w": 512,
   "h": 287
+ },
+ "se-cohesion-types": {
+  "file": "diagrams/se/se-cohesion-types.webp",
+  "caption": "Cohesion from best to worst: functional, sequential, communicational, procedural, temporal, logical, coincidental.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 7",
+  "syllabusId": "se.u4.coupling-cohesion",
+  "verified": true,
+  "w": 769,
+  "h": 574
+ },
+ "se-coupling-types": {
+  "file": "diagrams/se/se-coupling-types.webp",
+  "caption": "Coupling from best (no direct coupling) to worst (content coupling): data, stamp, control, external, common, content.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 16",
+  "syllabusId": "se.u4.coupling-cohesion",
+  "verified": true,
+  "w": 1066,
+  "h": 546
+ },
+ "se-sc-elements": {
+  "file": "diagrams/se/se-sc-elements.webp",
+  "caption": "Structure chart notation: modules as boxes, call lines, data parameters (hollow circle), control flags (filled circle), loops and decisions.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 29",
+  "syllabusId": "se.u4.function-oriented",
+  "verified": true,
+  "w": 1056,
+  "h": 739
+ },
+ "se-sc-example": {
+  "file": "diagrams/se/se-sc-example.webp",
+  "caption": "Structure chart example: Main calls Configure, Process and UpdateReport; Process calls GetInput, CalculateArea and CalculateVolume.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 30",
+  "syllabusId": "se.u4.function-oriented",
+  "verified": true,
+  "w": 847,
+  "h": 600
+ },
+ "se-arch-data-centred": {
+  "file": "diagrams/se/se-arch-data-centred.webp",
+  "caption": "Data-centred (repository/blackboard) architecture: independent client components share one central data store.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 36",
+  "syllabusId": "se.u4.arch-styles",
+  "verified": true,
+  "w": 796,
+  "h": 502
+ },
+ "se-arch-data-flow": {
+  "file": "diagrams/se/se-arch-data-flow.webp",
+  "caption": "Data-flow (pipes and filters) architecture: data passes through a series of filters connected by pipes.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 38",
+  "syllabusId": "se.u4.arch-styles",
+  "verified": true,
+  "w": 916,
+  "h": 472
+ },
+ "se-arch-call-return": {
+  "file": "diagrams/se/se-arch-call-return.webp",
+  "caption": "Call-and-return (main program/subprogram) architecture: a hierarchy of control from the main program down.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 40",
+  "syllabusId": "se.u4.arch-styles",
+  "verified": true,
+  "w": 951,
+  "h": 438
+ },
+ "se-arch-layered": {
+  "file": "diagrams/se/se-arch-layered.webp",
+  "caption": "Layered architecture: core, utility, application and user-interface layers; each layer serves the one above it.",
+  "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 42",
+  "syllabusId": "se.u4.arch-styles",
+  "verified": true,
+  "w": 582,
+  "h": 453
+ },
+ "se-gantt": {
+  "file": "diagrams/se/se-gantt.webp",
+  "caption": "A Gantt (timeline) chart: each task is a bar on a calendar, so overlaps and dependencies are easy to see.",
+  "credit": "SE Unit-3 effort estimation slides, slide 15",
+  "syllabusId": "se.u3.schedule-staffing",
+  "verified": true,
+  "w": 1074,
+  "h": 591
+ },
+ "se-dfd-symbols": {
+  "file": "diagrams/se/se-dfd-symbols.webp",
+  "caption": "DFD symbols: data flow (arrow), process (circle), external entity (rectangle) and data store (open rectangle / parallel lines).",
+  "credit": "SE Unit 4 notes (docx)",
+  "syllabusId": "se.u4.dfd",
+  "verified": true,
+  "w": 602,
+  "h": 506
+ },
+ "se-dfd-l0-library": {
+  "file": "diagrams/se/se-dfd-l0-library.webp",
+  "caption": "Level-0 DFD (context diagram) of a library system: the whole system is one process talking to Student and Librarian.",
+  "credit": "SE Unit 4 notes (docx)",
+  "syllabusId": "se.u4.dfd",
+  "verified": true,
+  "w": 1057,
+  "h": 607
+ },
+ "se-dfd-l0-result": {
+  "file": "diagrams/se/se-dfd-l0-result.webp",
+  "caption": "Level-0 DFD of a student result management system with its external entities and outputs.",
+  "credit": "SE Unit 4 notes (docx)",
+  "syllabusId": "se.u4.dfd",
+  "verified": true,
+  "w": 600,
+  "h": 542
+ },
+ "se-dfd-l1": {
+  "file": "diagrams/se/se-dfd-l1.webp",
+  "caption": "Level-1 DFD of the library system: the single process splits into 1.0 Issue Book and 2.0 Return Book, with data stores.",
+  "credit": "SE Unit 4 notes (docx)",
+  "syllabusId": "se.u4.dfd",
+  "verified": true,
+  "w": 937,
+  "h": 622
+ },
+ "se-dfd-l2": {
+  "file": "diagrams/se/se-dfd-l2.webp",
+  "caption": "Level-2 DFD: process 1.0 Issue Book decomposed into 1.1–1.4.",
+  "credit": "SE Unit 4 notes (docx)",
+  "syllabusId": "se.u4.dfd",
+  "verified": true,
+  "w": 422,
+  "h": 616
+ },
+ "se-u4-img1": {
+  "file": "diagrams/se/se-u4-img1.webp",
+  "caption": "DFD of an ATM system: authenticate customer, process transaction, with account and transaction databases.",
+  "credit": "SE Unit 4 notes (docx)",
+  "syllabusId": "se.u4.function-oriented",
+  "verified": true,
+  "w": 412,
+  "h": 626
+ },
+ "se-inspection": {
+  "file": "diagrams/se/se-inspection.webp",
+  "caption": "Code inspection process: planning → preparation → inspection meeting → rework → follow-up.",
+  "credit": "SE Software Architecture notes (docx)",
+  "syllabusId": "se.u4.code-inspection",
+  "verified": true,
+  "w": 615,
+  "h": 397
+ },
+ "se-sa-img21": {
+  "file": "diagrams/se/se-sa-img21.webp",
+  "caption": "Incremental development of a student system: each increment adds a feature and re-tests everything built so far.",
+  "credit": "SE Software Architecture notes (docx)",
+  "syllabusId": "se.u4.component-design",
+  "verified": true,
+  "w": 631,
+  "h": 386
+ },
+ "se-mccall": {
+  "file": "diagrams/se/se-mccall.webp",
+  "caption": "McCall's quality triangle: product operation (bottom), product revision (left) and product transition (right).",
+  "credit": "SE Testing Unit V notes (docx)",
+  "syllabusId": "se.u5.quality-models",
+  "verified": true,
+  "w": 843,
+  "h": 647
+ },
+ "se-t-img9": {
+  "file": "diagrams/se/se-t-img9.webp",
+  "caption": "Sandwich (hybrid) integration: top-down and bottom-up integration run at the same time and meet in the middle.",
+  "credit": "SE Testing Unit V notes (docx)",
+  "syllabusId": "se.u5.strategies",
+  "verified": true,
+  "w": 379,
+  "h": 350
+ },
+ "se-t-img17": {
+  "file": "diagrams/se/se-t-img17.webp",
+  "caption": "The family tree of software testing: manual vs automation, white/black/grey box, functional vs non-functional.",
+  "credit": "SE Testing Unit V notes (docx)",
+  "syllabusId": "se.u5.strategies",
+  "verified": true,
+  "w": 768,
+  "h": 588
+ },
+ "se-t-img19": {
+  "file": "diagrams/se/se-t-img19.webp",
+  "caption": "Levels of testing: unit → integration → system testing on the application code.",
+  "credit": "SE Testing Unit V notes (docx)",
+  "syllabusId": "se.u5.strategies",
+  "verified": true,
+  "w": 937,
+  "h": 419
+ },
+ "se-t-img16": {
+  "file": "diagrams/se/se-t-img16.webp",
+  "caption": "The software testing process as a cycle: set up environment → test cases → test data → execute → report defects → regression → log → retest.",
+  "credit": "SE Testing Unit V notes (docx)",
+  "syllabusId": "se.u5.validation",
+  "verified": true,
+  "w": 1400,
+  "h": 488
+ },
+ "se-risk": {
+  "file": "diagrams/se/se-risk.webp",
+  "caption": "Risk management = risk assessment (identify, analyse, prioritise) + risk control (plan, monitor, resolve).",
+  "credit": "SE Unit 3 notes (docx)",
+  "syllabusId": "se.u3.risk",
+  "verified": true,
+  "w": 624,
+  "h": 383
  }
 }

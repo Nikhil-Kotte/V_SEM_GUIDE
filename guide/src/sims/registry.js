@@ -6,6 +6,9 @@ export const sims = {
   'os-page-replacement': { subject: 'os', syllabusId: 'os.u3.page-replacement', Component: lazy(() => import('./PageReplacementSim.jsx')) },
   'os-disk-scheduling': { subject: 'os', syllabusId: 'os.u3.disk-scheduling', Component: lazy(() => import('./DiskSchedulingSim.jsx')) },
   'os-bankers': { subject: 'os', syllabusId: 'os.u4.deadlock-avoidance', Component: lazy(() => import('./BankersSim.jsx')) },
+  'se-cocomo': { subject: 'se', syllabusId: 'se.u3.cocomo', Component: lazy(() => import('./CocomoSim.jsx')) },
+  'se-fp': { subject: 'se', syllabusId: 'se.u3.fp', Component: lazy(() => import('./FunctionPointSim.jsx')) },
+  'se-cyclomatic': { subject: 'se', syllabusId: 'se.u5.whitebox', Component: lazy(() => import('./CyclomaticSim.jsx')) },
 }
 
 export const simsFor = (subject) =>

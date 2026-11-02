@@ -16,7 +16,9 @@ const svgKeys = [...readFileSync(src('components/svg/index.js'), 'utf8').matchAl
 const simKeys = [...readFileSync(src('sims/registry.js'), 'utf8').matchAll(/^\s*'([^']+)':/gm)].map((m) => m[1])
 
 // Topics the user's syllabus does NOT include. Old papers asked these; they must not sneak back in.
-const EXCLUDED = [/\bRAID\b/, /access matrix/i, /\bSCTP\b/, /spark sql/i, /\bMLlib\b/, /\bGraphX\b/, /\bKafka\b/, /\bICMP\b/, /secondary sort/i, /deadlock detection/i, /wait-for graph/i]
+// (Access matrix and deadlock detection were allowed back in: they are asked under "basic security
+// mechanisms" and "deadlock recovery" in the user's portion.)
+const EXCLUDED = [/\bRAID\b/, /\bSCTP\b/, /spark sql/i, /\bMLlib\b/, /\bGraphX\b/, /\bKafka\b/, /\bICMP\b/, /secondary sort/i]
 
 for (const [subject, units] of Object.entries(syllabus)) {
   const ids = new Set(units.flatMap((u) => u.topics.map((t) => t.id)))

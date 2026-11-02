@@ -126,7 +126,13 @@ export default function BranchedMenu({
 
   const r = Math.min(radius, rowHeight / 2 - 2);
   const endX = indent - 8;
-  const rowY = k => PAD + k * rowHeight + rowHeight / 2;
+  // [V-SEM guide patch] rows may span several text lines (kid.lines), so long labels wrap instead
+  // of being cut off. rowY(k) is the vertical centre of row k, computed cumulatively.
+  let kidsRef = [];
+  const lineStep = Math.round(fontSize * 1.3);
+  const rowH = k => rowHeight + Math.max(0, (kidsRef[k]?.lines || 1) - 1) * lineStep;
+  const rowTop = k => { let y = PAD; for (let j = 0; j < k; j++) y += rowH(j); return y; };
+  const rowY = k => rowTop(k) + rowH(k) / 2;
   const branch = k => `M ${trunk} ${rowY(k) - r} A ${r} ${r} 0 0 0 ${trunk + r} ${rowY(k)} H ${endX}`;
   const reach = k => `M ${trunk} 0 V ${rowY(k) - r} A ${r} ${r} 0 0 0 ${trunk + r} ${rowY(k)} H ${endX}`;
   const length = k => rowY(k) - r + (Math.PI * r) / 2 + (endX - trunk - r);
@@ -154,7 +160,8 @@ export default function BranchedMenu({
         const isOpen = kids ? open.has(i) : false;
         const leafValue = item.value ?? item.label;
         const leafActive = !kids && leafValue === active;
-        const bodyH = kids ? PAD * 2 + kids.length * rowHeight : 0;
+        kidsRef = kids || [];
+        const bodyH = kids ? rowTop(kids.length) + PAD : 0;
         return (
           <div key={item.value ?? item.label} className="branched-menu__section" data-open={isOpen ? '' : undefined}>
             <button
@@ -191,11 +198,12 @@ export default function BranchedMenu({
                         />
                       ))}
                     </svg>
-                    {kids.map(kid => (
+                    {kids.map((kid, k) => (
                       <button
                         key={kid.value}
                         type="button"
                         className="branched-menu__item"
+                        style={kid.lines > 1 ? { height: rowH(k), whiteSpace: 'normal' } : undefined}
                         aria-current={kid.value === active ? 'true' : undefined}
                         data-active={kid.value === active ? '' : undefined}
                         tabIndex={isOpen ? 0 : -1}

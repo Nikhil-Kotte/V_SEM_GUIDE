@@ -56,7 +56,7 @@ export default function PageReplacementSim() {
         <div className="seg" role="group" aria-label="Algorithm">
           {ALGOS.map(([a, label]) => <button key={a} type="button" aria-pressed={algo === a} onClick={() => setAlgo(a)}>{label}</button>)}
         </div>
-        <div style={{ display: 'flex', gap: 6 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
           <button type="button" className="btn btn-sm" onClick={() => { setPlaying(false); setStep(0) }}>Reset</button>
           <button type="button" className="btn btn-sm" onClick={() => setStep((s) => Math.max(0, Math.min(s, refs.length) - 1))} disabled={shown === 0}>← Step</button>
           <button type="button" className="btn btn-sm" onClick={() => setStep((s) => Math.min(s, refs.length) + 1)} disabled={shown >= refs.length}>Step →</button>

@@ -58,7 +58,11 @@ export default function LearnTab({ subject, data, focus }) {
 
   const menuItems = useMemo(() => data.units.map((u) => ({
     label: `Unit ${u.unit} · ${u.title}`,
-    children: u.topics.map((t) => ({ value: t.id, label: `${store.done(t.id) ? '✓ ' : ''}${t.title}` })),
+    children: u.topics.map((t) => {
+      const label = `${store.done(t.id) ? '✓ ' : ''}${t.title}`
+      // ~29 characters fit on one line of the 290px sidebar; extra lines make the row taller
+      return { value: t.id, label, lines: Math.ceil(label.length / 29) }
+    }),
   })), [data, store]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

@@ -714,17 +714,6 @@
   "verified": true
  },
  {
-  "id": "cn-p60",
-  "subject": "cn",
-  "syllabusId": "cn.u4.tcp-connect",
-  "src": "Material/CN/CN - Notes3.pdf",
-  "page": 60,
-  "pdfimage": "335x331",
-  "caption": "Abrupt release: after one side sends DR, data still in transit is lost — why a symmetric/negotiated release is needed.",
-  "credit": "CN Notes3, page 60",
-  "verified": true
- },
- {
   "id": "cn-p61",
   "subject": "cn",
   "syllabusId": "cn.u4.tcp-release",

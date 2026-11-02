@@ -22,6 +22,7 @@ const PUBLIC = here('../public/diagrams/')
 const OUT_JSON = here('../src/content/diagrams.json')
 const MANIFEST = here('./diagrams.manifest.json')
 const TMP = join(tmpdir(), 'mid2-diagrams')
+const HIRES = here('./.hires/')
 const RASTER = new Set(['.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tif', '.tiff', '.webp'])
 
 const zips = {}
@@ -50,11 +51,14 @@ function slideImages(src, n) {
   return embeds.map((id) => 'ppt/' + relMap[id].replace(/^\.\.\//, '')).filter(Boolean)
 }
 
+// Readability first: small slide images are upscaled with Lanczos (sharper than the browser's
+// own scaling when they're shown large), big ones are capped, and quality is kept high.
 async function toWebp(buffer, outFile) {
   const img = sharp(buffer, { animated: false }).flatten({ background: '#ffffff' })
-  const meta = await img.metadata()
-  const resized = meta.width > 1400 ? img.resize({ width: 1400 }) : img
-  const info = await resized.webp({ quality: 82 }).toFile(outFile)
+  const { width } = await img.metadata()
+  const target = width < 900 ? Math.min(Math.round(width * 1.8), 1300) : Math.min(width, 1800)
+  const info = await img.resize({ width: target, kernel: 'lanczos3' }).sharpen({ sigma: 0.6 })
+    .webp({ quality: 92, smartSubsample: true }).toFile(outFile)
   return { w: info.width, h: info.height }
 }
 
@@ -111,6 +115,9 @@ async function extractOne(d) {
   } else if (d.media) {
     buffer = zip(d.src).readFile(d.media)
     if (!buffer) throw new Error(`${d.id}: ${d.media} not found in ${d.src}`)
+  } else if (d.page && existsSync(join(HIRES, `${d.id}.png`))) {
+    // High-resolution page render from scripts/pdf_hires.py (crisp text, correct colours).
+    buffer = readFileSync(join(HIRES, `${d.id}.png`))
   } else if (d.page && d.pdfimage != null) {
     buffer = await pdfImage(d.src, d.page, d.pdfimage)
   } else if (d.page) {

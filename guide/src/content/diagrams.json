@@ -5,8 +5,8 @@
   "credit": "OS Unit-3 slides, slide 34",
   "syllabusId": "os.u3.address-translation",
   "verified": true,
-  "w": 776,
-  "h": 475
+  "w": 1300,
+  "h": 796
  },
  "os-paging-model": {
   "file": "diagrams/os/os-paging-model.webp",
@@ -23,8 +23,8 @@
   "credit": "OS Unit-3 slides, slide 63",
   "syllabusId": "os.u3.paging",
   "verified": true,
-  "w": 670,
-  "h": 357
+  "w": 1206,
+  "h": 643
  },
  "os-paging-example": {
   "file": "diagrams/os/os-paging-example.webp",
@@ -32,8 +32,8 @@
   "credit": "OS Unit-3 slides, slide 65",
   "syllabusId": "os.u3.paging",
   "verified": true,
-  "w": 665,
-  "h": 501
+  "w": 1197,
+  "h": 902
  },
  "os-tlb": {
   "file": "diagrams/os/os-tlb.webp",
@@ -41,8 +41,8 @@
   "credit": "OS Unit-3 slides, slide 70",
   "syllabusId": "os.u3.paging",
   "verified": true,
-  "w": 660,
-  "h": 382
+  "w": 1188,
+  "h": 688
  },
  "os-valid-bit": {
   "file": "diagrams/os/os-valid-bit.webp",
@@ -50,8 +50,8 @@
   "credit": "OS Unit-3 slides, slide 74",
   "syllabusId": "os.u3.sharing-permissions",
   "verified": true,
-  "w": 665,
-  "h": 325
+  "w": 1197,
+  "h": 585
  },
  "os-page-fault": {
   "file": "diagrams/os/os-page-fault.webp",
@@ -59,8 +59,8 @@
   "credit": "OS Unit-3 slides, slide 79",
   "syllabusId": "os.u3.page-faults",
   "verified": true,
-  "w": 627,
-  "h": 437
+  "w": 1129,
+  "h": 787
  },
  "os-seg-hw": {
   "file": "diagrams/os/os-seg-hw.webp",
@@ -68,8 +68,8 @@
   "credit": "OS Unit-3 slides, slide 85",
   "syllabusId": "os.u3.segmentation",
   "verified": true,
-  "w": 663,
-  "h": 407
+  "w": 1193,
+  "h": 732
  },
  "os-page-replacement": {
   "file": "diagrams/os/os-page-replacement.webp",
@@ -77,8 +77,8 @@
   "credit": "OS Unit-3 slides, slide 94",
   "syllabusId": "os.u3.page-replacement",
   "verified": true,
-  "w": 706,
-  "h": 436
+  "w": 1271,
+  "h": 785
  },
  "os-swapping": {
   "file": "diagrams/os/os-swapping.webp",
@@ -86,8 +86,8 @@
   "credit": "OS Unit-3 slides, slide 31",
   "syllabusId": "os.u3.swapping",
   "verified": true,
-  "w": 660,
-  "h": 441
+  "w": 1188,
+  "h": 794
  },
  "os-disk-fcfs": {
   "file": "diagrams/os/os-disk-fcfs.webp",
@@ -95,8 +95,8 @@
   "credit": "OS Unit-3 slides, slide 130",
   "syllabusId": "os.u3.disk-scheduling",
   "verified": true,
-  "w": 768,
-  "h": 740
+  "w": 1300,
+  "h": 1253
  },
  "os-disk-sstf": {
   "file": "diagrams/os/os-disk-sstf.webp",
@@ -104,8 +104,8 @@
   "credit": "OS Unit-3 slides, slide 133",
   "syllabusId": "os.u3.disk-scheduling",
   "verified": true,
-  "w": 720,
-  "h": 613
+  "w": 1296,
+  "h": 1103
  },
  "os-disk-scan": {
   "file": "diagrams/os/os-disk-scan.webp",
@@ -113,8 +113,8 @@
   "credit": "OS Unit-3 slides, slide 136",
   "syllabusId": "os.u3.disk-scheduling",
   "verified": true,
-  "w": 722,
-  "h": 691
+  "w": 1300,
+  "h": 1244
  },
  "os-disk-cscan": {
   "file": "diagrams/os/os-disk-cscan.webp",
@@ -122,8 +122,8 @@
   "credit": "OS Unit-3 slides, slide 139",
   "syllabusId": "os.u3.disk-scheduling",
   "verified": true,
-  "w": 542,
-  "h": 443
+  "w": 976,
+  "h": 798
  },
  "os-disk-clook": {
   "file": "diagrams/os/os-disk-clook.webp",
@@ -131,8 +131,8 @@
   "credit": "OS Unit-3 slides, slide 144",
   "syllabusId": "os.u3.disk-scheduling",
   "verified": true,
-  "w": 652,
-  "h": 400
+  "w": 1174,
+  "h": 720
  },
  "os-demand-paging": {
   "file": "diagrams/os/os-demand-paging.webp",
@@ -140,8 +140,8 @@
   "credit": "OS Unit-3 slides, slide 78",
   "syllabusId": "os.u3.page-faults",
   "verified": true,
-  "w": 483,
-  "h": 340
+  "w": 869,
+  "h": 612
  },
  "os-page-table": {
   "file": "diagrams/os/os-page-table.webp",
@@ -149,8 +149,8 @@
   "credit": "OS Unit-3 slides, slide 67",
   "syllabusId": "os.u3.paging",
   "verified": true,
-  "w": 597,
-  "h": 357
+  "w": 1075,
+  "h": 643
  },
  "os-many-to-one": {
   "file": "diagrams/os/os-many-to-one.webp",
@@ -158,8 +158,8 @@
   "credit": "OS Unit-4 slides, slide 18",
   "syllabusId": "os.u4.threads",
   "verified": true,
-  "w": 421,
-  "h": 313
+  "w": 758,
+  "h": 564
  },
  "os-one-to-one": {
   "file": "diagrams/os/os-one-to-one.webp",
@@ -167,8 +167,8 @@
   "credit": "OS Unit-4 slides, slide 19",
   "syllabusId": "os.u4.threads",
   "verified": true,
-  "w": 387,
-  "h": 276
+  "w": 697,
+  "h": 497
  },
  "os-many-to-many": {
   "file": "diagrams/os/os-many-to-many.webp",
@@ -176,8 +176,8 @@
   "credit": "OS Unit-4 slides, slide 20",
   "syllabusId": "os.u4.threads",
   "verified": true,
-  "w": 371,
-  "h": 281
+  "w": 668,
+  "h": 506
  },
  "os-bounded-buffer": {
   "file": "diagrams/os/os-bounded-buffer.webp",
@@ -185,8 +185,8 @@
   "credit": "OS Unit-4 slides, slide 59",
   "syllabusId": "os.u4.classical",
   "verified": true,
-  "w": 511,
-  "h": 181
+  "w": 920,
+  "h": 326
  },
  "os-rag": {
   "file": "diagrams/os/os-rag.webp",
@@ -194,8 +194,8 @@
   "credit": "OS Unit-4 slides, slide 83",
   "syllabusId": "os.u4.rag",
   "verified": true,
-  "w": 342,
-  "h": 313
+  "w": 616,
+  "h": 564
  },
  "os-rag-deadlock": {
   "file": "diagrams/os/os-rag-deadlock.webp",
@@ -203,8 +203,8 @@
   "credit": "OS Unit-4 slides, slide 84",
   "syllabusId": "os.u4.rag",
   "verified": true,
-  "w": 532,
-  "h": 572
+  "w": 958,
+  "h": 1030
  },
  "os-safe-state": {
   "file": "diagrams/os/os-safe-state.webp",
@@ -212,8 +212,8 @@
   "credit": "OS Unit-4 slides, slide 92",
   "syllabusId": "os.u4.deadlock-avoidance",
   "verified": true,
-  "w": 582,
-  "h": 377
+  "w": 1048,
+  "h": 679
  },
  "os-contiguous": {
   "file": "diagrams/os/os-contiguous.webp",
@@ -221,8 +221,8 @@
   "credit": "OS Unit-5 slides, slide 15",
   "syllabusId": "os.u5.allocation",
   "verified": true,
-  "w": 392,
-  "h": 362
+  "w": 706,
+  "h": 652
  },
  "os-linked": {
   "file": "diagrams/os/os-linked.webp",
@@ -230,8 +230,8 @@
   "credit": "OS Unit-5 slides, slide 17",
   "syllabusId": "os.u5.allocation",
   "verified": true,
-  "w": 755,
-  "h": 392
+  "w": 1300,
+  "h": 675
  },
  "os-indexed": {
   "file": "diagrams/os/os-indexed.webp",
@@ -239,8 +239,8 @@
   "credit": "OS Unit-5 slides, slide 21",
   "syllabusId": "os.u5.allocation",
   "verified": true,
-  "w": 772,
-  "h": 387
+  "w": 1300,
+  "h": 652
  },
  "os-dir-single": {
   "file": "diagrams/os/os-dir-single.webp",
@@ -248,8 +248,8 @@
   "credit": "OS Unit-5 slides, slide 33",
   "syllabusId": "os.u5.directory",
   "verified": true,
-  "w": 480,
-  "h": 201
+  "w": 864,
+  "h": 362
  },
  "os-dir-two": {
   "file": "diagrams/os/os-dir-two.webp",
@@ -257,8 +257,8 @@
   "credit": "OS Unit-5 slides, slide 35",
   "syllabusId": "os.u5.directory",
   "verified": true,
-  "w": 682,
-  "h": 207
+  "w": 1228,
+  "h": 373
  },
  "os-dir-tree": {
   "file": "diagrams/os/os-dir-tree.webp",
@@ -266,8 +266,8 @@
   "credit": "OS Unit-5 slides, slide 37",
   "syllabusId": "os.u5.directory",
   "verified": true,
-  "w": 572,
-  "h": 377
+  "w": 1030,
+  "h": 679
  },
  "os-dir-acyclic": {
   "file": "diagrams/os/os-dir-acyclic.webp",
@@ -275,8 +275,8 @@
   "credit": "OS Unit-5 slides, slide 39",
   "syllabusId": "os.u5.directory",
   "verified": true,
-  "w": 402,
-  "h": 357
+  "w": 724,
+  "h": 643
  },
  "os-dir-general": {
   "file": "diagrams/os/os-dir-general.webp",
@@ -284,8 +284,8 @@
   "credit": "OS Unit-5 slides, slide 41",
   "syllabusId": "os.u5.directory",
   "verified": true,
-  "w": 483,
-  "h": 350
+  "w": 869,
+  "h": 630
  },
  "os-attacks": {
   "file": "diagrams/os/os-attacks.webp",
@@ -293,8 +293,8 @@
   "credit": "OS Unit-5 slides, slide 48",
   "syllabusId": "os.u5.threats",
   "verified": true,
-  "w": 512,
-  "h": 287
+  "w": 922,
+  "h": 517
  },
  "se-cohesion-types": {
   "file": "diagrams/se/se-cohesion-types.webp",
@@ -302,8 +302,8 @@
   "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 7",
   "syllabusId": "se.u4.coupling-cohesion",
   "verified": true,
-  "w": 769,
-  "h": 574
+  "w": 1300,
+  "h": 970
  },
  "se-coupling-types": {
   "file": "diagrams/se/se-coupling-types.webp",
@@ -329,8 +329,8 @@
   "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 30",
   "syllabusId": "se.u4.function-oriented",
   "verified": true,
-  "w": 847,
-  "h": 600
+  "w": 1300,
+  "h": 921
  },
  "se-arch-data-centred": {
   "file": "diagrams/se/se-arch-data-centred.webp",
@@ -338,8 +338,8 @@
   "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 36",
   "syllabusId": "se.u4.arch-styles",
   "verified": true,
-  "w": 796,
-  "h": 502
+  "w": 1300,
+  "h": 820
  },
  "se-arch-data-flow": {
   "file": "diagrams/se/se-arch-data-flow.webp",
@@ -365,8 +365,8 @@
   "credit": "SE Unit-3 cohesion/coupling/architecture slides, slide 42",
   "syllabusId": "se.u4.arch-styles",
   "verified": true,
-  "w": 582,
-  "h": 453
+  "w": 1048,
+  "h": 816
  },
  "se-gantt": {
   "file": "diagrams/se/se-gantt.webp",
@@ -383,8 +383,8 @@
   "credit": "SE Unit 4 notes (docx)",
   "syllabusId": "se.u4.dfd",
   "verified": true,
-  "w": 602,
-  "h": 506
+  "w": 1084,
+  "h": 911
  },
  "se-dfd-l0-library": {
   "file": "diagrams/se/se-dfd-l0-library.webp",
@@ -401,8 +401,8 @@
   "credit": "SE Unit 4 notes (docx)",
   "syllabusId": "se.u4.dfd",
   "verified": true,
-  "w": 600,
-  "h": 542
+  "w": 1080,
+  "h": 976
  },
  "se-dfd-l1": {
   "file": "diagrams/se/se-dfd-l1.webp",
@@ -419,8 +419,8 @@
   "credit": "SE Unit 4 notes (docx)",
   "syllabusId": "se.u4.dfd",
   "verified": true,
-  "w": 422,
-  "h": 616
+  "w": 760,
+  "h": 1109
  },
  "se-u4-img1": {
   "file": "diagrams/se/se-u4-img1.webp",
@@ -428,8 +428,8 @@
   "credit": "SE Unit 4 notes (docx)",
   "syllabusId": "se.u4.function-oriented",
   "verified": true,
-  "w": 412,
-  "h": 626
+  "w": 742,
+  "h": 1127
  },
  "se-inspection": {
   "file": "diagrams/se/se-inspection.webp",
@@ -437,8 +437,8 @@
   "credit": "SE Software Architecture notes (docx)",
   "syllabusId": "se.u4.code-inspection",
   "verified": true,
-  "w": 615,
-  "h": 397
+  "w": 1107,
+  "h": 715
  },
  "se-sa-img21": {
   "file": "diagrams/se/se-sa-img21.webp",
@@ -446,8 +446,8 @@
   "credit": "SE Software Architecture notes (docx)",
   "syllabusId": "se.u4.component-design",
   "verified": true,
-  "w": 631,
-  "h": 386
+  "w": 1136,
+  "h": 695
  },
  "se-mccall": {
   "file": "diagrams/se/se-mccall.webp",
@@ -455,8 +455,8 @@
   "credit": "SE Testing Unit V notes (docx)",
   "syllabusId": "se.u5.quality-models",
   "verified": true,
-  "w": 843,
-  "h": 647
+  "w": 1300,
+  "h": 998
  },
  "se-t-img9": {
   "file": "diagrams/se/se-t-img9.webp",
@@ -464,8 +464,8 @@
   "credit": "SE Testing Unit V notes (docx)",
   "syllabusId": "se.u5.strategies",
   "verified": true,
-  "w": 379,
-  "h": 350
+  "w": 682,
+  "h": 630
  },
  "se-t-img17": {
   "file": "diagrams/se/se-t-img17.webp",
@@ -473,8 +473,8 @@
   "credit": "SE Testing Unit V notes (docx)",
   "syllabusId": "se.u5.strategies",
   "verified": true,
-  "w": 768,
-  "h": 588
+  "w": 1300,
+  "h": 995
  },
  "se-t-img19": {
   "file": "diagrams/se/se-t-img19.webp",
@@ -491,8 +491,8 @@
   "credit": "SE Testing Unit V notes (docx)",
   "syllabusId": "se.u5.validation",
   "verified": true,
-  "w": 1400,
-  "h": 488
+  "w": 1625,
+  "h": 566
  },
  "se-risk": {
   "file": "diagrams/se/se-risk.webp",
@@ -500,8 +500,8 @@
   "credit": "SE Unit 3 notes (docx)",
   "syllabusId": "se.u3.risk",
   "verified": true,
-  "w": 624,
-  "h": 383
+  "w": 1123,
+  "h": 689
  },
  "cn-p7": {
   "file": "diagrams/cn/cn-p7.webp",
@@ -509,8 +509,8 @@
   "credit": "CN Notes3, page 7",
   "syllabusId": "cn.u3.link-state",
   "verified": true,
-  "w": 473,
-  "h": 140
+  "w": 1656,
+  "h": 507
  },
  "cn-p9": {
   "file": "diagrams/cn/cn-p9.webp",
@@ -518,8 +518,8 @@
   "credit": "CN Notes3, page 9",
   "syllabusId": "cn.u3.link-state",
   "verified": true,
-  "w": 486,
-  "h": 331
+  "w": 1483,
+  "h": 1018
  },
  "cn-p18": {
   "file": "diagrams/cn/cn-p18.webp",
@@ -527,8 +527,8 @@
   "credit": "CN Notes3, page 18",
   "syllabusId": "cn.u3.qos",
   "verified": true,
-  "w": 468,
-  "h": 221
+  "w": 1207,
+  "h": 585
  },
  "cn-p21": {
   "file": "diagrams/cn/cn-p21.webp",
@@ -536,8 +536,8 @@
   "credit": "CN Notes3, page 21",
   "syllabusId": "cn.u3.qos",
   "verified": true,
-  "w": 532,
-  "h": 189
+  "w": 1334,
+  "h": 488
  },
  "cn-ipv4": {
   "file": "diagrams/cn/cn-ipv4.webp",
@@ -545,8 +545,8 @@
   "credit": "CN Notes3, page 24",
   "syllabusId": "cn.u3.ipv4",
   "verified": true,
-  "w": 591,
-  "h": 254
+  "w": 1658,
+  "h": 727
  },
  "cn-p27a": {
   "file": "diagrams/cn/cn-p27a.webp",
@@ -554,8 +554,8 @@
   "credit": "CN Notes3, page 27",
   "syllabusId": "cn.u3.ip-addresses",
   "verified": true,
-  "w": 352,
-  "h": 143
+  "w": 1090,
+  "h": 459
  },
  "cn-p28": {
   "file": "diagrams/cn/cn-p28.webp",
@@ -563,8 +563,8 @@
   "credit": "CN Notes3, page 28",
   "syllabusId": "cn.u3.ip-addresses",
   "verified": true,
-  "w": 537,
-  "h": 245
+  "w": 1535,
+  "h": 714
  },
  "cn-p31": {
   "file": "diagrams/cn/cn-p31.webp",
@@ -572,8 +572,8 @@
   "credit": "CN Notes3, page 31",
   "syllabusId": "cn.u3.ip-addresses",
   "verified": true,
-  "w": 555,
-  "h": 172
+  "w": 1713,
+  "h": 564
  },
  "cn-ipv6": {
   "file": "diagrams/cn/cn-ipv6.webp",
@@ -581,8 +581,8 @@
   "credit": "CN Notes3, page 34",
   "syllabusId": "cn.u3.ipv6",
   "verified": true,
-  "w": 395,
-  "h": 283
+  "w": 1172,
+  "h": 845
  },
  "cn-p37": {
   "file": "diagrams/cn/cn-p37.webp",
@@ -590,8 +590,8 @@
   "credit": "CN Notes3, page 37",
   "syllabusId": "cn.u3.ospf",
   "verified": true,
-  "w": 383,
-  "h": 118
+  "w": 1475,
+  "h": 472
  },
  "cn-bgp": {
   "file": "diagrams/cn/cn-bgp.webp",
@@ -599,8 +599,8 @@
   "credit": "CN Notes3, page 38",
   "syllabusId": "cn.u3.bgp",
   "verified": true,
-  "w": 436,
-  "h": 227
+  "w": 1245,
+  "h": 661
  },
  "cn-p39": {
   "file": "diagrams/cn/cn-p39.webp",
@@ -608,8 +608,8 @@
   "credit": "CN Notes3, page 39",
   "syllabusId": "cn.u3.bgp",
   "verified": true,
-  "w": 486,
-  "h": 219
+  "w": 1683,
+  "h": 774
  },
  "cn-p40": {
   "file": "diagrams/cn/cn-p40.webp",
@@ -617,8 +617,8 @@
   "credit": "CN Notes3, page 40",
   "syllabusId": "cn.u3.bgp",
   "verified": true,
-  "w": 504,
-  "h": 332
+  "w": 1534,
+  "h": 1018
  },
  "cn-p59": {
   "file": "diagrams/cn/cn-p59.webp",
@@ -626,17 +626,8 @@
   "credit": "CN Notes3, page 59",
   "syllabusId": "cn.u4.tcp-connect",
   "verified": true,
-  "w": 549,
-  "h": 545
- },
- "cn-p60": {
-  "file": "diagrams/cn/cn-p60.webp",
-  "caption": "Abrupt release: after one side sends DR, data still in transit is lost — why a symmetric/negotiated release is needed.",
-  "credit": "CN Notes3, page 60",
-  "syllabusId": "cn.u4.tcp-connect",
-  "verified": true,
-  "w": 335,
-  "h": 331
+  "w": 1408,
+  "h": 1399
  },
  "cn-p61": {
   "file": "diagrams/cn/cn-p61.webp",
@@ -644,8 +635,8 @@
   "credit": "CN Notes3, page 61",
   "syllabusId": "cn.u4.tcp-release",
   "verified": true,
-  "w": 752,
-  "h": 371
+  "w": 1654,
+  "h": 829
  },
  "cn-p64": {
   "file": "diagrams/cn/cn-p64.webp",
@@ -653,8 +644,8 @@
   "credit": "CN Notes3, page 64",
   "syllabusId": "cn.u4.congestion",
   "verified": true,
-  "w": 749,
-  "h": 569
+  "w": 1300,
+  "h": 995
  },
  "cn-udp": {
   "file": "diagrams/cn/cn-udp.webp",
@@ -662,8 +653,8 @@
   "credit": "CN Notes3, page 65",
   "syllabusId": "cn.u4.udp",
   "verified": true,
-  "w": 764,
-  "h": 136
+  "w": 1365,
+  "h": 263
  },
  "cn-p70": {
   "file": "diagrams/cn/cn-p70.webp",
@@ -671,8 +662,8 @@
   "credit": "CN Notes3, page 70",
   "syllabusId": "cn.u4.tcp-intro",
   "verified": true,
-  "w": 575,
-  "h": 338
+  "w": 1144,
+  "h": 684
  },
  "cn-tcp-header": {
   "file": "diagrams/cn/cn-tcp-header.webp",
@@ -680,8 +671,8 @@
   "credit": "CN Notes3, page 72",
   "syllabusId": "cn.u4.tcp-header",
   "verified": true,
-  "w": 792,
-  "h": 490
+  "w": 1549,
+  "h": 969
  },
  "cn-ftp": {
   "file": "diagrams/cn/cn-ftp.webp",
@@ -689,8 +680,8 @@
   "credit": "CN Notes3, page 86",
   "syllabusId": "cn.u5.ftp",
   "verified": true,
-  "w": 728,
-  "h": 257
+  "w": 1400,
+  "h": 493
  },
  "cn-email": {
   "file": "diagrams/cn/cn-email.webp",
@@ -698,8 +689,8 @@
   "credit": "CN Notes3, page 88",
   "syllabusId": "cn.u5.email-arch",
   "verified": true,
-  "w": 714,
-  "h": 359
+  "w": 1368,
+  "h": 700
  },
  "cn-p96a": {
   "file": "diagrams/cn/cn-p96a.webp",
@@ -707,8 +698,8 @@
   "credit": "CN Notes3, page 96",
   "syllabusId": "cn.u5.dns-namespace",
   "verified": true,
-  "w": 515,
-  "h": 354
+  "w": 998,
+  "h": 709
  },
  "cn-p96b": {
   "file": "diagrams/cn/cn-p96b.webp",
@@ -716,8 +707,8 @@
   "credit": "CN Notes3, page 96",
   "syllabusId": "cn.u5.dns-namespace",
   "verified": true,
-  "w": 624,
-  "h": 250
+  "w": 1198,
+  "h": 504
  },
  "cn-snmp": {
   "file": "diagrams/cn/cn-snmp.webp",
@@ -725,8 +716,8 @@
   "credit": "CN Notes3, page 97",
   "syllabusId": "cn.u5.snmp",
   "verified": true,
-  "w": 551,
-  "h": 198
+  "w": 1054,
+  "h": 380
  },
  "bda-yarn-arch": {
   "file": "diagrams/bda/bda-yarn-arch.webp",
@@ -734,8 +725,8 @@
   "credit": "BDA Unit-3 slides, slide 40",
   "syllabusId": "bda.u3.yarn-arch",
   "verified": true,
-  "w": 897,
-  "h": 514
+  "w": 1300,
+  "h": 745
  },
  "bda-yarn-flow": {
   "file": "diagrams/bda/bda-yarn-flow.webp",
@@ -743,8 +734,8 @@
   "credit": "BDA Unit-3 slides, slide 45",
   "syllabusId": "bda.u3.yarn-manage",
   "verified": true,
-  "w": 741,
-  "h": 461
+  "w": 1300,
+  "h": 809
  },
  "bda-hive-arch": {
   "file": "diagrams/bda/bda-hive-arch.webp",
@@ -761,8 +752,8 @@
   "credit": "BDA Unit-4 slides, slide 30",
   "syllabusId": "bda.u4.pig-intro",
   "verified": true,
-  "w": 571,
-  "h": 694
+  "w": 1028,
+  "h": 1249
  },
  "bda-pig-model": {
   "file": "diagrams/bda/bda-pig-model.webp",
@@ -770,8 +761,8 @@
   "credit": "BDA Unit-4 slides, slide 32",
   "syllabusId": "bda.u4.pig-types",
   "verified": true,
-  "w": 1400,
-  "h": 610
+  "w": 1549,
+  "h": 675
  },
  "bda-spark-arch": {
   "file": "diagrams/bda/bda-spark-arch.webp",
@@ -806,8 +797,8 @@
   "credit": "PDT Unit-3 slides, slide 32",
   "syllabusId": "pdt.u3.persona-steps",
   "verified": true,
-  "w": 624,
-  "h": 682
+  "w": 1123,
+  "h": 1227
  },
  "pdt-s16": {
   "file": "diagrams/pdt/pdt-s16.webp",
@@ -815,8 +806,8 @@
   "credit": "PDT Unit-3 slides, slide 16",
   "syllabusId": "pdt.u3.persona-steps",
   "verified": true,
-  "w": 389,
-  "h": 129
+  "w": 700,
+  "h": 232
  },
  "pdt-empathy-map": {
   "file": "diagrams/pdt/pdt-empathy-map.webp",
@@ -824,8 +815,8 @@
   "credit": "PDT Unit-2 slides, slide 38",
   "syllabusId": "pdt.u3.empathy-map",
   "verified": true,
-  "w": 638,
-  "h": 478
+  "w": 1148,
+  "h": 860
  },
  "pdt-e40": {
   "file": "diagrams/pdt/pdt-e40.webp",
@@ -833,8 +824,8 @@
   "credit": "PDT Unit-2 slides, slide 40",
   "syllabusId": "pdt.u3.empathy-map",
   "verified": true,
-  "w": 638,
-  "h": 478
+  "w": 1148,
+  "h": 860
  },
  "pdt-i2": {
   "file": "diagrams/pdt/pdt-i2.webp",
@@ -842,8 +833,8 @@
   "credit": "DT Unit-3 Ideate notes, page 2",
   "syllabusId": "pdt.u4.ideation",
   "verified": true,
-  "w": 857,
-  "h": 669
+  "w": 1260,
+  "h": 990
  },
  "pdt-i6": {
   "file": "diagrams/pdt/pdt-i6.webp",
@@ -851,8 +842,8 @@
   "credit": "DT Unit-3 Ideate notes, page 6",
   "syllabusId": "pdt.u4.methods",
   "verified": true,
-  "w": 626,
-  "h": 422
+  "w": 1246,
+  "h": 988
  },
  "pdt-i7": {
   "file": "diagrams/pdt/pdt-i7.webp",
@@ -860,8 +851,8 @@
   "credit": "DT Unit-3 Ideate notes, page 7",
   "syllabusId": "pdt.u4.brainstorming",
   "verified": true,
-  "w": 1139,
-  "h": 583
+  "w": 1699,
+  "h": 882
  },
  "pdt-i20a": {
   "file": "diagrams/pdt/pdt-i20a.webp",
@@ -869,8 +860,8 @@
   "credit": "DT Unit-3 Ideate notes, page 20",
   "syllabusId": "pdt.u4.mind-maps",
   "verified": true,
-  "w": 1222,
-  "h": 395
+  "w": 1786,
+  "h": 595
  },
  "pdt-i20b": {
   "file": "diagrams/pdt/pdt-i20b.webp",
@@ -878,8 +869,8 @@
   "credit": "DT Unit-3 Ideate notes, page 20",
   "syllabusId": "pdt.u4.mind-maps",
   "verified": true,
-  "w": 805,
-  "h": 410
+  "w": 1186,
+  "h": 616
  },
  "pdt-i21": {
   "file": "diagrams/pdt/pdt-i21.webp",
@@ -887,8 +878,8 @@
   "credit": "DT Unit-3 Ideate notes, page 21",
   "syllabusId": "pdt.u4.mind-maps",
   "verified": true,
-  "w": 1121,
-  "h": 668
+  "w": 1639,
+  "h": 988
  },
  "pdt-p3": {
   "file": "diagrams/pdt/pdt-p3.webp",
@@ -896,8 +887,8 @@
   "credit": "DT Unit-4 notes, page 3",
   "syllabusId": "pdt.u5.prototype-types",
   "verified": true,
-  "w": 546,
-  "h": 486
+  "w": 1300,
+  "h": 1162
  },
  "pdt-p5": {
   "file": "diagrams/pdt/pdt-p5.webp",
@@ -905,8 +896,8 @@
   "credit": "DT Unit-4 notes, page 5",
   "syllabusId": "pdt.u5.prototype-types",
   "verified": true,
-  "w": 1175,
-  "h": 752
+  "w": 1718,
+  "h": 1109
  },
  "pdt-f1": {
   "file": "diagrams/pdt/pdt-f1.webp",
@@ -914,8 +905,8 @@
   "credit": "DT Unit-5 notes, page 1",
   "syllabusId": "pdt.u5.iterate",
   "verified": true,
-  "w": 825,
-  "h": 518
+  "w": 1214,
+  "h": 772
  },
  "fds-linreg": {
   "file": "diagrams/fds/fds-linreg.webp",
@@ -923,8 +914,8 @@
   "credit": "FDS Unit-5.1 slides, slide 20",
   "syllabusId": "fds.u5.linear",
   "verified": true,
-  "w": 628,
-  "h": 484
+  "w": 1130,
+  "h": 871
  },
  "fds-logcurve": {
   "file": "diagrams/fds/fds-logcurve.webp",
@@ -932,8 +923,8 @@
   "credit": "FDS Unit-5.1 slides, slide 57",
   "syllabusId": "fds.u5.logistic",
   "verified": true,
-  "w": 769,
-  "h": 523
+  "w": 1300,
+  "h": 884
  },
  "fds-sigmoid": {
   "file": "diagrams/fds/fds-sigmoid.webp",
@@ -941,8 +932,8 @@
   "credit": "FDS Unit-5.1 slides, slide 58",
   "syllabusId": "fds.u5.logistic",
   "verified": true,
-  "w": 573,
-  "h": 481
+  "w": 1031,
+  "h": 865
  },
  "fds-clustering": {
   "file": "diagrams/fds/fds-clustering.webp",
@@ -950,8 +941,8 @@
   "credit": "FDS Unit-5.2 slides, slide 15",
   "syllabusId": "fds.u5.kmeans",
   "verified": true,
-  "w": 1400,
-  "h": 732
+  "w": 1734,
+  "h": 907
  },
  "fds-ctypes": {
   "file": "diagrams/fds/fds-ctypes.webp",
@@ -959,8 +950,8 @@
   "credit": "FDS Unit-5.2 slides, slide 21",
   "syllabusId": "fds.u5.kmeans",
   "verified": true,
-  "w": 1400,
-  "h": 933
+  "w": 1536,
+  "h": 1024
  },
  "fds-silhouette": {
   "file": "diagrams/fds/fds-silhouette.webp",
@@ -995,8 +986,8 @@
   "credit": "FDS Unit-5.3 slides, slide 30",
   "syllabusId": "fds.u5.spectral",
   "verified": true,
-  "w": 451,
-  "h": 511
+  "w": 812,
+  "h": 920
  },
  "fds-inner": {
   "file": "diagrams/fds/fds-inner.webp",
@@ -1004,8 +995,8 @@
   "credit": "FDS Unit-3.2 pandas slides, slide 29",
   "syllabusId": "fds.u3.group-join",
   "verified": true,
-  "w": 226,
-  "h": 94
+  "w": 407,
+  "h": 169
  },
  "fds-outer": {
   "file": "diagrams/fds/fds-outer.webp",
@@ -1013,8 +1004,8 @@
   "credit": "FDS Unit-3.2 pandas slides, slide 30",
   "syllabusId": "fds.u3.group-join",
   "verified": true,
-  "w": 210,
-  "h": 150
+  "w": 378,
+  "h": 270
  },
  "fds-pivot": {
   "file": "diagrams/fds/fds-pivot.webp",
@@ -1022,8 +1013,8 @@
   "credit": "FDS Unit-3.2 pandas slides, slide 40",
   "syllabusId": "fds.u3.pivot",
   "verified": true,
-  "w": 253,
-  "h": 108
+  "w": 455,
+  "h": 194
  },
  "fds-iv4": {
   "file": "diagrams/fds/fds-iv4.webp",

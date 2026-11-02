@@ -727,5 +727,68 @@
   "verified": true,
   "w": 551,
   "h": 198
+ },
+ "bda-yarn-arch": {
+  "file": "diagrams/bda/bda-yarn-arch.webp",
+  "caption": "YARN architecture: clients submit jobs to the ResourceManager; NodeManagers run containers, one of which holds each job's ApplicationMaster.",
+  "credit": "BDA Unit-3 slides, slide 40",
+  "syllabusId": "bda.u3.yarn-arch",
+  "verified": true,
+  "w": 897,
+  "h": 514
+ },
+ "bda-yarn-flow": {
+  "file": "diagrams/bda/bda-yarn-flow.webp",
+  "caption": "Application workflow in YARN: client → ResourceManager → launch ApplicationMaster on a NodeManager → AM requests containers → tasks run → status reported back.",
+  "credit": "BDA Unit-3 slides, slide 45",
+  "syllabusId": "bda.u3.yarn-manage",
+  "verified": true,
+  "w": 741,
+  "h": 461
+ },
+ "bda-hive-arch": {
+  "file": "diagrams/bda/bda-hive-arch.webp",
+  "caption": "Hive architecture: clients (Thrift, JDBC, ODBC) → Hive services (HiveServer2, driver, compiler, optimizer, metastore) → MapReduce/YARN → HDFS.",
+  "credit": "BDA Unit-4 slides, slide 7",
+  "syllabusId": "bda.u4.hive-arch",
+  "verified": true,
+  "w": 1124,
+  "h": 1049
+ },
+ "bda-pig-anatomy": {
+  "file": "diagrams/bda/bda-pig-anatomy.webp",
+  "caption": "Anatomy of Pig: Pig Latin scripts go through the Grunt shell/Pig server → parser → optimizer → compiler → execution engine → MapReduce jobs on Hadoop/HDFS.",
+  "credit": "BDA Unit-4 slides, slide 30",
+  "syllabusId": "bda.u4.pig-intro",
+  "verified": true,
+  "w": 571,
+  "h": 694
+ },
+ "bda-pig-model": {
+  "file": "diagrams/bda/bda-pig-model.webp",
+  "caption": "Pig Latin data model, from smallest to largest: atom → tuple → bag → map → relation.",
+  "credit": "BDA Unit-4 slides, slide 32",
+  "syllabusId": "bda.u4.pig-types",
+  "verified": true,
+  "w": 1400,
+  "h": 610
+ },
+ "bda-spark-arch": {
+  "file": "diagrams/bda/bda-spark-arch.webp",
+  "caption": "Spark architecture: the driver's SparkContext asks the cluster manager for executors; executors run tasks and cache data.",
+  "credit": "BDA Unit-5 slides, slide 11",
+  "syllabusId": "bda.u5.spark-arch",
+  "verified": true,
+  "w": 1077,
+  "h": 618
+ },
+ "bda-spark-dag": {
+  "file": "diagrams/bda/bda-spark-dag.webp",
+  "caption": "DAG in Spark: the driver turns each action into a job, each job into stages (split at shuffles), and each stage into parallel tasks.",
+  "credit": "BDA Unit-5 slides, slide 23",
+  "syllabusId": "bda.u5.dag",
+  "verified": true,
+  "w": 1020,
+  "h": 288
  }
 }

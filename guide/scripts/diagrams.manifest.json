@@ -868,5 +868,75 @@
   },
   "dpi": 150,
   "trim": true
+ },
+ {
+  "id": "bda-yarn-arch",
+  "subject": "bda",
+  "syllabusId": "bda.u3.yarn-arch",
+  "src": "Material/BDA/Unit-3.pptx",
+  "slide": 40,
+  "caption": "YARN architecture: clients submit jobs to the ResourceManager; NodeManagers run containers, one of which holds each job's ApplicationMaster.",
+  "credit": "BDA Unit-3 slides, slide 40",
+  "verified": true
+ },
+ {
+  "id": "bda-yarn-flow",
+  "subject": "bda",
+  "syllabusId": "bda.u3.yarn-manage",
+  "src": "Material/BDA/Unit-3.pptx",
+  "slide": 45,
+  "caption": "Application workflow in YARN: client → ResourceManager → launch ApplicationMaster on a NodeManager → AM requests containers → tasks run → status reported back.",
+  "credit": "BDA Unit-3 slides, slide 45",
+  "verified": true
+ },
+ {
+  "id": "bda-hive-arch",
+  "subject": "bda",
+  "syllabusId": "bda.u4.hive-arch",
+  "src": "Material/BDA/Unit-4.pptx",
+  "slide": 7,
+  "caption": "Hive architecture: clients (Thrift, JDBC, ODBC) → Hive services (HiveServer2, driver, compiler, optimizer, metastore) → MapReduce/YARN → HDFS.",
+  "credit": "BDA Unit-4 slides, slide 7",
+  "verified": true
+ },
+ {
+  "id": "bda-pig-anatomy",
+  "subject": "bda",
+  "syllabusId": "bda.u4.pig-intro",
+  "src": "Material/BDA/Unit-4.pptx",
+  "slide": 30,
+  "caption": "Anatomy of Pig: Pig Latin scripts go through the Grunt shell/Pig server → parser → optimizer → compiler → execution engine → MapReduce jobs on Hadoop/HDFS.",
+  "credit": "BDA Unit-4 slides, slide 30",
+  "verified": true
+ },
+ {
+  "id": "bda-pig-model",
+  "subject": "bda",
+  "syllabusId": "bda.u4.pig-types",
+  "src": "Material/BDA/Unit-4.pptx",
+  "slide": 32,
+  "caption": "Pig Latin data model, from smallest to largest: atom → tuple → bag → map → relation.",
+  "credit": "BDA Unit-4 slides, slide 32",
+  "verified": true
+ },
+ {
+  "id": "bda-spark-arch",
+  "subject": "bda",
+  "syllabusId": "bda.u5.spark-arch",
+  "src": "Material/BDA/Unit-5.pptx",
+  "slide": 11,
+  "caption": "Spark architecture: the driver's SparkContext asks the cluster manager for executors; executors run tasks and cache data.",
+  "credit": "BDA Unit-5 slides, slide 11",
+  "verified": true
+ },
+ {
+  "id": "bda-spark-dag",
+  "subject": "bda",
+  "syllabusId": "bda.u5.dag",
+  "src": "Material/BDA/Unit-5.pptx",
+  "slide": 23,
+  "caption": "DAG in Spark: the driver turns each action into a job, each job into stages (split at shuffles), and each stage into parallel tasks.",
+  "credit": "BDA Unit-5 slides, slide 23",
+  "verified": true
  }
 ]

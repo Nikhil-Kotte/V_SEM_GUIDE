@@ -36,13 +36,15 @@ export default function Search({ onClose }) {
   }, [])
 
   const results = useMemo(() => {
-    const words = query.toLowerCase().split(/\s+/).filter(Boolean)
+    // Ignore punctuation so "bankers" finds "Banker's" and "tcp/ip" finds "TCP IP".
+    const norm = (s) => s.toLowerCase().replace(/[^a-z0-9²\s]/g, '')
+    const words = norm(query).split(/\s+/).filter(Boolean)
     if (!words.length) return []
     return index
       .map((it) => {
-        const hay = it.text.toLowerCase()
+        const hay = norm(it.text)
         if (!words.every((w) => hay.includes(w))) return null
-        const titleHit = words.filter((w) => it.title.toLowerCase().includes(w)).length
+        const titleHit = words.filter((w) => norm(it.title).includes(w)).length
         return { ...it, score: titleHit * 2 + (it.kind.endsWith('Topic') ? 1 : 0) }
       })
       .filter(Boolean)

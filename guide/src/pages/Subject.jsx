@@ -1,16 +1,12 @@
-import { lazy, Suspense } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { subjectById } from '../content/subjects.js'
 import { useSubject } from '../lib/useSubject.js'
 import { useStore } from '../lib/storage.js'
-import { useFancyMotion } from '../lib/motion.js'
 import LearnTab from '../components/LearnTab.jsx'
 import PyqTab from '../components/PyqTab.jsx'
 import NumericalsTab from '../components/NumericalsTab.jsx'
 import RevisionTab from '../components/RevisionTab.jsx'
 import DownloadsTab from '../components/DownloadsTab.jsx'
-
-const BandBackground = lazy(() => import('../components/BandBackground.jsx'))
 
 const TABS = [
   ['learn', 'Learn'],
@@ -25,7 +21,6 @@ export default function Subject() {
   const subject = subjectById[subj]
   const data = useSubject(subj)
   const store = useStore()
-  const fancy = useFancyMotion()
 
   if (!subject) return <Navigate to="/" replace />
   if (!TABS.some(([t]) => t === tab)) return <Navigate to={`/s/${subj}`} replace />
@@ -37,7 +32,7 @@ export default function Subject() {
   return (
     <>
       <section className="band">
-        {fancy ? <Suspense fallback={<div className="band-bg static" />}><BandBackground /></Suspense> : <div className="band-bg static" />}
+        <div className="band-bg static" />
         <div className="container band-inner">
           <div className="crumbs"><Link to="/">Home</Link> / {subject.short}</div>
           <h1>{subject.name}</h1>

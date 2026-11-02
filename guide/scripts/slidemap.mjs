@@ -1,3 +1,4 @@
+// Lists the images on each slide of a .pptx (presentation order):  node scripts/slidemap.mjs <file.pptx> <from> <to>
 import AdmZip from 'adm-zip'
 const [src, from, to] = process.argv.slice(2)
 const z = new AdmZip(src)

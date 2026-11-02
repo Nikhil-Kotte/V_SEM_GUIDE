@@ -5,6 +5,7 @@ import { syllabus } from '../content/syllabus.js'
 import { loadAll } from '../lib/useSubject.js'
 import { useStore } from '../lib/storage.js'
 import { useFancyMotion } from '../lib/motion.js'
+import RevealHeading from '../components/RevealHeading.jsx'
 
 const HeroBackground = lazy(() => import('../components/HeroBackground.jsx'))
 const HeroTitle = lazy(() => import('../components/HeroTitle.jsx'))
@@ -58,7 +59,7 @@ export default function Home() {
           <div className="section-head">
             <span className="label">02 / Pick a subject</span>
             <div>
-              <h2>Where do you want to start?</h2>
+              <RevealHeading text="Where do you want to start?" />
               <p>Each subject has the same five tabs: <b>Learn</b>, <b>PYQs</b>, <b>Numericals</b>, <b>Quick revision</b> and <b>Downloads</b>.</p>
             </div>
           </div>

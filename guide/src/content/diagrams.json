@@ -790,5 +790,131 @@
   "verified": true,
   "w": 1020,
   "h": 288
+ },
+ "pdt-s14": {
+  "file": "diagrams/pdt/pdt-s14.webp",
+  "caption": "Three conditions for robust problem framing: impact (worth solving), constraint (realistic limits) and equifinality (many routes to a solution stay open).",
+  "credit": "PDT Unit-3 slides, slide 14",
+  "syllabusId": "pdt.u3.problem-statement",
+  "verified": true,
+  "w": 964,
+  "h": 577
+ },
+ "pdt-persona-steps": {
+  "file": "diagrams/pdt/pdt-persona-steps.webp",
+  "caption": "Ten steps to personas: collect data → hypothesis → acceptance → number of personas → describe → situations → organisation buy-in → share knowledge → scenarios → ongoing adjustment.",
+  "credit": "PDT Unit-3 slides, slide 32",
+  "syllabusId": "pdt.u3.persona-steps",
+  "verified": true,
+  "w": 624,
+  "h": 682
+ },
+ "pdt-s16": {
+  "file": "diagrams/pdt/pdt-s16.webp",
+  "caption": "Example personas: short profiles with a photo, age, habits and goals (Yasmin, the primary persona, and Mary).",
+  "credit": "PDT Unit-3 slides, slide 16",
+  "syllabusId": "pdt.u3.persona-steps",
+  "verified": true,
+  "w": 389,
+  "h": 129
+ },
+ "pdt-empathy-map": {
+  "file": "diagrams/pdt/pdt-empathy-map.webp",
+  "caption": "Empathy map: what the user thinks & feels, hears, sees, says & does, plus their pains and gains.",
+  "credit": "PDT Unit-2 slides, slide 38",
+  "syllabusId": "pdt.u3.empathy-map",
+  "verified": true,
+  "w": 638,
+  "h": 478
+ },
+ "pdt-e40": {
+  "file": "diagrams/pdt/pdt-e40.webp",
+  "caption": "Combined empathy and journey map: for each touch-point, what the user sees, says/does, hears, thinks/feels and their gain/pain.",
+  "credit": "PDT Unit-2 slides, slide 40",
+  "syllabusId": "pdt.u3.empathy-map",
+  "verified": true,
+  "w": 638,
+  "h": 478
+ },
+ "pdt-i2": {
+  "file": "diagrams/pdt/pdt-i2.webp",
+  "caption": "Divergent thinking: free flow of ideas, unexpected connections, non-linear thinking, multiple ideas.",
+  "credit": "DT Unit-3 Ideate notes, page 2",
+  "syllabusId": "pdt.u4.ideation",
+  "verified": true,
+  "w": 857,
+  "h": 669
+ },
+ "pdt-i6": {
+  "file": "diagrams/pdt/pdt-i6.webp",
+  "caption": "Left brain (critical, convergent) vs right brain (creative, divergent) thinking — ideation needs both.",
+  "credit": "DT Unit-3 Ideate notes, page 6",
+  "syllabusId": "pdt.u4.methods",
+  "verified": true,
+  "w": 626,
+  "h": 422
+ },
+ "pdt-i7": {
+  "file": "diagrams/pdt/pdt-i7.webp",
+  "caption": "SCAMPER checklist to spark brainstorming: Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Rearrange.",
+  "credit": "DT Unit-3 Ideate notes, page 7",
+  "syllabusId": "pdt.u4.brainstorming",
+  "verified": true,
+  "w": 1139,
+  "h": 583
+ },
+ "pdt-i20a": {
+  "file": "diagrams/pdt/pdt-i20a.webp",
+  "caption": "How to draw a mind map: landscape page, main idea in the centre, branches with lines, arrows and pictures, cluster similar ideas.",
+  "credit": "DT Unit-3 Ideate notes, page 20",
+  "syllabusId": "pdt.u4.mind-maps",
+  "verified": true,
+  "w": 1222,
+  "h": 395
+ },
+ "pdt-i20b": {
+  "file": "diagrams/pdt/pdt-i20b.webp",
+  "caption": "A 5W1H mind map: why, who, what, where, when and how branching from the main idea.",
+  "credit": "DT Unit-3 Ideate notes, page 20",
+  "syllabusId": "pdt.u4.mind-maps",
+  "verified": true,
+  "w": 805,
+  "h": 410
+ },
+ "pdt-i21": {
+  "file": "diagrams/pdt/pdt-i21.webp",
+  "caption": "A full mind map example: one central idea with colourful branches, keywords and doodles.",
+  "credit": "DT Unit-3 Ideate notes, page 21",
+  "syllabusId": "pdt.u4.mind-maps",
+  "verified": true,
+  "w": 1121,
+  "h": 668
+ },
+ "pdt-p3": {
+  "file": "diagrams/pdt/pdt-p3.webp",
+  "caption": "Prototype fidelity vs value: too little effort is not helpful, too much wastes time; aim for “just right”.",
+  "credit": "DT Unit-4 notes, page 3",
+  "syllabusId": "pdt.u5.prototype-types",
+  "verified": true,
+  "w": 546,
+  "h": 486
+ },
+ "pdt-p5": {
+  "file": "diagrams/pdt/pdt-p5.webp",
+  "caption": "Low, mid and high fidelity prototypes: pros, cons and when to use each.",
+  "credit": "DT Unit-4 notes, page 5",
+  "syllabusId": "pdt.u5.prototype-types",
+  "verified": true,
+  "w": 1175,
+  "h": 752
+ },
+ "pdt-f1": {
+  "file": "diagrams/pdt/pdt-f1.webp",
+  "caption": "The sweet spot of innovation: desirable to people, feasible with technology, viable for business.",
+  "credit": "DT Unit-5 notes, page 1",
+  "syllabusId": "pdt.u5.iterate",
+  "verified": true,
+  "w": 825,
+  "h": 518
  }
 }

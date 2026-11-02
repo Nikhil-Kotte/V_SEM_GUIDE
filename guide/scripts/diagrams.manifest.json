@@ -938,5 +938,154 @@
   "caption": "DAG in Spark: the driver turns each action into a job, each job into stages (split at shuffles), and each stage into parallel tasks.",
   "credit": "BDA Unit-5 slides, slide 23",
   "verified": true
+ },
+ {
+  "id": "pdt-s14",
+  "subject": "pdt",
+  "syllabusId": "pdt.u3.problem-statement",
+  "src": "Material/PDT/FDT-Unit 3.pptx",
+  "slide": 14,
+  "caption": "Three conditions for robust problem framing: impact (worth solving), constraint (realistic limits) and equifinality (many routes to a solution stay open).",
+  "credit": "PDT Unit-3 slides, slide 14",
+  "verified": true
+ },
+ {
+  "id": "pdt-persona-steps",
+  "subject": "pdt",
+  "syllabusId": "pdt.u3.persona-steps",
+  "src": "Material/PDT/FDT-Unit 3.pptx",
+  "slide": 32,
+  "caption": "Ten steps to personas: collect data → hypothesis → acceptance → number of personas → describe → situations → organisation buy-in → share knowledge → scenarios → ongoing adjustment.",
+  "credit": "PDT Unit-3 slides, slide 32",
+  "verified": true
+ },
+ {
+  "id": "pdt-s16",
+  "subject": "pdt",
+  "syllabusId": "pdt.u3.persona-steps",
+  "src": "Material/PDT/FDT-Unit 3.pptx",
+  "slide": 16,
+  "caption": "Example personas: short profiles with a photo, age, habits and goals (Yasmin, the primary persona, and Mary).",
+  "credit": "PDT Unit-3 slides, slide 16",
+  "verified": true
+ },
+ {
+  "id": "pdt-empathy-map",
+  "subject": "pdt",
+  "syllabusId": "pdt.u3.empathy-map",
+  "src": "Material/PDT/FDT Unit-2 Empathy Phase.pptx",
+  "slide": 38,
+  "caption": "Empathy map: what the user thinks & feels, hears, sees, says & does, plus their pains and gains.",
+  "credit": "PDT Unit-2 slides, slide 38",
+  "verified": true
+ },
+ {
+  "id": "pdt-e40",
+  "subject": "pdt",
+  "syllabusId": "pdt.u3.empathy-map",
+  "src": "Material/PDT/FDT Unit-2 Empathy Phase.pptx",
+  "slide": 40,
+  "caption": "Combined empathy and journey map: for each touch-point, what the user sees, says/does, hears, thinks/feels and their gain/pain.",
+  "credit": "PDT Unit-2 slides, slide 40",
+  "verified": true
+ },
+ {
+  "id": "pdt-i2",
+  "subject": "pdt",
+  "syllabusId": "pdt.u4.ideation",
+  "src": "Material/PDT/DT Unit-3 Ideate(New).pdf",
+  "page": 2,
+  "pdfimage": "857x669",
+  "caption": "Divergent thinking: free flow of ideas, unexpected connections, non-linear thinking, multiple ideas.",
+  "credit": "DT Unit-3 Ideate notes, page 2",
+  "verified": true
+ },
+ {
+  "id": "pdt-i6",
+  "subject": "pdt",
+  "syllabusId": "pdt.u4.methods",
+  "src": "Material/PDT/DT Unit-3 Ideate(New).pdf",
+  "page": 6,
+  "pdfimage": "626x422",
+  "caption": "Left brain (critical, convergent) vs right brain (creative, divergent) thinking — ideation needs both.",
+  "credit": "DT Unit-3 Ideate notes, page 6",
+  "verified": true
+ },
+ {
+  "id": "pdt-i7",
+  "subject": "pdt",
+  "syllabusId": "pdt.u4.brainstorming",
+  "src": "Material/PDT/DT Unit-3 Ideate(New).pdf",
+  "page": 7,
+  "pdfimage": "1139x583",
+  "caption": "SCAMPER checklist to spark brainstorming: Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Rearrange.",
+  "credit": "DT Unit-3 Ideate notes, page 7",
+  "verified": true
+ },
+ {
+  "id": "pdt-i20a",
+  "subject": "pdt",
+  "syllabusId": "pdt.u4.mind-maps",
+  "src": "Material/PDT/DT Unit-3 Ideate(New).pdf",
+  "page": 20,
+  "pdfimage": "1222x395",
+  "caption": "How to draw a mind map: landscape page, main idea in the centre, branches with lines, arrows and pictures, cluster similar ideas.",
+  "credit": "DT Unit-3 Ideate notes, page 20",
+  "verified": true
+ },
+ {
+  "id": "pdt-i20b",
+  "subject": "pdt",
+  "syllabusId": "pdt.u4.mind-maps",
+  "src": "Material/PDT/DT Unit-3 Ideate(New).pdf",
+  "page": 20,
+  "pdfimage": "805x410",
+  "caption": "A 5W1H mind map: why, who, what, where, when and how branching from the main idea.",
+  "credit": "DT Unit-3 Ideate notes, page 20",
+  "verified": true
+ },
+ {
+  "id": "pdt-i21",
+  "subject": "pdt",
+  "syllabusId": "pdt.u4.mind-maps",
+  "src": "Material/PDT/DT Unit-3 Ideate(New).pdf",
+  "page": 21,
+  "pdfimage": "1121x668",
+  "caption": "A full mind map example: one central idea with colourful branches, keywords and doodles.",
+  "credit": "DT Unit-3 Ideate notes, page 21",
+  "verified": true
+ },
+ {
+  "id": "pdt-p3",
+  "subject": "pdt",
+  "syllabusId": "pdt.u5.prototype-types",
+  "src": "Material/PDT/DT UNIT-4 Final.pdf",
+  "page": 3,
+  "pdfimage": "546x486",
+  "caption": "Prototype fidelity vs value: too little effort is not helpful, too much wastes time; aim for “just right”.",
+  "credit": "DT Unit-4 notes, page 3",
+  "verified": true
+ },
+ {
+  "id": "pdt-p5",
+  "subject": "pdt",
+  "syllabusId": "pdt.u5.prototype-types",
+  "src": "Material/PDT/DT UNIT-4 Final.pdf",
+  "page": 5,
+  "pdfimage": "1175x752",
+  "caption": "Low, mid and high fidelity prototypes: pros, cons and when to use each.",
+  "credit": "DT Unit-4 notes, page 5",
+  "verified": true
+ },
+ {
+  "id": "pdt-f1",
+  "subject": "pdt",
+  "syllabusId": "pdt.u5.iterate",
+  "src": "Material/PDT/DT Unit-5 FINAL.pdf",
+  "page": 1,
+  "pdfimage": "825x518",
+  "caption": "The sweet spot of innovation: desirable to people, feasible with technology, viable for business.",
+  "credit": "DT Unit-5 notes, page 1",
+  "verified": true
  }
 ]

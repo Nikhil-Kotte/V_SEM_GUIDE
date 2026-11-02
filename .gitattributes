@@ -1,0 +1,13 @@
+# Study files must reach GitHub byte-for-byte — never line-ending-convert them.
+*.pdf binary
+*.ppt binary
+*.pptx binary
+*.doc binary
+*.docx binary
+*.ipynb -text
+*.csv -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary

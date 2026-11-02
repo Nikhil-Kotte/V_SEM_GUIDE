@@ -1,0 +1,814 @@
+[
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/BDA Syllabus.pdf",
+  "name": "BDA Syllabus.pdf",
+  "ext": "pdf",
+  "size": 365660
+ },
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/Big_Data_Analytics_PySpark.ipynb",
+  "name": "Big_Data_Analytics_PySpark.ipynb",
+  "ext": "ipynb",
+  "size": 236743
+ },
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/region_sales.csv",
+  "name": "region_sales.csv",
+  "ext": "csv",
+  "size": 151
+ },
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/Student_Big_Data_Analytics.ipynb",
+  "name": "Student_Big_Data_Analytics.ipynb",
+  "ext": "ipynb",
+  "size": 59479
+ },
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/Unit-1.pptx",
+  "name": "Unit-1.pptx",
+  "ext": "pptx",
+  "size": 3680222
+ },
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/Unit-2.pptx",
+  "name": "Unit-2.pptx",
+  "ext": "pptx",
+  "size": 579254
+ },
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/Unit-3.pptx",
+  "name": "Unit-3.pptx",
+  "ext": "pptx",
+  "size": 1452238
+ },
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/Unit-4.pptx",
+  "name": "Unit-4.pptx",
+  "ext": "pptx",
+  "size": 2290413
+ },
+ {
+  "subject": "bda",
+  "group": "material",
+  "path": "Material/BDA/Unit-5.pptx",
+  "name": "Unit-5.pptx",
+  "ext": "pptx",
+  "size": 293123
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/80pagenotes.pdf",
+  "name": "80pagenotes.pdf",
+  "ext": "pdf",
+  "size": 40029650
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/CN - Notes3.pdf",
+  "name": "CN - Notes3.pdf",
+  "ext": "pdf",
+  "size": 3203513
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/CN Unit 2 .pptx",
+  "name": "CN Unit 2 .pptx",
+  "ext": "pptx",
+  "size": 3233374
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/CSMA.pptx",
+  "name": "CSMA.pptx",
+  "ext": "pptx",
+  "size": 234757
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/Medium_Access_Control(MAC).pptx",
+  "name": "Medium_Access_Control(MAC).pptx",
+  "ext": "pptx",
+  "size": 203746
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/Network_Layer.pptx",
+  "name": "Network_Layer.pptx",
+  "ext": "pptx",
+  "size": 253660
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/Routing_Algorithm.pptx",
+  "name": "Routing_Algorithm.pptx",
+  "ext": "pptx",
+  "size": 194338
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/Sliding_Window_Protocol.pptx",
+  "name": "Sliding_Window_Protocol.pptx",
+  "ext": "pptx",
+  "size": 92198
+ },
+ {
+  "subject": "cn",
+  "group": "material",
+  "path": "Material/CN/Unit-I.ppt",
+  "name": "Unit-I.ppt",
+  "ext": "ppt",
+  "size": 2089984
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-2.1(FDS).pdf",
+  "name": "Unit-2.1(FDS).pdf",
+  "ext": "pdf",
+  "size": 4168051
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-2.2(FDS)-Student.pptx",
+  "name": "Unit-2.2(FDS)-Student.pptx",
+  "ext": "pptx",
+  "size": 1824343
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-3.1-Numpy(FDS)-student copy.pptx",
+  "name": "Unit-3.1-Numpy(FDS)-student copy.pptx",
+  "ext": "pptx",
+  "size": 4355116
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-3.2-Pandas(FDS).pptx",
+  "name": "Unit-3.2-Pandas(FDS).pptx",
+  "ext": "pptx",
+  "size": 868421
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-5.1(FDS).pptx",
+  "name": "Unit-5.1(FDS).pptx",
+  "ext": "pptx",
+  "size": 5063395
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-5.2(FDS).pptx",
+  "name": "Unit-5.2(FDS).pptx",
+  "ext": "pptx",
+  "size": 4212558
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-5.3-clustering algorithms(FDS).pptx",
+  "name": "Unit-5.3-clustering algorithms(FDS).pptx",
+  "ext": "pptx",
+  "size": 5141898
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-I(FDS)-Copy.pptx",
+  "name": "Unit-I(FDS)-Copy.pptx",
+  "ext": "pptx",
+  "size": 11531036
+ },
+ {
+  "subject": "fds",
+  "group": "material",
+  "path": "Material/FDS/Unit-IV-FDS-copy.pptx",
+  "name": "Unit-IV-FDS-copy.pptx",
+  "ext": "pptx",
+  "size": 12352538
+ },
+ {
+  "subject": "os",
+  "group": "material",
+  "path": "Material/OS/CPU Scheduling.pdf",
+  "name": "CPU Scheduling.pdf",
+  "ext": "pdf",
+  "size": 15183029
+ },
+ {
+  "subject": "os",
+  "group": "material",
+  "path": "Material/OS/Operating_System_Concepts_8th_EditionA4.pdf",
+  "name": "Operating_System_Concepts_8th_EditionA4.pdf",
+  "ext": "pdf",
+  "size": 19831782
+ },
+ {
+  "subject": "os",
+  "group": "material",
+  "path": "Material/OS/Presentation1 ---Unit(1).pptx",
+  "name": "Presentation1 ---Unit(1).pptx",
+  "ext": "pptx",
+  "size": 6559112
+ },
+ {
+  "subject": "os",
+  "group": "material",
+  "path": "Material/OS/Unit - 1.pptx",
+  "name": "Unit - 1.pptx",
+  "ext": "pptx",
+  "size": 6552364
+ },
+ {
+  "subject": "os",
+  "group": "material",
+  "path": "Material/OS/Unit - 2.pptx",
+  "name": "Unit - 2.pptx",
+  "ext": "pptx",
+  "size": 10279399
+ },
+ {
+  "subject": "os",
+  "group": "material",
+  "path": "Material/OS/Unit - 3.pptx",
+  "name": "Unit - 3.pptx",
+  "ext": "pptx",
+  "size": 14469955
+ },
+ {
+  "subject": "os",
+  "group": "material",
+  "path": "Material/OS/Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "name": "Unit - 4(CONCURRENCY CONTROL AND SYNCHRONIZATION ).pptx",
+  "ext": "pptx",
+  "size": 19261963
+ },
+ {
+  "subject": "os",
+  "group": "material",
+  "path": "Material/OS/unit 5.pptx",
+  "name": "unit 5.pptx",
+  "ext": "pptx",
+  "size": 3346088
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/DT Unit - 1 Mod.pdf",
+  "name": "DT Unit - 1 Mod.pdf",
+  "ext": "pdf",
+  "size": 1021949
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/DT Unit-1 (1).ppt",
+  "name": "DT Unit-1 (1).ppt",
+  "ext": "ppt",
+  "size": 9545216
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/DT Unit-1.ppt",
+  "name": "DT Unit-1.ppt",
+  "ext": "ppt",
+  "size": 6615552
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/DT Unit-3 Ideate(New).pdf",
+  "name": "DT Unit-3 Ideate(New).pdf",
+  "ext": "pdf",
+  "size": 1846484
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/DT UNIT-4 Final.pdf",
+  "name": "DT UNIT-4 Final.pdf",
+  "ext": "pdf",
+  "size": 770625
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/DT Unit-5 FINAL.pdf",
+  "name": "DT Unit-5 FINAL.pdf",
+  "ext": "pdf",
+  "size": 585142
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/FDT Model  paper.docx",
+  "name": "FDT Model  paper.docx",
+  "ext": "docx",
+  "size": 19219
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/FDT Unit-2 Empathy Phase.pptx",
+  "name": "FDT Unit-2 Empathy Phase.pptx",
+  "ext": "pptx",
+  "size": 2831817
+ },
+ {
+  "subject": "pdt",
+  "group": "material",
+  "path": "Material/PDT/FDT-Unit 3.pptx",
+  "name": "FDT-Unit 3.pptx",
+  "ext": "pptx",
+  "size": 1004391
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-I/SE Unit-1.pdf",
+  "name": "SE Unit-1.pdf",
+  "ext": "pdf",
+  "size": 4710498
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-I/Software Engineering(UNIT -1).pptx",
+  "name": "Software Engineering(UNIT -1).pptx",
+  "ext": "pptx",
+  "size": 1216745
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-I/unit-1 agile_model (1).pptx",
+  "name": "unit-1 agile_model (1).pptx",
+  "ext": "pptx",
+  "size": 4042878
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-I/unit-1 Specialized Process Model Dr Anila M.pdf",
+  "name": "unit-1 Specialized Process Model Dr Anila M.pdf",
+  "ext": "pdf",
+  "size": 293088
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-I/Unit-1_SE.pdf",
+  "name": "Unit-1_SE.pdf",
+  "ext": "pdf",
+  "size": 1462405
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-I/unit1-Software process structure and generic model-notes.pdf",
+  "name": "unit1-Software process structure and generic model-notes.pdf",
+  "ext": "pdf",
+  "size": 430386
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-II/SE Unit-2.pdf",
+  "name": "SE Unit-2.pdf",
+  "ext": "pdf",
+  "size": 12664578
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-II/SE Unit-2_anila req engg.pptx",
+  "name": "SE Unit-2_anila req engg.pptx",
+  "ext": "pptx",
+  "size": 3148422
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-II/unit-2 srs.pptx",
+  "name": "unit-2 srs.pptx",
+  "ext": "pptx",
+  "size": 4315552
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-II/unit-2(3)-backup.pptx",
+  "name": "unit-2(3)-backup.pptx",
+  "ext": "pptx",
+  "size": 4974352
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-II/Unit-2-Part-1_SE.pdf",
+  "name": "Unit-2-Part-1_SE.pdf",
+  "ext": "pdf",
+  "size": 1731140
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-II/Unit-2-Part-2_SE.pdf",
+  "name": "Unit-2-Part-2_SE.pdf",
+  "ext": "pdf",
+  "size": 1455834
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/SE Unit-3.pdf",
+  "name": "SE Unit-3.pdf",
+  "ext": "pdf",
+  "size": 1770160
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/SE_Unit-3_Part2.pdf",
+  "name": "SE_Unit-3_Part2.pdf",
+  "ext": "pdf",
+  "size": 304546
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/Unit 3.docx",
+  "name": "Unit 3.docx",
+  "ext": "docx",
+  "size": 3685880
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/Unit 3_CT1.docx",
+  "name": "Unit 3_CT1.docx",
+  "ext": "docx",
+  "size": 1068499
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/Unit _3.docx",
+  "name": "Unit _3.docx",
+  "ext": "docx",
+  "size": 1201282
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/UNIT-3(A).pptx",
+  "name": "UNIT-3(A).pptx",
+  "ext": "pptx",
+  "size": 1930597
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/Unit-3-Part-1_SE.pdf",
+  "name": "Unit-3-Part-1_SE.pdf",
+  "ext": "pdf",
+  "size": 1651637
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "name": "unit3-cohesion-coupling-taxanomy of archi styles.pptx",
+  "ext": "pptx",
+  "size": 1193494
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-III/unit3-effort esti.pptx",
+  "name": "unit3-effort esti.pptx",
+  "ext": "pptx",
+  "size": 2336309
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-IV/Function.docx",
+  "name": "Function.docx",
+  "ext": "docx",
+  "size": 255003
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-IV/Software Architecture_Unit 4.docx",
+  "name": "Software Architecture_Unit 4.docx",
+  "ext": "docx",
+  "size": 1251277
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-IV/sw architecture and component design.pdf",
+  "name": "sw architecture and component design.pdf",
+  "ext": "pdf",
+  "size": 1056953
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-IV/Unit 4.docx",
+  "name": "Unit 4.docx",
+  "ext": "docx",
+  "size": 3766758
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-V/SE-unit5-part2-quality-roger pressman.pdf",
+  "name": "SE-unit5-part2-quality-roger pressman.pdf",
+  "ext": "pdf",
+  "size": 328506
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-V/Testing Unit V.docx",
+  "name": "Testing Unit V.docx",
+  "ext": "docx",
+  "size": 1785113
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-V/unit 5-review techniques.pdf",
+  "name": "unit 5-review techniques.pdf",
+  "ext": "pdf",
+  "size": 320463
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-V/UNIT V.pdf",
+  "name": "UNIT V.pdf",
+  "ext": "pdf",
+  "size": 928550
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-V/unit5-part2-quality.pdf",
+  "name": "unit5-part2-quality.pdf",
+  "ext": "pdf",
+  "size": 274010
+ },
+ {
+  "subject": "se",
+  "group": "material",
+  "path": "Material/SE/Unit-V/unit5-part2-quality.pptx",
+  "name": "unit5-part2-quality.pptx",
+  "ext": "pptx",
+  "size": 66662
+ },
+ {
+  "subject": "cn",
+  "group": "paper",
+  "year": "2022-23",
+  "path": "PYQs/2022-23/Computer Networks 20ITC20.pdf",
+  "name": "Computer Networks 20ITC20.pdf",
+  "ext": "pdf",
+  "size": 595281
+ },
+ {
+  "subject": "cn",
+  "group": "paper",
+  "year": "2022-23",
+  "path": "PYQs/2022-23/Data Communication and Computer Networks 20CSC21.pdf",
+  "name": "Data Communication and Computer Networks 20CSC21.pdf",
+  "ext": "pdf",
+  "size": 200480
+ },
+ {
+  "subject": "os",
+  "group": "paper",
+  "year": "2022-23",
+  "path": "PYQs/2022-23/Operating Systems 20CSC20.pdf",
+  "name": "Operating Systems 20CSC20.pdf",
+  "ext": "pdf",
+  "size": 211496
+ },
+ {
+  "subject": "se",
+  "group": "paper",
+  "year": "2022-23",
+  "path": "PYQs/2022-23/Software Engineering 20CSC22.pdf",
+  "name": "Software Engineering 20CSC22.pdf",
+  "ext": "pdf",
+  "size": 601664
+ },
+ {
+  "subject": "cn",
+  "group": "paper",
+  "year": "2023-24",
+  "path": "PYQs/2023-24/Computer Networks 20CIC04.pdf",
+  "name": "Computer Networks 20CIC04.pdf",
+  "ext": "pdf",
+  "size": 487740
+ },
+ {
+  "subject": "cn",
+  "group": "paper",
+  "year": "2023-24",
+  "path": "PYQs/2023-24/Computer Networks 20ITC20.pdf",
+  "name": "Computer Networks 20ITC20.pdf",
+  "ext": "pdf",
+  "size": 604162
+ },
+ {
+  "subject": "cn",
+  "group": "paper",
+  "year": "2023-24",
+  "path": "PYQs/2023-24/Data Communication and Computer Networks 20CSC21.pdf",
+  "name": "Data Communication and Computer Networks 20CSC21.pdf",
+  "ext": "pdf",
+  "size": 624603
+ },
+ {
+  "subject": "os",
+  "group": "paper",
+  "year": "2023-24",
+  "path": "PYQs/2023-24/Operating Systems 20CSC20.pdf",
+  "name": "Operating Systems 20CSC20.pdf",
+  "ext": "pdf",
+  "size": 602992
+ },
+ {
+  "subject": "se",
+  "group": "paper",
+  "year": "2023-24",
+  "path": "PYQs/2023-24/Software Engineering 20CSC22.pdf",
+  "name": "Software Engineering 20CSC22.pdf",
+  "ext": "pdf",
+  "size": 596595
+ },
+ {
+  "subject": "fds",
+  "group": "paper",
+  "year": "2024-25",
+  "path": "PYQs/2024-25/22ADC09 Introduction to Data Science.pdf",
+  "name": "22ADC09 Introduction to Data Science.pdf",
+  "ext": "pdf",
+  "size": 589878
+ },
+ {
+  "subject": "bda",
+  "group": "paper",
+  "year": "2024-25",
+  "path": "PYQs/2024-25/22ADE12 Big Data Analytics.pdf",
+  "name": "22ADE12 Big Data Analytics.pdf",
+  "ext": "pdf",
+  "size": 484733
+ },
+ {
+  "subject": "os",
+  "group": "paper",
+  "year": "2024-25",
+  "path": "PYQs/2024-25/22CSC15N Operating Systems.pdf",
+  "name": "22CSC15N Operating Systems.pdf",
+  "ext": "pdf",
+  "size": 608808
+ },
+ {
+  "subject": "se",
+  "group": "paper",
+  "year": "2024-25",
+  "path": "PYQs/2024-25/22CSC21 Software engineering.pdf",
+  "name": "22CSC21 Software engineering.pdf",
+  "ext": "pdf",
+  "size": 597630
+ },
+ {
+  "subject": "cn",
+  "group": "paper",
+  "year": "2024-25",
+  "path": "PYQs/2024-25/22ITC10  Computer Networks.pdf",
+  "name": "22ITC10  Computer Networks.pdf",
+  "ext": "pdf",
+  "size": 486033
+ },
+ {
+  "subject": "bda",
+  "group": "paper",
+  "year": "2025-26",
+  "path": "PYQs/2025-26/Big Data Analytics 22ADE12.pdf",
+  "name": "Big Data Analytics 22ADE12.pdf",
+  "ext": "pdf",
+  "size": 541639
+ },
+ {
+  "subject": "cn",
+  "group": "paper",
+  "year": "2025-26",
+  "path": "PYQs/2025-26/Computer Networks 22ITC10.pdf",
+  "name": "Computer Networks 22ITC10.pdf",
+  "ext": "pdf",
+  "size": 657660
+ },
+ {
+  "subject": "pdt",
+  "group": "paper",
+  "year": "2025-26",
+  "path": "PYQs/2025-26/New Doc 08-31-2026 15.21.pdf",
+  "name": "Fundamentals of Design Thinking 22MEC36 (May 2026).pdf",
+  "ext": "pdf",
+  "size": 2371148
+ },
+ {
+  "subject": "os",
+  "group": "paper",
+  "year": "2025-26",
+  "path": "PYQs/2025-26/Operating Systems 22CSC15N.pdf",
+  "name": "Operating Systems 22CSC15N.pdf",
+  "ext": "pdf",
+  "size": 876059
+ },
+ {
+  "subject": "pdt",
+  "group": "paper",
+  "year": "2025-26",
+  "path": "PYQs/2025-26/Principles of Design Thinking 22MEO01.pdf",
+  "name": "Principles of Design Thinking 22MEO01.pdf",
+  "ext": "pdf",
+  "size": 577463
+ },
+ {
+  "subject": "se",
+  "group": "paper",
+  "year": "2025-26",
+  "path": "PYQs/2025-26/Software Engineering 22CSC21.pdf",
+  "name": "Software Engineering 22CSC21.pdf",
+  "ext": "pdf",
+  "size": 731249
+ },
+ {
+  "subject": "bda",
+  "group": "bank",
+  "path": "PYQs/BDA_Unitwise_Questions.pdf",
+  "name": "BDA_Unitwise_Questions.pdf",
+  "ext": "pdf",
+  "size": 18559
+ },
+ {
+  "subject": "cn",
+  "group": "bank",
+  "path": "PYQs/CN_Unitwise_PYQs.pdf",
+  "name": "CN_Unitwise_PYQs.pdf",
+  "ext": "pdf",
+  "size": 52825
+ },
+ {
+  "subject": "os",
+  "group": "bank",
+  "path": "PYQs/OS_Unitwise_Question_Bank.pdf",
+  "name": "OS_Unitwise_Question_Bank.pdf",
+  "ext": "pdf",
+  "size": 41677
+ },
+ {
+  "subject": "se",
+  "group": "bank",
+  "path": "PYQs/SE_PYQs_Unit_Wise.pdf",
+  "name": "SE_PYQs_Unit_Wise.pdf",
+  "ext": "pdf",
+  "size": 30847
+ }
+]

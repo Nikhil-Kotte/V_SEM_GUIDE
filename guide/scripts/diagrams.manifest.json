@@ -100,6 +100,42 @@
   "verified": true
  },
  {
+  "id": "os-disk-pack",
+  "subject": "os",
+  "src": "Material/OS/Unit - 3.pptx",
+  "verified": true,
+  "syllabusId": "os.u3.disk-structure",
+  "slide": 118,
+  "extract": {
+   "left": 395,
+   "top": 55,
+   "width": 452,
+   "height": 400
+  },
+  "caption": "Disk pack (moving-head disk): platters on a spindle, each surface divided into tracks and sectors; the same track on every platter forms a cylinder; the arm assembly moves all r/w heads together.",
+  "credit": "OS Unit-3 slides, slide 118"
+ },
+ {
+  "id": "os-hdd-parts",
+  "subject": "os",
+  "src": "Material/OS/Unit - 3.pptx",
+  "verified": true,
+  "syllabusId": "os.u3.disk-structure",
+  "slide": 116,
+  "caption": "Inside a hard disk drive: the platter (disk) spins on the spindle while the actuator swings the arm to place the read/write head over the right track.",
+  "credit": "OS Unit-3 slides, slide 116"
+ },
+ {
+  "id": "os-track-sector",
+  "subject": "os",
+  "src": "Material/OS/Unit - 3.pptx",
+  "verified": true,
+  "syllabusId": "os.u3.disk-structure",
+  "slide": 117,
+  "caption": "A platter surface: concentric tracks, each divided into sectors (the smallest addressable unit).",
+  "credit": "OS Unit-3 slides, slide 117"
+ },
+ {
   "id": "os-disk-fcfs",
   "subject": "os",
   "syllabusId": "os.u3.disk-scheduling",
@@ -1252,5 +1288,15 @@
   "caption": "A correlation heatmap: each cell is the correlation between two columns; the diagonal is always 1.",
   "credit": "FDS Unit-IV slides, slide 64",
   "verified": true
+ },
+ {
+  "id": "os-boot",
+  "subject": "os",
+  "src": "Material/OS/Unit - 3.pptx",
+  "verified": true,
+  "syllabusId": "os.u3.disk-management",
+  "slide": 151,
+  "caption": "Booting from disk: the bootstrap program in ROM reads the OS from the boot block on disk, loads it into RAM, and the OS starts the device drivers.",
+  "credit": "OS Unit-3 slides, slide 151"
  }
 ]

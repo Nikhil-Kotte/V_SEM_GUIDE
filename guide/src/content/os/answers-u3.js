@@ -392,6 +392,7 @@ export default {
   'os-moving-head': {
     blocks: [
       'A **moving-head disk** has one read–write head per platter surface, all mounted on a single **disk arm** that moves them together.',
+      { img: 'os-disk-pack' },
       { ul: [
         '**Platters**: circular disks coated with magnetic material, spinning at 5,400–15,000 rpm.',
         '**Tracks**: concentric circles on each surface; **sectors**: subdivisions of a track (512 B or 4 KB) — the smallest unit of transfer.',
@@ -399,6 +400,7 @@ export default {
         '**Read–write heads** float just above each surface; a **head crash** (head touching the surface) destroys data.',
         '**Disk controller** and host controller manage transfers.',
       ] },
+      { img: 'os-track-sector' },
       { h: 'Timing terminology' },
       { ul: ['**Seek time**: time to move the arm to the required cylinder.', '**Rotational latency**: time for the required sector to rotate under the head (average = half a rotation).', '**Transfer rate**: rate of data flow between the drive and the computer.', '**Positioning (random-access) time** = seek time + rotational latency.'] },
       { formula: 'Access time = seek time + rotational latency + transfer time' },
@@ -413,6 +415,7 @@ export default {
       { ul: ['**Low-level (physical) formatting**: divide the disk into sectors, each with a header, a data area and a trailer containing the sector number and an **ECC** (error-correcting code). Usually done at the factory.', '**Partitioning**: split the disk into one or more groups of cylinders, each treated as a logical disk.', '**Logical formatting**: create a file system — free-space maps, an empty directory, metadata. Raw partitions without a file system are also possible (e.g. for databases or swap).'] },
       { h: '2. Boot block' },
       'A small **bootstrap loader** in ROM loads a full bootstrap program from the **boot blocks** at a fixed location on the disk (e.g. the Master Boot Record), which then loads the OS kernel. A disk with a boot partition is a **boot disk / system disk**.',
+      { img: 'os-boot' },
       { h: '3. Bad blocks' },
       { ul: ['On simple disks, bad blocks are found during formatting or by `chkdsk`/`badblocks` and marked unusable in the FAT.', 'On SCSI-class disks, the controller keeps a **bad-block list** and uses **sector sparing (forwarding)** — remap a bad sector to a spare one — or **sector slipping** — shift sectors down by one to free a spare next to the bad one.'] },
       { h: '4. Other issues' },
@@ -697,6 +700,7 @@ export default {
 
   'os-num-disk-track': {
     blocks: [
+      { img: 'os-track-sector' },
       { ul: ['600 rpm → 600 / 60 = **10 rotations per second** → one rotation = **0.1 s = 100 ms**.', '(a) Reading an entire track takes one full rotation (once the head is positioned) = **100 ms**. (Average rotational latency to reach a given sector would be 50 ms.)', '(b) One track = 16 × 1024 B = **16 KB**; 10 tracks = 10 × 16 KB = **160 KB** (163,840 bytes).', 'Transfer rate = 16 KB per 100 ms = 160 KB/s.'] },
     ],
     sources: ["OS Jan '23 (IT) paper"],

@@ -123,6 +123,8 @@ async function extractOne(d) {
   } else if (d.page) {
     buffer = pdfPage(d.src, d.page, d.crop, d.dpi)
   } else throw new Error(`${d.id}: no slide/media/page`)
+  // Pixel crop of a raster image, e.g. to drop slide text baked into a figure: "extract": {left, top, width, height}
+  if (d.extract) buffer = await sharp(buffer).extract(d.extract).toBuffer()
   if (d.trim) buffer = await sharp(buffer).trim().toBuffer()
   mkdirSync(join(PUBLIC, d.subject), { recursive: true })
   const size = await toWebp(buffer, join(PUBLIC, d.subject, `${d.id}.webp`))

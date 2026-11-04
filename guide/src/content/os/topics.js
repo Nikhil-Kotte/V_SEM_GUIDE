@@ -219,12 +219,15 @@ export default {
   'os.u3.disk-structure': {
     oneLine: 'A hard disk is a stack of spinning platters; data sits in sectors on tracks, and the same track on every surface forms a cylinder.',
     blocks: [
+      { img: 'os-disk-pack' },
       { ul: [
         '**Platter** surfaces are coated magnetically; a **read-write head** floats above each surface on a **disk arm**.',
         'Each surface has concentric **tracks**, each divided into **sectors** (typically 512 B or 4 KB).',
         'All tracks at one arm position form a **cylinder**.',
         'The disk is addressed as a big 1-D array of **logical blocks**, mapped to (cylinder, track, sector).',
       ] },
+      { img: 'os-hdd-parts' },
+      { img: 'os-track-sector' },
       { h: 'Access time' },
       { formula: 'Access time = seek time + rotational latency + transfer time' },
       { ul: ['**Seek time**: move the arm to the right cylinder (largest part).', '**Rotational latency**: wait for the sector to come under the head. Average = ½ × one rotation.', '**Transfer time**: actually read the bits.'] },
@@ -281,6 +284,7 @@ export default {
       ] },
       { h: 'Boot block' },
       'A tiny **bootstrap loader** sits in ROM. It reads the **boot block** (e.g. the Master Boot Record in sector 0) from disk, which loads the full OS kernel. A disk with a boot partition is called a **boot disk**.',
+      { img: 'os-boot' },
       { h: 'Bad blocks' },
       { ul: ['Simple disks: bad blocks are found while formatting and marked as unusable in the FAT.', 'Smarter disks: the controller keeps a list of bad blocks and uses **sector sparing** (replace with a spare sector) or **sector slipping** (shift sectors down by one).'] },
       'Issues the OS must handle: data loss from bad sectors, fragmentation, keeping metadata consistent, and choosing where to put swap space.',

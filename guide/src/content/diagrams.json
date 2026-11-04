@@ -1051,5 +1051,41 @@
   "verified": true,
   "w": 960,
   "h": 720
+ },
+ "os-disk-pack": {
+  "file": "diagrams/os/os-disk-pack.webp",
+  "caption": "Disk pack (moving-head disk): platters on a spindle, each surface divided into tracks and sectors; the same track on every platter forms a cylinder; the arm assembly moves all r/w heads together.",
+  "credit": "OS Unit-3 slides, slide 118",
+  "syllabusId": "os.u3.disk-structure",
+  "verified": true,
+  "w": 814,
+  "h": 720
+ },
+ "os-hdd-parts": {
+  "file": "diagrams/os/os-hdd-parts.webp",
+  "caption": "Inside a hard disk drive: the platter (disk) spins on the spindle while the actuator swings the arm to place the read/write head over the right track.",
+  "credit": "OS Unit-3 slides, slide 116",
+  "syllabusId": "os.u3.disk-structure",
+  "verified": true,
+  "w": 1300,
+  "h": 801
+ },
+ "os-track-sector": {
+  "file": "diagrams/os/os-track-sector.webp",
+  "caption": "A platter surface: concentric tracks, each divided into sectors (the smallest addressable unit).",
+  "credit": "OS Unit-3 slides, slide 117",
+  "syllabusId": "os.u3.disk-structure",
+  "verified": true,
+  "w": 1300,
+  "h": 754
+ },
+ "os-boot": {
+  "file": "diagrams/os/os-boot.webp",
+  "caption": "Booting from disk: the bootstrap program in ROM reads the OS from the boot block on disk, loads it into RAM, and the OS starts the device drivers.",
+  "credit": "OS Unit-3 slides, slide 151",
+  "syllabusId": "os.u3.disk-management",
+  "verified": true,
+  "w": 1058,
+  "h": 813
  }
 }

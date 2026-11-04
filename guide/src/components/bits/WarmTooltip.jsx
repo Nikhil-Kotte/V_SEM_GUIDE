@@ -265,6 +265,30 @@ export const WarmTooltipGroup = forwardRef(function WarmTooltipGroup(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current, state]);
 
+  // [V-SEM guide patch] keep the bubble sized to its text while open: the first measurement can be
+  // wrong if the web font loads afterwards or the text reflows, which cut off long definitions.
+  useEffect(() => {
+    const text = textRef.current;
+    if (state !== 'open' || !text || typeof ResizeObserver === 'undefined') return undefined;
+    let first = true; // the initial callback reports the size already set (or being animated to)
+    const ro = new ResizeObserver(() => {
+      const c = st.current.current;
+      if (first || !c) {
+        first = false;
+        return;
+      }
+      const tw = text.offsetWidth + c.px * 2;
+      const th = text.offsetHeight + c.py * 2;
+      if (Math.abs(w.get() - tw) > 0.5 || Math.abs(h.get() - th) > 0.5) {
+        w.jump(tw);
+        h.jump(th);
+      }
+    });
+    ro.observe(text);
+    return () => ro.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current, state]);
+
   useEffect(() => {
     if (state === 'closed') return undefined;
     let raf = 0;

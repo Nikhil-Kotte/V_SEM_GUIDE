@@ -219,15 +219,26 @@ export default {
   'os.u3.disk-structure': {
     oneLine: 'A hard disk is a stack of spinning platters; data sits in sectors on tracks, and the same track on every surface forms a cylinder.',
     blocks: [
+      'A disk is organised into physical and logical parts so the OS can store and find data efficiently. Going from the whole drive down to the smallest unit, a hard disk has **8 levels (parts)**:',
       { img: 'os-disk-pack' },
-      { ul: [
-        '**Platter** surfaces are coated magnetically; a **read-write head** floats above each surface on a **disk arm**.',
-        'Each surface has concentric **tracks**, each divided into **sectors** (typically 512 B or 4 KB).',
-        'All tracks at one arm position form a **cylinder**.',
-        'The disk is addressed as a big 1-D array of **logical blocks**, mapped to (cylinder, track, sector).',
+      { h: 'The 8 levels of a disk' },
+      { ol: [
+        '**Platter**: a rigid circular disk (aluminium or glass) coated with magnetic material, on which data is stored. An HDD stacks several platters one above the other, and they rotate at high speed.',
+        '**Surface**: each platter has **two surfaces** (top and bottom), and each surface stores data. A drive with 3 platters has up to 6 recording surfaces.',
+        '**Track**: a **concentric circular path** on a surface where data is written, like the rings on a CD. Each surface has thousands of tracks, numbered from the outside (track 0) inwards.',
+        '**Sector**: a **small portion (arc) of a track**, the **basic physical unit** of storage and transfer. Usually **512 bytes**; modern disks use **4096 bytes (4 KB)**. The disk always reads or writes whole sectors.',
+        '**Cylinder**: the set of **tracks at the same radius on all surfaces**. Example: track 5 on platter 1 + track 5 on platter 2 + track 5 on platter 3 = cylinder 5. All of it can be read **without moving the arm**, so the OS tries to keep related data in one cylinder.',
+        '**Read/write head**: reads data from and writes data to a surface; there is **one head per surface**, floating a few nanometres above it (a **head crash**, the head touching the surface, destroys data).',
+        '**Disk arm (actuator arm)**: holds the heads and **moves them across the surfaces** to the required track. All arms are joined in one **arm assembly** and move together, so every head is over the same cylinder (hence "moving-head disk").',
+        '**Spindle**: the central shaft that holds the platters and **rotates them** at a fixed speed, e.g. 5400, 7200 or 15,000 RPM. Higher RPM means lower rotational latency and faster transfer.',
       ] },
       { img: 'os-hdd-parts' },
       { img: 'os-track-sector' },
+      { h: 'How the levels fit together' },
+      { code: 'Disk drive\n └─ Platters (on the spindle)\n     └─ Surfaces (2 per platter, 1 head each)\n         └─ Tracks (concentric circles)\n             └─ Sectors (smallest unit, 512 B / 4 KB)\nCylinder = the same track number on every surface' },
+      { formula: 'Capacity = surfaces × tracks per surface × sectors per track × bytes per sector' },
+      'Example: 4 platters (8 surfaces), 1,000 tracks per surface, 100 sectors per track, 512 B per sector → 8 × 1000 × 100 × 512 = **409,600,000 B ≈ 390 MB**.',
+      'The OS sees the disk as one long 1-D array of **logical blocks**. Block 0 is the first sector of the first track of the outermost cylinder; numbering proceeds through that track, then the other tracks of the cylinder, then the next cylinder inwards, i.e. it maps to (cylinder, surface/head, sector).',
       { h: 'Access time' },
       { formula: 'Access time = seek time + rotational latency + transfer time' },
       { ul: ['**Seek time**: move the arm to the right cylinder (largest part).', '**Rotational latency**: wait for the sector to come under the head. Average = ½ × one rotation.', '**Transfer time**: actually read the bits.'] },
@@ -236,8 +247,8 @@ export default {
       { note: 'SSDs have no moving parts, so seek time and rotational latency disappear. Disk scheduling matters mainly for hard disks.' },
     ],
     terms: [['Cylinder', 'The set of tracks at the same arm position across all platters.'], ['Seek time', 'Time to move the head to the target cylinder.'], ['Rotational latency', 'Time for the desired sector to rotate under the head.']],
-    exam: 'Draw a quick platter/track/sector/cylinder sketch, write the access-time formula, define each term.',
-    revise: ['Access = seek + rotation + transfer', 'Avg rotational latency = ½ rotation', '1 rotation = 60/rpm seconds'],
+    exam: 'Draw the disk-pack sketch, then define the 8 levels in order (platter, surface, track, sector, cylinder, head, arm, spindle) and write the access-time formula.',
+    revise: ['8 levels: platter → surface → track → sector; cylinder; head, arm, spindle', 'Capacity = surfaces × tracks × sectors × bytes', 'Access = seek + rotation + transfer', 'Avg rotational latency = ½ rotation', '1 rotation = 60/rpm seconds'],
   },
 
   'os.u3.disk-scheduling': {

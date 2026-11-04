@@ -496,7 +496,10 @@ figure.svg-diagram .svg-wrap { padding: 16px; overflow-x: auto; }
 .pyq-toolbar .glide-select__trigger { border: 1px solid var(--line-strong); border-radius: 999px; padding-inline: 14px; font-size: 14px; }
 .pyq-toolbar .glide-select__menu { border: 1px solid var(--line); box-shadow: var(--shadow); max-height: min(420px, 55vh); overflow-y: auto; z-index: 35; }
 /* Glossary definitions are sentences, not toolbar labels: let WarmTooltip wrap */
-.warm-tooltip__text { white-space: normal; max-width: min(340px, 80vw); line-height: 1.45; }
+/* Key-term bubbles: wrap long definitions. Higher specificity than WarmTooltip.css, which loads later.
+   width: max-content + flex-shrink: 0 lets the text size itself, so the bubble is measured correctly
+   even while it is still at the previous tooltip's size. */
+.warm-tooltip .warm-tooltip__text { display: block; white-space: normal; width: max-content; max-width: min(340px, calc(100vw - 48px)); flex-shrink: 0; line-height: 1.45; text-align: left; overflow-wrap: anywhere; }
 /* Exam answers inside topic cards */
 .topic-answers { margin-top: 24px; padding-top: 18px; border-top: 1px dashed var(--line-strong); }
 .ta-item { border: 1px solid var(--line); border-radius: 16px; margin-bottom: 8px; background: var(--bg); overflow: hidden; }

@@ -26,6 +26,7 @@ export default {
       { ul: ['**Main program/subprogram**: functional decomposition into a control hierarchy where a main program invokes subprograms, which in turn invoke others.', '**Remote procedure call**: the components of a main program/subprogram architecture are distributed across multiple computers on a network.'] },
       '*Example: a traditional C program, client–server banking calls.*',
       { h: '4. Object-oriented architecture' },
+      { img: 'se-arch-oo' },
       'Components encapsulate **data and the operations** that manipulate it. Communication and coordination between components is done by **message passing** (method calls). *Example: GUI frameworks, an online shopping system with Cart, Order, Payment objects.*',
       { h: '5. Layered architecture' },
       { img: 'se-arch-layered' },

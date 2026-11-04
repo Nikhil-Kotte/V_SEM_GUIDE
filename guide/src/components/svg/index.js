@@ -3,6 +3,7 @@
 import { TcpHandshake, TcpRelease, SlidingWindow, DnsResolution } from './network.jsx'
 import { SixHats, AffinityDiagram, ValuePropositionCanvas } from './design.jsx'
 import { ElbowChart } from './data.jsx'
+import { ObjectOrientedArchitecture } from './se.jsx'
 
 export const svgDiagrams = {
   'tcp-handshake': { Component: TcpHandshake, caption: 'TCP three-way handshake with sequence numbers and connection states.' },
@@ -12,5 +13,6 @@ export const svgDiagrams = {
   'six-hats': { Component: SixHats, caption: 'Edward de Bono\'s Six Thinking Hats: everyone wears the same hat at the same time.' },
   'affinity': { Component: AffinityDiagram, caption: 'Affinity diagram: each observation goes on a sticky note, then similar notes are clustered and each cluster gets a theme heading.' },
   'value-prop': { Component: ValuePropositionCanvas, caption: 'Value proposition canvas: match what you offer (left) to what the customer needs (right).' },
+  'se-arch-oo': { Component: ObjectOrientedArchitecture, caption: 'Object-oriented architecture: each component (object) encapsulates its data and the operations on it; components cooperate by message passing.' },
   'dns-resolution': { Component: DnsResolution, caption: 'Typical DNS lookup: recursive between your PC and the local server, iterative from the local server to root, TLD and authoritative servers.' },
 }

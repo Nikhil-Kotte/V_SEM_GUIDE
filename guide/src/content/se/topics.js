@@ -338,6 +338,7 @@ export default {
       { img: 'se-arch-call-return' },
       'Main program calls subprograms in a hierarchy (or remote procedure calls across a network). Easy to modify and scale.',
       { h: '4. Object-oriented' },
+      { img: 'se-arch-oo' },
       'Components are objects encapsulating data and operations; they communicate via messages. Supports information hiding and reuse.',
       { h: '5. Layered' },
       { img: 'se-arch-layered' },

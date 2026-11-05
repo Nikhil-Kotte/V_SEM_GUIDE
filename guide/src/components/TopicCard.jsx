@@ -31,6 +31,21 @@ function TopicAnswers({ subject, pyqs }) {
   )
 }
 
+// ChatGPT's plain-language explanation of the topic (content/<subject>/simple.js).
+function SimpleWords({ s }) {
+  return (
+    <section className="simple-words" aria-label="In simple words">
+      <div className="simple-words__head">
+        <span className="label">In simple words</span>
+        <span className="simple-words__by">Explained by ChatGPT</span>
+      </div>
+      <div className="prose">
+        <Blocks blocks={[s.summary, { ul: s.points }, { analogy: s.analogy }, `**Example:** ${s.example}`]} />
+      </div>
+    </section>
+  )
+}
+
 export default function TopicCard({ subject, topic, content, pyqs }) {
   const store = useStore()
   const done = store.done(topic.id)
@@ -72,6 +87,8 @@ export default function TopicCard({ subject, topic, content, pyqs }) {
       {content ? (
         <>
           <p className="one-line"><b>In one line:</b><Inline text={content.oneLine} /></p>
+          {content.simple && <SimpleWords s={content.simple} />}
+          {content.simple && <div className="label" style={{ margin: '22px 0 10px' }}>Detailed notes</div>}
           <div className="prose"><Blocks blocks={content.blocks} /></div>
           {content.terms?.length > 0 && (
             <div style={{ marginTop: 20 }}>

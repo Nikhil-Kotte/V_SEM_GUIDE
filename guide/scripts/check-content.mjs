@@ -55,6 +55,13 @@ for (const [subject, units] of Object.entries(syllabus)) {
     if (!ids.has(id)) errors.push(`${subject} topic ${id}: not in syllabus`)
     if (!t.oneLine) errors.push(`${subject} topic ${id}: missing oneLine`)
     checkRefs(`${subject} topic ${id}`, t.blocks)
+    // ChatGPT's simpler explanation must be complete and stay inside the syllabus too.
+    if (t.simple) {
+      const s = t.simple
+      if (!s.summary || !s.points?.length || !s.analogy || !s.example) errors.push(`${subject} topic ${id}: incomplete simple explanation`)
+      const text = [s.summary, ...(s.points || []), s.analogy, s.example].join(' ')
+      for (const re of EXCLUDED) if (re.test(text)) errors.push(`${subject} topic ${id}: simple explanation mentions excluded topic ${re}`)
+    }
   }
   const line = `${subject}: ${ids.size - missing.length}/${ids.size} topics written, ${mod.pyqs.length} questions, ${Object.keys(mod.answers).length} model answers`
   console.log(line)

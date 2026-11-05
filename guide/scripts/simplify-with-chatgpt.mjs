@@ -107,7 +107,17 @@ async function subject(subj, { only, missing }) {
       const id = ids[next++]
       const title = titles[id] || id
       try {
-        result[id] = await runCodex(prompt(NAMES[subj], title, topics[id]), schemaFile, work)
+        // Network errors and "model at capacity" are transient: retry with a growing pause.
+        for (let attempt = 1; ; attempt++) {
+          try {
+            result[id] = await runCodex(prompt(NAMES[subj], title, topics[id]), schemaFile, work)
+            break
+          } catch (e) {
+            if (attempt >= 3) throw e
+            console.log(`retry ${id} (${attempt}): ${e.message.slice(-120)}`)
+            await new Promise((r) => setTimeout(r, attempt * 15000))
+          }
+        }
         done++
         console.log(`ok   ${subj} ${done}/${ids.length} ${id}`)
         save(file, result)

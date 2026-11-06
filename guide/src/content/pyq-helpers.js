@@ -18,3 +18,6 @@ export const Q = (id, syllabusId, q, asks = [], opts = {}) => ({
 
 // A predicted question has no past papers — it is syllabus-derived.
 export const Predict = (id, syllabusId, q, opts = {}) => Q(id, syllabusId, q, [], { ...opts, kind: 'predicted' })
+
+// A question from a model question list handed out for the exam (not a past paper): no repeat count.
+export const Model = (id, syllabusId, q, opts = {}) => Q(id, syllabusId, q, [], { ...opts, kind: 'model' })

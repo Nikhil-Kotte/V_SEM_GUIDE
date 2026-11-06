@@ -30,8 +30,8 @@ for (const [subject, units] of Object.entries(syllabus)) {
     if (pyqIds.has(q.id)) errors.push(`${where}: duplicate id`)
     pyqIds.add(q.id)
     if (!ids.has(q.syllabusId)) errors.push(`${where}: syllabusId "${q.syllabusId}" is not in the Mid-2 syllabus`)
-    if (q.kind === 'predicted' && q.asks.length) errors.push(`${where}: predicted question must not cite papers`)
-    if (q.kind !== 'predicted' && !q.asks.length) errors.push(`${where}: past question cites no papers`)
+    if ((q.kind === 'predicted' || q.kind === 'model') && q.asks.length) errors.push(`${where}: ${q.kind} question must not cite papers`)
+    if (q.kind !== 'predicted' && q.kind !== 'model' && !q.asks.length) errors.push(`${where}: past question cites no papers`)
     const seen = new Set()
     for (const a of q.asks) {
       const p = paperById[a.paperId]

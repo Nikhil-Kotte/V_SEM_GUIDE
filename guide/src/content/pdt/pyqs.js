@@ -1,4 +1,4 @@
-import { Q, Predict } from '../pyq-helpers.js'
+import { Q, Predict, Model } from '../pyq-helpers.js'
 
 // Every in-scope question from the Dec '25 (22MEO01) and May '26 (22MEC36) papers, one entry per distinct question.
 // Empathise-phase and Unit I/II questions are Mid-1 and left out.
@@ -41,4 +41,26 @@ export default [
   Predict('pdt-pred-storytelling', 'pdt.u5.storytelling', 'What makes a good story? How does storytelling help reach users?'),
   Predict('pdt-pred-user-test', 'pdt.u5.user-test', 'How do you conduct a user test? Explain the user-testing methods.'),
   Predict('pdt-pred-proto-guidelines', 'pdt.u5.prototype-guidelines', 'State the guidelines for prototyping.'),
+
+  // ---------------- Mid-2 model questions (PYQs/PDT Model questions for 2 mid.docx), original wording ----------------
+  Model('pdt-m01', 'pdt.u3.problem-statement', 'What are "How Might We" (HMW) questions in design thinking?'),
+  Model('pdt-m02', 'pdt.u4.doodling', 'What is the use of doodling in expressing creative ideas?'),
+  Model('pdt-m03', 'pdt.u5.iterate', 'State the significance of the Iteration phase in the Design Thinking process.'),
+  Model('pdt-m04', 'pdt.u4.doodling', 'What is the purpose of doodling in Design Thinking?'),
+  Model('pdt-m05', 'pdt.u5.iterate', 'Define Iteration in the Design Thinking process.'),
+  Model('pdt-m06', 'pdt.u5.value-prop', 'Define Value Proposition. What are desirable, feasible and viable solutions?'),
+  Model('pdt-m07', 'pdt.u4.six-hats', 'What is Ideation in Design Thinking? Explain various ideation techniques. Describe the Six Thinking Hats technique developed by Edward de Bono and explain the importance of each hat in creative problem-solving.'),
+  Model('pdt-m08', 'pdt.u5.iterate', 'A college is facing problems related to plastic waste management. Apply the Design Thinking process to identify the problem, understand user needs, generate ideas, develop a prototype and test a suitable solution.'),
+  Model('pdt-m09', 'pdt.u5.test-need', 'Discuss the role of user feedback and continuous iteration in improving product design. Explain how an initial prototype can be transformed into a final product through repeated testing and modification.'),
+  Model('pdt-m10', 'pdt.u5.dfv', 'Explain the concepts of Desirability, Feasibility and Viability in Design Thinking. Discuss how these three factors contribute to the development of successful products with suitable examples.'),
+  Model('pdt-m11', 'pdt.u3.affinity', 'Explain the concept of Affinity Mapping in Design Thinking. Describe the steps involved in organizing and grouping user research insights to identify common patterns and themes.'),
+  Model('pdt-m12', 'pdt.u5.prototype-guidelines', 'Explain the Prototyping phase of the Design Thinking process. Discuss the objectives, guidelines, advantages and challenges involved in developing prototypes with suitable examples.'),
+  Model('pdt-m13', 'pdt.u4.brainstorming', 'What is Brainstorming? Explain the rules for brainstorming.'),
+  Model('pdt-m14', 'pdt.u4.brainstorming', 'What is Brainstorming? Explain the principles and rules of effective brainstorming. Discuss how brainstorming helps in generating innovative solutions to real-world problems.'),
+  Model('pdt-m15', 'pdt.u3.empathy-map', 'How does Empathy Mapping fit into the Define phase? Explain.'),
+  Model('pdt-m16', 'pdt.u4.six-hats', 'What is Ideation? Explain the six thinking hats technique.'),
+  Model('pdt-m17', 'pdt.u5.prototype-guidelines', 'What is prototyping in design thinking? Explain the guidelines for prototyping.'),
+  Model('pdt-m18', 'pdt.u5.value-prop', 'Explain how a value proposition helps in developing a user-centred product.'),
+  Model('pdt-m19', 'pdt.u5.test-need', 'What is the necessity to test? Explain about desirable, feasible and viable solutions.'),
+  Model('pdt-m20', 'pdt.u5.prototype-types', 'What are the various types of prototypes used in design thinking?'),
 ]

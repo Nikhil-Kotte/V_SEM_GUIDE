@@ -38,9 +38,10 @@ export default function PyqTab({ subject, data, focus }) {
       (topic === 'all' || q.syllabusId === topic) &&
       (!numOnly || q.numerical) &&
       (!hidePractised || !store.practised(q.id))
-    const past = data.ranked.filter((q) => q.kind !== 'predicted' && keep(q))
+    const past = data.ranked.filter((q) => q.kind !== 'predicted' && q.kind !== 'model' && keep(q))
     const predicted = data.ranked.filter((q) => q.kind === 'predicted' && keep(q))
-    return { past: sort === 'recent' ? sortByRecent(past) : past, predicted }
+    const model = data.ranked.filter((q) => q.kind === 'model' && keep(q))
+    return { past: sort === 'recent' ? sortByRecent(past) : past, predicted, model }
   }, [data, unit, topic, numOnly, hidePractised, sort, store])
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function PyqTab({ subject, data, focus }) {
   }, [focus])
 
   const topicsInUnit = data.units.filter((u) => unit === 'all' || u.unit === unit).flatMap((u) => u.topics)
-  const isRelatedOnly = data.ranked.every((q) => q.kind !== 'pyq')
+  const isRelatedOnly = data.ranked.every((q) => q.kind !== 'pyq' && q.kind !== 'model')
 
   return (
     <div style={{ padding: '36px 0 96px' }}>
@@ -90,7 +91,26 @@ export default function PyqTab({ subject, data, focus }) {
         <label className="toggle"><input type="checkbox" checked={hidePractised} onChange={(e) => setHidePractised(e.target.checked)} /> Hide practised</label>
       </div>
 
-      {filtered.past.length === 0 && filtered.predicted.length === 0 && <div className="empty">No questions match these filters.</div>}
+      {filtered.past.length === 0 && filtered.predicted.length === 0 && filtered.model.length === 0 && <div className="empty">No questions match these filters.</div>}
+
+      {filtered.model.length > 0 && (
+        <>
+          <div className="unit-head">
+            <span className="label">Given for this exam</span>
+            <h2>Mid-2 model questions</h2>
+          </div>
+          <p className="muted" style={{ maxWidth: '64ch' }}>
+            The model question list given for Mid-2, in its original wording, each with a simple answer. Past-paper questions follow below.
+          </p>
+          {filtered.model.map((q, i) => <Pyq key={q.id} q={q} rank={i + 1} subject={subject} open={focus === q.id} />)}
+          {filtered.past.length > 0 && (
+            <div className="unit-head" style={{ marginTop: 48 }}>
+              <span className="label">From past papers</span>
+              <h2>Past questions</h2>
+            </div>
+          )}
+        </>
+      )}
 
       {filtered.past.map((q, i) => <Pyq key={q.id} q={q} rank={i + 1} subject={subject} open={focus === q.id} />)}
 
@@ -125,6 +145,7 @@ function Pyq({ q, rank, subject, open: openInitially }) {
           <p className="pyq-q">{q.q}</p>
           <div className="pyq-meta">
             {q.kind === 'predicted' && <span className="chip chip-pred">Likely question · never asked</span>}
+            {q.kind === 'model' && <span className="chip chip-warm">Mid-2 model question</span>}
             {q.kind === 'related-course' && <span className="chip chip-related">Related course (22ADC09)</span>}
             {q.kind === 'pyq' && (
               <span className={`chip ${hot ? 'chip-hot' : 'chip-warm'}`}>

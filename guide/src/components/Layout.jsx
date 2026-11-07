@@ -12,7 +12,10 @@ const RouterLink = forwardRef(function RouterLink({ href, ...props }, ref) {
   return <Link ref={ref} to={href || '/'} {...props} />
 })
 
-const NAV_ITEMS = subjects.map((s) => ({ label: s.short, href: `/s/${s.id}`, ariaLabel: s.name }))
+const NAV_ITEMS = [
+  ...subjects.map((s) => ({ label: s.short, href: `/s/${s.id}`, ariaLabel: s.name })),
+  ...['cn', 'os', 'se'].map((id) => ({ label: `${id.toUpperCase()} Lab`, href: `/lab/${id}`, ariaLabel: `${id.toUpperCase()} lab external guide` })),
+]
 
 export default function Layout() {
   const [searchOpen, setSearchOpen] = useState(false)
@@ -65,7 +68,7 @@ export default function Layout() {
               highlightColor="#f57757"
               highlightTextColor="#182d2a"
               collapse="auto"
-              ariaLabel="Subjects"
+              ariaLabel="Subjects and labs"
             />
           </div>
           <button type="button" className="search-btn" onClick={() => setSearchOpen(true)} aria-label="Search (Ctrl+K)">

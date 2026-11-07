@@ -8,7 +8,7 @@ const LOADERS = {
   se: () => import('../content/lab/se.js'),
 }
 
-export const hasLab = (subj) => subj in LOADERS
+export const LAB_SUBJECTS = ['cn', 'os', 'se']
 
 // Lab external guide: an intro, a list of experiments, then one card per experiment.
 // An experiment is { id, num, title, aim, blocks, parts: [{ title, blocks }] }.

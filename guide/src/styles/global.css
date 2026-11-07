@@ -559,3 +559,9 @@ figure.svg-diagram .svg-wrap { padding: 16px; overflow-x: auto; }
 :root[data-theme='dark'] .simple-words { background: var(--surface-2); border-color: var(--line); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .simple-words { background: var(--surface-2); border-color: var(--line); } }
 @media (max-width: 600px) { .simple-words { padding: 14px 14px 4px; } }
+
+/* Collapsed nav menu: keep labels like "CN Lab" on one line and wide enough to read */
+.pill-nav__panel { min-width: 150px; right: auto; }
+.header-nav:has(.pill-nav__panel) { overflow-x: visible; }
+.site-header .bar:has(.pill-nav__panel) { overflow-x: clip; overflow-y: visible; }
+.pill-nav__menu a, .pill-nav__menu a * { white-space: nowrap; }

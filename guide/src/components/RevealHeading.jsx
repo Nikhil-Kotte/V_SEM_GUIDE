@@ -1,16 +1,20 @@
-import { lazy, Suspense } from 'react'
-import { useFancyMotion } from '../lib/motion.js'
+import { useEffect, useRef } from 'react'
 
-const SplitText = lazy(() => import('./bits/SplitText.jsx'))
-
-// Section heading that rises in word by word when scrolled into view; a plain heading otherwise.
-export default function RevealHeading({ text, tag = 'h2' }) {
-  const fancy = useFancyMotion()
-  const Plain = tag
-  if (!fancy) return <Plain>{text}</Plain>
-  return (
-    <Suspense fallback={<Plain>{text}</Plain>}>
-      <SplitText text={text} tag={tag} splitType="words" effect="rise" mask textAlign="left" delay={70} duration={0.9} />
-    </Suspense>
-  )
+// Section heading that rises in once when scrolled into view (transform + opacity only).
+// Visible by default; reduced-motion users and headings already on screen never animate.
+export default function RevealHeading({ text, tag = 'h2', id }) {
+  const Tag = tag
+  const ref = useRef(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return
+    el.classList.add('rv-armed')
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.classList.add('is-in'); io.disconnect() }
+    }, { rootMargin: '0px 0px -10% 0px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  return <Tag ref={ref} id={id} className="rv rv-heading">{text}</Tag>
 }

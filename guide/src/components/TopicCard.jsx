@@ -72,8 +72,8 @@ export default function TopicCard({ subject, topic, content, pyqs }) {
             checked={done}
             onChange={() => store.toggleDone(topic.id)}
             color="var(--text)"
-            fillColor="#3f7a5a"
-            checkColor="#ffffff"
+            fillColor="var(--ok)"
+            checkColor="var(--surface)"
             boxSize={24}
             boxRadius={12}
             fontSize={15}

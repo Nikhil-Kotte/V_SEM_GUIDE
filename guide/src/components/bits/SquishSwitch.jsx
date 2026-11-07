@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { animate, motion, useMotionValue, useReducedMotion, useSpring, useTransform, useVelocity } from 'motion/react';
+import { animate, motion as Motion, useMotionValue, useReducedMotion, useSpring, useTransform, useVelocity } from 'motion/react';
 import './SquishSwitch.css';
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -106,7 +106,7 @@ export default function SquishSwitch({
     };
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
-    } catch {}
+    } catch { /* unsupported, ignore */ }
     setDragging(true);
   };
   const move = e => {
@@ -129,7 +129,7 @@ export default function SquishSwitch({
     grip.current = null;
     try {
       e.currentTarget.releasePointerCapture(e.pointerId);
-    } catch {}
+    } catch { /* unsupported, ignore */ }
     if (cancelled) commit(g.onAtPress);
     else if (!g.moved) commit(!onRef.current);
     skipClick.current = true;
@@ -186,7 +186,7 @@ export default function SquishSwitch({
         onClick={click}
       >
         <span ref={trackRef} className="squish-switch__track">
-          <motion.span className="squish-switch__thumb" aria-hidden="true" style={{ x, scaleX, scaleY }} />
+          <Motion.span className="squish-switch__thumb" aria-hidden="true" style={{ x, scaleX, scaleY }} />
         </span>
       </button>
       {label ? (

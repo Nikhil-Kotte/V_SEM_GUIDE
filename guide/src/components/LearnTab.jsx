@@ -13,7 +13,7 @@ function UnitProgress({ topics, store }) {
   return (
     <span className="unit-progress">
       <StatusMark status={status} progress={status === 'running' ? done / topics.length : undefined}
-        size={22} doneColor="#3f7a5a" strike={false} label={`${done}/${topics.length} done`} fontSize={14} />
+        size={22} doneColor="var(--ok)" strike={false} label={`${done}/${topics.length} done`} fontSize={14} />
     </span>
   )
 }
@@ -63,7 +63,7 @@ export default function LearnTab({ subject, data, focus }) {
       // ~29 characters fit on one line of the 290px sidebar; extra lines make the row taller
       return { value: t.id, label, lines: Math.ceil(label.length / 29) }
     }),
-  })), [data, store]) // eslint-disable-line react-hooks/exhaustive-deps
+  })), [data, store])
 
   return (
     <div className="layout">
@@ -74,7 +74,7 @@ export default function LearnTab({ subject, data, focus }) {
           defaultOpen={data.units.map((_, i) => i)}
           onSelect={(id) => { goTo(id); document.getElementById(id)?.scrollIntoView({ block: 'start' }) }}
           color="var(--text)"
-          accentColor="var(--coral-deep)"
+          accentColor="var(--accent)"
           lineColor="var(--line-strong)"
           width={290}
           rowHeight={34}

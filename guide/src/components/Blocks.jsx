@@ -13,7 +13,7 @@ const CALLOUTS = {
   analogy: 'Think of it like this',
   note: 'Note',
   fix: 'Your slides vs. the standard definition',
-  gap: 'Not in your notes — standard textbook coverage',
+  gap: 'Not in your notes: standard textbook coverage',
 }
 
 // Content blocks are plain objects so notes stay easy to write:

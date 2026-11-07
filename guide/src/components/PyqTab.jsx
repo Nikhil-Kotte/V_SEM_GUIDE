@@ -12,7 +12,7 @@ const GLIDE_THEME = {
   surfaceColor: 'var(--surface)',
   highlightColor: 'var(--surface-2)',
   textColor: 'var(--text)',
-  accentColor: 'var(--coral-deep)',
+  accentColor: 'var(--accent)',
   size: 'md',
   radius: 14,
 }

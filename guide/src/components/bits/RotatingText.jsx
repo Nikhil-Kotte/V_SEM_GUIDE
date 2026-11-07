@@ -11,7 +11,7 @@ import {
   useState
 } from 'react';
 import {
-  motion,
+  motion as Motion,
   AnimatePresence,
   MotionConfig,
   animate as animateValue,
@@ -276,7 +276,7 @@ const RotatingText = forwardRef((props, ref) => {
 
   const presence = (
     <AnimatePresence mode={animatePresenceMode} initial={animatePresenceInitial}>
-      <motion.span
+      <Motion.span
         key={activeIndex}
         className={cn(splitBy === 'lines' ? 'text-rotate-lines' : 'text-rotate')}
         layout={!highlight}
@@ -289,7 +289,7 @@ const RotatingText = forwardRef((props, ref) => {
               {wordObj.characters.map((char, charIndex) => {
                 const delay = getStaggerDelay(previousCharsCount + charIndex);
                 return (
-                  <motion.span
+                  <Motion.span
                     key={charIndex}
                     initial={enterFrom}
                     animate={enterTo}
@@ -299,20 +299,20 @@ const RotatingText = forwardRef((props, ref) => {
                     style={charStyle}
                   >
                     {char}
-                  </motion.span>
+                  </Motion.span>
                 );
               })}
               {wordObj.needsSpace && <span className="text-rotate-space"> </span>}
             </span>
           );
         })}
-      </motion.span>
+      </Motion.span>
     </AnimatePresence>
   );
 
   return (
     <MotionConfig reducedMotion="user">
-      <motion.span
+      <Motion.span
         className={cn('text-rotate', highlight && 'text-rotate-highlight', mainClassName)}
         {...rest}
         style={blockStyle}
@@ -329,7 +329,7 @@ const RotatingText = forwardRef((props, ref) => {
         ) : (
           presence
         )}
-      </motion.span>
+      </Motion.span>
     </MotionConfig>
   );
 });

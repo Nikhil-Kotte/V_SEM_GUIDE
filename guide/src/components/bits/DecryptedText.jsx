@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion as Motion } from 'motion/react';
 
 const styles = {
   wrapper: {
@@ -553,7 +553,7 @@ export default function DecryptedText({
       : {};
 
   return (
-    <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...animateProps} {...props}>
+    <Motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...animateProps} {...props}>
       <span style={styles.srOnly}>{chars.join('')}</span>
 
       <span aria-hidden="true">
@@ -589,7 +589,7 @@ export default function DecryptedText({
           )
         )}
       </span>
-    </motion.span>
+    </Motion.span>
   );
 }
 

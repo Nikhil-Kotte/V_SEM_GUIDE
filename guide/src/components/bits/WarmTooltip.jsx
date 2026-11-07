@@ -17,7 +17,7 @@ import { createPortal } from 'react-dom';
 import {
   AnimatePresence,
   animate,
-  motion,
+  motion as Motion,
   useMotionValue,
   useReducedMotion,
   useSpring,
@@ -335,7 +335,7 @@ export const WarmTooltipGroup = forwardRef(function WarmTooltipGroup(
       {children}
       {state !== 'closed' && current && canPortal
         ? createPortal(
-            <motion.span
+            <Motion.span
               id={id}
               role="tooltip"
               className="warm-tooltip"
@@ -351,9 +351,9 @@ export const WarmTooltipGroup = forwardRef(function WarmTooltipGroup(
                 '--wt-origin': ORIGIN[side]
               }}
             >
-              <motion.span className="warm-tooltip__box" style={{ transform: pop, opacity: presence, filter: blur }}>
+              <Motion.span className="warm-tooltip__box" style={{ transform: pop, opacity: presence, filter: blur }}>
                 <AnimatePresence initial={false} custom={st.current.swap}>
-                  <motion.span
+                  <Motion.span
                     key={current.id}
                     className="warm-tooltip__layer"
                     custom={st.current.swap}
@@ -372,13 +372,13 @@ export const WarmTooltipGroup = forwardRef(function WarmTooltipGroup(
                       {current.content}
                       {current.shortcut ? <kbd className="warm-tooltip__kbd">{current.shortcut}</kbd> : null}
                     </span>
-                  </motion.span>
+                  </Motion.span>
                 </AnimatePresence>
                 {current.arrow ? (
-                  <motion.span className="warm-tooltip__arrow" data-side={side} style={arrowStyle} aria-hidden="true" />
+                  <Motion.span className="warm-tooltip__arrow" data-side={side} style={arrowStyle} aria-hidden="true" />
                 ) : null}
-              </motion.span>
-            </motion.span>,
+              </Motion.span>
+            </Motion.span>,
             document.body
           )
         : null}
@@ -505,7 +505,7 @@ function Trigger({
           }
           try {
             e.currentTarget.setPointerCapture(e.pointerId);
-          } catch {}
+          } catch { /* unsupported, ignore */ }
           t.current.press0 = { x: e.clientX, y: e.clientY, id: e.pointerId };
           setPressing(true);
           setFuse('arming');

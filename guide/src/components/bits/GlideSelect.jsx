@@ -200,7 +200,7 @@ export default function GlideSelect({
     if (scrub.current) return;
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
-    } catch {}
+    } catch { /* unsupported, ignore */ }
     scrub.current = { id: e.pointerId, top: e.currentTarget.getBoundingClientRect().top };
     instant.current = true;
     setActive(rowAt(e.clientY));

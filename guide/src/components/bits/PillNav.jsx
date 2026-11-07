@@ -141,8 +141,9 @@ const PillNav = ({
   items = DEFAULT_ITEMS,
   activeHref,
   defaultActiveIndex = 0,
-  onItemClick,
+  // eslint-disable-next-line no-unused-vars -- used as <LinkComponent> in JSX
   linkComponent: LinkComponent = 'a',
+  onItemClick,
   theme = 'dark',
   layout = 'split',
   size = 'md',

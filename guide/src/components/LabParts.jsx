@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Copy01Icon, Tick02Icon, ZoomInAreaIcon } from '@hugeicons/core-free-icons'
 import { asset } from '../config.js'
 import Inline from './Inline.jsx'
+import Icon from './Icon.jsx'
 
 // A source file: name bar + copy button + the code.
 export function CodeFile({ file, code }) {
@@ -18,7 +20,10 @@ export function CodeFile({ file, code }) {
     <div className="codefile">
       <div className="codefile__bar">
         <span className="codefile__name">{file}</span>
-        <button type="button" className="codefile__copy" onClick={copy} aria-label={`Copy ${file}`}>{copied ? 'Copied' : 'Copy'}</button>
+        <button type="button" className={`codefile__copy${copied ? ' is-done' : ''}`} onClick={copy} aria-label={`Copy ${file}`}>
+          <Icon icon={copied ? Tick02Icon : Copy01Icon} key={copied ? 'done' : 'copy'} />
+          <span aria-live="polite">{copied ? 'Copied' : 'Copy'}</span>
+        </button>
       </div>
       <pre className="code"><code>{code.replace(/\s+$/, '')}</code></pre>
     </div>
@@ -29,7 +34,7 @@ export function CodeFile({ file, code }) {
 export function Terminal({ title = 'Output', text }) {
   return (
     <div className="terminal" role="region" aria-label={title}>
-      <div className="terminal__bar"><i /><i /><i /><span>{title}</span></div>
+      <div className="terminal__bar"><span>{title}</span></div>
       <pre><code>{text.replace(/\s+$/, '')}</code></pre>
     </div>
   )
@@ -49,6 +54,7 @@ export function Shot({ src, caption }) {
     <figure className="diagram shot">
       <button type="button" onClick={() => setOpen(true)} aria-label={`Enlarge: ${caption}`}>
         <img src={url} alt={caption} loading="lazy" decoding="async" />
+        <span className="zoom-hint" aria-hidden="true"><Icon icon={ZoomInAreaIcon} size={14} /> Enlarge</span>
       </button>
       <figcaption><Inline text={caption} /><span className="src">From your lab record</span></figcaption>
       {open && (

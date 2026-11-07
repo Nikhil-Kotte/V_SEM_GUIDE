@@ -12,8 +12,10 @@ export default function CocomoSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-cocomo">
-      <span className="label">Unit III · Numerical</span>
-      <h3 id="sim-cocomo">Basic COCOMO calculator</h3>
+      <div className="sim-head">
+        <h3 id="sim-cocomo">Basic COCOMO calculator</h3>
+        <span className="sim-unit">Unit III</span>
+      </div>
       <p className="sim-note">Preloaded with May &apos;25: 200 KLOC, average-experience team, schedule not tight (semi-detached).</p>
       <div className="sim-controls">
         <label className="field">Size (KLOC)<input type="number" min="1" value={kloc} onChange={(e) => setKloc(Number(e.target.value))} style={{ width: 120 }} /></label>

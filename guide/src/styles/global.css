@@ -378,7 +378,10 @@ figure.svg-diagram .svg-wrap { padding: var(--sp-4); overflow-x: auto; }
 
 /* ---------- Search ---------- */
 .search-overlay { position: fixed; inset: 0; z-index: 80; background: rgba(12, 14, 20, .5); display: flex; justify-content: center; align-items: flex-start; padding: 10vh 16px 16px; }
-.search-panel { width: min(680px, 100%); background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-2); overflow: hidden; }
+.search-panel { width: min(680px, 100%); background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-2); overflow: hidden; animation: panel-in var(--dur-3) var(--ease-out); }
+.search-overlay { animation: fade-in var(--dur-2) var(--ease-out); }
+@keyframes panel-in { from { opacity: 0; transform: translateY(-8px) scale(.985); } }
+@keyframes fade-in { from { opacity: 0; } }
 .search-panel input { width: 100%; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--text); padding: 18px 20px; font: inherit; font-size: 18px; outline: none; }
 .search-results { max-height: 60vh; overflow: auto; padding: 8px; }
 .search-results a { display: block; text-decoration: none; padding: 10px 14px; border-radius: var(--radius-sm); }
@@ -850,6 +853,47 @@ figure.diagram button:hover .zoom-hint, figure.diagram button:focus-visible .zoo
 .soon-card { max-width: 560px; display: grid; gap: var(--sp-4); justify-items: start; }
 .soon-card h1 { font-size: var(--fs-2xl); }
 .soon-card p { margin: 0; }
+
+/* =========================================================================
+   Simulators: header, toolbar, animated steps (transform + opacity only)
+   ========================================================================= */
+.sim-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px var(--sp-3); }
+.sim-unit { font-size: 14px; font-weight: 700; color: var(--text-faint); }
+.sim-sub { font-size: 14px; font-weight: 700; color: var(--text-soft); margin-bottom: 6px; }
+.sim-toolbar { display: flex; flex-wrap: wrap; gap: 6px; }
+.sim .btn-ink, .sim .btn-primary { min-width: 92px; }
+
+.frame-grid td { position: relative; overflow: hidden; }
+.frame-grid .cell-in, .frame-grid .cell-out { display: block; }
+.frame-grid td.is-live.new .cell-in { animation: page-in var(--dur-4) var(--ease-out) both; }
+.frame-grid td.is-live .cell-out {
+  position: absolute; inset: 0; display: grid; place-items: center; color: var(--text-faint);
+  animation: page-out var(--dur-4) var(--ease-out) both;
+}
+.frame-grid td.is-live.hitcell .cell-in { animation: hit-pulse var(--dur-4) var(--ease-out); }
+@keyframes page-in { from { opacity: 0; transform: translateY(-70%); } }
+@keyframes page-out { to { opacity: 0; transform: translateY(-80%); } }
+@keyframes hit-pulse { 40% { transform: scale(1.25); } }
+.frame-grid th.current { animation: col-in var(--dur-3) var(--ease-out); }
+@keyframes col-in { from { opacity: .3; } }
+
+.disk-plot { background: var(--bg); border-radius: var(--radius-sm); border: 1px solid var(--line); }
+.disk-seg, .disk-pt { opacity: 0; transition: opacity var(--dur-3) var(--ease-out); }
+.disk-seg.is-on, .disk-pt.is-on { opacity: 1; }
+.disk-head { transition: transform 300ms var(--ease-in-out); }
+
+.bank-verdict { animation: drop-in var(--dur-4) var(--ease-out) both; }
+.bank-steps li { animation: step-in var(--dur-4) var(--ease-out) both; animation-delay: calc(var(--k, 0) * 160ms); }
+@keyframes step-in { from { opacity: 0; transform: translateX(-8px); } }
+.bank-order { display: inline-block; font-weight: 700; font-variant-numeric: tabular-nums; }
+.bank-row.is-safe .bank-order { color: var(--ok); animation: step-in var(--dur-4) var(--ease-out) both; animation-delay: calc(var(--k, 0) * 160ms); }
+.bank-row.is-stuck .bank-order { color: var(--hot); }
+
+@media (prefers-reduced-motion: reduce) {
+  .disk-seg, .disk-pt { opacity: 1; }
+  .frame-grid td.is-live .cell-out { display: none; }
+  .bank-steps li, .bank-row .bank-order { animation-delay: 0s !important; }
+}
 
 /* Print: revision sheets and notes on paper */
 @media print {

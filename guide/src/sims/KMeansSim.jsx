@@ -30,8 +30,10 @@ export default function KMeansSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-km">
-      <span className="label">Unit V · Playground</span>
-      <h3 id="sim-km">K-means playground</h3>
+      <div className="sim-head">
+        <h3 id="sim-km">K-means playground</h3>
+        <span className="sim-unit">Unit V</span>
+      </div>
       <p className="sim-note">Click inside the box to add points. Step through to watch points get assigned to the nearest centre (×) and the centres move.</p>
       <div className="sim-controls">
         <label className="field">k<input type="number" min="1" max="6" value={k} onChange={(e) => { setK(Math.max(1, Math.min(6, Number(e.target.value)))); setStep(Infinity) }} style={{ width: 70 }} /></label>
@@ -39,7 +41,7 @@ export default function KMeansSim() {
         <button type="button" className="btn btn-sm" onClick={() => { setSeed((s) => s + 7); setStep(0) }}>New starting centres</button>
         <button type="button" className="btn btn-sm" onClick={() => setPoints([])}>Clear</button>
         <button type="button" className="btn btn-sm" onClick={() => setStep(0)}>Restart</button>
-        <button type="button" className="btn btn-sm btn-ink" onClick={() => setStep((s) => Math.min(Math.min(s, res.history.length - 1) + 1, res.history.length - 1))}>Next iteration →</button>
+        <button type="button" className="btn btn-sm btn-ink" onClick={() => setStep((s) => Math.min(Math.min(s, res.history.length - 1) + 1, res.history.length - 1))}>Next iteration</button>
       </div>
       {points.length < k ? <p className="sim-error">Add at least {k} points.</p> : (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
@@ -58,7 +60,7 @@ export default function KMeansSim() {
               <div><b>{shown + 1} / {res.history.length}</b><span>iteration</span></div>
               <div><b>{Math.round(res.wcss)}</b><span>final WCSS</span></div>
             </div>
-            <div className="label" style={{ marginBottom: 6 }}>Elbow plot (WCSS vs k)</div>
+            <div className="sim-sub">Elbow plot (WCSS vs k)</div>
             <svg viewBox="0 0 220 120" width="100%" style={{ maxWidth: 260 }} role="img" aria-label="Elbow plot">
               {(() => {
                 const max = Math.max(...elbow) || 1

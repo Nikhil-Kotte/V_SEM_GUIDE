@@ -9,8 +9,10 @@ export default function CyclomaticSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-cc">
-      <span className="label">Unit V · Numerical</span>
-      <h3 id="sim-cc">Cyclomatic complexity from a flow graph</h3>
+      <div className="sim-head">
+        <h3 id="sim-cc">Cyclomatic complexity from a flow graph</h3>
+        <span className="sim-unit">Unit V</span>
+      </div>
       <p className="sim-note">Write one edge per line as <code>from-&gt;to</code>. Preloaded with the Jun &apos;23 flow graph.</p>
       <div className="sim-controls">
         <label className="field" style={{ flex: '1 1 260px' }}>Edges<textarea rows={8} value={text} onChange={(e) => setText(e.target.value)} /></label>

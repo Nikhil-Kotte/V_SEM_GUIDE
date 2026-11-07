@@ -18,7 +18,7 @@ export default function Search({ onClose }) {
         for (const u of s.units) {
           for (const t of u.topics) {
             items.push({
-              kind: `${s.subject.short} · Unit ${u.unit} · Topic`, title: t.title,
+              kind: `${s.subject.short}, Unit ${u.unit} topic`, title: t.title,
               text: `${t.title} ${t.covers || ''} ${s.topics[t.id]?.oneLine || ''}`,
               to: `/s/${s.subject.id}/learn/${encodeURIComponent(t.id)}`,
             })
@@ -26,7 +26,7 @@ export default function Search({ onClose }) {
         }
         for (const q of s.ranked) {
           items.push({
-            kind: `${s.subject.short} · ${q.kind === 'predicted' ? 'Likely question' : q.count ? `Asked ${q.count}×` : 'Question'}`,
+            kind: `${s.subject.short}, ${q.kind === 'predicted' ? 'likely question' : q.count ? `asked in ${q.count} paper${q.count > 1 ? 's' : ''}` : 'question'}`,
             title: q.q, text: q.q, to: `/s/${s.subject.id}/pyqs/${encodeURIComponent(q.id)}`,
           })
         }
@@ -45,7 +45,7 @@ export default function Search({ onClose }) {
         const hay = norm(it.text)
         if (!words.every((w) => hay.includes(w))) return null
         const titleHit = words.filter((w) => norm(it.title).includes(w)).length
-        return { ...it, score: titleHit * 2 + (it.kind.endsWith('Topic') ? 1 : 0) }
+        return { ...it, score: titleHit * 2 + (it.kind.endsWith('topic') ? 1 : 0) }
       })
       .filter(Boolean)
       .sort((a, b) => b.score - a.score)
@@ -60,7 +60,7 @@ export default function Search({ onClose }) {
     <div className="search-overlay" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div className="search-panel" role="dialog" aria-modal="true" aria-label="Search the guide">
         <input
-          ref={inputRef} value={query} placeholder="Search topics and past questions… e.g. banker, tcp header, mccall"
+          ref={inputRef} value={query} placeholder="Search topics and questions, e.g. banker, tcp header, mccall"
           aria-label="Search" role="combobox" aria-expanded={results.length > 0} aria-controls="search-results"
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => {

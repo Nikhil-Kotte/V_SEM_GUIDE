@@ -1,12 +1,15 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { Refresh01Icon } from '@hugeicons/core-free-icons'
 import { diskSchedule, parseNums } from './lib/os.js'
+import { usePrefersReducedMotion } from '../lib/motion.js'
+import Icon from '../components/Icon.jsx'
 
 const ALGOS = ['FCFS', 'SSTF', 'SCAN', 'C-SCAN', 'LOOK', 'C-LOOK']
 const PRESETS = [
-  { label: "May '25 — 0–4999, head 2150, prev 1805", min: 0, max: 4999, head: 2150, prev: 1805, queue: '2069 1212 2296 2800 544 1618 356 1523 4965 3681' },
-  { label: 'Textbook — 0–199, head 53, moving down', min: 0, max: 199, head: 53, prev: 60, queue: '98 183 37 122 14 124 65 67' },
-  { label: "Jan '23 — head 40", min: 0, max: 199, head: 40, prev: 30, queue: '68 78 42 32 93 35 82' },
-  { label: "Jan '23 IT — SSTF, arm at 100", min: 0, max: 200, head: 100, prev: 90, queue: '30 85 90 100 105 110 135 145' },
+  { label: "May '25: 0–4999, head 2150, prev 1805", min: 0, max: 4999, head: 2150, prev: 1805, queue: '2069 1212 2296 2800 544 1618 356 1523 4965 3681' },
+  { label: 'Textbook: 0–199, head 53, moving down', min: 0, max: 199, head: 53, prev: 60, queue: '98 183 37 122 14 124 65 67' },
+  { label: "Jan '23: head 40", min: 0, max: 199, head: 40, prev: 30, queue: '68 78 42 32 93 35 82' },
+  { label: "Jan '23 IT: SSTF, arm at 100", min: 0, max: 200, head: 100, prev: 90, queue: '30 85 90 100 105 110 135 145' },
 ]
 
 export default function DiskSchedulingSim() {
@@ -21,6 +24,22 @@ export default function DiskSchedulingSim() {
   const error = !queue.length ? 'Enter at least one request.'
     : queue.some((c) => !Number.isFinite(c) || c < p.min || c > p.max) || p.head < p.min || p.head > p.max ? `All cylinders must be between ${p.min} and ${p.max}.` : null
   const res = useMemo(() => (error ? null : diskSchedule(algo, p.head, queue, { min: p.min, max: p.max, direction, countJump })), [algo, p, queue, direction, countJump, error])
+  // Head animation: reveal one seek at a time while the head glides to the next cylinder.
+  const reduced = usePrefersReducedMotion()
+  const [shownMoves, setShownMoves] = useState(Infinity)
+  const [run, setRun] = useState(0)
+  const runKey = res ? `${algo}|${countJump}|${res.path.join(',')}|${run}` : ''
+  useEffect(() => {
+    if (!res || reduced) { setShownMoves(Infinity); return }
+    let k = 0
+    setShownMoves(0)
+    const id = setInterval(() => {
+      k += 1
+      setShownMoves(k)
+      if (k >= res.moves.length) clearInterval(id)
+    }, 320)
+    return () => clearInterval(id)
+  }, [runKey, reduced]) // eslint-disable-line react-hooks/exhaustive-deps
   const all = useMemo(() => (error ? {} : Object.fromEntries(ALGOS.map((a) => [a, diskSchedule(a, p.head, queue, { min: p.min, max: p.max, direction, countJump }).total]))), [p, queue, direction, countJump, error])
 
   // SVG: cylinders on the x-axis, time going down.
@@ -31,8 +50,10 @@ export default function DiskSchedulingSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-disk">
-      <span className="label">Unit III · Numerical</span>
-      <h3 id="sim-disk">Disk scheduling visualiser</h3>
+      <div className="sim-head">
+        <h3 id="sim-disk">Disk scheduling visualiser</h3>
+        <span className="sim-unit">Unit III</span>
+      </div>
       <p className="sim-note">The direction comes from the previous request: previous below the head means the head is moving up (towards {p.max}).</p>
 
       <div className="sim-controls">
@@ -61,10 +82,16 @@ export default function DiskSchedulingSim() {
         <>
           <div className="sim-result" aria-live="polite">
             <div><b>{res.total}</b><span>total head movement (cylinders)</span></div>
-            <div><b>{direction === 'up' ? '↑ up' : '↓ down'}</b><span>initial direction</span></div>
+            {shownMoves < res.moves.length && (
+              <div><b className="num">{res.moves.slice(0, shownMoves).reduce((n, m) => n + (m.jump && !countJump ? 0 : Math.abs(m.to - m.from)), 0)}</b><span>so far, after {shownMoves} of {res.moves.length} moves</span></div>
+            )}
+            <div><b>{direction === 'up' ? 'Up' : 'Down'}</b><span>initial direction</span></div>
             <div><b style={{ fontSize: 15, lineHeight: 1.4 }}>{ALGOS.map((a) => `${a} ${all[a]}`).join(' · ')}</b><span>all algorithms, same input</span></div>
           </div>
-          <div className="grid-scroll" style={{ background: 'var(--bg)', borderRadius: 16, border: '1px solid var(--line)' }}>
+          <div className="sim-toolbar" style={{ marginBottom: 8 }}>
+            <button type="button" className="btn btn-sm" onClick={() => setRun((r) => r + 1)} disabled={reduced}><Icon icon={Refresh01Icon} /> Replay the head movement</button>
+          </div>
+          <div className="grid-scroll disk-plot">
             <svg viewBox={`0 0 ${W} ${H + 10}`} width="100%" style={{ minWidth: 560, display: 'block' }} role="img" aria-label={`Head path: ${res.path.join(' → ')}`}>
               <line x1={pad} x2={W - pad} y1={pad - 8} y2={pad - 8} stroke="currentColor" opacity=".35" />
               {ticks.map((c, i) => (
@@ -74,15 +101,24 @@ export default function DiskSchedulingSim() {
                 </g>
               ))}
               {res.moves.map((m, i) => (
-                <line key={i} x1={x(m.from)} y1={pad + i * rowH} x2={x(m.to)} y2={pad + (i + 1) * rowH}
-                  stroke={m.jump ? 'var(--blue)' : 'var(--coral-deep)'} strokeWidth="2.2" strokeDasharray={m.jump ? '5 4' : undefined} />
+                <line key={`${runKey}-m${i}`} className={`disk-seg${i < shownMoves ? ' is-on' : ''}`} x1={x(m.from)} y1={pad + i * rowH} x2={x(m.to)} y2={pad + (i + 1) * rowH}
+                  stroke={m.jump ? 'var(--accent)' : 'var(--hot)'} strokeWidth="2.2" strokeDasharray={m.jump ? '5 4' : undefined} />
               ))}
               {res.path.map((c, i) => (
-                <g key={i}>
-                  <circle cx={x(c)} cy={pad + i * rowH} r={i === 0 ? 6 : 4.5} fill={i === 0 ? 'var(--ink)' : 'var(--coral)'} stroke="var(--surface)" strokeWidth="1.5" />
+                <g key={`${runKey}-p${i}`} className={`disk-pt${i <= shownMoves ? ' is-on' : ''}`}>
+                  <circle cx={x(c)} cy={pad + i * rowH} r={i === 0 ? 6 : 4.5} fill={i === 0 ? 'var(--text)' : 'var(--hot)'} stroke="var(--surface)" strokeWidth="1.5" />
                   <text x={x(c) + 8} y={pad + i * rowH + 4} fontSize="11" fill="currentColor">{c}</text>
                 </g>
               ))}
+              {shownMoves < res.moves.length && (() => {
+                const k = Math.min(shownMoves, res.path.length - 1)
+                return (
+                  <g className="disk-head" style={{ transform: `translate(${x(res.path[k])}px, ${pad + k * rowH}px)` }} aria-hidden="true">
+                    <circle r="9" fill="none" stroke="var(--accent)" strokeWidth="2" />
+                    <circle r="3" fill="var(--accent)" />
+                  </g>
+                )
+              })()}
             </svg>
           </div>
           <p className="sim-note" style={{ marginTop: 10, overflowWrap: 'anywhere' }}>

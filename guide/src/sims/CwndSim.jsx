@@ -20,8 +20,10 @@ export default function CwndSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-cwnd">
-      <span className="label">Unit IV · Numerical</span>
-      <h3 id="sim-cwnd">TCP congestion window (slow start + AIMD)</h3>
+      <div className="sim-head">
+        <h3 id="sim-cwnd">TCP congestion window (slow start + AIMD)</h3>
+        <span className="sim-unit">Unit IV</span>
+      </div>
       <p className="sim-note">Preloaded with Dec &apos;22: initial window 2 MSS, threshold 8, timeout at the 5th transmission. Window doubles below the threshold, grows by 1 above it.</p>
       <div className="sim-controls">
         <label className="field">Initial cwnd (MSS)<input type="number" min="1" value={initial} onChange={(e) => setInitial(Number(e.target.value))} style={{ width: 90 }} /></label>

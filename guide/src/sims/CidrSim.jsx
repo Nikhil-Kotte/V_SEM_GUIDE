@@ -10,8 +10,10 @@ export default function CidrSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-cidr">
-      <span className="label">Unit III · Numerical</span>
-      <h3 id="sim-cidr">CIDR block calculator</h3>
+      <div className="sim-head">
+        <h3 id="sim-cidr">CIDR block calculator</h3>
+        <span className="sim-unit">Unit III</span>
+      </div>
       <p className="sim-note">Type any address with a prefix length. Preloaded with Nov &apos;25. The /17 and /18 presets are the two hosts from the Dec &apos;22 &quot;same network?&quot; question.</p>
       <div className="sim-controls">
         <label className="field">Address / prefix<input value={text} onChange={(e) => setText(e.target.value)} style={{ width: 220 }} spellCheck={false} /></label>

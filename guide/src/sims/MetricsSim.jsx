@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { regressionMetrics } from './lib/fds.js'
 import { parseNums } from './lib/os.js'
 
-const f = (n) => (n == null ? '—' : Number(n.toFixed(4)).toString())
+const f = (n) => (n == null ? 'n/a' : Number(n.toFixed(4)).toString())
 
 export default function MetricsSim() {
   const [yText, setY] = useState('3 5 7')
@@ -13,8 +13,10 @@ export default function MetricsSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-metrics">
-      <span className="label">Unit V · Numerical</span>
-      <h3 id="sim-metrics">Regression metrics calculator</h3>
+      <div className="sim-head">
+        <h3 id="sim-metrics">Regression metrics calculator</h3>
+        <span className="sim-unit">Unit V</span>
+      </div>
       <p className="sim-note">Enter actual and predicted values. Preloaded with the worked example.</p>
       <div className="sim-controls">
         <label className="field" style={{ flex: '1 1 220px' }}>Actual y<input value={yText} onChange={(e) => setY(e.target.value)} /></label>

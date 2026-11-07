@@ -12,8 +12,10 @@ export default function FunctionPointSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-fp">
-      <span className="label">Unit III · Numerical</span>
-      <h3 id="sim-fp">Function point calculator</h3>
+      <div className="sim-head">
+        <h3 id="sim-fp">Function point calculator</h3>
+        <span className="sim-unit">Unit III</span>
+      </div>
       <p className="sim-note">Preloaded with May &apos;25 (50 / 40 / 35 / 6 / 4, average weights). The paper gives no ratings for the 14 factors, so all are set to 3 (average). Say so in your answer.</p>
       <div className="table-wrap" tabIndex={0} role="region" aria-label="Domain values">
         <table>
@@ -45,7 +47,7 @@ export default function FunctionPointSim() {
           {GSC.map((g, i) => (
             <label key={g} className="field" style={{ fontWeight: 500 }}>{i + 1}. {g}
               <select value={fi[i]} onChange={(e) => setFi(fi.map((x, j) => (j === i ? Number(e.target.value) : x)))}>
-                {[0, 1, 2, 3, 4, 5].map((v) => <option key={v} value={v}>{v} — {['none', 'incidental', 'moderate', 'average', 'significant', 'essential'][v]}</option>)}
+                {[0, 1, 2, 3, 4, 5].map((v) => <option key={v} value={v}>{v}: {['none', 'incidental', 'moderate', 'average', 'significant', 'essential'][v]}</option>)}
               </select>
             </label>
           ))}

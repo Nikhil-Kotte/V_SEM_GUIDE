@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
+import { NextIcon, PauseIcon, PlayIcon, PreviousIcon, Refresh01Icon, FastForwardIcon } from '@hugeicons/core-free-icons'
 import { pageReplacement, parseNums } from './lib/os.js'
+import Icon from '../components/Icon.jsx'
 
 const PRESETS = [
-  { label: "Nov '25 — Optimal, 3 frames", refs: '7 2 3 1 2 5 3 4 6 7 7 1 0 5 4 6 2 3 0 1', frames: 3, algo: 'OPT' },
+  { label: "Nov '25: Optimal, 3 frames", refs: '7 2 3 1 2 5 3 4 6 7 7 1 0 5 4 6 2 3 0 1', frames: 3, algo: 'OPT' },
   { label: 'Textbook string, 3 frames', refs: '7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1', frames: 3, algo: 'LRU' },
-  { label: "Jun '24 AIML — LRU, 3 frames", refs: '5 0 2 1 0 3 0 2 4 3 0 3 2 1 3 0 1 5', frames: 3, algo: 'LRU' },
-  { label: "Jan '23 — FIFO vs OPT, 3 frames", refs: '1 2 3 4 1 2 3 4 2 1 3 4', frames: 3, algo: 'FIFO' },
+  { label: "Jun '24 AIML: LRU, 3 frames", refs: '5 0 2 1 0 3 0 2 4 3 0 3 2 1 3 0 1 5', frames: 3, algo: 'LRU' },
+  { label: "Jan '23: FIFO vs OPT, 3 frames", refs: '1 2 3 4 1 2 3 4 2 1 3 4', frames: 3, algo: 'FIFO' },
   { label: "Belady's anomaly (try 3, then 4 frames)", refs: '1 2 3 4 1 2 5 1 2 3 4 5', frames: 3, algo: 'FIFO' },
 ]
 const ALGOS = [['FIFO', 'FIFO'], ['LRU', 'LRU'], ['OPT', 'Optimal']]
@@ -22,6 +24,8 @@ export default function PageReplacementSim() {
   const result = useMemo(() => (valid ? pageReplacement(refs, frames, algo) : null), [refs, frames, algo, valid])
   const all = useMemo(() => (valid ? Object.fromEntries(ALGOS.map(([a]) => [a, pageReplacement(refs, frames, a).faults])) : {}), [refs, frames, valid])
   const shown = Math.min(step, refs.length)
+  // Animate only while stepping through, never for the full table at once.
+  const stepping = step <= refs.length
 
   useEffect(() => {
     if (!playing) return
@@ -34,9 +38,11 @@ export default function PageReplacementSim() {
 
   return (
     <section className="sim" aria-labelledby="sim-pr">
-      <span className="label">Unit III · Numerical</span>
-      <h3 id="sim-pr">Page replacement, step by step</h3>
-      <p className="sim-note">Type any reference string. Orange = page loaded on a fault, green = hit. Step through to see exactly which page gets replaced.</p>
+      <div className="sim-head">
+        <h3 id="sim-pr">Page replacement, step by step</h3>
+        <span className="sim-unit">Unit III</span>
+      </div>
+      <p className="sim-note">Type any reference string. Red = page loaded on a fault, green = hit. Step through to see exactly which page gets replaced.</p>
 
       <div className="sim-controls">
         <label className="field" style={{ flex: '1 1 320px' }}>Reference string
@@ -56,12 +62,14 @@ export default function PageReplacementSim() {
         <div className="seg" role="group" aria-label="Algorithm">
           {ALGOS.map(([a, label]) => <button key={a} type="button" aria-pressed={algo === a} onClick={() => setAlgo(a)}>{label}</button>)}
         </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-          <button type="button" className="btn btn-sm" onClick={() => { setPlaying(false); setStep(0) }}>Reset</button>
-          <button type="button" className="btn btn-sm" onClick={() => setStep((s) => Math.max(0, Math.min(s, refs.length) - 1))} disabled={shown === 0}>← Step</button>
-          <button type="button" className="btn btn-sm" onClick={() => setStep((s) => Math.min(s, refs.length) + 1)} disabled={shown >= refs.length}>Step →</button>
-          <button type="button" className="btn btn-sm btn-ink" onClick={() => { if (shown >= refs.length) setStep(0); setPlaying((p) => !p) }}>{playing ? 'Pause' : 'Play'}</button>
-          <button type="button" className="btn btn-sm" onClick={() => { setPlaying(false); setStep(Infinity) }}>Show all</button>
+        <div className="sim-toolbar" role="group" aria-label="Step controls">
+          <button type="button" className="btn btn-sm" onClick={() => { setPlaying(false); setStep(0) }}><Icon icon={Refresh01Icon} /> Reset</button>
+          <button type="button" className="btn btn-sm" onClick={() => { setPlaying(false); setStep((s) => Math.max(0, Math.min(s, refs.length) - 1)) }} disabled={shown === 0}><Icon icon={PreviousIcon} /> Back</button>
+          <button type="button" className="btn btn-sm" onClick={() => { setPlaying(false); setStep((s) => Math.min(s, refs.length) + 1) }} disabled={shown >= refs.length}>Step <Icon icon={NextIcon} /></button>
+          <button type="button" className="btn btn-sm btn-primary" aria-pressed={playing} onClick={() => { if (shown >= refs.length) setStep(0); setPlaying((p) => !p) }}>
+            <Icon icon={playing ? PauseIcon : PlayIcon} /> {playing ? 'Pause' : 'Play'}
+          </button>
+          <button type="button" className="btn btn-sm" onClick={() => { setPlaying(false); setStep(Infinity) }}><Icon icon={FastForwardIcon} /> Show all</button>
         </div>
       </div>
 
@@ -84,8 +92,17 @@ export default function PageReplacementSim() {
                     {result.steps.map((s, i) => {
                       if (i >= shown) return <td key={i} />
                       const v = s.frames[f]
-                      const cls = !s.hit && s.slot === f ? 'new' : s.hit && s.slot === f ? 'hitcell' : ''
-                      return <td key={i} className={cls}>{v ?? ''}</td>
+                      const isNew = !s.hit && s.slot === f
+                      const cls = isNew ? 'new' : s.hit && s.slot === f ? 'hitcell' : ''
+                      // Only the step just taken animates: the new page drops in, the replaced one lifts out.
+                      const live = stepping && i === shown - 1 && s.slot === f
+                      const evicted = live && isNew ? result.steps[i - 1]?.frames[f] : undefined
+                      return (
+                        <td key={i} className={`${cls}${live ? ' is-live' : ''}`}>
+                          {evicted != null && <span className="cell-out" aria-hidden="true">{evicted}</span>}
+                          <span className="cell-in">{v ?? ''}</span>
+                        </td>
+                      )
                     })}
                   </tr>
                 ))}

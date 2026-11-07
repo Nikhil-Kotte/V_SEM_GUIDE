@@ -24,7 +24,7 @@ export function SixHats() {
             <foreignObject x={x + 12} y={y + 64} width="162" height="64">
               <div style={{ fontSize: 12, lineHeight: 1.35, color: 'var(--text-soft)' }}>{q}</div>
             </foreignObject>
-            <title>{`${name} hat — ${role}`}</title>
+            <title>{`${name} hat: ${role}`}</title>
           </g>
         )
       })}

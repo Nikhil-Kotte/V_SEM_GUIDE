@@ -1,0 +1,13 @@
+Enter number of processes: 4
+Enter process name and burst time: A 6
+Enter process name and burst time: B 8
+Enter process name and burst time: C 7
+Enter process name and burst time: D 3
+
+Ps	BT	CT	TAT	WT
+D	3	3	3	0
+A	6	9	9	3
+C	7	16	16	9
+B	8	24	24	16
+Avg TAT = 13.00 ms
+Avg WT = 7.00 ms

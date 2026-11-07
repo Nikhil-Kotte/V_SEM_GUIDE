@@ -1,0 +1,2 @@
+Enter the number: 79
+79 is not an armstrong number

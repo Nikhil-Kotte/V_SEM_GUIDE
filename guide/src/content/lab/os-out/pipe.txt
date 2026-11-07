@@ -1,0 +1,2 @@
+Parent writing: Hello from parent via pipe!
+Child received: Hello from parent via pipe!

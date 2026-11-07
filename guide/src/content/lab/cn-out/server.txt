@@ -1,0 +1,7 @@
+$ python3 server.py
+Listening on 127.0.0.1:8000
+Accepted connection from 127.0.0.1:61894
+Received: Hi
+Received: Hello
+Received: How are you?
+Connection to client closed

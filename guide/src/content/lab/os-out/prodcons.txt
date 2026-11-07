@@ -1,0 +1,22 @@
+[Producer] Produced 1 at slot 0
+[Consumer] Consumed 1 from slot 0
+[Producer] Produced 2 at slot 1
+[Producer] Produced 3 at slot 2
+[Consumer] Consumed 2 from slot 1
+[Producer] Produced 4 at slot 3
+[Consumer] Consumed 3 from slot 2
+[Producer] Produced 5 at slot 4
+[Consumer] Consumed 4 from slot 3
+[Producer] Produced 6 at slot 5
+[Consumer] Consumed 5 from slot 4
+[Producer] Produced 7 at slot 6
+[Consumer] Consumed 6 from slot 5
+[Producer] Produced 8 at slot 7
+[Consumer] Consumed 7 from slot 6
+[Producer] Produced 9 at slot 0
+[Consumer] Consumed 8 from slot 7
+[Producer] Produced 10 at slot 1
+[Consumer] Consumed 9 from slot 0
+[Consumer] Consumed 10 from slot 1
+
+All done. Cleaned up shared memory and semaphores.

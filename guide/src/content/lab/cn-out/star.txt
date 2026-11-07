@@ -1,0 +1,19 @@
+$ ./ns3 run star
+
+===== Star Topology =====
+PC-1 : 10.0.0.1
+PC-2 : 10.0.0.2
+PC-3 : 10.0.0.3
+PC-4 : 10.0.0.4
+PC-5 : 10.0.0.5
+=========================
+
+Starting simulation...
+At time +2s client sent 1024 bytes to 10.0.0.5 port 9
+At time +2.00…s server received 1024 bytes from 10.0.0.1 port 49153
+At time +2.00…s server sent 1024 bytes to 10.0.0.1 port 49153
+At time +2.00…s client received 1024 bytes from 10.0.0.5 port 9
+At time +3s client sent 1024 bytes to 10.0.0.5 port 9
+...                      (the same 4 lines repeat at 4s, 5s and 6s)
+At time +6.00…s client received 1024 bytes from 10.0.0.5 port 9
+Simulation completed.

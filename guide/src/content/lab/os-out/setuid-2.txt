@@ -1,0 +1,2 @@
+Current user ID: 1001
+UID cannot be changed (Privileges required)

@@ -1,0 +1,21 @@
+Enter frame size: 3
+Enter number of pages: 12
+Enter the pages:
+7 0 1 2 0 3 0 4 2 3 0 3
+Page 7 -> 7 - - (MISS)
+Page 0 -> 7 0 - (MISS)
+Page 1 -> 7 0 1 (MISS)
+Page 2 -> 2 0 1 (MISS)
+Page 0 -> 2 0 1 (HIT)
+Page 3 -> 2 3 1 (MISS)
+Page 0 -> 2 3 0 (MISS)
+Page 4 -> 4 3 0 (MISS)
+Page 2 -> 4 2 0 (MISS)
+Page 3 -> 4 2 3 (MISS)
+Page 0 -> 0 2 3 (MISS)
+Page 3 -> 0 2 3 (HIT)
+
+Total Hits = 2
+Total Misses = 10
+Hit Ratio = 0.17
+Miss Ratio = 0.83

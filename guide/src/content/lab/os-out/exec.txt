@@ -1,0 +1,11 @@
+Child 1: Running 'ls -l' using execlp()
+total 81
+-rwxrwx--- 1 student student 75307 Nov  7 22:45 a.out
+-rwxrwx--- 1 student student   952 Nov  7 22:45 exec.c
+-rwxrwx--- 1 student student     8 Nov  7 22:45 notes.txt
+Child 2: Running 'ls -a' using execv()
+.
+..
+a.out
+exec.c
+notes.txt

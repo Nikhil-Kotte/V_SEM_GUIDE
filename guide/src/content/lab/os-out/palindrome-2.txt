@@ -1,0 +1,2 @@
+Enter the number: 143
+143 is not a palindrome number.

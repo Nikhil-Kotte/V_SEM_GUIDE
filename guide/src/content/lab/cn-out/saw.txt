@@ -1,0 +1,22 @@
+$ ./ns3 run stop-and-wait
+Sender: Sent DATA Seq=0 at 1s
+Receiver: Got DATA Seq=0 at 1.00205s
+Receiver: Sent ACK for Seq=0 at 1.00205s
+Sender: Got ACK at 1.0041s
+Sender: Sent DATA Seq=1 at 3s
+Receiver: Got DATA Seq=1 at 3.00205s
+Receiver: Sent ACK for Seq=1 at 3.00205s
+Sender: Got ACK at 3.0041s
+Sender: Sent DATA Seq=2 at 5s
+Receiver: Got DATA Seq=2 at 5.00205s
+Receiver: Sent ACK for Seq=2 at 5.00205s
+Sender: Got ACK at 5.0041s
+Sender: Sent DATA Seq=3 at 7s
+Receiver: Got DATA Seq=3 at 7.00205s
+Receiver: Sent ACK for Seq=3 at 7.00205s
+Sender: Got ACK at 7.0041s
+Sender: Sent DATA Seq=4 at 9s
+Receiver: Got DATA Seq=4 at 9.00205s
+Receiver: Sent ACK for Seq=4 at 9.00205s
+Sender: Got ACK at 9.0041s
+Simulation finished after sending 5 packets.

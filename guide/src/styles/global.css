@@ -364,6 +364,34 @@ pre.code {
   padding: 14px 16px; overflow-x: auto; font-family: var(--font-mono); font-size: 14px; line-height: 1.55; margin: 0;
 }
 pre.code code { background: none; border: 0; padding: 0; font-size: inherit; }
+/* Lab: source files, terminal output, record screenshots */
+.codefile { border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; background: var(--code-bg); }
+.codefile__bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 8px 6px 14px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+.codefile__name { font-family: var(--font-mono); font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
+.codefile__copy { font: inherit; font-size: 12.5px; font-weight: 600; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text); border-radius: var(--pill); padding: .25em .9em; cursor: pointer; }
+.codefile__copy:hover { background: var(--bg); }
+.codefile pre.code { border: 0; border-radius: 0; max-height: 560px; }
+.terminal { border-radius: var(--radius-sm); overflow: hidden; background: #0d1716; color: #d9f2e4; border: 1px solid #22312f; }
+.terminal__bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: #182624; font-size: 12.5px; color: #9fb5ad; }
+.terminal__bar i { width: 10px; height: 10px; border-radius: 50%; background: #ff6b5b; flex: none; }
+.terminal__bar i:nth-child(2) { background: #f4c04e; }
+.terminal__bar i:nth-child(3) { background: #4fc77a; }
+.terminal__bar span { margin-left: 6px; font-weight: 600; overflow-wrap: anywhere; }
+.terminal pre { margin: 0; padding: 14px 16px; overflow-x: auto; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.55; max-height: 520px; }
+.terminal code { background: none; border: 0; padding: 0; color: inherit; font-size: inherit; }
+.lab-intro { margin: 28px 0 8px; }
+.lab-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 28px; padding: 0; list-style: none; }
+.lab-toc a { display: inline-block; border: 1px solid var(--line-strong); border-radius: var(--pill); padding: .3em .9em; font-size: 14px; text-decoration: none; color: var(--text); background: var(--surface); }
+.lab-toc a:hover { background: var(--surface-2); }
+.lab-exp { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: clamp(18px, 3vw, 30px); margin-bottom: 22px; scroll-margin-top: 90px; }
+.lab-exp > header .num { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); }
+.lab-exp > header h3 { margin: 4px 0 6px; font-family: var(--font-display); font-size: clamp(21px, 2.6vw, 27px); letter-spacing: -0.03em; line-height: 1.2; }
+.lab-exp > header .aim { margin: 0 0 6px; color: var(--text-soft); }
+.lab-exp .lab-body { display: grid; gap: 16px; }
+.lab-exp .lab-body > * { min-width: 0; }
+.lab-part { border-top: 1px dashed var(--line-strong); padding-top: 16px; display: grid; gap: 14px; }
+.lab-part > h4 { margin: 0; }
+
 .formula { font-family: var(--font-mono); font-size: 15.5px; background: var(--surface-2); border-radius: 12px; padding: 10px 14px; display: block; overflow-x: auto; }
 
 /* Diagrams */

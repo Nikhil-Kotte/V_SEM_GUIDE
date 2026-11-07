@@ -1,0 +1,2 @@
+Current user ID: 1000
+User ID successfully changed to 1000 

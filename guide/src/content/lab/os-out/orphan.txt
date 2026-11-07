@@ -1,0 +1,6 @@
+Parent: My PID = 423
+Child: My PID = 424, My Parent PID = 423
+Parent: Exiting immediately.
+Child: Sleeping for 10 seconds...
+Child: My new Parent PID = 1 (should be 1 if orphaned)
+Child: Exiting.

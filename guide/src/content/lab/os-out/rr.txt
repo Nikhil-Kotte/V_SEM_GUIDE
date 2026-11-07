@@ -1,0 +1,18 @@
+Enter number of processes: 4
+Enter Arrival Time and Burst Time for each process:
+P1 AT BT: 0 5
+P2 AT BT: 1 4
+P3 AT BT: 2 2
+P4 AT BT: 4 1
+Enter Time Quantum: 2
+
+Gantt Chart: | P1 | P2 | P3 | P1 | P4 | P2 | P1 |
+
+Process	AT	BT	CT	WT	TAT
+P1	0	5	12	7	12
+P2	1	4	11	6	10
+P3	2	2	6	2	4
+P4	4	1	9	4	5
+
+Average Waiting Time: 4.75
+Average Turnaround Time: 7.75

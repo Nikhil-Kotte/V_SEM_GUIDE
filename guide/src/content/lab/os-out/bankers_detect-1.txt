@@ -1,0 +1,17 @@
+Enter number of processes and resources: 5 3
+Enter Allocation Matrix (5 x 3):
+0 1 0
+2 0 0
+3 0 3
+2 1 1
+0 0 2
+Enter Request Matrix (5 x 3):
+0 0 0
+2 0 2
+0 0 0
+1 0 0
+0 0 2
+Enter Available Resources (3 values): 0 0 0
+
+System is in Safe State.
+Safe Sequence: P1 P3 P4 P5 P2

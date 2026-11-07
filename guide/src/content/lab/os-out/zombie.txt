@@ -1,0 +1,7 @@
+Child process
+Parent process: PID 1045
+Child ID: 1046
+Child process ID = 1046
+Sleeping for 30 seconds without calling wait()...
+Parent ID: 1045
+Parent exiting after sleep

@@ -1,0 +1,6 @@
+Enter Data: 1101011011
+Enter Divisor: 10011
+CRC Remainder: 1110
+Transmitted Codeword: 11010110111110
+Enter Received Codeword: 11010110111110
+No Error Detected

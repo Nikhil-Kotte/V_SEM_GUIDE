@@ -1,0 +1,42 @@
+=== Hamming Code ===
+Enter the data bits : 1011
+
+--- Sender side ---
+M(x) = 1011, m = 4
+r = 1 : 2 >= 6 is False
+r = 2 : 4 >= 7 is False
+r = 3 : 8 >= 8 is True
+So 3 parity bits are needed, total length = 7
+
+Calculating the parity bits (even parity):
+P1 = XOR of positions [3, 5, 7] = 0
+P2 = XOR of positions [3, 6, 7] = 1
+P4 = XOR of positions [5, 6, 7] = 0
+
+Position :    1   2   3   4   5   6   7
+Bit      :    0   1   1   0   0   1   1
+Type     :    P   P   D   P   D   D   D
+
+Transmitted message T(x) = 0110011
+
+Enter the received message (7 bits) : 0110111
+
+--- Receiver side ---
+Received message = 0110111
+Position :    1   2   3   4   5   6   7
+Bit      :    0   1   1   0   1   1   1
+Type     :    P   P   D   P   D   D   D
+
+Calculating the check bits:
+C1 = 1
+C2 = 0
+C4 = 1
+
+Syndrome value = 5
+Syndrome is not zero, so going to the correction function
+
+--- Correction ---
+Error is at bit position 5
+Corrected message = 0110011
+Corrected message is same as the transmitted message
+Recovered data bits = 1011

@@ -1,0 +1,2 @@
+Enter your number: 12
+Factorial of 12 is 479001600

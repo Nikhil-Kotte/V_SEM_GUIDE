@@ -1,0 +1,9 @@
+$ python3 client.py
+Enter message: Hi
+Received: accepted
+Enter message: Hello
+Received: accepted
+Enter message: How are you?
+Received: accepted
+Enter message: close
+Connection to server closed

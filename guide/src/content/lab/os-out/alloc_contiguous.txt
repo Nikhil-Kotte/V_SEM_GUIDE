@@ -1,0 +1,37 @@
+Enter total number of disk blocks: 10
+Enter number of files: 2
+
+Enter file name: f1
+Enter starting block: 0
+Enter number of blocks required: 3
+File 'f1' allocated successfully
+
+Enter file name: f2
+Enter starting block: 5
+Enter number of blocks required: 4
+File 'f2' allocated successfully
+
+ File Allocation Table (FAT)
+Block: Next Block
+0: 1
+1: 2
+2: NULL
+3: NULL
+4: NULL
+5: 6
+6: 7
+7: 8
+8: NULL
+9: NULL
+
+Enter file name to display its allocation (type 'exit' to quit): f1
+
+File Name: f1
+Blocks (traversing FAT): 0 -> 1 -> 2 -> NULL
+
+Enter file name to display its allocation (type 'exit' to quit): f3
+File not found!
+
+Enter file name to display its allocation (type 'exit' to quit): exit
+
+Program ended.

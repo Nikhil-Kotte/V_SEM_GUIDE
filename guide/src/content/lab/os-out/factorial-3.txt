@@ -1,0 +1,2 @@
+Enter your number: -5
+Factorial doesn't exist for negative numbers

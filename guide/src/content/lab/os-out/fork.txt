@@ -1,0 +1,8 @@
+Parent pid :1308 
+child pid:1309 
+Child process is created 
+Parent pid:1308 
+Child pid:1309
+Child process waiting for 5 seconds 
+Child process is exiting 
+Parent process is exiting.. 

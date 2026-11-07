@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import Inline from './Inline.jsx'
 import Diagram from './Diagram.jsx'
 import Term from './Term.jsx'
+import { CodeFile, Terminal, Shot } from './LabParts.jsx'
 
 const SimEmbed = lazy(() => import('../sims/SimEmbed.jsx'))
 
@@ -28,6 +29,9 @@ const CALLOUTS = {
 //   { formula: '...' }              formula line
 //   { sim: 'sim-id' }               interactive simulator
 //   { terms: [[term, definition]] } glossary chips
+//   { file: 'x.c', code: '...' }    source file with a name bar and copy button (lab)
+//   { terminal: '...', title }      terminal output (lab)
+//   { shot: 'cn/ping', caption }    screenshot from a lab record (public/lab/…)
 export default function Blocks({ blocks }) {
   if (!blocks) return null
   return blocks.map((b, i) => <Block key={i} b={b} />)
@@ -79,6 +83,9 @@ function Block({ b }) {
     }
   }
   if (b.img) return <Diagram id={b.img} />
+  if (b.file) return <CodeFile file={b.file} code={b.code} />
+  if (b.terminal) return <Terminal title={b.title} text={b.terminal} />
+  if (b.shot) return <Shot src={b.shot} caption={b.caption} />
   if (b.code) return <pre className="code"><code>{b.code.trim()}</code></pre>
   if (b.formula) return <span className="formula"><Inline text={b.formula} /></span>
   if (b.terms) return <div className="terms">{b.terms.map(([t, d]) => <Term key={t} term={t} def={d} />)}</div>

@@ -1,0 +1,52 @@
+Philosopher 0 is thinking
+Philosopher 1 is thinking
+Philosopher 2 is thinking
+Philosopher 3 is thinking
+Philosopher 4 is thinking
+Philosopher 2 is eating (Round 1)
+Philosopher 4 is eating (Round 1)
+Philosopher 4 finished eating and put down chopsticks
+Philosopher 1 is eating (Round 1)
+Philosopher 2 finished eating and put down chopsticks
+Philosopher 3 is eating (Round 1)
+Philosopher 4 is thinking
+Philosopher 2 is thinking
+Philosopher 0 is eating (Round 1)
+Philosopher 1 finished eating and put down chopsticks
+Philosopher 2 is eating (Round 2)
+Philosopher 3 finished eating and put down chopsticks
+Philosopher 1 is thinking
+Philosopher 3 is thinking
+Philosopher 2 finished eating and put down chopsticks
+Philosopher 0 finished eating and put down chopsticks
+Philosopher 4 is eating (Round 2)
+Philosopher 1 is eating (Round 2)
+Philosopher 2 is thinking
+Philosopher 0 is thinking
+Philosopher 4 finished eating and put down chopsticks
+Philosopher 3 is eating (Round 2)
+Philosopher 1 finished eating and put down chopsticks
+Philosopher 0 is eating (Round 2)
+Philosopher 4 is thinking
+Philosopher 1 is thinking
+Philosopher 3 finished eating and put down chopsticks
+Philosopher 2 is eating (Round 3)
+Philosopher 4 is eating (Round 3)
+Philosopher 0 finished eating and put down chopsticks
+Philosopher 3 is thinking
+Philosopher 0 is thinking
+Philosopher 2 finished eating and put down chopsticks
+Philosopher 1 is eating (Round 3)
+Philosopher 4 finished eating and put down chopsticks
+Philosopher 3 is eating (Round 3)
+Philosopher 2 is done eating and leaves the table
+Philosopher 4 is done eating and leaves the table
+Philosopher 1 finished eating and put down chopsticks
+Philosopher 0 is eating (Round 3)
+Philosopher 3 finished eating and put down chopsticks
+Philosopher 1 is done eating and leaves the table
+Philosopher 3 is done eating and leaves the table
+Philosopher 0 finished eating and put down chopsticks
+Philosopher 0 is done eating and leaves the table
+
+All philosophers are done. Program exiting gracefully...

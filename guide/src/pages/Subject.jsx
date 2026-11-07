@@ -7,6 +7,7 @@ import PyqTab from '../components/PyqTab.jsx'
 import NumericalsTab from '../components/NumericalsTab.jsx'
 import RevisionTab from '../components/RevisionTab.jsx'
 import DownloadsTab from '../components/DownloadsTab.jsx'
+import LabTab, { hasLab } from '../components/LabTab.jsx'
 import FoldText from '../components/bits/FoldText.jsx'
 import DecryptedText from '../components/bits/DecryptedText.jsx'
 
@@ -16,6 +17,7 @@ const TABS = [
   ['numericals', 'Numericals'],
   ['revision', 'Quick revision'],
   ['downloads', 'Downloads'],
+  ['lab', 'Lab external'],
 ]
 
 export default function Subject() {
@@ -23,9 +25,10 @@ export default function Subject() {
   const subject = subjectById[subj]
   const data = useSubject(subj)
   const store = useStore()
+  const tabs = TABS.filter(([t]) => t !== 'lab' || hasLab(subj))
 
   if (!subject) return <Navigate to="/" replace />
-  if (!TABS.some(([t]) => t === tab)) return <Navigate to={`/s/${subj}`} replace />
+  if (!tabs.some(([t]) => t === tab)) return <Navigate to={`/s/${subj}`} replace />
 
   const topicIds = data ? data.units.flatMap((u) => u.topics.map((t) => t.id)) : []
   const done = topicIds.filter((id) => store.done(id)).length
@@ -55,7 +58,7 @@ export default function Subject() {
             <div className="progress" aria-label={`${done} of ${topicIds.length} topics done`}><i style={{ width: `${(done / topicIds.length) * 100}%` }} /></div>
           )}
           <nav className="tabs" aria-label={`${subject.short} sections`}>
-            {TABS.map(([id, label]) => (
+            {tabs.map(([id, label]) => (
               <Link key={id} to={`/s/${subj}/${id}`} className="tab" aria-current={tab === id ? 'page' : undefined}>{label}</Link>
             ))}
           </nav>
@@ -63,7 +66,7 @@ export default function Subject() {
       </section>
 
       <div className="container">
-        {!data ? (
+        {tab === 'lab' ? <LabTab subject={subject} focus={item} /> : !data ? (
           <p className="muted" style={{ padding: '60px 0' }}>Loading {subject.name}…</p>
         ) : tab === 'learn' ? <LearnTab subject={subject} data={data} focus={item} />
           : tab === 'pyqs' ? <PyqTab subject={subject} data={data} focus={item} />

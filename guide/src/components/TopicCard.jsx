@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowDown01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
 import { useStore } from '../lib/storage.js'
 import Blocks from './Blocks.jsx'
 import Inline from './Inline.jsx'
+import Icon from './Icon.jsx'
+import Tally from './Tally.jsx'
 import SpringCheck from './bits/SpringCheck.jsx'
 
 // The detailed exam answers for this topic's past questions, right under the notes.
@@ -10,28 +13,34 @@ function TopicAnswers({ subject, pyqs }) {
   const [open, setOpen] = useState(null)
   return (
     <section className="topic-answers" aria-label="Exam answers for this topic">
-      <div className="label" style={{ marginBottom: 10 }}>Exam answers for this topic · {pyqs.length}</div>
-      {pyqs.map((q) => (
-        <div key={q.id} className="ta-item">
-          <button type="button" className="ta-q" aria-expanded={open === q.id} onClick={() => setOpen(open === q.id ? null : q.id)}>
-            <span className="ta-chev" aria-hidden="true">{open === q.id ? '−' : '+'}</span>
-            <span className="ta-text">{q.q}</span>
-            <span className="ta-meta">{q.count > 0 ? `${q.count}×` : q.kind === 'predicted' ? 'likely' : ''}{q.maxMarks ? ` · ${q.maxMarks}M` : ''}</span>
-          </button>
-          {open === q.id && (
-            <div className="ta-a prose">
-              <Blocks blocks={q.answer.blocks} />
-              {q.answer.sources && <p className="faint" style={{ fontSize: 13, marginTop: 12 }}>Sources: {q.answer.sources.join(' · ')}</p>}
-              <Link to={`/s/${subject.id}/pyqs/${encodeURIComponent(q.id)}`} className="chip" style={{ textDecoration: 'none' }}>Open in PYQs →</Link>
-            </div>
-          )}
-        </div>
-      ))}
+      <h4 className="topic-answers__title">Exam answers for this topic <span className="faint num">({pyqs.length})</span></h4>
+      {pyqs.map((q) => {
+        const isOpen = open === q.id
+        return (
+          <div key={q.id} className={`ta-item${isOpen ? ' is-open' : ''}`}>
+            <button type="button" className="ta-q" aria-expanded={isOpen} aria-controls={`ta-${q.id}`} onClick={() => setOpen(isOpen ? null : q.id)}>
+              <Icon icon={ArrowDown01Icon} className="icon ta-chev" />
+              <span className="ta-text">{q.q}</span>
+              <span className="ta-meta">
+                {q.count > 0 ? <span className="ta-count">{q.count}×</span> : q.kind === 'predicted' ? 'likely' : ''}
+                {q.maxMarks ? <span>{q.maxMarks} marks</span> : null}
+              </span>
+            </button>
+            {isOpen && (
+              <div className="ta-a prose" id={`ta-${q.id}`}>
+                <Blocks blocks={q.answer.blocks} />
+                {q.answer.sources && <p className="faint src-line">Sources: {q.answer.sources.join(', ')}</p>}
+                <Link to={`/s/${subject.id}/pyqs/${encodeURIComponent(q.id)}`} className="text-link">Open in PYQs <Icon icon={ArrowRight01Icon} /></Link>
+              </div>
+            )}
+          </div>
+        )
+      })}
     </section>
   )
 }
 
-// ChatGPT's plain-language explanation of the topic (content/<subject>/simple.js).
+// The plain-language explanation of the topic (content/<subject>/simple.js).
 function SimpleWords({ s }) {
   return (
     <section className="simple-words" aria-label="In simple words">
@@ -53,15 +62,18 @@ export default function TopicCard({ subject, topic, content, pyqs }) {
   const totalAsks = new Set(asked.flatMap((q) => q.asks.map((a) => a.paperId))).size
 
   return (
-    <article className="topic" id={topic.id} aria-labelledby={`${topic.id}-title`}>
+    <article className={`topic rv${done ? ' is-done' : ''}`} id={topic.id} aria-labelledby={`${topic.id}-title`}>
       <div className="topic-head">
         <div>
           <h3 id={`${topic.id}-title`}>{topic.title}</h3>
           <div className="asked">
             {totalAsks > 0
-              ? <Link to={`/s/${subject.id}/pyqs?topic=${encodeURIComponent(topic.id)}`} className={`chip ${totalAsks >= 3 ? 'chip-hot' : 'chip-warm'}`} style={{ textDecoration: 'none' }}>
-                {totalAsks >= 3 ? '🔥 ' : ''}In {totalAsks} past paper{totalAsks > 1 ? 's' : ''} · {asked.length} question{asked.length > 1 ? 's' : ''} →
-              </Link>
+              ? (
+                <Link to={`/s/${subject.id}/pyqs?topic=${encodeURIComponent(topic.id)}`} className="asked-link">
+                  <Tally count={totalAsks} size="sm" />
+                  <span>In {totalAsks} past paper{totalAsks > 1 ? 's' : ''}, {asked.length} question{asked.length > 1 ? 's' : ''}</span>
+                </Link>
+              )
               : <span className="chip chip-pred">Not asked in past papers yet</span>}
             {topic.covers && <span className="chip">{topic.covers}</span>}
           </div>
@@ -75,7 +87,7 @@ export default function TopicCard({ subject, topic, content, pyqs }) {
             fillColor="var(--ok)"
             checkColor="var(--surface)"
             boxSize={24}
-            boxRadius={12}
+            boxRadius={7}
             fontSize={15}
             strike="none"
             doneOpacity={1}
@@ -86,17 +98,17 @@ export default function TopicCard({ subject, topic, content, pyqs }) {
 
       {content ? (
         <>
-          <p className="one-line"><b>In one line:</b><Inline text={content.oneLine} /></p>
+          <p className="one-line"><b>In one line:</b> <span className="hl"><Inline text={content.oneLine} /></span></p>
           {content.simple && <SimpleWords s={content.simple} />}
-          {content.simple && <div className="label" style={{ margin: '22px 0 10px' }}>Detailed notes</div>}
+          {content.simple && <h4 className="notes-label">Detailed notes</h4>}
           <div className="prose"><Blocks blocks={content.blocks} /></div>
           {content.terms?.length > 0 && (
-            <div style={{ marginTop: 20 }}>
-              <div className="label" style={{ marginBottom: 8 }}>Key terms — tap to see</div>
+            <div className="topic-terms">
+              <h4 className="notes-label">Key terms <span className="faint">(tap one to see what it means)</span></h4>
               <Blocks blocks={[{ terms: content.terms }]} />
             </div>
           )}
-          {content.exam && <div style={{ marginTop: 20 }}><Blocks blocks={[{ exam: content.exam }]} /></div>}
+          {content.exam && <div className="topic-exam"><Blocks blocks={[{ exam: content.exam }]} /></div>}
         </>
       ) : (
         <p className="muted" style={{ marginTop: 16 }}>Notes for this topic are being written. Meanwhile, check the past questions and the original material in Downloads.</p>

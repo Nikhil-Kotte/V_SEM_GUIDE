@@ -1,14 +1,15 @@
+import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
+import { m as M } from 'motion/react'
 import { subjectById } from '../content/subjects.js'
 import { useSubject } from '../lib/useSubject.js'
-import { useStore } from '../lib/storage.js'
+import { setPref, useStore } from '../lib/storage.js'
 import LearnTab from '../components/LearnTab.jsx'
 import PyqTab from '../components/PyqTab.jsx'
 import NumericalsTab from '../components/NumericalsTab.jsx'
 import RevisionTab from '../components/RevisionTab.jsx'
 import DownloadsTab from '../components/DownloadsTab.jsx'
-import FoldText from '../components/bits/FoldText.jsx'
-import DecryptedText from '../components/bits/DecryptedText.jsx'
+import TabBar from '../components/TabBar.jsx'
 
 const TABS = [
   ['learn', 'Learn'],
@@ -23,10 +24,16 @@ export default function Subject() {
   const subject = subjectById[subj]
   const data = useSubject(subj)
   const store = useStore()
+  const validTab = TABS.some(([t]) => t === tab)
+
+  // Remember the last place so Home can offer "pick up where you left off".
+  useEffect(() => {
+    if (subject && validTab) setPref('last', { subj, tab, item: tab === 'learn' ? item : undefined })
+  }, [subj, tab, item]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!subject) return <Navigate to="/" replace />
   if (tab === 'lab') return <Navigate to={`/lab/${subj}`} replace />
-  if (!TABS.some(([t]) => t === tab)) return <Navigate to={`/s/${subj}`} replace />
+  if (!validTab) return <Navigate to={`/s/${subj}`} replace />
 
   const topicIds = data ? data.units.flatMap((u) => u.topics.map((t) => t.id)) : []
   const done = topicIds.filter((id) => store.done(id)).length
@@ -34,43 +41,51 @@ export default function Subject() {
 
   return (
     <>
-      <section className="band">
-        <div className="band-bg static" />
-        <div className="container band-inner">
-          <div className="crumbs"><Link to="/">Home</Link> / {subject.short}</div>
-          <h1 aria-label={subject.name}>
-            <FoldText key={subj} text={subject.name} foldStyle="paper" splitBy="char" hinge="top" trigger="mount"
-              stagger={0.03} duration={0.6} hoverRefold refoldRadius={110} refoldAngle={35}
-              fontSize="inherit" fontWeight={800} color="currentColor" />
-          </h1>
-          <div className="code">
-            <DecryptedText key={subj} text={`${subject.code} · Mid-2 syllabus`} animateOn="view" sequential
-              revealDirection="start" speed={35} useOriginalCharsOnly={false} characters="0123456789ABCDEFX/#" />
-          </div>
-          <div className="band-stats">
-            <span><b>{topicIds.length || '…'}</b>topics</span>
-            <span><b>{data ? pyqCount : '…'}</b>{subj === 'fds' ? 'related past questions' : 'past questions'}</span>
-            <span><b>{done}</b>done</span>
+      <section className="page-head">
+        <div className="container">
+          <nav className="crumbs" aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><span>{subject.short}</span></nav>
+          <div className="page-head__row">
+            <span className="badge badge--lg" style={{ background: subject.tint, color: subject.accent }} aria-hidden="true">{subject.short}</span>
+            <div>
+              <h1>{subject.name}</h1>
+              <p className="page-head__meta">
+                <span className="code">{subject.code}</span>
+                <span><b className="num">{topicIds.length || '...'}</b> topics</span>
+                <span><b className="num">{data ? pyqCount : '...'}</b> {subj === 'fds' ? 'related past questions' : 'past questions'}</span>
+                <span><b className="num">{done}</b> done</span>
+              </p>
+            </div>
           </div>
           {topicIds.length > 0 && (
-            <div className="progress" aria-label={`${done} of ${topicIds.length} topics done`}><i style={{ width: `${(done / topicIds.length) * 100}%` }} /></div>
+            <div className="progress page-head__progress" role="progressbar" aria-label="Topics done"
+              aria-valuemin={0} aria-valuemax={topicIds.length} aria-valuenow={done}>
+              <i style={{ transform: `scaleX(${done / topicIds.length})` }} />
+            </div>
           )}
-          <nav className="tabs" aria-label={`${subject.short} sections`}>
-            {TABS.map(([id, label]) => (
-              <Link key={id} to={`/s/${subj}/${id}`} className="tab" aria-current={tab === id ? 'page' : undefined}>{label}</Link>
-            ))}
-          </nav>
         </div>
       </section>
 
+      <div className="subject-tabs">
+        <div className="container">
+          <TabBar ariaLabel={`${subject.short} sections`}
+            items={TABS.map(([id, label]) => ({ to: `/s/${subj}/${id}`, label, current: tab === id }))} />
+        </div>
+      </div>
+
       <div className="container">
         {!data ? (
-          <p className="muted" style={{ padding: '60px 0' }}>Loading {subject.name}…</p>
-        ) : tab === 'learn' ? <LearnTab subject={subject} data={data} focus={item} />
-          : tab === 'pyqs' ? <PyqTab subject={subject} data={data} focus={item} />
-            : tab === 'numericals' ? <NumericalsTab subject={subject} data={data} />
-              : tab === 'revision' ? <RevisionTab subject={subject} data={data} />
-                : <DownloadsTab subject={subject} />}
+          <p className="muted loading-note" aria-busy="true">Loading {subject.name}...</p>
+        ) : (
+          <M.div key={tab} className="tab-panel"
+            initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}>
+            {tab === 'learn' ? <LearnTab subject={subject} data={data} focus={item} />
+              : tab === 'pyqs' ? <PyqTab subject={subject} data={data} focus={item} />
+                : tab === 'numericals' ? <NumericalsTab subject={subject} data={data} />
+                  : tab === 'revision' ? <RevisionTab subject={subject} data={data} />
+                    : <DownloadsTab subject={subject} />}
+          </M.div>
+        )}
       </div>
     </>
   )

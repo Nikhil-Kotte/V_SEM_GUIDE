@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useStore } from '../lib/storage.js'
 import TopicCard from './TopicCard.jsx'
 import RevealHeading from './RevealHeading.jsx'
+import { useReveal } from './Reveal.jsx'
 import BranchedMenu from './bits/BranchedMenu.jsx'
 import StatusMark from './bits/StatusMark.jsx'
 
@@ -22,6 +23,7 @@ export default function LearnTab({ subject, data, focus }) {
   const store = useStore()
   const navigate = useNavigate()
   const [active, setActive] = useState(focus || data.units[0].topics[0].id)
+  const listRef = useReveal([data])
 
   // Jump to a topic when the URL names one (from search, PYQs or the outline).
   useEffect(() => {
@@ -57,11 +59,11 @@ export default function LearnTab({ subject, data, focus }) {
   const goTo = (id) => navigate(`/s/${subject.id}/learn/${encodeURIComponent(id)}`, { replace: true })
 
   const menuItems = useMemo(() => data.units.map((u) => ({
-    label: `Unit ${u.unit} · ${u.title}`,
+    label: `Unit ${u.unit}: ${u.title}`,
     children: u.topics.map((t) => {
       const label = `${store.done(t.id) ? '✓ ' : ''}${t.title}`
-      // ~29 characters fit on one line of the 290px sidebar; extra lines make the row taller
-      return { value: t.id, label, lines: Math.ceil(label.length / 29) }
+      // ~28 characters fit on one line of the 280px sidebar; extra lines make the row taller
+      return { value: t.id, label, lines: Math.ceil(label.length / 28) }
     }),
   })), [data, store])
 
@@ -76,18 +78,18 @@ export default function LearnTab({ subject, data, focus }) {
           color="var(--text)"
           accentColor="var(--accent)"
           lineColor="var(--line-strong)"
-          width={290}
+          width={280}
           rowHeight={34}
           fontSize={14.5}
         />
       </aside>
 
-      <main>
+      <main ref={listRef}>
         <div className="mobile-picker">
           <label className="sr-only" htmlFor="topic-pick">Jump to topic</label>
           <select id="topic-pick" value={active} onChange={(e) => { goTo(e.target.value); document.getElementById(e.target.value)?.scrollIntoView({ block: 'start' }) }}>
             {data.units.map((u) => (
-              <optgroup key={u.unit} label={`Unit ${u.unit} — ${u.title}`}>
+              <optgroup key={u.unit} label={`Unit ${u.unit}: ${u.title}`}>
                 {u.topics.map((t) => <option key={t.id} value={t.id}>{store.done(t.id) ? '✓ ' : ''}{t.title}</option>)}
               </optgroup>
             ))}
@@ -96,9 +98,9 @@ export default function LearnTab({ subject, data, focus }) {
 
         {data.units.map((u, ui) => (
           <section key={u.unit} aria-labelledby={`unit-${u.unit}`}>
-            <div className="unit-head" style={ui === 0 ? { marginTop: 24 } : undefined}>
-              <span className="label">Unit {u.unit}</span>
-              <div id={`unit-${u.unit}`}><RevealHeading text={u.title} /></div>
+            <div className={`unit-head${ui === 0 ? ' is-first' : ''}`}>
+              <span className="unit-num">Unit {u.unit}</span>
+              <RevealHeading id={`unit-${u.unit}`} text={u.title} />
               <UnitProgress topics={u.topics} store={store} />
             </div>
             {u.topics.map((t) => (

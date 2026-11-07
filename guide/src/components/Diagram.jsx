@@ -3,6 +3,8 @@ import { diagrams } from '../content/diagrams.js'
 import { svgDiagrams } from './svg/index.js'
 import { asset } from '../config.js'
 import Inline from './Inline.jsx'
+import Icon from './Icon.jsx'
+import { ZoomInAreaIcon } from '@hugeicons/core-free-icons'
 
 // Shows an extracted diagram from the course notes (click to enlarge) or a hand-drawn SVG.
 export default function Diagram({ id }) {
@@ -33,6 +35,7 @@ export default function Diagram({ id }) {
     <figure className="diagram">
       <button type="button" onClick={() => setOpen(true)} aria-label={`Enlarge: ${d.caption}`}>
         <img src={src} alt={d.alt || d.caption} loading="lazy" decoding="async" width={d.w} height={d.h} />
+        <span className="zoom-hint" aria-hidden="true"><Icon icon={ZoomInAreaIcon} size={14} /> Enlarge</span>
       </button>
       <figcaption>
         <Inline text={d.caption} />

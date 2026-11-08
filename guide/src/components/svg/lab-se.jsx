@@ -546,7 +546,7 @@ export function LibSequence() {
           </g>
         )
       })}
-      <text x="370" y="576" textAnchor="middle" fontSize="11" fill={INK} opacity=".75">Solid arrow = call · dashed open arrow = return / reply · time runs downwards</text>
+      <text x="370" y="576" textAnchor="middle" fontSize="11" fill={INK} opacity=".75">Solid arrow = call; dashed open arrow = return or reply; time runs downwards</text>
     </svg>
   )
 }
@@ -606,7 +606,7 @@ export function LibComponent() {
         { from: 'cat', to: 'iDb', dash: true, head: 'open' },
         { from: 'mem', to: 'iDb', dash: true, head: 'open' },
       ]}>
-      <text x="355" y="306" textAnchor="middle" fontSize="11" fill={INK} opacity=".75">○ = provided interface · dashed arrow = «use» dependency on that interface</text>
+      <text x="355" y="306" textAnchor="middle" fontSize="11" fill={INK} opacity=".75">○ = provided interface; dashed arrow = «use» dependency on that interface</text>
     </Graph>
   )
 }

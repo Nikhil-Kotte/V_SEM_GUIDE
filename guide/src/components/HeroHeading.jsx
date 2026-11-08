@@ -1,4 +1,6 @@
 // Two fixed lines, each inside a mask, so the reveal never depends on where the text wraps.
+// avoid-ai-design-ignore-file: SD5
+// Why: the highlighter on "made simple" is the signature moment approved in DESIGN.md, not a reflex accent.
 // Kept separate from HeroTitle so the static heading never pulls GSAP into the first download.
 export default function HeroHeading({ innerRef, pending }) {
   return (

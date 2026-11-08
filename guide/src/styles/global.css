@@ -857,6 +857,23 @@ figure.diagram button:hover .zoom-hint, figure.diagram button:focus-visible .zoo
   .lab-exp { margin-inline: calc(var(--gutter) * -1); border-radius: 0; border-inline: 0; padding: var(--sp-5) var(--sp-4); }
 }
 
+/* Viva */
+.lab-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: var(--sp-4); font-size: 14.5px; }
+.lab-switch .chip { font-size: 14px; padding: .25em .8em; }
+.pyq-kind.is-deeper { border-style: solid; border-color: var(--text-faint); color: var(--text-soft); }
+.viva-link {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); margin-top: var(--sp-5);
+  padding: var(--sp-3) var(--sp-4); border-radius: var(--radius-sm); background: var(--accent-soft); color: var(--accent);
+  text-decoration: none; transition: background-color var(--dur-2) var(--ease);
+}
+.viva-link b { font-weight: 700; }
+.viva-link .icon { transition: transform var(--dur-2) var(--ease); }
+.viva-link:hover .icon { transform: translateX(3px); }
+.viva .pyq-body { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: var(--sp-2) var(--sp-4); }
+.viva .pyq-q { flex: 1 1 320px; margin: 4px 0 0; }
+.viva .pyq-foot > span:empty { display: none; }
+.unit-head + .pyq-list, .unit-head + .row-list { border-top: 0; }
+
 /* Coming soon */
 .soon-page { padding: clamp(48px, 10vw, 120px) 0; min-height: 60vh; }
 .soon-card { max-width: 560px; display: grid; gap: var(--sp-4); justify-items: start; }

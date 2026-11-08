@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight01Icon } from '@hugeicons/core-free-icons'
+import Icon from './Icon.jsx'
 import Blocks from './Blocks.jsx'
 import Inline from './Inline.jsx'
 import { useReveal } from './Reveal.jsx'
 
 const LOADERS = {
-  cn: () => import('../content/lab/cn.js'),
-  os: () => import('../content/lab/os.js'),
-  se: () => import('../content/lab/se.js'),
+  cn: () => Promise.all([import('../content/lab/cn.js'), import('../content/lab/viva-cn.js')]),
+  os: () => Promise.all([import('../content/lab/os.js'), import('../content/lab/viva-os.js')]),
+  se: () => Promise.all([import('../content/lab/se.js'), import('../content/lab/viva-se.js')]),
 }
 
 const jump = (id) => (ev) => {
@@ -18,11 +21,12 @@ const jump = (id) => (ev) => {
 // An experiment is { id, num, title, aim, blocks, parts: [{ title, blocks }] }.
 export default function LabTab({ subject, focus }) {
   const [lab, setLab] = useState(null)
+  const [viva, setViva] = useState(null)
   const listRef = useReveal([lab])
   useEffect(() => {
     let live = true
     setLab(null)
-    LOADERS[subject.id]().then((m) => live && setLab(m.default))
+    LOADERS[subject.id]().then(([m, v]) => { if (live) { setLab(m.default); setViva(v.default) } })
     return () => { live = false }
   }, [subject.id])
 
@@ -79,6 +83,12 @@ export default function LabTab({ subject, focus }) {
                 </section>
               ))}
             </div>
+            {viva?.experiments[e.id]?.length > 0 && (
+              <Link className="viva-link" to={`/lab/${subject.id}/viva?exp=${encodeURIComponent(e.id)}`}>
+                <span><b>Viva questions on this {(lab.label || 'experiment').toLowerCase()}</b> <span className="faint num">({viva.experiments[e.id].length})</span></span>
+                <Icon icon={ArrowRight01Icon} />
+              </Link>
+            )}
           </article>
         ))}
       </main>

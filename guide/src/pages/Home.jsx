@@ -149,7 +149,7 @@ export default function Home() {
 
           <div className="labs-strip">
             <h2 className="labs-strip__title">Lab externals</h2>
-            <p className="faint">Experiments, code and expected output for each lab exam.</p>
+            <p className="faint">Experiments, code, expected output and viva questions for each lab exam.</p>
             <div className="labs-strip__links">
               {['cn', 'os', 'se'].map((id) => (
                 <Link key={id} to={`/lab/${id}`} className="btn">{id.toUpperCase()} Lab</Link>

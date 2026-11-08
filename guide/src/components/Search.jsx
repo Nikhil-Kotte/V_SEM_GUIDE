@@ -12,8 +12,18 @@ export default function Search({ onClose }) {
 
   useEffect(() => {
     inputRef.current?.focus()
-    loadAll().then((all) => {
+    const vivas = Promise.all(['cn', 'os', 'se'].map((id) => import(`../content/lab/viva-${id}.js`).then((m) => [id, m.default])))
+    Promise.all([loadAll(), vivas]).then(([all, vivaSets]) => {
       const items = []
+      // Lab viva questions: theory and per experiment.
+      for (const [lab, v] of vivaSets) {
+        const add = (group, q) => items.push({
+          kind: `${lab.toUpperCase()} Lab, viva`, title: q.q, text: q.q,
+          to: `/lab/${lab}/viva?exp=${encodeURIComponent(group)}&q=${encodeURIComponent(`${group}.${q.id}`)}`,
+        })
+        v.theory.forEach((q) => add('theory', q))
+        Object.entries(v.experiments).forEach(([e, qs]) => qs.forEach((q) => add(e, q)))
+      }
       for (const s of all) {
         for (const u of s.units) {
           for (const t of u.topics) {

@@ -53,24 +53,28 @@ export default function LabTab({ subject, focus }) {
         {index}
       </aside>
       <main ref={listRef}>
-        <div className="lab-intro prose"><Blocks blocks={lab.intro} /></div>
+        <section className="lab-intro prose" aria-labelledby="lab-before">
+          <h2 id="lab-before" className="sr-only">Before the exam</h2>
+          <Blocks blocks={lab.intro} level={3} />
+        </section>
         <nav className="lab-toc" aria-label="Experiments">
           {lab.experiments.map((e) => (
             <a key={e.id} href={`#lab-${e.id}`} className="chip" onClick={jump(e.id)}>{e.num}. {e.short || e.title}</a>
           ))}
         </nav>
+        <h2 className="sr-only">Experiments</h2>
         {lab.experiments.map((e) => (
           <article key={e.id} id={`lab-${e.id}`} className="lab-exp rv">
             <header>
               <span className="lab-exp__num">{lab.label || 'Experiment'} {e.num}</span>
-              <h2><Inline text={e.title} /></h2>
+              <h3><Inline text={e.title} /></h3>
               {e.aim && <p className="aim"><Inline text={e.aim} /></p>}
             </header>
             <div className="lab-body prose">
               <Blocks blocks={e.blocks} />
               {e.parts?.map((p, i) => (
                 <section key={i} className="lab-part">
-                  <h3><Inline text={p.title} /></h3>
+                  <h4><Inline text={p.title} /></h4>
                   <Blocks blocks={p.blocks} />
                 </section>
               ))}

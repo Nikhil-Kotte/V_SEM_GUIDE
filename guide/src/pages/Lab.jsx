@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { m as M } from 'motion/react'
 import { subjectById } from '../content/subjects.js'
@@ -10,6 +11,8 @@ const LAB_SUBJECTS = ['cn', 'os', 'se']
 export default function Lab() {
   const { subj, item } = useParams()
   const subject = subjectById[subj]
+  const mounted = useRef(false)
+  useEffect(() => { mounted.current = true }, [])
   if (!subject || !LAB_SUBJECTS.includes(subj)) return <Navigate to="/lab/cn" replace />
 
   return (
@@ -33,7 +36,7 @@ export default function Lab() {
         </div>
       </div>
       <div className="container">
-        <M.div key={subj} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}>
+        <M.div key={subj} initial={mounted.current ? { opacity: 0, y: 8 } : false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}>
           <LabTab subject={subject} focus={item} />
         </M.div>
       </div>

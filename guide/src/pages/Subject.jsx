@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { m as M } from 'motion/react'
 import { subjectById } from '../content/subjects.js'
@@ -25,6 +25,9 @@ export default function Subject() {
   const data = useSubject(subj)
   const store = useStore()
   const validTab = TABS.some(([t]) => t === tab)
+  // Fade between tabs, but not on the first render of the page.
+  const mounted = useRef(false)
+  useEffect(() => { mounted.current = true }, [])
 
   // Remember the last place so Home can offer "pick up where you left off".
   useEffect(() => {
@@ -77,7 +80,7 @@ export default function Subject() {
           <p className="muted loading-note" aria-busy="true">Loading {subject.name}...</p>
         ) : (
           <M.div key={tab} className="tab-panel"
-            initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+            initial={mounted.current ? { opacity: 0, y: 8 } : false} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}>
             {tab === 'learn' ? <LearnTab subject={subject} data={data} focus={item} />
               : tab === 'pyqs' ? <PyqTab subject={subject} data={data} focus={item} />

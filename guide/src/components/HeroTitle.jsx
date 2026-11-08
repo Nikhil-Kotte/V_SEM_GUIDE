@@ -12,9 +12,11 @@ export default function HeroTitle() {
   useGSAP(() => {
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.timeline({ defaults: { ease: 'power4.out' } })
-        .from('.hero-line', { yPercent: 110, duration: 0.7, stagger: 0.1 })
-        .fromTo('.hl-bar', { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.inOut' }, '-=0.3')
+      // If the page has already been on screen a while (slow phone), don't pull visible text away.
+      const early = performance.now() < 900
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
+      if (early) tl.from('.hero-line', { yPercent: 110, duration: 0.7, stagger: 0.1 })
+      tl.fromTo('.hl-bar', { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.inOut' }, early ? '-=0.3' : 0.1)
     })
   }, { scope: ref })
   return <HeroHeading innerRef={ref} />

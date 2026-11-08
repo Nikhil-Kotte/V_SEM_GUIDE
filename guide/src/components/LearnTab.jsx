@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { startTransition, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../lib/storage.js'
 import TopicCard from './TopicCard.jsx'
@@ -23,7 +23,17 @@ export default function LearnTab({ subject, data, focus }) {
   const store = useStore()
   const navigate = useNavigate()
   const [active, setActive] = useState(focus || data.units[0].topics[0].id)
-  const listRef = useReveal([data])
+  // Render the first topics immediately and the rest in the next idle moment, unless a link
+  // points deeper into the page, in which case everything renders at once so the jump lands.
+  const [limit, setLimit] = useState(focus ? Infinity : 4)
+  useEffect(() => {
+    if (limit === Infinity) return
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 200))
+    const cancel = window.cancelIdleCallback || clearTimeout
+    const id = idle(() => startTransition(() => setLimit(Infinity)))
+    return () => cancel(id)
+  }, [limit])
+  const listRef = useReveal([data, limit])
 
   // Jump to a topic when the URL names one (from search, PYQs or the outline).
   useEffect(() => {
@@ -54,7 +64,9 @@ export default function LearnTab({ subject, data, focus }) {
     window.addEventListener('scroll', onScroll, { passive: true })
     update()
     return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(frame) }
-  }, [data])
+  }, [data, limit])
+
+  const rank = useMemo(() => Object.fromEntries(data.units.flatMap((u) => u.topics).map((t, i) => [t.id, i])), [data])
 
   const goTo = (id) => navigate(`/s/${subject.id}/learn/${encodeURIComponent(id)}`, { replace: true })
 
@@ -103,7 +115,7 @@ export default function LearnTab({ subject, data, focus }) {
               <RevealHeading id={`unit-${u.unit}`} text={u.title} />
               <UnitProgress topics={u.topics} store={store} />
             </div>
-            {u.topics.map((t) => (
+            {u.topics.map((t) => rank[t.id] < limit && (
               <TopicCard key={t.id} subject={subject} topic={t} content={data.topics[t.id]} pyqs={data.bySyllabus[t.id] || []} />
             ))}
           </section>

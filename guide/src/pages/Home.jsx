@@ -29,7 +29,11 @@ export default function Home() {
 
   useEffect(() => {
     if (!reduced) heroChunk()
-    loadAll().then((all) => setData(Object.fromEntries(all.map((d) => [d.subject.id, d]))))
+    // Every subject's notes are ~450 KB: fetch them once the first paint is done.
+    let live = true
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 150))
+    idle(() => loadAll().then((all) => live && setData(Object.fromEntries(all.map((d) => [d.subject.id, d])))))
+    return () => { live = false }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const totalTopics = subjects.reduce((n, s) => n + topicsOf(s.id).length, 0)
@@ -51,7 +55,7 @@ export default function Home() {
           <div className="hero-copy">
             {reduced
               ? <HeroHeading />
-              : <Suspense fallback={<HeroHeading pending />}><HeroTitle /></Suspense>}
+              : <Suspense fallback={<HeroHeading />}><HeroTitle /></Suspense>}
             <p className="hero-sub">
               Every Mid-2 topic for V Sem CSE in plain words, with diagrams, the past questions ranked by how often they come back, and tools to practise the numericals.
             </p>

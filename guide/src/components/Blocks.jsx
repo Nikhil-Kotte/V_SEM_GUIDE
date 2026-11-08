@@ -32,9 +32,10 @@ const CALLOUTS = {
 //   { file: 'x.c', code: '...' }    source file with a name bar and copy button (lab)
 //   { terminal: '...', title }      terminal output (lab)
 //   { shot: 'cn/ping', caption }    screenshot from a lab record (public/lab/…)
-export default function Blocks({ blocks }) {
+// `level` sets the heading tag for { h } blocks (h4 inside a topic card; h3 directly under an h2).
+export default function Blocks({ blocks, level = 4 }) {
   if (!blocks) return null
-  return blocks.map((b, i) => <Block key={i} b={b} />)
+  return blocks.map((b, i) => <Block key={i} b={b} level={level} />)
 }
 
 function Item({ item }) {
@@ -42,18 +43,23 @@ function Item({ item }) {
   return <Inline text={item} />
 }
 
-function Block({ b }) {
+function Block({ b, level }) {
+  const H = `h${level}`
   if (typeof b === 'string') return <p><Inline text={b} /></p>
-  if (b.h) return <h4><Inline text={b.h} /></h4>
+  if (b.h) return <H><Inline text={b.h} /></H>
   if (b.ul) return <ul>{b.ul.map((it, i) => <li key={i}><Item item={it} /></li>)}</ul>
   if (b.ol) return <ol>{b.ol.map((it, i) => <li key={i}><Item item={it} /></li>)}</ol>
   if (b.steps) return <ol className="steps">{b.steps.map((it, i) => <li key={i}><Item item={it} /></li>)}</ol>
   if (b.table) {
+    // First column holds row labels when there is no header row, or its header cell is blank.
+    const rowHeads = !b.table.head || b.table.head[0] === ''
     return (
       <div className="table-wrap" tabIndex={0} role="region" aria-label={b.table.caption || 'table'}>
         <table>
-          {b.table.head && <thead><tr>{b.table.head.map((h, i) => <th key={i} scope="col"><Inline text={h} /></th>)}</tr></thead>}
-          <tbody>{b.table.rows.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j}><Inline text={c} /></td>)}</tr>)}</tbody>
+          {b.table.head && <thead><tr>{b.table.head.map((h, i) => (h === '' && i === 0 ? <td key={i} /> : <th key={i} scope="col"><Inline text={h} /></th>))}</tr></thead>}
+          <tbody>{b.table.rows.map((r, i) => <tr key={i}>{r.map((c, j) => (rowHeads && j === 0
+            ? <th key={j} scope="row"><Inline text={c} /></th>
+            : <td key={j}><Inline text={c} /></td>))}</tr>)}</tbody>
         </table>
       </div>
     )

@@ -17,6 +17,9 @@ const NAV = [
   ...LABS.map((id) => ({ to: `/lab/${id}`, label: `${id.toUpperCase()} Lab`, ariaLabel: `${id.toUpperCase()} lab external guide` })),
 ]
 
+// The first paint shows content at once; only later navigations fade in.
+let firstPaint = true
+
 const systemTheme = () => (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
 
 export default function Layout() {
@@ -58,6 +61,8 @@ export default function Layout() {
   const items = NAV.map((i) => ({ ...i, current: pathname === i.to || pathname.startsWith(i.to + '/') }))
   // Animate between sections (home, a subject, a lab), not between tabs of the same subject.
   const section = pathname.split('/').slice(0, 3).join('/') || '/'
+  const initial = firstPaint ? false : { opacity: 0, y: 6 }
+  useEffect(() => { firstPaint = false }, [])
 
   return (
     <LazyMotion features={loadFeatures}>
@@ -101,7 +106,7 @@ export default function Layout() {
         </header>
 
         <M.div id="main" tabIndex={-1} key={section} className="route"
-          initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}
+          initial={initial} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}>
           <Outlet />
         </M.div>

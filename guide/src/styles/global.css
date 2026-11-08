@@ -168,7 +168,7 @@ kbd { font-size: .78em; color: var(--text-soft); }
 }
 .skip-link:focus { top: 12px; }
 
-.container { width: 100%; max-width: 1760px; margin: 0 auto; padding: 0 var(--gutter); }
+.container { width: 100%; max-width: 2560px; margin: 0 auto; padding: 0 var(--gutter); }
 .label { font-size: var(--fs-sm); font-weight: 600; color: var(--text-soft); }
 .muted { color: var(--text-soft); }
 .faint { color: var(--text-faint); }
@@ -867,6 +867,14 @@ figure.diagram button:hover .zoom-hint, figure.diagram button:focus-visible .zoo
   }
 }
 @media (min-width: 1700px) { .layout.has-rail { grid-template-columns: 280px minmax(0, 1fr) 340px; gap: var(--sp-7); } }
+/* Very wide monitors (2K and up): bigger side columns and a slightly longer line, so the page fills the screen */
+@media (min-width: 2000px) {
+  :root { --measure: 66ch; --fs-sm: 15px; --fs-base: 18px; --fs-md: 20px; --fs-lg: 23px; }
+  /* Keep each question next to its buttons instead of 2000px apart */
+  .pyq-body { max-width: 1280px; }
+  .layout { grid-template-columns: 320px minmax(0, 1fr); }
+  .layout.has-rail { grid-template-columns: 320px minmax(0, 1fr) 420px; gap: var(--sp-8); }
+}
 .topic-rail__meta { font-size: 14px; margin: 0 0 4px; }
 .topic-rail__title { font-size: var(--fs-lg); line-height: 1.25; margin-bottom: var(--sp-4); }
 .topic-rail__block { padding-top: var(--sp-3); margin-bottom: var(--sp-4); border-top: 1px solid var(--line-strong); font-size: 15px; }

@@ -304,9 +304,9 @@ export function LibDfd0() {
   return (
     <Graph id="ld0" w={700} h={240} nodes={dfd0} label="Level 0 DFD: Member and Librarian exchange data with the single process 0, Library Management System"
       edges={[
-        { from: 'member', to: 'sys', off: -16, label: 'book request', lo: -12 },
-        { from: 'sys', to: 'member', off: -16, label: 'issue slip / fine', lo: -12 },
-        { from: 'lib', to: 'sys', off: -16, label: 'new book details', lo: -12 },
+        { from: 'member', to: 'sys', off: -16, label: ['member details,', 'book request,', 'returned book'], lo: -24 },
+        { from: 'sys', to: 'member', off: -16, label: ['issue slip,', 'fine receipt'], lo: -18 },
+        { from: 'lib', to: 'sys', off: -16, label: 'book details', lo: -12 },
         { from: 'sys', to: 'lib', off: -16, label: 'reports', lo: -12 },
       ]} />
   )
@@ -322,18 +322,20 @@ const dfd1 = {
   p2: P('p2', 135, '2.0', ['Issue', 'book']),
   p3: P('p3', 250, '3.0', ['Return', 'book']),
   p4: P('p4', 365, '4.0', ['Manage', 'catalogue']),
+  p5: { kind: 'process', x: 470, y: 420, w: 170, h: 66, num: '5.0', label: ['Generate', 'reports'] },
   d1: D(36, 'D1', 'Members'),
   d3: D(190, 'D3', 'Loans'),
   d2: D(330, 'D2', 'Books'),
 }
 export function LibDfd1() {
   return (
-    <Graph id="ld1" w={660} h={450} nodes={dfd1} label="Level 1 DFD of the library system: four processes, three data stores, two external entities"
+    <Graph id="ld1" w={660} h={510} nodes={dfd1} label="Level 1 DFD of the library system: five processes, three data stores, two external entities"
       edges={[
         { from: 'member', to: 'p1', label: 'member details', at: 0.45 },
         { from: 'member', to: 'p2', off: -7, label: 'book request', lo: -11, at: 0.5 },
         { from: 'p2', to: 'member', off: -7, label: 'issue slip', lo: -11, at: 0.5 },
-        { from: 'member', to: 'p3', label: 'returned book', at: 0.55 },
+        { pts: [[50, 206], [50, 300], [210, 300]], label: 'returned book', seg: 1 },
+        { pts: [[210, 262], [105, 262], [105, 206]], label: 'fine receipt', seg: 0 },
         { from: 'lib', to: 'p4', label: 'book details', lo: -11 },
         { from: 'p1', to: 'd1', label: 'member record', lo: -11 },
         { from: 'd1', to: 'p2', label: 'member status', at: 0.45 },
@@ -342,6 +344,8 @@ export function LibDfd1() {
         { from: 'p3', to: 'd3', label: 'close loan', at: 0.6, lo: 10 },
         { from: 'p3', to: 'd2', label: 'mark available', at: 0.62 },
         { from: 'p4', to: 'd2', label: 'book record', lo: 11 },
+        { from: 'd2', to: 'p5', label: 'book status' },
+        { pts: [[470, 470], [75, 470], [75, 426]], label: 'reports', seg: 0, at: 0.5 },
       ]} />
   )
 }
@@ -409,7 +413,7 @@ const classes = {
   lib: cls(20, 210, 190, 'Librarian', ['- staffId : int'], ['+ addBook(b : Book)', '+ issueBook(m, b) : Loan']),
   member: cls(260, 210, 190, 'Member', ['- memberId : int', '- maxBooks : int = 3'], ['+ borrow(b : Book)', '+ returnBook(b : Book)']),
   loan: cls(510, 210, 190, 'Loan', ['- issueDate : Date', '- dueDate : Date'], ['+ isOverdue() : boolean', '+ fine() : double']),
-  book: cls(510, 20, 190, 'Book', ['- isbn : String', '- title : String', '- available : boolean'], ['+ isAvailable() : boolean']),
+  book: cls(510, 20, 190, 'Book', ['- isbn : String', '- title : String', '- available : boolean'], ['+ isAvailable() : boolean', '+ setAvailable(v : boolean)']),
 }
 export function LibClass() {
   const p = classes.person

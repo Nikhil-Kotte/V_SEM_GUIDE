@@ -632,3 +632,74 @@ export function LibDeployment() {
       ]} />
   )
 }
+
+// ---------- Use case notation legend (the record has no symbol table for use cases) ----------
+export function UseCaseNotation() {
+  const rows = [
+    ['Actor', 'A user role or outside system that uses the system'],
+    ['Use case', 'One goal the system delivers, written verb + noun'],
+    ['System boundary', 'Encloses the use cases; actors stay outside'],
+    ['Association', 'The actor takes part in the use case (no arrowhead)'],
+    ['«include»', 'Base use case always uses the included one'],
+    ['«extend»', 'Adds optional behaviour to the base use case'],
+    ['Generalisation', 'Child actor or use case inherits from the parent'],
+  ]
+  const R = 64
+  const top = 34
+  const W = 720
+  const H = top + rows.length * R
+  const sym = (i) => {
+    const cy = top + i * R + R / 2
+    switch (i) {
+      case 0: return (
+        <g stroke={INK} strokeWidth="1.5" fill="none">
+          <circle cx="105" cy={cy - 20} r="7" fill="var(--surface)" />
+          <line x1="105" y1={cy - 13} x2="105" y2={cy + 6} />
+          <line x1="93" y1={cy - 6} x2="117" y2={cy - 6} />
+          <line x1="105" y1={cy + 6} x2="95" y2={cy + 20} />
+          <line x1="105" y1={cy + 6} x2="115" y2={cy + 20} />
+        </g>
+      )
+      case 1: return (
+        <g>
+          <ellipse cx="105" cy={cy} rx="62" ry="19" fill="var(--surface)" stroke={INK} strokeWidth="1.4" />
+          <text x="105" y={cy + 4} textAnchor="middle" fontSize="11.5" fill={INK}>Borrow book</text>
+        </g>
+      )
+      case 2: return (
+        <g>
+          <rect x="40" y={cy - 24} width="130" height="48" rx="4" fill="none" stroke={INK} strokeWidth="1.4" />
+          <text x="48" y={cy - 9} fontSize="10.5" fontWeight="700" fill={INK}>Library System</text>
+        </g>
+      )
+      case 3: return <line x1="40" x2="170" y1={cy} y2={cy} stroke={INK} strokeWidth="1.4" />
+      case 4:
+      case 5: return (
+        <g>
+          <line x1="40" x2="168" y1={cy + 6} y2={cy + 6} stroke={INK} strokeWidth="1.4" strokeDasharray="5 4" markerEnd="url(#ucn-open)" />
+          <text x="104" y={cy - 4} textAnchor="middle" fontSize="11" fill={INK}>{i === 4 ? '«include»' : '«extend»'}</text>
+        </g>
+      )
+      default: return <line x1="40" x2="166" y1={cy} y2={cy} stroke={INK} strokeWidth="1.4" markerEnd="url(#ucn-tri)" />
+    }
+  }
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ maxWidth: W + 40, minWidth: 520, display: 'block', margin: '0 auto' }} role="img"
+      aria-label="Use case notation: actor, use case, system boundary, association, include, extend and generalisation symbols">
+      <Markers id="ucn" />
+      <rect x="0.5" y="0.5" width={W - 1} height={H - 1} fill="none" stroke={INK} strokeOpacity=".5" />
+      <rect x="0.5" y="0.5" width={W - 1} height={top} fill={SOFT} stroke={INK} strokeOpacity=".5" />
+      {['Symbol', 'Name', 'Meaning'].map((t, i) => <text key={t} x={[12, 222, 372][i]} y="22" fontSize="13" fontWeight="700" fill={INK}>{t}</text>)}
+      <line x1="210" x2="210" y1="0" y2={H} stroke={INK} strokeOpacity=".5" />
+      <line x1="360" x2="360" y1="0" y2={H} stroke={INK} strokeOpacity=".5" />
+      {rows.map(([name, meaning], i) => (
+        <g key={name}>
+          {i > 0 && <line x1="0" x2={W} y1={top + i * R} y2={top + i * R} stroke={INK} strokeOpacity=".5" />}
+          {sym(i)}
+          <text x="222" y={top + i * R + R / 2 + 4} fontSize="12.5" fontWeight="600" fill={INK}>{name}</text>
+          <text x="372" y={top + i * R + R / 2 + 4} fontSize="12" fill={INK}>{meaning}</text>
+        </g>
+      ))}
+    </svg>
+  )
+}

@@ -60,6 +60,43 @@ const QUERY = {
   'se.u5.quality-concepts': 'software quality concepts',
   'se.u5.testing-process': 'software testing life cycle STLC process',
   'se.u5.auto-manual': 'manual testing vs automation testing',
+  'os.u3.sharing-permissions': 'shared pages protection bits paging',
+  'fds.u1.what': 'what is data science',
+  'fds.u1.where': 'applications of data science real world',
+  'fds.u1.related-fields': 'data science vs statistics vs computer science',
+  'fds.u1.collections': 'open data social media data collection',
+  'fds.u3.dtype-views': 'numpy view vs copy astype',
+  'fds.u3.quandl': 'quandl python pandas',
+  'fds.u5.polynomial': 'polynomial regression python',
+  'bda.u2.h1-vs-h2': 'hadoop 1 vs hadoop 2 difference',
+  'bda.u3.joins': 'map side join reduce side join',
+  'bda.u4.pig-udf': 'pig udf user defined function piggybank',
+  'pdt.u1.five-stage': 'design thinking process 5 stages explained',
+  'pdt.u2.user-needs': 'understanding user needs empathy research',
+  'pdt.u3.persona-perspectives': 'types of personas user experience',
+  'pdt.u4.ideation': 'ideation phase ideas',
+  'pdt.u4.doodling': 'doodling visual thinking sketchnotes',
+  'bda.u5.spark-intro': 'apache spark introduction tutorial',
+  'bda.u5.spark-arch': 'apache spark architecture driver executor',
+  'bda.u5.spark-pros-cons': 'apache spark advantages disadvantages',
+  'bda.u4.hive-udf': 'hive udf user defined function',
+  'bda.u2.design-principles': 'hadoop design principles data locality',
+  'fds.u2.attributes': 'types of attributes data mining nominal ordinal',
+  'fds.u3.dates': 'pandas datetime tutorial',
+  'fds.u3.pivot': 'pandas pivot table python',
+  'fds.u3.stacking-splitting': 'numpy stack split arrays hstack vstack',
+  'fds.u1.integration': 'data integration data preprocessing',
+  'pdt.u2.empathize': 'empathize stage design thinking',
+  'os.u1.distributions': 'linux distributions explained',
+  'os.u1.kernel-approaches': 'monolithic kernel vs microkernel vs hybrid kernel',
+  'os.u3.address-translation': 'logical to physical address translation relocation register',
+  'os.u3.buffering': 'buffering in operating system single double circular buffer',
+  'os.u3.mm-syscalls': 'mmap system call linux memory',
+  'os.u4.thread-apis': 'pthread create join tutorial',
+  'os.u5.caching': 'page cache buffer cache file system',
+  'cn.u5.delivery': 'POP3 vs IMAP',
+  'cn.u5.formats': 'email message format MIME',
+  'se.u2.am': 'agile modeling principles Scott Ambler',
   'sim:os-page-replacement': 'page replacement algorithms FIFO LRU optimal numerical',
   'sim:os-disk-scheduling': 'disk scheduling algorithms FCFS SSTF SCAN C-SCAN numerical',
   'sim:os-bankers': 'bankers algorithm numerical example',
@@ -118,7 +155,9 @@ const stem = (w) => (w.length > 5 ? w.slice(0, 5) : w)
 
 function coreWords(query) {
   const subjectWords = new Set(words(SUBJECT_WORDS[subject]))
-  return [...new Set(words(query).filter((w) => !subjectWords.has(w) && !FILLER.has(w)).map(stem))]
+  const core = [...new Set(words(query).filter((w) => !subjectWords.has(w) && !FILLER.has(w)).map(stem))]
+  // A query made only of subject words ("what is data science") must still match its own words.
+  return core.length ? core : [...new Set(words(query).filter((w) => !FILLER.has(w)).map(stem))]
 }
 
 // Relevance first: at least half of the topic's own words must be in the title. Then popularity

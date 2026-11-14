@@ -339,7 +339,7 @@ thead td { background: var(--surface-2); }
 .vis-tree li { flex: 0 1 auto; min-width: 90px; }
 @media (max-width: 600px) {
   .vis-flow ol { flex-direction: column; gap: 26px; }
-  .vis-flow li { max-width: none; }
+  .vis-flow li { flex: 0 0 auto; max-width: none; }
   .vis-flow li:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -24px; transform: translateX(-50%); }
 }
 

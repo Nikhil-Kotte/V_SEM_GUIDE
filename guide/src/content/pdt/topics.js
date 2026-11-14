@@ -1,4 +1,4 @@
-// Principles of Design Thinking — Mid-2 notes. Keys are syllabus ids from content/syllabus.js.
+// Principles of Design Thinking: notes for all units. Keys are syllabus ids from content/syllabus.js.
 export default {
   // ======================= UNIT III (rest) — Define =======================
   'pdt.u3.persona-steps': {

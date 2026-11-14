@@ -1,4 +1,4 @@
-# V-SEM Mid-2 guide: design contract
+# V-SEM externals guide: design contract
 
 Direction: **Answer booklet.** The guide borrows from the things a student already has on the desk
 during exam week: ruled booklet paper, a blue ballpoint, the examiner's red pen and a yellow

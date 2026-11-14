@@ -1,5 +1,5 @@
 /* =========================================================================
-   V-SEM Mid-2 guide · "Answer booklet" design system. See DESIGN.md.
+   V-SEM guide · "Answer booklet" design system. See DESIGN.md.
    ========================================================================= */
 
 /* ---------- Tokens ---------- */
@@ -310,6 +310,39 @@ thead td { background: var(--surface-2); }
 .compare h5 { margin: 0 0 6px; font-size: 16.5px; }
 .compare ul { padding-left: 1.1em; margin: 0; font-size: 15.5px; }
 
+/* Pictures in words: flow (boxes and arrows), stack (layers), tree (one idea and its kinds) */
+.vis { margin: var(--sp-4) 0; max-width: 100%; }
+.vis ol, .vis ul { list-style: none; margin: 0; padding: 0; }
+.vis li, .vis-tree__root {
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface);
+  padding: 8px 12px; font-size: 15px; line-height: 1.35; text-align: center;
+}
+.vis-flow ol { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px 30px; }
+.vis-flow li { position: relative; flex: 1 1 120px; max-width: 220px; display: flex; align-items: center; justify-content: center; }
+.vis-flow li:not(:last-child)::after {
+  content: '→'; position: absolute; right: -24px; top: 50%; transform: translateY(-50%);
+  color: var(--accent); font-weight: 700; font-size: 18px;
+}
+.vis-flow li:first-child { border-color: var(--accent); }
+.vis-loop { margin-top: 8px; font-size: 14px; color: var(--text-soft); }
+.vis-loop span { color: var(--accent); font-weight: 700; }
+.vis-stack ol { display: grid; gap: 4px; max-width: 460px; }
+.vis-stack li { text-align: left; }
+.vis-stack li:first-child { border-top-width: 3px; border-top-color: var(--accent); }
+.vis-tree { display: grid; justify-items: center; gap: 0; }
+.vis-tree__root { font-weight: 700; border-color: var(--accent); }
+.vis-tree ul {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 22px; padding-top: 14px;
+  border-top: 1.5px solid var(--line-strong); position: relative;
+}
+.vis-tree ul::before { content: ''; position: absolute; top: -23px; left: 50%; height: 22px; border-left: 1.5px solid var(--line-strong); }
+.vis-tree li { flex: 0 1 auto; min-width: 90px; }
+@media (max-width: 600px) {
+  .vis-flow ol { flex-direction: column; gap: 26px; }
+  .vis-flow li { max-width: none; }
+  .vis-flow li:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -24px; transform: translateX(-50%); }
+}
+
 .steps { list-style: none; padding: 0; margin: 0; counter-reset: s; }
 .steps li { counter-increment: s; position: relative; padding: 2px 0 var(--sp-3) 40px; }
 .steps li::before {
@@ -456,8 +489,22 @@ figure.svg-diagram .svg-wrap { padding: var(--sp-4); overflow-x: auto; }
 .simple-words { overflow-wrap: anywhere; margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--line-strong); }
 .simple-words__head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
 .simple-words__head .label { font-weight: 700; color: var(--text); font-size: var(--fs-base); }
-.simple-words__by { font-size: 13px; color: var(--text-faint); }
 .simple-words .callout.analogy { background: var(--violet-tint); }
+
+/* YouTube links under a topic or a Numericals tool */
+.videos { margin-top: var(--sp-4); }
+.videos ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; max-width: 760px; }
+.videos a {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 10px; align-items: start;
+  padding: 8px 10px; margin: 0 -10px; border-radius: var(--radius-sm); text-decoration: none; color: var(--text);
+  transition: background-color var(--dur-2) var(--ease);
+}
+.videos a:hover { background: var(--surface-2); }
+.videos__icon { grid-row: span 2; color: var(--hot); font-size: 22px; margin-top: 1px; }
+.videos__title { font-weight: 600; line-height: 1.35; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.videos a:hover .videos__title { text-decoration-color: currentColor; }
+.videos__meta { font-size: 14px; color: var(--text-soft); }
+.sim-anchor .videos { margin: var(--sp-3) 0 var(--sp-6); }
 @media (max-width: 600px) {
   .topic { margin-inline: calc(var(--gutter) * -1); border-radius: 0; border-inline: 0; padding: var(--sp-5) var(--sp-4) var(--sp-5) 26px; }
   .topic::before { left: 13px; }

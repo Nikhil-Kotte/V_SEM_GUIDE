@@ -70,7 +70,7 @@ export default function Layout() {
         <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus() }}>Skip to content</a>
         <header className="site-header">
           <div className="container bar">
-            <Link to="/" className="brand" aria-label="V-SEM Mid-2 guide home">V-SEM <small>Mid-2</small></Link>
+            <Link to="/" className="brand" aria-label="V-SEM externals guide home">V-SEM <small>Externals</small></Link>
             <TabBar items={items} ariaLabel="Subjects and labs" className="site-nav" />
             <div className="bar-actions">
               <button type="button" className="search-btn" onClick={() => setSearchOpen(true)} aria-label="Search (press /)" aria-keyshortcuts="/ Control+K">

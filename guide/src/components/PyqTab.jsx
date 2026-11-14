@@ -64,7 +64,7 @@ export default function PyqTab({ subject, data, focus }) {
         <p>
             {isRelatedOnly
               ? 'This is a new course with no past papers yet. Below are questions from the closest related course (rewritten for Python), followed by likely questions built from your syllabus.'
-              : 'The circled number is how many different papers asked the question. Ties go to the one asked most recently. Only questions inside your Mid-2 syllabus are listed.'}
+              : 'The circled number is how many different papers asked the question. Ties go to the one asked most recently. Only questions inside your syllabus are listed.'}
         </p>
       </div>
 

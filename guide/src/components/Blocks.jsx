@@ -32,6 +32,9 @@ const CALLOUTS = {
 //   { file: 'x.c', code: '...' }    source file with a name bar and copy button (lab)
 //   { terminal: '...', title }      terminal output (lab)
 //   { shot: 'cn/ping', caption }    screenshot from a lab record (public/lab/…)
+//   { flow: [...], loop }           picture: boxes joined by arrows (loop = text for the arrow back)
+//   { stack: [...] }                picture: layers, top to bottom
+//   { tree: { root, kids: [...] } } picture: one idea splitting into its kinds
 // `level` sets the heading tag for { h } blocks (h4 inside a topic card; h3 directly under an h2).
 export default function Blocks({ blocks, level = 4 }) {
   if (!blocks) return null
@@ -87,6 +90,29 @@ function Block({ b, level }) {
         </aside>
       )
     }
+  }
+  if (b.flow) {
+    return (
+      <figure className="vis vis-flow">
+        <ol aria-label={b.label || 'Steps in order'}>{b.flow.map((it, i) => <li key={i}><Inline text={it} /></li>)}</ol>
+        {b.loop && <figcaption className="vis-loop"><span aria-hidden="true">↺</span> <Inline text={b.loop} /></figcaption>}
+      </figure>
+    )
+  }
+  if (b.stack) {
+    return (
+      <figure className="vis vis-stack">
+        <ol aria-label={b.label || 'Layers, top to bottom'}>{b.stack.map((it, i) => <li key={i}><Inline text={it} /></li>)}</ol>
+      </figure>
+    )
+  }
+  if (b.tree) {
+    return (
+      <figure className="vis vis-tree">
+        <div className="vis-tree__root"><Inline text={b.tree.root} /></div>
+        <ul aria-label={b.label || 'Kinds'}>{b.tree.kids.map((it, i) => <li key={i}><Inline text={it} /></li>)}</ul>
+      </figure>
+    )
   }
   if (b.img) return <Diagram id={b.img} />
   if (b.file) return <CodeFile file={b.file} code={b.code} />

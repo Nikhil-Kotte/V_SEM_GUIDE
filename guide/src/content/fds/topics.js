@@ -1,4 +1,4 @@
-// Fundamentals of Data Science — Mid-2 notes. Keys are syllabus ids from content/syllabus.js.
+// Fundamentals of Data Science: notes for all units. Keys are syllabus ids from content/syllabus.js.
 export default {
   // ======================= UNIT III (rest) — pandas =======================
   'fds.u3.dataframes': {

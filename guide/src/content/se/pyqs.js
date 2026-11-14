@@ -21,7 +21,7 @@ export default [
   Q('se-size-metrics', 'se.u3.sizing', 'How are size-oriented metrics used as indicators of project progress? Explain the LOC metric.', ['se-aug23', 'se-dec21', 'se-jun24']),
   Q('se-loc-role', 'se.u3.loc', 'What is the role of lines of code (LOC) in project size estimation?', ['se-aug22']),
   Q('se-sizing-methods', 'se.u3.sizing', 'Explain the methods used for software sizing.', ['se-nov25:5']),
-  Q('se-effort-role', 'se.u3.decomposition', 'What is the role of effort estimation in a project, and why is it important to do it early?', ['se-jan23']),
+  Q('se-effort-role', 'se.u3.effort', 'What is the role of effort estimation in a project, and why is it important to do it early?', ['se-jan23']),
   Q('se-expert-recursive', 'se.u3.decomposition', 'Explain expert judgment and recursive (decomposition) estimation techniques.', ['se-jun24']),
   Q('se-cocomo-what', 'se.u3.cocomo', 'What is the COCOMO model? Explain its modes.', ['se-may25']),
   Q('se-reduce-estimate-risk', 'se.u3.decomposition', 'Cost estimates are risky. Explain four ways to reduce the risk in estimation (decomposition and other techniques).', ['se-dec24:5', 'se-jun24']),

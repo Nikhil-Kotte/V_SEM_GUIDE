@@ -57,7 +57,7 @@ export default function Home() {
               ? <HeroHeading />
               : <Suspense fallback={<HeroHeading />}><HeroTitle /></Suspense>}
             <p className="hero-sub">
-              Every Mid-2 topic for V Sem CSE in plain words, with diagrams, the past questions ranked by how often they come back, and tools to practise the numericals.
+              Every topic of all five units for the V Sem CSE externals, in plain words, with pictures, videos, the past questions ranked by how often they come back, and tools to practise the numericals.
             </p>
             <button type="button" className="hero-search" onClick={openSearch} aria-keyshortcuts="/">
               <Icon icon={Search01Icon} />

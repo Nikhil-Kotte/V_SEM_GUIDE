@@ -5,6 +5,7 @@ import SimEmbed from '../sims/SimEmbed.jsx'
 import { topicIndex } from '../content/syllabus.js'
 import Icon from './Icon.jsx'
 import Tally from './Tally.jsx'
+import VideoLinks from './VideoLinks.jsx'
 
 export default function NumericalsTab({ subject, data }) {
   const tools = simsFor(subject.id)
@@ -32,7 +33,12 @@ export default function NumericalsTab({ subject, data }) {
         </nav>
       )}
 
-      {tools.map((t) => <div key={t.id} id={`sim-${t.id}`} className="sim-anchor"><SimEmbed id={t.id} /></div>)}
+      {tools.map((t) => (
+        <div key={t.id} id={`sim-${t.id}`} className="sim-anchor">
+          <SimEmbed id={t.id} />
+          <VideoLinks videos={data.videos?.[`sim:${t.id}`]} title="Watch a worked example" />
+        </div>
+      ))}
 
       {numericals.length > 0 && (
         <>

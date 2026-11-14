@@ -7,6 +7,7 @@ import Inline from './Inline.jsx'
 import Icon from './Icon.jsx'
 import Tally from './Tally.jsx'
 import SpringCheck from './bits/SpringCheck.jsx'
+import VideoLinks from './VideoLinks.jsx'
 
 // The detailed exam answers for this topic's past questions, right under the notes.
 function TopicAnswers({ subject, pyqs }) {
@@ -40,16 +41,16 @@ function TopicAnswers({ subject, pyqs }) {
   )
 }
 
-// The plain-language explanation of the topic (content/<subject>/simple.js).
+// The plain-language explanation of the topic (content/<subject>/simple.js): a short summary,
+// a picture of the idea, the key points, an everyday comparison and one example.
 function SimpleWords({ s }) {
   return (
     <section className="simple-words" aria-label="In simple words">
       <div className="simple-words__head">
         <span className="label">In simple words</span>
-        <span className="simple-words__by">Explained by ChatGPT</span>
       </div>
       <div className="prose">
-        <Blocks blocks={[s.summary, { ul: s.points }, { analogy: s.analogy }, `**Example:** ${s.example}`]} />
+        <Blocks blocks={[s.summary, ...(s.picture || []), { ul: s.points }, { analogy: s.analogy }, `**Example:** ${s.example}`]} />
       </div>
     </section>
   )
@@ -100,6 +101,7 @@ export default function TopicCard({ subject, topic, content, pyqs }) {
         <>
           <p className="one-line"><b>In one line:</b> <span className="hl"><Inline text={content.oneLine} /></span></p>
           {content.simple && <SimpleWords s={content.simple} />}
+          <VideoLinks videos={content.videos} />
           {content.simple && <h4 className="notes-label">Detailed notes</h4>}
           <div className="prose"><Blocks blocks={content.blocks} /></div>
           {content.terms?.length > 0 && (

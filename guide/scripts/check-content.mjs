@@ -15,10 +15,10 @@ const diagrams = JSON.parse(readFileSync(src('content/diagrams.json'), 'utf8'))
 const svgKeys = [...readFileSync(src('components/svg/index.js'), 'utf8').matchAll(/^\s*'([^']+)':/gm)].map((m) => m[1])
 const simKeys = [...readFileSync(src('sims/registry.js'), 'utf8').matchAll(/^\s*'([^']+)':/gm)].map((m) => m[1])
 
-// Topics the user's syllabus does NOT include. Old papers asked these; they must not sneak back in.
+// Topics the user's syllabus does NOT include (Kafka and secondary sorting are back in scope with BDA Units II and III). Old papers asked these; they must not sneak back in.
 // (Access matrix and deadlock detection were allowed back in: they are asked under "basic security
 // mechanisms" and "deadlock recovery" in the user's portion.)
-const EXCLUDED = [/\bRAID\b/, /\bSCTP\b/, /spark sql/i, /\bMLlib\b/, /\bGraphX\b/, /\bKafka\b/, /\bICMP\b/, /secondary sort/i]
+const EXCLUDED = [/\bRAID\b/, /\bSCTP\b/, /spark sql/i, /\bMLlib\b/, /\bGraphX\b/, /\bICMP\b/]
 
 for (const [subject, units] of Object.entries(syllabus)) {
   const ids = new Set(units.flatMap((u) => u.topics.map((t) => t.id)))
@@ -29,7 +29,7 @@ for (const [subject, units] of Object.entries(syllabus)) {
     const where = `${subject} pyq ${q.id}`
     if (pyqIds.has(q.id)) errors.push(`${where}: duplicate id`)
     pyqIds.add(q.id)
-    if (!ids.has(q.syllabusId)) errors.push(`${where}: syllabusId "${q.syllabusId}" is not in the Mid-2 syllabus`)
+    if (!ids.has(q.syllabusId)) errors.push(`${where}: syllabusId "${q.syllabusId}" is not in the syllabus`)
     if ((q.kind === 'predicted' || q.kind === 'model') && q.asks.length) errors.push(`${where}: ${q.kind} question must not cite papers`)
     if (q.kind !== 'predicted' && q.kind !== 'model' && !q.asks.length) errors.push(`${where}: past question cites no papers`)
     const seen = new Set()
@@ -55,11 +55,14 @@ for (const [subject, units] of Object.entries(syllabus)) {
     if (!ids.has(id)) errors.push(`${subject} topic ${id}: not in syllabus`)
     if (!t.oneLine) errors.push(`${subject} topic ${id}: missing oneLine`)
     checkRefs(`${subject} topic ${id}`, t.blocks)
-    // ChatGPT's simpler explanation must be complete and stay inside the syllabus too.
+    // The simple-words explanation must be complete and stay inside the syllabus too.
     if (t.simple) {
       const s = t.simple
       if (!s.summary || !s.points?.length || !s.analogy || !s.example) errors.push(`${subject} topic ${id}: incomplete simple explanation`)
-      const text = [s.summary, ...(s.points || []), s.analogy, s.example].join(' ')
+      if (!s.picture?.length) warnings.push(`${subject} topic ${id}: simple explanation has no picture`)
+      if (/chatgpt/i.test(JSON.stringify(s))) errors.push(`${subject} topic ${id}: simple explanation still credits ChatGPT`)
+      checkRefs(`${subject} topic ${id} picture`, s.picture)
+      const text = [s.summary, JSON.stringify(s.picture || []), ...(s.points || []), s.analogy, s.example].join(' ')
       for (const re of EXCLUDED) if (re.test(text)) errors.push(`${subject} topic ${id}: simple explanation mentions excluded topic ${re}`)
     }
   }

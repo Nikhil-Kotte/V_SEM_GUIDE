@@ -1,4 +1,4 @@
-// Computer Networks — Mid-2 notes. Keys are syllabus ids from content/syllabus.js.
+// Computer Networks: notes for all units. Keys are syllabus ids from content/syllabus.js.
 export default {
   // ======================= UNIT III (rest) =======================
   'cn.u3.link-state': {

@@ -1,4 +1,4 @@
-// Software Engineering — Mid-2 notes. Keys are syllabus ids from content/syllabus.js.
+// Software Engineering: notes for all units. Keys are syllabus ids from content/syllabus.js.
 export default {
   // ======================= UNIT III (rest) =======================
   'se.u3.schedule-staffing': {

@@ -1,4 +1,4 @@
-// Operating Systems — Mid-2 notes. Keys are syllabus ids from content/syllabus.js.
+// Operating Systems: notes for all units. Keys are syllabus ids from content/syllabus.js.
 export default {
   // ======================= UNIT III (rest) =======================
   'os.u3.address-translation': {

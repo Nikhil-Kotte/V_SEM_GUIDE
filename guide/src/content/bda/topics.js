@@ -1,4 +1,4 @@
-// Big Data Analytics — Mid-2 notes. Keys are syllabus ids from content/syllabus.js.
+// Big Data Analytics: notes for all units. Keys are syllabus ids from content/syllabus.js.
 export default {
   // ======================= UNIT III (rest) =======================
   'bda.u3.yarn-intro': {

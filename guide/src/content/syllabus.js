@@ -1,4 +1,4 @@
-// The Mid-2 syllabus exactly as given — this is the allowlist.
+// The full syllabus (R22A, V Sem CSE) exactly as given: this is the allowlist.
 // Every topic card, PYQ, diagram and simulator must point at one of these ids.
 // Anything not listed here is out of scope, even if an old paper asked it.
 
@@ -7,7 +7,41 @@ const T = (id, title, covers) => ({ id, title, covers })
 export const syllabus = {
   se: [
     {
-      unit: 'III', title: 'Planning & Estimation (rest of Unit III)', topics: [
+      unit: 'I', title: 'Introduction to Software Engineering', topics: [
+        T('se.u1.practice', 'Software Engineering Practice'),
+        T('se.u1.process', 'The Software Process'),
+        T('se.u1.generic-model', 'A Generic Process Model'),
+        T('se.u1.assessment', 'Process Assessment and Improvement'),
+        T('se.u1.waterfall', 'Waterfall Model'),
+        T('se.u1.incremental', 'Incremental Process Models'),
+        T('se.u1.rad', 'RAD Model'),
+        T('se.u1.prototyping', 'Evolutionary Models: Prototyping'),
+        T('se.u1.spiral', 'The Spiral Model'),
+        T('se.u1.specialized', 'Specialized Process Models', 'component-based development, formal methods, aspect-oriented development'),
+      ],
+    },
+    {
+      unit: 'II', title: 'Agile Development & Requirements', topics: [
+        T('se.u2.agility', 'Agility and the Agile Process'),
+        T('se.u2.xp', 'Extreme Programming (XP)'),
+        T('se.u2.asd', 'Adaptive Software Development (ASD)'),
+        T('se.u2.scrum', 'Scrum'),
+        T('se.u2.dsdm', 'Dynamic Systems Development Method (DSDM)'),
+        T('se.u2.fdd', 'Feature Driven Development (FDD)'),
+        T('se.u2.am', 'Agile Modelling (AM)'),
+        T('se.u2.req-engineering', 'Requirements Engineering'),
+        T('se.u2.groundwork', 'Establishing the Groundwork'),
+        T('se.u2.eliciting', 'Eliciting Requirements'),
+        T('se.u2.negotiating', 'Negotiating Requirements'),
+        T('se.u2.validating', 'Validating Requirements'),
+        T('se.u2.srs-value', 'Value of a Good SRS'),
+        T('se.u2.problem-analysis', 'Problem Analysis'),
+        T('se.u2.req-spec', 'Requirements Specification'),
+      ],
+    },
+    {
+      unit: 'III', title: 'Planning a Software Project', topics: [
+        T('se.u3.effort', 'Effort Estimation'),
         T('se.u3.schedule-staffing', 'Project Schedule and Staffing'),
         T('se.u3.quality-planning', 'Quality Planning'),
         T('se.u3.risk', 'Risk Management'),
@@ -52,7 +86,39 @@ export const syllabus = {
 
   os: [
     {
-      unit: 'III', title: 'Memory & Disks (rest of Unit III)', topics: [
+      unit: 'I', title: 'Introduction & OS Architectures', topics: [
+        T('os.u1.system-overview', 'Computer System Overview & Components'),
+        T('os.u1.functions', 'Functions of an Operating System'),
+        T('os.u1.types', 'Types of OS (RTOS, Desktop, Mobile…)'),
+        T('os.u1.distributions', 'OS Distributions and Versions'),
+        T('os.u1.microkernel', 'Microkernel Architecture'),
+        T('os.u1.layered', 'Layered Architecture'),
+        T('os.u1.kernel-approaches', 'Kernel Approaches and Examples', 'monolithic, microkernel, hybrid, modular'),
+        T('os.u1.unix-arch', 'Linux/Unix OS Design and Architecture'),
+      ],
+    },
+    {
+      unit: 'II', title: 'Process Management & IPC', topics: [
+        T('os.u2.program-process', 'Program vs Process'),
+        T('os.u2.states', 'Process States'),
+        T('os.u2.pcb', 'Process Control Block (PCB)'),
+        T('os.u2.services', 'OS Services'),
+        T('os.u2.syscalls', 'System Calls (fork, wait, exec, getpid, getppid)'),
+        T('os.u2.syscalls-vs-programs', 'System Calls vs System Programs'),
+        T('os.u2.context-switch', 'Process Scheduling & Context Switching'),
+        T('os.u2.criteria', 'Scheduling Criteria'),
+        T('os.u2.algorithms', 'Scheduling Algorithms', 'FCFS, SJF, SRTF, priority, round robin, multilevel queue'),
+        T('os.u2.linux-process', 'Process Management in Unix/Linux'),
+        T('os.u2.ipc', 'Linux IPC Mechanisms'),
+        T('os.u2.rpc', 'Remote Procedure Call (RPC)'),
+        T('os.u2.rpc-issues', 'RPC Exception Handling and Security'),
+      ],
+    },
+    {
+      unit: 'III', title: 'Memory & Secondary Storage', topics: [
+        T('os.u3.memory-view', 'Memory View of a Process'),
+        T('os.u3.memory-requirements', 'Process Memory Usage Requirements'),
+        T('os.u3.mm-syscalls', 'Memory System Calls (mmap, munmap, sbrk, mprotect)'),
         T('os.u3.address-translation', 'Address Translation & Static Mapping'),
         T('os.u3.segmentation', 'Segmentation'),
         T('os.u3.paging', 'Paging'),
@@ -101,7 +167,40 @@ export const syllabus = {
 
   cn: [
     {
-      unit: 'III', title: 'Routing & the Internet Layer (rest of Unit III)', topics: [
+      unit: 'I', title: 'Introduction & Physical Layer', topics: [
+        T('cn.u1.hardware', 'Network Hardware'),
+        T('cn.u1.topologies', 'Network Topologies'),
+        T('cn.u1.osi', 'The OSI Reference Model'),
+        T('cn.u1.tcpip', 'The TCP/IP Reference Model'),
+        T('cn.u1.osi-vs-tcpip', 'Comparison of OSI and TCP/IP'),
+        T('cn.u1.switching', 'Circuit, Packet and Virtual Circuit Switching'),
+        T('cn.u1.twisted-coax', 'Guided Media: Twisted Pair & Coaxial Cable'),
+        T('cn.u1.fiber', 'Fiber Optics'),
+        T('cn.u1.wireless', 'Wireless Transmission'),
+      ],
+    },
+    {
+      unit: 'II', title: 'Data Link Layer & MAC Sublayer', topics: [
+        T('cn.u2.dll-design', 'Data Link Layer Design Issues'),
+        T('cn.u2.error-detection', 'Error Detection (Parity, Checksum, CRC)'),
+        T('cn.u2.error-correction', 'Error Correction (Hamming Code)'),
+        T('cn.u2.simplex', 'Simplex (Utopian) Protocol'),
+        T('cn.u2.stop-wait', 'Stop-and-Wait Protocol for an Error-free Channel'),
+        T('cn.u2.sliding-window', 'Sliding Window Protocols'),
+        T('cn.u2.gbn', 'Go-Back-N'),
+        T('cn.u2.sr', 'Selective Repeat'),
+        T('cn.u2.channel-allocation', 'The Channel Allocation Problem'),
+        T('cn.u2.aloha', 'ALOHA (Pure & Slotted)'),
+        T('cn.u2.csma', 'Carrier Sense Multiple Access (CSMA, CSMA/CD)'),
+      ],
+    },
+    {
+      unit: 'III', title: 'Network Layer', topics: [
+        T('cn.u3.nl-design', 'Network Layer Design Issues'),
+        T('cn.u3.optimality', 'The Optimality Principle'),
+        T('cn.u3.shortest-path', 'Shortest Path Algorithm (Dijkstra)'),
+        T('cn.u3.flooding', 'Flooding'),
+        T('cn.u3.distance-vector', 'Distance Vector Routing'),
         T('cn.u3.link-state', 'Link State Routing'),
         T('cn.u3.ospf', 'OSPF'),
         T('cn.u3.bgp', 'BGP'),
@@ -147,7 +246,48 @@ export const syllabus = {
 
   fds: [
     {
-      unit: 'III', title: 'pandas (rest of Unit III)', topics: [
+      unit: 'I', title: 'Introduction, Data & Pre-processing', topics: [
+        T('fds.u1.what', 'What Is Data Science?'),
+        T('fds.u1.where', 'Where Do We See Data Science?'),
+        T('fds.u1.related-fields', 'Data Science and Other Fields'),
+        T('fds.u1.info-science', 'Data Science and Information Science'),
+        T('fds.u1.computational-thinking', 'Computational Thinking'),
+        T('fds.u1.skills-tools', 'Skills and Tools for Data Science'),
+        T('fds.u1.ethics', 'Ethics, Bias and Privacy'),
+        T('fds.u1.data-types', 'Data Types: Structured and Unstructured'),
+        T('fds.u1.collections', 'Data Collections, Storage and Presentation'),
+        T('fds.u1.cleaning', 'Data Cleaning'),
+        T('fds.u1.integration', 'Data Integration'),
+        T('fds.u1.transformation', 'Data Transformation'),
+        T('fds.u1.reduction', 'Data Reduction'),
+        T('fds.u1.discretization', 'Data Discretization'),
+      ],
+    },
+    {
+      unit: 'II', title: 'Analytics Techniques & Statistics', topics: [
+        T('fds.u2.analysis-analytics', 'Data Analysis vs Data Analytics'),
+        T('fds.u2.descriptive', 'Descriptive Analysis: Variables & Frequency Distribution'),
+        T('fds.u2.diagnostic', 'Diagnostic Analytics and Correlation'),
+        T('fds.u2.predictive-prescriptive', 'Predictive and Prescriptive Analytics'),
+        T('fds.u2.exploratory-mechanistic', 'Exploratory and Mechanistic Analysis (Regression)'),
+        T('fds.u2.attributes', 'Attributes and Their Types'),
+        T('fds.u2.central-tendency', 'Central Tendency: Mean, Median, Mode'),
+        T('fds.u2.dispersion', 'Measures of Dispersion'),
+        T('fds.u2.skew-kurtosis', 'Skewness and Kurtosis'),
+        T('fds.u2.covariance-correlation', "Covariance, Pearson's and Spearman's Correlation"),
+        T('fds.u2.sampling-tests', 'Collecting Samples and Parametric Tests'),
+        T('fds.u2.distributions', 'Distributions: Uniform, Normal, Exponential, Binomial'),
+        T('fds.u2.cdf', 'Cumulative Distribution Function and Descriptive Statistics'),
+      ],
+    },
+    {
+      unit: 'III', title: 'NumPy and pandas', topics: [
+        T('fds.u3.numpy-arrays', 'NumPy Arrays and Numerical Data Types'),
+        T('fds.u3.shapes', 'Manipulating Array Shapes'),
+        T('fds.u3.stacking-splitting', 'Stacking and Partitioning Arrays'),
+        T('fds.u3.dtype-views', 'Changing Data Types; Views and Copies'),
+        T('fds.u3.slicing-indexing', 'Slicing, Boolean and Fancy Indexing'),
+        T('fds.u3.broadcasting', 'Broadcasting Arrays'),
         T('fds.u3.dataframes', 'Creating pandas DataFrames'),
         T('fds.u3.series', 'Understanding pandas Series'),
         T('fds.u3.quandl', 'Reading & Querying Quandl Data'),
@@ -192,7 +332,42 @@ export const syllabus = {
 
   bda: [
     {
-      unit: 'III', title: 'YARN (rest of Unit III)', topics: [
+      unit: 'I', title: 'Introduction to Big Data', topics: [
+        T('bda.u1.data-types', 'Data and Its Types'),
+        T('bda.u1.sources', 'Sources of Data'),
+        T('bda.u1.evolution', 'Evolution and Definition of Big Data'),
+        T('bda.u1.characteristics', 'Characteristics of Big Data (3Vs / 5Vs)'),
+        T('bda.u1.challenges-need', 'Challenges and Need for Big Data'),
+        T('bda.u1.integration', 'Big Data Integration Process'),
+        T('bda.u1.applications', 'Applications of Big Data'),
+        T('bda.u1.bi-ds', 'Business Intelligence, Data Science and Analytics'),
+        T('bda.u1.architecture', 'Typical Analytical Architecture'),
+        T('bda.u1.analytics-types', 'Types of Analytics'),
+      ],
+    },
+    {
+      unit: 'II', title: 'Hadoop Ecosystem', topics: [
+        T('bda.u2.need-hadoop', 'Requirement of the Hadoop Framework'),
+        T('bda.u2.design-principles', 'Design Principles of Hadoop'),
+        T('bda.u2.vs-rdbms', 'Hadoop vs SQL and RDBMS'),
+        T('bda.u2.core-components', 'Core Components of Hadoop'),
+        T('bda.u2.architecture', 'Hadoop Architecture'),
+        T('bda.u2.h1-vs-h2', 'Hadoop 1 vs Hadoop 2'),
+        T('bda.u2.hdfs-ops', 'HDFS Operations'),
+        T('bda.u2.ingestion-layer', 'Data Ingestion Layer'),
+        T('bda.u2.etl-elt', 'ETL and ELT'),
+        T('bda.u2.ingestion-tools', 'Ingestion Tools in the Hadoop Ecosystem'),
+        T('bda.u2.ingestion-types', 'Data Ingestion Types'),
+      ],
+    },
+    {
+      unit: 'III', title: 'MapReduce & YARN', topics: [
+        T('bda.u3.mapreduce-intro', 'Introduction to MapReduce'),
+        T('bda.u3.mapreduce-processing', 'Processing Data with MapReduce'),
+        T('bda.u3.io-formats', 'MapReduce I/O Formats'),
+        T('bda.u3.joins', 'Map-side Join and Reduce-side Join'),
+        T('bda.u3.secondary-sort', 'Secondary Sorting'),
+        T('bda.u3.pipelining', 'Pipelining MapReduce Jobs'),
         T('bda.u3.yarn-intro', 'Introduction to YARN'),
         T('bda.u3.yarn-arch', 'YARN Architecture'),
         T('bda.u3.yarn-manage', 'Managing Resources & Applications with YARN'),
@@ -229,7 +404,32 @@ export const syllabus = {
 
   pdt: [
     {
-      unit: 'III', title: 'Define Phase (rest of Unit III)', topics: [
+      unit: 'I', title: 'Engineering & Design Thinking', topics: [
+        T('pdt.u1.impact', 'Impact of Science and Engineering'),
+        T('pdt.u1.thinking-behaviour', 'Thinking and Behaviour'),
+        T('pdt.u1.thinking-types', 'Types of Thinking: Linear, Lateral, Design'),
+        T('pdt.u1.importance', 'Importance of Design Thinking & the Human-Centric Approach'),
+        T('pdt.u1.phases', 'Phases of the Design Thinking Process'),
+        T('pdt.u1.five-stage', 'The Five-Stage Model as an Iterative Method'),
+        T('pdt.u1.applications', 'Applications of Design Thinking'),
+      ],
+    },
+    {
+      unit: 'II', title: 'Empathize Phase', topics: [
+        T('pdt.u2.user-needs', 'Understanding the Unique Needs of the User'),
+        T('pdt.u2.empathize', 'Empathizing with Users'),
+        T('pdt.u2.steps', 'Steps in the Empathize Phase'),
+        T('pdt.u2.developing-empathy', 'Developing Empathy Towards People'),
+        T('pdt.u2.beginners-mind', "Beginner's Mindset (What? Why?)"),
+        T('pdt.u2.immersion', 'Steps in an Immersion Activity'),
+        T('pdt.u2.bodystorming', 'Bodystorming'),
+      ],
+    },
+    {
+      unit: 'III', title: 'Define Phase', topics: [
+        T('pdt.u3.define', 'Define the Problem and Interpret the Result'),
+        T('pdt.u3.analysis-synthesis', 'Analysis and Synthesis'),
+        T('pdt.u3.persona-perspectives', 'Personas: Four Different Perspectives'),
         T('pdt.u3.persona-steps', 'Steps to Creating Personas'),
         T('pdt.u3.problem-statement', 'Problem Statement'),
         T('pdt.u3.affinity', 'Affinity Diagrams'),

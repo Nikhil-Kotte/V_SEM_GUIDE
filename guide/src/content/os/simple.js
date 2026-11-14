@@ -1,465 +1,649 @@
-// Simpler explanations of each topic, written by ChatGPT (via scripts/simplify-with-chatgpt.mjs).
-// Stored verbatim; regenerate with:  node scripts/simplify-with-chatgpt.mjs <subject> [--only <id>]
+// Operating Systems in simple words: a short summary, a picture of the idea, the key points,
+// an everyday comparison and one example for every topic. Keys are syllabus ids.
 export default {
-  "os.u3.address-translation": {
-    "summary": "A program uses **logical addresses** to refer to memory. A **physical address** is the actual location in RAM. With **dynamic mapping**, hardware called the **MMU (Memory Management Unit)** translates logical addresses into physical addresses while the program runs.",
-    "points": [
-      "**Address binding** means deciding where a program’s addresses point in RAM. Binding can happen before execution or while the program runs.",
-      "**Static mapping** fixes addresses during compilation or loading. Once bound, the program must use that location. Moving it elsewhere requires changing those bindings.",
-      "**Dynamic mapping** translates addresses during execution. The mapping can change when a process moves. It supports **swapping**, which moves processes out of RAM and back.",
-      "In the simple **base-and-limit scheme**, logical addresses start at 0. The **relocation register**, also called the **base register**, stores the process’s starting physical address.",
-      "The **limit register** stores the process’s memory size. First check that the logical address is below the limit. Then add the base. An invalid address causes a **trap**, meaning control passes to the operating system.",
-      "For **paging**, address bits = page/frame number bits + **offset** bits. The offset identifies a position inside a page. With 1024 words per page, 64 pages need 6 + 10 = **16 logical bits**; 32 frames need 5 + 10 = **15 physical bits**."
+  // ======================= UNIT I =======================
+  'os.u1.system-overview': {
+    summary: 'A computer system has four parts: the **hardware**, the **operating system**, the **apps**, and the **users**. The OS sits in the middle and manages the hardware for everyone.',
+    picture: [{ stack: ['Users', 'Apps (browser, games, compiler)', 'Operating system', 'Hardware (CPU, memory, disk, devices)'] }],
+    points: [
+      'Devices tell the CPU "I am done" with an **interrupt**; a program error or a request to the OS causes a **trap**.',
+      'Storage goes from tiny and very fast (registers, cache) to huge and slow (disk, tape).',
+      'The CPU has a **user mode** for apps and a **kernel mode** for the OS, so apps cannot damage the system.',
     ],
-    "analogy": "Think of the base as your row’s starting seat. Your logical address tells you how many seats beyond that start to go.",
-    "example": "Base = 14000, limit = 1000: logical address 346 becomes **14346**. Address 1020 causes a **trap** because it exceeds the allowed range."
+    analogy: 'A computer is like a restaurant: customers (users) order from the menu (apps), the manager (OS) organises everything, and the kitchen equipment (hardware) does the real work.',
+    example: 'When you press a key, the keyboard sends an interrupt; the CPU pauses, the OS reads the key, and your text editor shows the letter.',
   },
-  "os.u3.buffering": {
-    "summary": "**Buffering** means temporarily holding data in a memory area called a **buffer** while it moves between a device and a **process**, a running program. It helps them exchange data smoothly.",
-    "points": [
-      "Buffers help because devices and the CPU work at different speeds. They also help when data arrives in chunks of a different size from what the program needs.",
-      "**Copy semantics** means preserving the data given at the time of a write call. Copying it into an OS buffer lets the program change its own buffer later without changing that saved data.",
-      "In **single buffering**, the device fills one operating system (OS) buffer. The OS then copies the data to the process.",
-      "In **double buffering**, two buffers take turns: the device fills one while the process uses the other. **Circular buffering** uses a ring of buffers, reused in order, for a continuous flow.",
-      "With **synchronous (blocking) I/O**, the process waits for input or output to finish. The CPU can run another process meanwhile.",
-      "With **asynchronous I/O**, the process continues working and checks or receives notification of completion later. **Non-blocking I/O** also avoids waiting, but may simply report that data is not ready.",
-      "**Caching** keeps data for faster reuse. **Spooling** queues jobs for a device, such as a printer, to handle one at a time."
+  'os.u1.functions': {
+    summary: 'The **OS** makes the computer easy to use and shares its resources fairly. It manages programs, memory, files, disks, devices and security.',
+    picture: [{ tree: { root: 'What the OS does', kids: ['Runs programs', 'Shares memory', 'Organises files', 'Manages disks', 'Controls devices', 'Keeps things secure'] } }],
+    points: [
+      'For the user, the OS means **convenience**; for the system, it means **efficient, fair sharing**.',
+      '**Multiprogramming** keeps several programs in memory so the CPU always has something to do.',
+      '**Time-sharing** switches between programs so fast that every user feels the machine is theirs.',
+      '**Spooling** lines up print jobs on disk so the slow printer does not hold up the CPU.',
     ],
-    "analogy": "A buffer is like a serving tray between a cook and a waiter. Each can work at a different pace.",
-    "example": "During audio playback, one buffer can supply sound while another receives the next chunk."
+    analogy: 'The OS is like a school principal: assigns classrooms (memory), sets the timetable (CPU time), keeps records (files) and enforces rules (security).',
+    example: 'While a video downloads (waiting for the network), the OS lets your music player and browser use the CPU, so nothing feels stuck.',
   },
-  "os.u3.disk-management": {
-    "summary": "**Disk management** is the operating system’s housekeeping for a disk. It prepares storage, helps start the computer, and handles damaged storage areas.",
-    "points": [
-      "**Low-level formatting** divides a disk into small storage units called **sectors**. Each has a header, a data area, and a trailer containing **ECC**. ECC detects and corrects small errors. This formatting usually happens at the factory.",
-      "**Partitioning** splits a disk into sections called **partitions**. Each section is treated as a separate logical disk.",
-      "**Logical formatting** creates a **file system**, the structure for organizing files. It includes a free-space map and an empty **root directory**, the top-level folder.",
-      "A **bootstrap loader** is a small startup program stored in **ROM**, or read-only memory. It reads the disk’s **boot block**, whose code helps load the **kernel**, the OS’s core. In traditional systems, the **Master Boot Record** is in sector 0. A disk with a boot partition is a **boot disk**.",
-      "**Bad blocks** are faulty storage areas. Simple systems can mark them unusable in the **FAT**, or File Allocation Table.",
-      "Smarter disk controllers use **sector sparing** to replace a bad sector with a spare. **Sector slipping** shifts following sectors to skip the bad spot.",
-      "The OS also handles data loss, **fragmentation**—scattered file pieces—and consistent **metadata**, information describing stored data. It chooses where **swap space**, disk space supporting memory, goes."
+  'os.u1.types': {
+    summary: 'Different jobs need different kinds of OS: a **desktop OS** for comfort, a **mobile OS** for touch and battery, a **real-time OS** for strict deadlines, and so on.',
+    picture: [{ tree: { root: 'Types of OS', kids: ['Batch', 'Time-sharing', 'Real-time (RTOS)', 'Desktop', 'Mobile', 'Distributed'] } }],
+    points: [
+      'An **RTOS** must finish tasks on time, every time: **hard** real-time (airbag) cannot miss; **soft** real-time (video) can occasionally.',
+      'A normal OS cares about average speed; an RTOS cares about **predictable** timing.',
+      'Mobile OSs must save battery, handle touch and sensors, and keep apps sandboxed.',
     ],
-    "analogy": "Think of dividing a cupboard into sections, adding labels, and avoiding broken shelves.",
-    "example": "If sector 25 fails, sector sparing redirects its requests to a spare sector."
+    analogy: 'A normal OS is a city bus that comes "about every 10 minutes"; an RTOS is an ambulance that must arrive within a fixed time, no excuses.',
+    example: 'Windows runs your laptop, Android runs your phone, and an RTOS like FreeRTOS fires the airbag in a car within milliseconds of a crash.',
   },
-  "os.u3.disk-scheduling": {
-    "summary": "**Disk scheduling** chooses which waiting disk request to serve next. It aims to reduce movement of the **disk head**, the part that reads and writes data, while keeping waiting times reasonable.",
-    "points": [
-      "**FCFS (First-Come, First-Served)** follows arrival order. Every request gets its turn, but the head may travel back and forth a lot.",
-      "**SSTF (Shortest Seek Time First)** serves the nearest request next. It often reduces movement. But distant requests can face **starvation**: waiting indefinitely because other requests keep getting chosen.",
-      "**SCAN**, the elevator algorithm, serves requests along one direction, reaches the disk end, then reverses. Middle cylinders can get more frequent service. A **cylinder** is a numbered disk location in these problems.",
-      "**C-SCAN (Circular SCAN)** serves requests in one direction only. It reaches the disk end, returns to the opposite end without serving requests, then starts another sweep. Waiting times are generally more uniform.",
-      "**LOOK** works like SCAN, but reverses at the last pending request in its direction. It avoids travelling unnecessarily to the disk end.",
-      "**C-LOOK** works like C-SCAN, but stops at the last pending request. When serving upwards, it jumps to the lowest pending request and resumes upwards. The jump moves the head backwards; the service direction stays the same."
+  'os.u1.distributions': {
+    summary: 'A **distribution** is a complete OS package: the kernel plus tools, a desktop and apps. Linux has many distributions like Ubuntu and Fedora, each released in versions.',
+    picture: [{ stack: ['Apps (browser, office)', 'Desktop and tools', 'Libraries and package manager', 'Kernel'] }],
+    points: [
+      'Linux distributions: Ubuntu, Fedora, Debian, Red Hat, Mint. Others: Windows 11, macOS, Android, iOS.',
+      '**Open source** (Linux, Android): free to read and change. **Closed source** (Windows, iOS): owned by a company.',
+      'iOS and Android are alike in design (layers, sandboxed apps) but differ in kernel, openness and devices.',
     ],
-    "analogy": "Imagine an elevator: requests are floors, and scheduling decides the order in which people get served.",
-    "example": "Head at 53; requests at 37 and 65. **SSTF** chooses 65: it is 12 cylinders away, while 37 is 16 away."
+    analogy: 'The kernel is like a car engine; a distribution is the full car built around it, and different brands put the same engine in different cars.',
+    example: 'Ubuntu 24.04 LTS and Fedora both use the Linux kernel but come with different tools and desktops.',
   },
-  "os.u3.disk-structure": {
-    "summary": "A **hard disk drive (HDD)** stores data on spinning disks. Its parts help the computer find and read the data it needs.",
-    "points": [
-      "A **platter** is a rigid disk with a magnetic coating that stores data. Each platter has two **surfaces**, or sides, which may be used for recording.",
-      "Each surface contains **tracks**, which are circular paths. Each track is divided into **sectors**, small storage sections. Common sector sizes are 512 or 4096 bytes. Physical reads and writes happen in whole sectors.",
-      "A **cylinder** is the collection of tracks at the same distance from the centre across all recording surfaces. Reaching these tracks does not require moving the arm.",
-      "Each recording surface has a **read/write head**. It reads and changes data without touching the surface. The **disk arm** moves the heads between tracks. The heads move together.",
-      "The **spindle** is the central shaft that spins the platters. **RPM**, or revolutions per minute, tells us how many full turns they make each minute.",
-      "The OS sees a numbered sequence of **logical blocks**. The drive translates these block numbers into storage locations.",
-      "**Access time = seek time + rotational latency + transfer time**. Seek time means moving to the correct cylinder. Rotational latency means waiting for the sector. Transfer time means reading or writing the data. **SSDs** have no mechanical seek or rotational delay."
+  'os.u1.microkernel': {
+    summary: 'A **microkernel** keeps only the bare essentials inside the kernel. Everything else (files, drivers, network) runs outside as normal programs that send messages to each other.',
+    picture: [{ stack: ['Apps, file server, drivers, network server (user space)', 'messages ↕', 'Tiny microkernel: messages, scheduling, basic memory', 'Hardware'] }],
+    points: [
+      'Easy to add new services without touching the kernel.',
+      'If a driver crashes, the kernel keeps running: safer and more reliable.',
+      'Downside: messages are slower than direct calls.',
+      'Examples: Mach, QNX, MINIX.',
     ],
-    "analogy": "Imagine stacked circular racecourses: tracks are lanes, sectors are sections, and a cylinder groups matching lanes across the stack.",
-    "example": "At 600 RPM, one rotation takes 100 milliseconds. Average **rotational latency** is half a rotation: 50 milliseconds."
+    analogy: 'Like a small office with a receptionist who only passes notes between departments; each department works separately, so one department\'s mess does not shut down the office.',
+    example: 'In QNX (used in car dashboards), a crashed audio driver can be restarted while the rest of the system keeps working.',
   },
-  "os.u3.linux-mm": {
-    "summary": "**Linux memory management** shares RAM among programs and the kernel, the core of the operating system. It loads pages when needed and frees space when RAM becomes scarce.",
-    "points": [
-      "RAM is divided into fixed-size pieces called **pages**. **Zones**, such as DMA and NORMAL, group memory by hardware access limits. HIGHMEM exists on some systems.",
-      "The **buddy system** allocates blocks of 1, 2, 4, 8 or more pages. It splits larger blocks and merges matching free buddies. This helps reduce **external fragmentation**, where free memory is scattered.",
-      "The **slab allocator** keeps caches for small kernel objects. It makes allocation fast and reduces wasted space, but does not eliminate all **internal fragmentation**, or unused space inside allocations.",
-      "Each process has a **virtual address space**, containing code, data, heap and stack regions described by **vm_area_struct**. **Multi-level page tables** translate virtual addresses into physical memory addresses.",
-      "**Demand paging** loads pages only when needed. After **fork()**, **copy-on-write** lets parent and child share pages until either writes. **mmap** maps files into memory through the **page cache**.",
-      "**LRU-like replacement** approximates removing least recently used pages. Traditional Linux uses active and inactive lists. Under memory pressure, **kswapd** reclaims pages: clean file pages are dropped, dirty file pages need file writeback, and anonymous pages may enter **swap space**.",
-      "If memory cannot be recovered, the **OOM killer** may terminate a process."
+  'os.u1.layered': {
+    summary: 'The **layered approach** builds the OS like a cake: hardware at the bottom, the user interface at the top, and each layer uses only the layer below it.',
+    picture: [{ stack: ['Layer N: user interface', 'Layer 3: I/O management', 'Layer 2: memory management', 'Layer 1: CPU scheduling', 'Layer 0: hardware'] }],
+    points: [
+      'Easy to build and debug: test one layer at a time, from the bottom up.',
+      'Hard to decide the right order of layers.',
+      'Each layer adds a little delay, so it can be slower.',
     ],
-    "analogy": "RAM is a study desk; storage holds material that need not stay on the desk.",
-    "example": "A three-page buddy allocation receives a four-page block."
+    analogy: 'Like a building\'s floors: the 3rd floor rests on the 2nd, which rests on the 1st. You build and check one floor at a time.',
+    example: 'The memory manager and disk driver both need each other (paging needs the disk, the disk needs memory buffers), which makes strict layering awkward.',
   },
-  "os.u3.page-faults": {
-    "summary": "A **page** is a fixed-size piece of a process’s memory. A **page fault** happens when a program tries to use a page that is missing from **RAM**, the computer’s main memory. For a legal access, the operating system (**OS**) brings the page in and retries the instruction.",
-    "points": [
-      "**Demand paging** means loading a page only when it is needed. **Pure demand paging** starts a process with no pages in RAM.",
-      "The **page table** records where pages are stored in RAM. Its **valid–invalid bit** marks a page as valid if it is legal and present. Invalid means absent or outside the process’s allowed memory.",
-      "Accessing an invalid page causes a **trap**, which hands control to the OS. The OS checks the address. If it is illegal, the process is terminated.",
-      "For a legal address, the OS finds a **free frame**, a page-sized space in RAM. If necessary, **page replacement** removes another page to make room.",
-      "The OS reads the required page from disk into that frame.",
-      "It updates the page table with the frame number, marks the entry valid, and **restarts the instruction**.",
-      "**Effective access time (EAT)** = (1 − p) × memory access time + p × page-fault service time. Here, p is the fault probability. Disk service takes milliseconds; RAM takes nanoseconds. Even rare faults can cause major delays."
+  'os.u1.kernel-approaches': {
+    summary: 'The **kernel** is the heart of the OS. It can be built as one big block (monolithic), a tiny core (microkernel), a core with plug-ins (modular), or a mix (hybrid).',
+    picture: [{ table: { head: ['Approach', 'In short', 'Example'], rows: [['Monolithic', 'Everything inside, fast', 'Linux'], ['Microkernel', 'Minimum inside, safe', 'QNX'], ['Modular', 'Core + loadable modules', 'Linux modules'], ['Hybrid', 'Mix of both', 'Windows, macOS']] } }],
+    points: [
+      'Monolithic: fast, but one bug can crash everything.',
+      'Microkernel: reliable, but slower.',
+      'Modular: load drivers only when needed.',
+      'Hybrid: a practical balance used by most modern desktops.',
     ],
-    "analogy": "RAM is your study desk. Disk is a cupboard. A missing book must be fetched before you continue reading.",
-    "example": "An instruction needs page 3. It is legal but absent. The OS loads it, then retries that instruction."
+    analogy: 'Monolithic is a joint family in one house; microkernel is separate flats with an intercom; modular is a house where you add rooms when needed.',
+    example: 'When you plug in a USB device, Linux loads its driver module on the spot instead of keeping every driver loaded all the time.',
   },
-  "os.u3.page-replacement": {
-    "summary": "A **page** is a fixed-size piece of a program’s memory. A **frame** is a space in RAM that holds one page. A **page fault** happens when a needed page is missing from RAM. If all frames are full, a **page replacement algorithm** chooses a **victim page** to remove.",
-    "points": [
-      "**FIFO (First-In, First-Out)** removes the page loaded earliest. Using a page again does not change its place in the queue.",
-      "**Belady’s anomaly** means that adding more frames can cause more page faults. FIFO can show this behaviour.",
-      "**Optimal (OPT)** removes the page whose next use is farthest in the future. It gives the fewest faults, but needs future knowledge. It is a benchmark for comparison.",
-      "**LRU (Least Recently Used)** removes the page that has gone longest without being used. It uses the past to approximate OPT.",
-      "In an **LRU stack**, move each referenced page to the top. The bottom page is the victim. Finding the victim needs no search, but locating a referenced page may.",
-      "A **working set** contains the pages used in the latest **Δ references**. Too few frames can cause **thrashing**: more time spent paging than executing.",
-      "Control thrashing by providing enough frames for working sets, adjusting frames using **page-fault frequency**, or reducing the number of processes competing for memory."
+  'os.u1.unix-arch': {
+    summary: '**Unix/Linux** is built in layers: hardware, the kernel, the shell and tools, and your apps. Programs reach the kernel through **system calls**.',
+    picture: [{ stack: ['Users and apps', 'Shell and tools (bash, ls, gcc)', 'System calls', 'Kernel', 'Hardware'] }],
+    points: [
+      'In Unix, almost **everything is a file**: devices, pipes and sockets too.',
+      'Small tools do one job and are joined by pipes: ls | grep notes.',
+      'Android is built on the Linux kernel with its own runtime and app framework on top.',
     ],
-    "analogy": "RAM is a small desk. When it fills up, you must remove one book before bringing another.",
-    "example": "With three frames, requests 1, 2, 3, 1, 4 make FIFO remove 1. LRU removes 2 because 1 was used again recently."
+    analogy: 'Like a bank: customers (apps) talk to the counter staff (shell and tools), who fill official request forms (system calls) for the strong room (kernel).',
+    example: 'Typing ls in the terminal: the shell asks the kernel through system calls to read the directory, then prints the file names.',
   },
-  "os.u3.paging": {
-    "summary": "**Paging** splits a process’s logical memory into equal-sized **pages**. RAM is split into matching blocks called **frames**, so pages can fit into separate free frames.",
-    "points": [
-      "A **logical address**, used by a program, contains a **page number** and an **offset**: the position inside that page. The process’s **page table** maps the page number to a frame number. The offset stays unchanged.",
-      "Paging avoids **external fragmentation**: scattered free gaps that cannot hold one continuous allocation. But **internal fragmentation** can waste space inside the process’s last page.",
-      "The **TLB (Translation Look-aside Buffer)** is a tiny, fast cache of recent page-to-frame mappings. A **hit** finds the mapping there. A **miss** requires checking the page table.",
-      "**Effective Access Time (EAT)** means average access time. With a 20 ns TLB, 100 ns memory, and 80% hits, EAT = 0.8 × 120 + 0.2 × 220 = **140 ns**, assuming a single-level page table.",
-      "**ASIDs (address-space identifiers)** label TLB entries by process. This lets entries from different processes coexist safely.",
-      "A **hierarchical page table** uses levels: an outer table points to inner tables. A **hashed page table** uses a hash calculation to locate candidate mappings, then checks for a match.",
-      "An **inverted page table** has one entry per physical frame. Each entry identifies the process and page stored there."
+
+  // ======================= UNIT II =======================
+  'os.u2.program-process': {
+    summary: 'A **program** is a file sitting on disk. A **process** is that program while it is running, with its own memory, CPU state and open files.',
+    picture: [{ flow: ['Program file on disk', 'Loaded into memory', 'Process running'] }],
+    points: [
+      'A program is **passive**; a process is **active**.',
+      'One program can become many processes (two Chrome windows, two processes).',
+      'A process\'s memory has four parts: code (text), globals (data), heap and stack.',
     ],
-    "analogy": "Think of pages as equal-sized boxes and frames as shelf slots. A directory tells you where each box sits.",
-    "example": "With 4-byte pages, logical address 13 means page 3, offset 1. If page 3 occupies frame 2, the **physical address** is 2 × 4 + 1 = **9**."
+    analogy: 'A recipe in a book is a program; a cook actually cooking that recipe is a process. Two cooks can follow the same recipe at the same time.',
+    example: 'notepad.exe on disk is a program; when you open two Notepad windows, you have two processes.',
   },
-  "os.u3.segmentation": {
-    "summary": "**Segmentation** divides a program into meaningful parts of different sizes. Each part is a **segment**, such as code, data, or the stack. This matches how programmers think about a program and helps control access to its parts.",
-    "points": [
-      "A **logical address**, the address used by a program, has two parts: **(segment number, offset)**. The segment number selects a segment. The **offset** tells how far inside it to go.",
-      "The **segment table** stores one entry for each segment. Its **base** is the starting address in memory. Its **limit** is the segment’s length.",
-      "For a non-negative offset, check whether **offset < limit**. If valid, the **physical address**, the actual memory location, is **base + offset**. Otherwise, a **trap** reports an addressing error.",
-      "**Paging** uses fixed-size pieces. Segmentation uses variable-size pieces. Paging can waste space inside a page; this is **internal fragmentation**. Segmentation can leave scattered gaps between segments; this is **external fragmentation**.",
-      "**Protection** controls access to a segment. **Sharing** lets programs use the same segment, such as shared code."
+  'os.u2.states': {
+    summary: 'A process moves through **states**: new, ready (waiting for the CPU), running, waiting (for input or I/O), and terminated.',
+    picture: [{ flow: ['New', 'Ready', 'Running', 'Terminated'], loop: 'Running → Waiting when it needs I/O; Waiting → Ready when the I/O finishes; Running → Ready when its time slice ends' }],
+    points: [
+      'Only one process per CPU can be **running** at a time.',
+      'Waiting for the keyboard (scanf) moves a process from running to **waiting**.',
+      'With swapping, a process can also be **suspended** (moved to disk).',
     ],
-    "analogy": "Think of a building with rooms of different sizes. The segment number chooses a room. The offset tells how far to move from that room’s entrance. You must stay within the room.",
-    "example": "Segment 0 has base 219 and limit 600. Address **(0, 430)** is valid because 430 < 600. Its physical address is **219 + 430 = 649**. Offset 600 would cause a trap."
+    analogy: 'Like patients in a clinic: registered (new), in the waiting room (ready), with the doctor (running), sent for a blood test (waiting), and discharged (terminated).',
+    example: 'A program calls scanf() and waits for you to type: running → waiting. You press Enter: waiting → ready → running.',
   },
-  "os.u3.sharing-permissions": {
-    "summary": "With **paging**, a program’s memory is split into fixed-size blocks called **pages**. The OS controls which pages a **process** (a running program) can use and whether it can read, write, or run instructions from them.",
-    "points": [
-      "Each process has its own **page table**. It maps pages to **frames**, which are blocks of physical RAM. A process cannot reach another process’s private memory through its own table.",
-      "Only the **kernel**, the trusted core of the OS, can change these mappings. A process must request more memory through a **system call**, a controlled request to the OS.",
-      "The **valid/invalid bit** says whether a page belongs to the process’s allowed address space. **Read/write/execute permissions** control what it can do there. An illegal access causes a **trap**, which transfers control to the OS.",
-      "Hardware checks permissions while translating addresses. **Page sharing** happens when page-table entries point to the same frame. The processes then use the same memory.",
-      "**Re-entrant code** can be shared safely without changing its instructions. **Shared memory IPC** lets processes communicate through shared pages.",
-      "With **copy-on-write (COW)** after **fork()**, which creates a child process, parent and child initially share private pages. Writes are blocked until the OS makes a separate copy of the affected page."
+  'os.u2.pcb': {
+    summary: 'The **PCB** (Process Control Block) is the OS\'s file on each process: its state, ID, where it stopped, its registers, priority, memory and open files.',
+    picture: [{ stack: ['State', 'Process ID', 'Program counter', 'Registers', 'Priority and queue info', 'Memory info', 'Open files and devices'] }],
+    points: [
+      'On a switch, the CPU state is saved in the PCB so the process can resume exactly where it stopped.',
+      'PCBs are kept in queues: the ready queue and device queues.',
+      'Every process has exactly one PCB.',
     ],
-    "analogy": "Think of a page table as a library access list. Two students can access the same book, but their permissions may differ.",
-    "example": "A and B map one writable shared frame. A changes a value from 5 to 9. B can read 9 from that same location."
+    analogy: 'Like a bookmark plus a sticky note in a book: it remembers the page, the line, and your notes so you can continue later.',
+    example: 'When your music player is paused by the OS to run the browser, its PCB keeps its exact position in the song\'s code.',
   },
-  "os.u3.swap-space": {
-    "summary": "**Swap space** is disk space that the operating system uses when **RAM**, the computer’s working memory, becomes crowded. **Swap-space management** means organising this space so that moving data between RAM and disk is efficient.",
-    "points": [
-      "Memory is divided into small blocks called **pages**. The operating system can move some pages to swap space and bring them back when needed. Disk access is much slower than RAM access.",
-      "Swap space can be a **swap file**, stored inside a normal **file system**, which organises files on disk. It is easy to create, but file-system work can add overhead.",
-      "Another option is a **raw swap partition**. This is a separate disk section with no file system. The swap manager controls it directly, using simple methods designed for speed.",
-      "Older systems swapped whole processes, meaning running programs. Modern systems usually swap individual **anonymous pages**, such as pages holding a program’s working data. Unchanged **code pages** can be read again from the program file.",
-      "Swap must suit memory needs. Too little can contribute to memory shortages and processes being killed. Reserving too much wastes disk space.",
-      "Linux tracks swap **slots**, each holding one page, using a **swap map**. Its counters track references: 0 means free; a positive count means in use. Shared pages can have multiple references."
+  'os.u2.services': {
+    summary: '**OS services** are the jobs the OS does for users (run programs, handle files, show a UI, report errors) and for the system (share resources, keep logs, protect).',
+    picture: [{ tree: { root: 'OS services', kids: ['User interface', 'Run programs', 'I/O', 'Files', 'Communication', 'Error detection', 'Resource sharing', 'Accounting', 'Protection'] } }],
+    points: [
+      'User programs cannot do these alone: they need privileged hardware access only the kernel has.',
+      'The **shell** (command interpreter) is kept separate from the kernel so it can be changed safely.',
     ],
-    "analogy": "RAM is your study desk. Swap space is a cupboard where you temporarily move material when the desk gets crowded.",
-    "example": "With 4 KB pages, moving three pages into free swap slots needs 12 KB of swap space."
+    analogy: 'Like hotel services: room service and Wi-Fi for guests (user services), and billing, security and housekeeping for the hotel itself (system services).',
+    example: 'Saving a document uses the file-system service; if the disk is full, the error-detection service shows "disk full".',
   },
-  "os.u3.swapping": {
-    "summary": "**Swapping** moves a process, meaning a running program, between **RAM** and disk. RAM is the computer’s main working memory. Swapping lets the system manage more processes than RAM can hold at once.",
-    "points": [
-      "**Swap out** means moving a process from RAM to **backing store**, the disk space used to hold it. **Swap in** means bringing it back into RAM so it can continue.",
-      "**Medium-term scheduling** temporarily removes processes from RAM and brings them back later. In **roll out, roll in**, a low-priority process leaves to make room for a high-priority one.",
-      "**Dynamic binding**, or run-time address binding, translates memory addresses while a program runs. This lets a swapped-out process return to a different location in RAM.",
-      "**Transfer time**, the time spent copying data, is the main swapping cost. Larger transfers take longer. Modern systems usually move smaller memory blocks called **pages**, rather than whole processes, when memory is scarce.",
-      "**I/O** means input/output, such as reading from disk. Do not swap out a process while a device is writing directly into its memory buffer. That memory could be reassigned. **OS buffers** provide a safe alternative.",
-      "**Overlays** kept only currently needed program parts in RAM. Programmers manually arranged for other parts to replace them. **Paging** removed the need for this manual arrangement."
+  'os.u2.syscalls': {
+    summary: 'A **system call** is how a program asks the OS to do something it cannot do itself. fork() makes a copy of the process, exec() runs a new program in it, and wait() waits for it to finish.',
+    picture: [{ flow: ['Parent calls fork()', 'Child is a copy', 'Child calls exec("ls")', 'Parent calls wait()', 'Child exits, parent continues'] }],
+    points: [
+      'fork() returns **0 in the child** and the **child\'s PID in the parent**.',
+      'exec() replaces the program but keeps the same PID.',
+      'getpid() gives your own ID; getppid() gives your parent\'s ID.',
     ],
-    "analogy": "RAM is a desk. Disk is a cupboard. Put work away to free desk space; bring it back to continue.",
-    "example": "At 50 MB/s, swapping 100 MB takes 2 seconds out and 2 seconds back: 4 seconds of transfer time."
+    analogy: 'Like asking the bank clerk to withdraw cash: you cannot open the vault yourself, so you fill a slip (system call) and the clerk (kernel) does it.',
+    example: 'When you type ls in a shell, the shell forks a child, the child execs ls, and the shell waits until ls is done.',
   },
-  "os.u4.classical": {
-    "summary": "**Synchronization** means coordinating processes so they can safely share data or resources. Three **classical problems** test whether this coordination works: **bounded buffer**, **readers–writers**, and **dining philosophers**.",
-    "points": [
-      "The **bounded buffer** is a fixed-size storage area. **Producers** add items; **consumers** remove them. Producers must wait when it is full. Consumers must wait when it is empty.",
-      "A **semaphore** controls access using a counter. **wait** takes a permit, or blocks until one is available. **signal** returns a permit. Here, **empty** counts free spaces, **full** counts available items, and **mutex** allows only one process to change the buffer at a time. Wait on empty or full before mutex.",
-      "In **readers–writers**, several readers can read together. A writer needs exclusive access. **read_count** tracks readers: the first reader blocks writers, and the last lets them proceed. Another mutex protects this count.",
-      "**Starvation** means waiting indefinitely while others keep getting access. Continually arriving readers can starve writers in this reader-preference solution. Taking several reader–writer locks in inconsistent orders can also cause **deadlock**: processes remain stuck waiting for one another.",
-      "In **dining philosophers**, five philosophers each need two neighbouring chopsticks. Everyone taking their left chopstick causes deadlock. Prevent it by allowing only four to compete, reserving both chopsticks together, or using opposite pickup orders for odd and even philosophers.",
-      "A **monitor** allows only one process inside at a time. Fair waiting rules are also needed to prevent starvation."
+  'os.u2.syscalls-vs-programs': {
+    summary: '**System calls** are the OS\'s internal request functions for programmers. **System programs** are ready-made tools for users (ls, cp, compilers) built using those calls.',
+    picture: [{ stack: ['You (user)', 'System programs: ls, cp, gcc, editor', 'System calls: open, read, write, fork', 'Kernel'] }],
+    points: [
+      'System calls run in kernel mode; system programs run in user mode.',
+      'cp (a program) uses open, read and write (calls) to copy a file.',
     ],
-    "analogy": "The buffer is like a small tray between a cook and customers.",
-    "example": "If a producer locks a full buffer and then waits for space, the consumer cannot enter to make space: deadlock."
+    analogy: 'System calls are the raw ingredients; system programs are ready meals made from them.',
+    example: 'You run cp a.txt b.txt (system program); inside, it makes open(), read(), write() and close() system calls.',
   },
-  "os.u4.deadlock-avoidance": {
-    "summary": "**Deadlock** happens when processes wait for resources held by one another, so none can continue. **Deadlock avoidance** checks before giving resources. The **Banker’s Algorithm** grants a request only if there is still a way for every process to finish.",
-    "points": [
-      "A **safe state** has at least one finishing order called a **safe sequence**. An **unsafe state** means deadlock may happen; it does not mean deadlock has already happened.",
-      "**Available** means free resources. **Max** is each process’s declared maximum demand. **Allocation** is what it already holds. **Need = Max − Allocation** is what it may still request.",
-      "The **safety algorithm** runs an imaginary check. Set **Work = Available**. Mark every process unfinished using **Finish = false**.",
-      "Pick an unfinished process whose **Need ≤ Work** for every resource type. Imagine it finishes. Add its original **Allocation** to Work and mark it finished. Repeat. If everyone finishes, the state is safe; otherwise, it is unsafe.",
-      "For a new request, check each resource type. Exceeding **Need** is an error. Exceeding **Available** means the process must wait.",
-      "Otherwise, pretend to grant it: reduce Available and Need, and increase Allocation. Run the safety check. If safe, grant it. Otherwise, undo the changes and make the process wait."
+  'os.u2.context-switch': {
+    summary: 'The **scheduler** decides which process runs next. A **context switch** saves the current process\'s state and loads the next one\'s. It is needed, but it is wasted time.',
+    picture: [{ flow: ['P0 running', 'Save P0 into its PCB', 'Load P1 from its PCB', 'P1 running'] }],
+    points: [
+      '**Long-term** scheduler: which jobs enter memory. **Short-term**: which ready process gets the CPU. **Medium-term**: which process to swap out.',
+      'During a switch no useful work is done, so it should be fast.',
+      'More registers, page-table changes and cold caches make switching slower.',
     ],
-    "analogy": "Think of lending tools. Before lending more, you check whether everyone could finish their job and return the tools.",
-    "example": "There is 1 free printer. P1 holds 1 and needs 1 more. P2 holds 1 and needs 2 more. Check P1 first: it finishes and releases both printers. P2 can then finish. **P1 → P2** is a safe sequence."
+    analogy: 'Like a teacher switching between two classes: note where Class A stopped, pick up Class B\'s notes, and start teaching. The walking time between classes is the overhead.',
+    example: 'With 10 ms time slices and a 0.1 ms switch, about 1% of CPU time is lost to switching.',
   },
-  "os.u4.deadlock-intro": {
-    "summary": "A **deadlock** happens when processes—programs being executed—are stuck waiting for resources held within the same group. Resources are things they need, like printers. Normally, processes follow **request → use → release**.",
-    "points": [
-      "All four **necessary conditions** must hold together: **mutual exclusion**, **hold and wait**, **no preemption**, and **circular wait**. Breaking any one prevents deadlock.",
-      "**Mutual exclusion**: at least one resource can be used by only one process at a time.",
-      "**Hold and wait**: a process keeps a resource while waiting for another. **No preemption**: that resource cannot be forcibly taken away; its holder must release it.",
-      "**Circular wait**: processes form a waiting loop. Each waits for a resource held by the next. This also implies **hold and wait**, so the conditions are not fully independent.",
-      "**Prevention** breaks a necessary condition. **Avoidance**, such as **Banker’s algorithm**, grants requests only when a safe completion order remains possible. **Detection and recovery** finds deadlocks and breaks them. The **ostrich approach** ignores the problem.",
-      "**Starvation** means one process keeps waiting while others continue. In deadlock, the involved processes cannot proceed.",
-      "One correction to the notes: a **single-threaded process** can deadlock itself by requesting a lock it already holds if that lock forbids repeated acquisition. Simply waiting for input is not necessarily deadlock."
+  'os.u2.criteria': {
+    summary: 'To judge a scheduling method we measure: how busy the CPU is, how many jobs finish, and how long processes wait or take to finish.',
+    picture: [{ table: { head: ['Measure', 'Want it'], rows: [['CPU utilisation', 'High'], ['Throughput', 'High'], ['Turnaround time', 'Low'], ['Waiting time', 'Low'], ['Response time', 'Low']] } }],
+    points: [
+      'Turnaround = finish time − arrival time.',
+      'Waiting = turnaround − burst time.',
+      '**Pre-emptive** scheduling can take the CPU away; **non-pre-emptive** cannot.',
     ],
-    "analogy": "Four cars each wait for the car on their right to move. Nobody can move first.",
-    "example": "P1 holds the printer and needs the scanner. P2 holds the scanner and needs the printer. Neither releases its resource, so both remain stuck."
+    analogy: 'Like judging a bank queue: how busy the cashiers are, how many customers are served per hour, and how long each person waits.',
+    example: 'A process arrives at 2, needs 3 units and finishes at 10: turnaround = 8, waiting = 5.',
   },
-  "os.u4.deadlock-prevention": {
-    "summary": "A **deadlock** happens when processes are stuck waiting for resources held by one another. **Deadlock prevention** sets rules so at least one of the four **necessary conditions** for deadlock can never hold.",
-    "points": [
-      "**Mutual exclusion** means only one process can use a resource at a time. Deny it by allowing sharing, as with read-only files. This cannot work for resources such as printers or mutex locks.",
-      "**Hold and wait** means keeping resources while requesting more. Deny it by requesting everything at the start, or requesting only while holding nothing. Resources may sit unused. **Starvation**, or waiting indefinitely, can occur.",
-      "**No preemption** means resources cannot be forcibly taken away. Deny it by making a process release its resources when a new request cannot be granted. This works only when resource state can be saved and restored, as with CPU registers and memory.",
-      "**Circular wait** means a loop of processes waiting on one another. Use **resource ordering**: give resource types a fixed order, called **F(R)**, and request only in increasing order. Numbers cannot keep increasing around a loop.",
-      "Ordering is practical and cheap. It uses a **static rule**, without a run-time safety check. Programmers must follow it. Resources may be held longer than needed.",
-      "**Banker’s algorithm** uses **deadlock avoidance**. It checks safety for each request and needs maximum resource requirements beforehand. It can allow more concurrency, but costs more."
+  'os.u2.algorithms': {
+    summary: '**CPU scheduling algorithms** decide who runs next: first come first served, shortest job first, highest priority first, or everyone in turns (Round Robin).',
+    picture: [{ flow: ['0 P1 5', '5 P4 6', '6 P2 9', '9 P3 12'], label: 'A Gantt chart: process names on a timeline' }],
+    points: [
+      '**FCFS**: simple, but short jobs get stuck behind long ones (convoy effect).',
+      '**SJF**: shortest first gives the lowest average waiting time; **SRTF** is its pre-emptive version.',
+      '**Priority**: low-priority jobs may starve; **aging** slowly raises their priority.',
+      '**Round Robin**: everyone gets a time slice in turn, so response is fast.',
     ],
-    "analogy": "Always collect shared kitchen tools in the same numbered order.",
-    "example": "With locks numbered 1 and 2, acquire 1 before 2. Never hold 2 while requesting 1."
+    analogy: 'FCFS is a normal queue; SJF lets the person with one item go first; priority is an emergency room; Round Robin is passing the mic around for 2 minutes each.',
+    example: 'P1 (5), P2 (3), P3 (3), P4 (1) arriving at 0, 1, 2, 4: SJF gives average waiting time 3.25; SRTF lowers it to 2.5.',
   },
-  "os.u4.deadlock-recovery": {
-    "summary": "**Deadlock** happens when processes are stuck waiting for resources held by one another. **Deadlock recovery** breaks this wait after it happens, so work can continue.",
-    "points": [
-      "**Process termination** means stopping processes. The system can **abort all** deadlocked processes. This breaks the deadlock quickly, but loses all their unfinished work.",
-      "It can **abort one at a time** instead. This may waste less work. After each termination, the system must check whether any deadlock remains.",
-      "To choose whom to abort, consider **priority**, time already spent, time still needed, resources held, and resources still needed. Also consider whether it is **interactive**, serving a user directly, or **batch**, running without user interaction.",
-      "**Resource preemption** means taking a resource away from a process so another can use it. This works only for resources that can be taken away safely.",
-      "**Selecting a victim** means choosing which process will lose resources. The system tries to minimise cost, considering resources held and work already done.",
-      "**Rollback** returns the victim to an earlier saved state called a **checkpoint**. It can then repeat work from there. Sometimes, a complete restart is needed.",
-      "**Starvation** happens if a process keeps being selected and never finishes. Counting previous rollbacks when choosing a victim helps prevent this."
+  'os.u2.linux-process': {
+    summary: 'In **Linux**, every process is created by another using fork(); the first process (init/systemd) is the ancestor of all. Processes are controlled with signals like Ctrl+C.',
+    picture: [{ tree: { root: 'systemd (PID 1)', kids: ['login shell', 'bash → ls', 'web server', 'other daemons'] } }],
+    points: [
+      'See processes with ps and top; stop one with kill.',
+      'A **zombie** has finished but its parent has not collected it; an **orphan** has lost its parent and is adopted by init.',
+      'Signals: SIGINT (Ctrl+C), SIGKILL (force kill), SIGTERM (ask nicely), SIGCHLD (child ended).',
     ],
-    "analogy": "Two students each hold one book and need the other's. Asking one to return their book lets the other finish.",
-    "example": "P1 holds resource A and waits for B. P2 holds B and waits for A. Aborting P2 releases B, allowing P1 to continue."
+    analogy: 'Like a family tree: every process has a parent, and the oldest ancestor (systemd) adopts any orphans.',
+    example: 'Pressing Ctrl+C sends SIGINT to the running program, which stops it.',
   },
-  "os.u4.rag": {
-    "summary": "A **Resource Allocation Graph (RAG)** is a picture of which processes hold resources and which are waiting for them. It helps us spot **deadlock**: a situation where processes remain stuck because each needs a resource held by another waiting process.",
-    "points": [
-      "A **process** is a program in execution. Draw it as a circle. Draw a **resource**, such as a printer, as a box. Each dot inside means one **instance**, or available unit of that resource type.",
-      "A **request edge**, **P → R**, means process P has asked for resource R and is waiting for it.",
-      "An **assignment edge**, **R → P**, means one instance of resource R is currently held by process P.",
-      "A **cycle** is a path of arrows that leads back to its starting point. **No cycle means no deadlock**.",
-      "With **single-instance resources**, a cycle means deadlock. With **multiple-instance resources**, a cycle means possible deadlock. Check whether a process can finish and release resources.",
-      "A dashed **claim edge**, **P ⇢ R**, means P may request R later. For **deadlock avoidance** with single-instance resources, grant a request only if the resulting graph, including claim edges, has no cycle."
+  'os.u2.ipc': {
+    summary: '**IPC** (inter-process communication) lets processes share data. They can share a piece of memory, or send messages through pipes, queues or sockets.',
+    picture: [{ table: { head: ['Method', 'Like'], rows: [['Shared memory', 'A shared whiteboard'], ['Pipe', 'A one-way tube'], ['Message queue', 'A mailbox'], ['Socket', 'A phone line, even across the internet'], ['Signal', 'A doorbell']] } }],
+    points: [
+      'Shared memory is fastest, but processes must take turns (synchronise).',
+      'Message passing is simpler and safer, and works between computers.',
+      'IPC needs security: permissions and authentication so others cannot read or fake messages.',
     ],
-    "analogy": "Think of two students sharing one pen and one ruler. Each holds one item and waits for the other, refusing to release their own until they finish.",
-    "example": "**P1** holds **R1** and requests **R2**. **P2** holds **R2** and requests **R1**. The cycle is **P1 → R2 → P2 → R1 → P1**. If each resource has one instance, this is **deadlock**."
+    analogy: 'Two roommates can leave notes on a shared fridge door (shared memory) or text each other (message passing).',
+    example: 'In ls | wc -l, a pipe carries the output of ls into wc, which counts the lines.',
   },
-  "os.u4.sync-issues": {
-    "summary": "A **thread** is a sequence of instructions running within a program. When threads share data, their steps can overlap in time. A **race condition** happens when the result depends on which steps happen first. **Synchronization** coordinates access to shared data.",
-    "points": [
-      "A **critical section** is the part of a program that accesses shared data. For example, it may update a shared counter.",
-      "The usual order is: **entry section** requests access, **critical section** uses the data, **exit section** releases access, and **remainder section** does other work.",
-      "**Mutual exclusion** means at most one thread enters the critical section for the same shared resource at a time.",
-      "**Progress** means that when the critical section is empty and threads want to enter, choosing the next one cannot be delayed forever. Only threads wanting to enter participate.",
-      "**Bounded waiting** limits how many times other threads can enter after a thread requests access, before it gets its turn.",
-      "With two flags, each thread announces interest and waits for the other's flag to clear. If both announce interest before checking, both wait forever: **deadlock**. Mutual exclusion holds, but progress fails. **Peterson’s solution** combines these flags with a **turn** variable to resolve the conflict."
+  'os.u2.rpc': {
+    summary: 'A **Remote Procedure Call** lets a program call a function on another computer as if it were on the same machine. Small helper pieces called **stubs** do the network work.',
+    picture: [{ flow: ['Client calls function', 'Client stub packs the arguments', 'Network', 'Server stub unpacks and calls the real function', 'Result sent back'] }],
+    points: [
+      '**Marshalling** = packing arguments into a standard format (like XDR) so different machines understand them.',
+      'The client must find the server\'s port (binding).',
+      'Network delays and failures make it different from a local call.',
     ],
-    "analogy": "Think of a shared bathroom. The door lock allows one person inside at a time, like mutual exclusion.",
-    "example": "A counter starts at 5. Increasing and decreasing it should leave 5. But each update involves reading, changing, and writing. Both threads may read 5 and later write 6 and 4, leaving 4. An **atomic** operation acts as one indivisible step."
+    analogy: 'Like ordering food by phone: you say the order, the restaurant staff (stub) writes it in their format, the kitchen cooks it, and the food is delivered back.',
+    example: 'A mobile app calls getWeather("Hyderabad"); RPC sends it to a server, which returns "31 °C".',
   },
-  "os.u4.sync-solutions": {
-    "summary": "A **critical section** is code that uses shared data. **Mutual exclusion** means only one process enters it at a time, preventing conflicting updates.",
-    "points": [
-      "**Peterson’s solution** protects two processes using flags meaning “I want to enter” and a turn variable to settle ties. It provides mutual exclusion, **progress** (entry is not postponed unnecessarily), and **bounded waiting** (waiting has a limit).",
-      "**Dekker’s algorithm** is an earlier solution. Peterson’s is simpler. Both need memory-ordering safeguards on modern CPUs, which may rearrange memory operations.",
-      "Hardware provides **atomic instructions**: operations that cannot be interrupted halfway by another process accessing the same value. **Test-and-set** sets a lock and returns its old value. **Compare-and-swap** changes a value only if it matches an expected value. Simple locks using these can allow unlimited waiting.",
-      "A **mutex lock** uses **acquire()** to take the lock and **release()** to free it. A **spinlock** repeatedly checks while waiting. This is **busy waiting**, which consumes CPU time.",
-      "Spinning wastes time on one CPU. With multiple cores, it can suit short waits because the lock holder can run elsewhere.",
-      "A **semaphore** controls access using atomic **wait()** and **signal()** operations. A **binary semaphore** allows one permit; a **counting semaphore** allows several. Blocking implementations put waiters to sleep.",
-      "Incorrect use can cause **deadlock**, where processes wait for each other, or **starvation**, where one keeps getting passed over."
+  'os.u2.rpc-issues': {
+    summary: 'RPC can fail in ways normal calls cannot: messages get lost, servers crash. So it uses **timeouts, retries and message IDs**, and must be **secured** against snooping and fakes.',
+    picture: [{ flow: ['Send request with ID', 'Wait (timeout)', 'No reply? Resend same ID', 'Server ignores duplicate IDs'] }],
+    points: [
+      '**At most once**: the server ignores repeated requests, so the call never runs twice.',
+      '**Exactly once**: add acknowledgements so it runs once for sure.',
+      'Security: authenticate the caller, encrypt the data, block replayed messages.',
     ],
-    "analogy": "A lock is like one bathroom key: take it, use the room, return it.",
-    "example": "With semaphore S = 1, a non-atomic check and decrement could let two processes enter together."
+    analogy: 'Like a bank transfer: if the app times out, you should not be charged twice when you retry, so each transfer has a unique reference number.',
+    example: 'A "pay ₹500" request is resent after a timeout; the server sees the same ID and does not charge again.',
   },
-  "os.u4.thread-apis": {
-    "summary": "A **thread** is one path of work inside a program. **Thread APIs** are library calls that let a program create threads, wait for them, and manage them.",
-    "points": [
-      "**Pthreads** is a standard thread API used on Linux and Unix. **pthread_create()** starts a thread. **pthread_join()** makes the calling thread wait until another thread finishes.",
-      "**pthread_exit()** ends the calling thread. **pthread_cancel()** requests cancellation; stopping is not necessarily immediate. A **mutex** is a lock: **pthread_mutex_lock()** and **pthread_mutex_unlock()** let threads take turns accessing shared data.",
-      "On Windows, **CreateThread()** starts a thread. **WaitForSingleObject()** can wait for it to finish. **CloseHandle()** releases the program’s handle, or reference, to it; this does not stop the thread.",
-      "In Java, extend **Thread** or implement **Runnable**, and put the work in **run()**. Call **start()** to launch a separate thread and **join()** to wait. Traditional Java platform threads map to operating-system threads.",
-      "The **kernel**, the operating system’s core, schedules kernel threads. Each has a **TCB** (Thread Control Block) holding information such as saved registers, stack details, and state. Linux’s **clone()** creates a task with selected shared resources, which can include memory."
+
+  // ======================= UNIT III =======================
+  'os.u3.memory-view': {
+    summary: 'Every process sees its **own private memory**, starting at address 0: code at the bottom, then global data, the heap growing up, and the stack growing down from the top.',
+    picture: [{ stack: ['Stack (grows down)', 'free space', 'Heap (grows up)', 'Global data', 'Code'] }],
+    points: [
+      'These are **virtual** addresses; the MMU maps them to real RAM.',
+      'Two processes can both use address 1000 without clashing.',
+      'On Linux, /proc/<pid>/maps shows a process\'s memory regions.',
     ],
-    "analogy": "Think of threads as cooks sharing one kitchen. Creating a thread adds a cook; joining means waiting for that cook to finish.",
-    "example": "In your **fork()** question, process counts go 1 → 2 → 3 → 6. Two processes call thread_create(), so the answer is **6 processes and 2 explicitly created threads**. Those two exclude the processes’ main threads. Each fork copies only its calling thread."
+    analogy: 'Every student gets an identical-looking answer booklet numbered from page 1; the exam office knows which physical booklet belongs to whom.',
+    example: 'Two copies of the same program both store a variable at virtual address 0x601040, but each copy\'s value lives in a different physical frame.',
   },
-  "os.u4.threads": {
-    "summary": "A **process** is a program that is running. A **thread** is one path of execution inside it. Threads share the process’s code, data and open files. Each has its own **stack** for function calls, **registers** for working values, and **program counter** for the next instruction.",
-    "points": [
-      "Processes usually have separate memory and need **IPC** (interprocess communication) to exchange data. Threads communicate through shared variables. A faulty thread can crash its whole process.",
-      "**Responsiveness** keeps an application usable during long tasks. **Resource sharing** lets threads use common memory. **Economy** means threads usually cost less to create and switch between than processes.",
-      "**Scalability** means using additional processor cores to do more work. A **multicore** processor has several processing cores, allowing threads to run in **parallel**—at the same time.",
-      "**User-level threads (ULTs)** are managed by a library outside the kernel, the OS’s core. Switching is fast. In **many-to-one**, many ULTs use one kernel thread: a blocking system call can stop them all, and they cannot run in parallel.",
-      "**Kernel-level threads (KLTs)** are managed by the OS. Management costs more, but one blocked thread need not stop others. **One-to-one** gives each user thread a kernel thread, as in Linux and Windows.",
-      "**Many-to-many** maps many user threads onto an equal or smaller number of kernel threads. The **two-level model** also allows binding a particular user thread to a particular kernel thread.",
-      "A **TCB (Thread Control Block)** stores a thread’s ID, state, program counter, registers and stack pointer."
+  'os.u3.memory-requirements': {
+    summary: 'A process needs memory for its **code**, **global variables**, **heap** (memory asked for while running) and **stack** (function calls). Only part of it is in RAM at any time.',
+    picture: [{ table: { head: ['Need', 'Where'], rows: [['Code', 'Text'], ['Globals', 'Data'], ['malloc / new', 'Heap'], ['Function calls', 'Stack']] } }],
+    points: [
+      '**Virtual size**: all memory the process has asked for.',
+      '**Resident set**: the part actually in RAM right now.',
+      'Paging lets a process grow easily: just add pages anywhere.',
     ],
-    "analogy": "Threads are cooks sharing one kitchen, each following their own task.",
-    "example": "One thread loads a file while another handles button clicks."
+    analogy: 'Like a library card that lets you borrow 20 books: you have the right to 20 (virtual size), but only the 3 on your desk are in use (resident set).',
+    example: 'A browser tab may show 800 MB of virtual memory but only 200 MB resident in RAM.',
   },
-  "os.u5.allocation": {
-    "summary": "**Allocation methods** decide where a file’s blocks go on disk. **Organisation or access methods** decide how a program reads them. A **block** is a fixed-size unit of disk storage.",
-    "points": [
-      "**Sequential access** reads records in order. **Direct (relative) access** jumps to a numbered block. **Indexed access** searches an index, a list of keys and locations, then jumps to the matching location.",
-      "**Contiguous allocation** keeps blocks together. The directory stores the starting block and file length. Reading in order or jumping is fast. Growth is difficult, and the required space must be planned. **External fragmentation** means free space is scattered into separate gaps.",
-      "**Linked allocation** puts a pointer, or next-block address, in each block. The directory stores the first block, sometimes also the last. Sequential reading works well; jumping requires following pointers. Growth is easy. Pointers take space, and a broken pointer can make later blocks unreachable.",
-      "**Indexed allocation** keeps data-block addresses in an **index block**. The directory points to it. Sequential reading and jumping are efficient. Growth is easy until the index fills.",
-      "Linked and indexed allocation avoid **external fragmentation**.",
-      "**FAT (File Allocation Table)** stores linked allocation’s next-block pointers together. Caching this table speeds traversal, but still requires following the chain.",
-      "Large files can use chained index blocks or a **multilevel index**. A traditional Unix **inode**, containing metadata and block pointers, combines 12 direct pointers with single, double and triple indirect pointers."
+  'os.u3.mm-syscalls': {
+    summary: 'Programs ask Linux for memory with **system calls**: sbrk grows the heap, mmap and munmap add or remove memory regions, and mprotect sets read, write or execute permission.',
+    picture: [{ table: { head: ['Call', 'Job'], rows: [['sbrk / brk', 'Grow or shrink the heap'], ['mmap', 'Add a memory region or map a file'], ['munmap', 'Remove a region'], ['mprotect', 'Change read / write / execute rights']] } }],
+    points: [
+      'malloc() uses sbrk for small blocks and mmap for big ones.',
+      'These calls work on whole pages (usually 4 KB).',
+      'Writing to a read-only page crashes the program with a segmentation fault.',
     ],
-    "analogy": "Allocation is where books sit; access is how you find and read them.",
-    "example": "A 512-entry index for three data blocks leaves 509 entries unused. Inode direct pointers avoid a separate index block for small files."
+    analogy: 'Like renting storage units: mmap rents a unit, munmap returns it, and mprotect changes the lock so others can only look, not touch.',
+    example: 'A program maps 4 KB with mmap, writes "A", makes it read-only with mprotect; a later write causes SIGSEGV.',
   },
-  "os.u5.caching": {
-    "summary": "**Caching optimizations** help a file system avoid repeated, slow disk access. It keeps useful file data and **metadata**, meaning information about files, in a **cache**, a temporary storage area in fast RAM.",
-    "points": [
-      "The **buffer cache** holds recently used **disk blocks**, which are chunks of data stored on disk. Repeated requests can use the cached copies.",
-      "The **page cache** holds file data in **pages**, fixed-size chunks used by the memory system. A **unified buffer cache** lets normal file reads and **memory-mapped files**, files accessed through memory addresses, share one cache. This avoids keeping duplicate cached copies.",
-      "The **directory and inode caches** remember file-name lookups and file information. They help the system find files without repeatedly checking directory information on disk.",
-      "**Read-ahead** fetches upcoming blocks before you request them. It helps with **sequential reads**, where you read a file in order.",
-      "**Free-behind** releases pages already read during sequential reading. This leaves cache space for other useful data.",
-      "**Delayed writes**, or **write-back**, change cached data first and save it to disk later. This is faster, but a crash can lose unsaved changes. **Synchronous writes** wait for data to reach permanent storage. **fsync** requests this for a file.",
-      "**Disk controllers**, hardware that manages disk operations, can also have their own **track caches**."
+  'os.u3.address-translation': {
+    summary: 'Programs use **logical** addresses that start from 0. The hardware **MMU** turns each one into a real **physical** address in RAM, every time memory is used.',
+    picture: [{ flow: ['CPU gives logical address', 'Check: is it below the limit?', 'Add the base address', 'Physical address in RAM'] }],
+    points: [
+      '**Static** mapping fixes addresses before running; **dynamic** mapping translates while running.',
+      'Physical = base + logical, but only if logical < limit; otherwise the program is stopped (trap).',
+      'Address bits = bits for page number + bits for offset.',
     ],
-    "analogy": "A cache is like keeping frequently used books on your desk instead of visiting the library each time.",
-    "example": "When you read the same file twice, the second read may come from RAM, avoiding another disk read."
+    analogy: 'Your seat number in a row (logical) plus the row\'s starting seat number (base) gives your exact seat in the hall (physical).',
+    example: 'Base 14000, limit 1000: logical 346 → physical 14346; logical 1020 → trap.',
   },
-  "os.u5.case-study": {
-    "summary": "A **file system** is the way an operating system organises files on a disk. Different file systems use different methods to track data, manage access and recover after crashes.",
-    "points": [
-      "**ext2, ext3 and ext4** are Linux file systems. They divide the disk into **block groups**. Each group has tables and **bitmaps**, which mark used and free space. Backup copies of the **superblock**, the main file-system information, are stored in selected groups.",
-      "An **inode** stores a file’s details and where its data is located. ext2 and ext3 use direct and indirect pointers: addresses that lead to data directly or through other pointer blocks. ext4 normally uses **extents**: consecutive blocks described by a starting location and length.",
-      "A **directory** maps names to inode numbers. A **hard link** adds another name for the same inode and increases its link count.",
-      "**FAT**, common on USB drives, stores chains of block references in a **File Allocation Table**. It has no built-in file permissions or journaling.",
-      "**NTFS** uses a **Master File Table (MFT)** with records for files. Very small files can fit inside their records. It supports **ACL permissions** (rules controlling access), compression, encryption and journaling.",
-      "**Journaling** records updates in a disk log before applying them. After a crash, committed updates are replayed and incomplete transactions are ignored. This helps ext3, ext4 and NTFS recover consistency quickly."
+  'os.u3.segmentation': {
+    summary: '**Segmentation** splits a program into meaningful pieces (code, data, stack) of different sizes. An address is a pair: (which segment, how far into it).',
+    picture: [{ flow: ['(segment s, offset d)', 'Look up base and limit for s', 'd < limit?', 'Physical = base + d'] }],
+    points: [
+      'Segments match how programmers think (functions, arrays, stack).',
+      'Segments have different sizes, so free memory breaks into gaps (**external fragmentation**).',
+      'Easy to share or protect a whole segment, like a code segment.',
     ],
-    "analogy": "A journal is like a notebook recording agreed changes before you update the main register.",
-    "example": "If a crash interrupts a committed directory update, recovery can replay the logged update."
+    analogy: 'Like a book split into chapters of different lengths: "chapter 3, page 12" finds any page.',
+    example: 'Segment 0 has base 219, limit 600: address (0, 430) → 649; address (2, 500) with limit 100 → trap.',
   },
-  "os.u5.directory": {
-    "summary": "A **directory** connects file names to the files they identify. A **directory structure** is the way directories are arranged, so we can organise and find files.",
-    "points": [
-      "**Single-level directory**: Everyone uses one directory. It is simple, but every file needs a unique name. There are no folders for grouping files.",
-      "**Two-level directory**: Each user gets a separate directory. The **Master File Directory (MFD)** points to each **User File Directory (UFD)**. Users can reuse file names, but this scheme provides no sharing or subdirectories—folders inside folders.",
-      "**Tree structure**: Directories branch into subdirectories from the top directory, called the **root**. Grouping is easy, but the basic tree does not allow a file to be shared between directories.",
-      "**Acyclic graph**: **Links**, or references, allow sharing without circular routes. Deletion can leave **dangling pointers**—references to deleted files. **Aliasing** means different names reach the same file, so traversal may visit it repeatedly.",
-      "**General graph**: Links can form **cycles**, or circular routes. Traversal can loop forever without safeguards. **Garbage collection** may be needed to reclaim storage that is no longer reachable.",
-      "**Directory operations** include searching, creating, deleting, listing, renaming, and **traversing**—moving through directories.",
-      "Implementation uses a **linear list**, with slow searching, or a **hash table**, with fast lookup. Hash tables must handle **collisions**, where names map to the same table position."
+  'os.u3.paging': {
+    summary: '**Paging** cuts a program into equal-sized **pages** and RAM into equal-sized **frames**, so any page can go in any free frame. No gaps between pieces.',
+    picture: [{ flow: ['Logical address = (page p, offset d)', 'Page table: p → frame f', 'Physical = f × page size + d'] }],
+    points: [
+      'No external fragmentation; only the last page may be partly empty (internal fragmentation).',
+      'The **page table** maps pages to frames; the **TLB** caches recent lookups for speed.',
+      'Big page tables can be split into levels (hierarchical), hashed, or inverted.',
     ],
-    "analogy": "A directory is like a library catalogue: names help you locate items.",
-    "example": "An **absolute path** starts at the root: /college/notes.txt. A **relative path** starts at your current directory: notes.txt when inside /college."
+    analogy: 'Like parking: every car (page) fits any parking slot (frame) because all slots are the same size, and a register (page table) tells you which slot each car is in.',
+    example: 'Page size 1 KB, page 3 is in frame 7: logical address 3 × 1024 + 100 = 3172 maps to 7 × 1024 + 100 = 7268.',
   },
-  "os.u5.file-concepts": {
-    "summary": "A **file** is a named collection of related information saved on **secondary storage**, such as an SSD or hard disk. The OS manages its name, type, **attributes** (details such as size and permissions), and operations.",
-    "points": [
-      "**File operations** are actions on files. **Create** makes a file. **Open** prepares it for use. **Read** gets information; **write** stores information. **Seek** moves the current position without reading or writing. **Close** ends access. **Delete** removes the file. **Truncate** removes its contents but keeps the file.",
-      "The **open-file table** tracks open files. It records details such as the **file pointer** (current position), open count, storage location, and access rights. This avoids repeatedly searching the directory.",
-      "**Executable files** (.exe) contain ready-to-run programs. **Object files** (.o) contain compiled code awaiting linking, which combines program parts.",
-      "**Source files** (.c, .java, .py) contain program instructions. **Scripts** (.bat, .sh) contain commands. **Text and document files** (.txt, .doc) hold written content.",
-      "**Libraries** (.dll, .so) contain reusable routines. **Archives** (.zip, .tar) group files, sometimes with compression. **Multimedia files** (.mp3, .mp4, .jpg) hold sound, video, or images.",
-      "Windows commonly uses the **extension**, the filename ending, to identify type. Unix tools can inspect a **magic number**: starting bytes that identify a format. Extensions are hints, and not every file has magic bytes.",
-      "**Internal structure** means how contents are arranged: a **byte stream**, fixed-size **records** (data entries), or a tree of records found using a **key**."
+  'os.u3.page-faults': {
+    summary: 'A **page fault** happens when a program uses a page that is not in RAM yet. The OS pauses it, loads the page from disk, and lets it continue.',
+    picture: [{ flow: ['Access page', 'Not in RAM: trap', 'Find a free frame', 'Read page from disk', 'Update page table', 'Restart the instruction'] }],
+    points: [
+      'Pages are loaded only when needed (**demand paging**).',
+      'Each fault costs a slow disk read, so too many faults slow everything down.',
+      'The **valid bit** in the page table tells if a page is in memory.',
     ],
-    "analogy": "A file is like a labelled notebook: its name identifies it, and its pages hold related information.",
-    "example": "Open notes.txt, write “Exam Friday,” then close it."
+    analogy: 'Like a library with books in storage: if the book you ask for is not on the shelf, the librarian fetches it from the basement while you wait.',
+    example: 'Opening a large PDF: pages you scroll to are loaded on demand, each first access causing a page fault.',
   },
-  "os.u5.logging": {
-    "summary": "**Logging** records what happens in a system. **Auditing** checks those records for problems. **Recovery** restores the system after damage or an attack.",
-    "points": [
-      "**Logging** automatically records events such as logins, file access, errors, and use of special permissions. It runs continuously. Records go into places like **/var/log** or **Windows Event Log**.",
-      "**Auditing** reviews logs and settings periodically. It checks whether rules are followed and looks for misuse. Its results are findings that need attention.",
-      "An **audit trail** is a time-ordered record of security events. Logs need **timestamps** and protection from changes. **Append-only** storage allows additions but prevents changing existing entries. A separate log server also helps protect records.",
-      "Too much logging can slow the system. Too little can leave attacks unnoticed.",
-      "**Signature-based detection** checks for known attack patterns. **Anomaly-based detection** flags unusual behaviour. **Tripwire** detects file changes by comparing **hashes**, which act like digital fingerprints.",
-      "A **full backup** copies all selected data. An **incremental backup** copies changes since the last backup. A **differential backup** copies changes since the last full backup. Keep copies **off-site**, at another location.",
-      "For **recovery**, restore a known-good backup. Replay available recovery logs or **journals**, which record changes. After a **rootkit**, malicious software that hides privileged access, reinstall from trusted media. Replace compromised passwords and keys, and fix the weakness."
+  'os.u3.page-replacement': {
+    summary: 'When RAM is full and a new page is needed, the OS must throw one page out. **Page replacement algorithms** decide which one.',
+    picture: [{ table: { head: ['Algorithm', 'Throws out'], rows: [['FIFO', 'The oldest page'], ['Optimal', 'The page not needed for the longest time (theory only)'], ['LRU', 'The page not used for the longest time']] } }],
+    points: [
+      'Fewer page faults is better.',
+      'FIFO can get worse with more frames (**Belady\'s anomaly**).',
+      'If processes keep faulting and do no real work, the system is **thrashing**.',
     ],
-    "analogy": "Think of a shop: logging keeps the diary, auditing checks it, and recovery repairs damage.",
-    "example": "Repeated failed logins appear in logs. An audit may reveal attempted misuse."
+    analogy: 'Like a full fridge: FIFO removes the oldest item, LRU removes what you have not touched in longest, Optimal removes what you will not need for longest.',
+    example: 'Reference string 7 0 1 2 0 3 0 4 with 3 frames: FIFO gives 7 faults, LRU 6, Optimal 6.',
   },
-  "os.u5.malware": {
-    "summary": "**Malware** is software designed to cause harm. **Taxonomy** means classification: grouping malware by how it spreads, what it does, or how it hides.",
-    "points": [
-      "A **virus** attaches to a host, such as a program or file. It spreads when infected code runs, often after someone opens the file.",
-      "**File/parasitic viruses** infect programs. **Boot-sector viruses** infect disk areas used during startup. **Macro viruses** infect documents through embedded commands. **Source-code viruses** infect program source code.",
-      "**Polymorphic viruses** change their code’s appearance between infections. **Encrypted viruses** conceal code using encryption. **Stealth viruses** hide infection changes. **Multipartite viruses** infect several types of targets. **Armored viruses** resist analysis.",
-      "A **worm** is independent software that spreads automatically, often through network security flaws. The **Morris worm (1988)** disrupted the early Internet. Patching flaws, blocking unused network ports, dividing networks, limiting connections, and detecting suspicious activity reduce worm damage.",
-      "A **Trojan horse** looks useful but performs harmful actions. A **backdoor**, or **trap door**, provides hidden access that bypasses normal identity checks.",
-      "**Ransomware** commonly encrypts files and demands payment. **Spyware** secretly collects information; a **keylogger** records keystrokes. A **logic bomb** activates when a particular condition occurs.",
-      "A **rootkit** hides an attacker’s presence. **User-mode rootkits** replace tools that list files or processes. **Kernel-mode rootkits** alter the OS core, making its reports unreliable. Detection can use trusted startup media or **integrity checking**: comparing files against known, trusted versions."
+  'os.u3.sharing-permissions': {
+    summary: 'Each page has **permission bits** (read, write, execute) so a process cannot misuse memory. Two processes can also **share** a page by pointing to the same frame.',
+    picture: [{ flow: ['Process A page table → frame 5', 'Process B page table → frame 5', 'Both share the code in frame 5'] }],
+    points: [
+      'Writing to a read-only page causes a trap.',
+      'Shared code (like a text editor used by many users) is kept once in memory.',
+      'A process cannot reach memory it does not own because its page table has no entries for it.',
     ],
-    "analogy": "A virus travels inside someone’s luggage. A worm travels independently. A rootkit hides evidence of the intruder.",
-    "example": "Opening an infected document can run a macro virus that infects other documents."
+    analogy: 'Like a shared library book everyone can read but nobody may write in, while personal notebooks are private.',
+    example: 'Forty students running the same editor share one copy of its code in RAM; each has private data pages.',
   },
-  "os.u5.mechanisms": {
-    "summary": "**Basic security mechanisms** protect a computer and its data. They check who you are, limit what you can do, and protect information from being read without permission.",
-    "points": [
-      "**Authentication** checks identity. Passwords are stored as **hashes**, one-way scrambled values, with a **salt**, a random added value. Passwords can be guessed, watched, intercepted, or exposed through reuse.",
-      "**One-time passwords** work once. **Multi-factor authentication** combines different types of proof: something you know, have, or are. **Biometrics** use physical traits, such as fingerprints.",
-      "Last-login details, unusual-login alerts, and repeated failed attempts can reveal suspicious activity. Fake **honey accounts** help detect attackers.",
-      "**Authorisation** decides allowed actions. **Permissions** control reading, writing, and running files. **Least privilege** means giving only necessary rights. **Privilege escalation** means gaining extra rights without permission. Patching and **sandboxing**, which restricts programs, help prevent it.",
-      "**Encryption** makes data unreadable without a key. **Symmetric encryption**, such as AES, uses one shared secret key. **Asymmetric encryption**, such as RSA, uses public/private keys and helps exchange secrets securely, but is slower. **Hashes** help detect changes; **digital signatures** verify integrity and the signer.",
-      "Encryption cannot stop **denial of service**, which makes services unavailable, malware using your rights, stolen passwords or keys, authorised-user misuse, or attacks on decrypted data.",
-      "**User/kernel modes** restrict privileged operations. **Page tables** enforce memory access. **NX/DEP** prevents execution from marked data pages. **Firewalls** filter network traffic; **patches** fix vulnerabilities."
+  'os.u3.swapping': {
+    summary: '**Swapping** moves a whole process (or some of its pages) out of RAM to disk and back later, so more programs can run than fit in memory.',
+    picture: [{ flow: ['RAM full', 'Swap out an idle process to disk', 'Run another process', 'Swap the first one back in when needed'] }],
+    points: [
+      'Swapping is slow because disks are slow.',
+      'Modern systems swap pages, not whole processes.',
+      'Mobile OSs mostly avoid swapping and close background apps instead.',
     ],
-    "analogy": "Think of a hostel: authentication checks your identity; authorisation decides which rooms you may enter.",
-    "example": "You can read a shared file, but permission settings prevent you from changing it."
+    analogy: 'Like moving off-season clothes to the attic so the wardrobe has room, and bringing them back when the season changes.',
+    example: 'With many browser tabs open, Linux swaps out pages of idle tabs; switching back to one feels slow for a moment.',
   },
-  "os.u5.metadata": {
-    "summary": "**File-system metadata** is information about a file, such as its size, owner and permissions. It is stored separately from the file’s actual contents and helps the operating system find and manage the file.",
-    "points": [
-      "**File attributes** describe a file. They include its name, identifier, type, location, size, protection and timestamps. An **identifier** is a number that uniquely identifies the file within its file system.",
-      "**Protection** controls who can read, write or execute a file. **Timestamps** record events such as modification and access. Creation time is also stored where supported.",
-      "The **boot control block** stores information needed to boot, or start, the operating system from that volume.",
-      "The **superblock**, or **volume control block**, describes the whole file system. It records details such as block size, total blocks and free blocks. Blocks are units of storage.",
-      "The **directory structure** connects file names to their file records. A **file control block (FCB)** stores one file’s attributes and storage locations. Unix uses an **inode** for this role.",
-      "An **inode** stores type, permissions, owner, size, timestamps and link count—the number of hard links to it. The **file name is in the directory entry**, not the inode.",
-      "In the classic textbook layout, an inode has **12 direct pointers** to data blocks. **Single, double and triple indirect pointers** reach data through one, two or three levels of pointer blocks."
+  'os.u3.linux-mm': {
+    summary: '**Linux** manages memory with demand paging, a **buddy allocator** for physical pages, a **slab allocator** for small kernel objects, and **kswapd** to free memory when it runs low.',
+    picture: [{ tree: { root: 'Linux memory management', kids: ['Demand paging', 'Buddy allocator', 'Slab allocator', 'Page cache', 'kswapd reclaims pages'] } }],
+    points: [
+      'Buddy allocator splits memory in powers of 2 and merges free neighbours back.',
+      'Slab allocator keeps ready-made objects for fast reuse.',
+      'kswapd frees memory using an LRU-like approach when free memory is low.',
     ],
-    "analogy": "Metadata is like a label on a parcel. It describes the parcel without being its contents.",
-    "example": "For notes.txt, the directory stores its name and inode number. The inode stores its size and points to blocks containing the notes."
+    analogy: 'Buddy allocation is like cutting a chocolate bar in halves again and again until the piece is just big enough.',
+    example: 'A 12 KB request gets a 16 KB block: a 64 KB block splits to 32 and 32, then one 32 splits to 16 and 16.',
   },
-  "os.u5.syscalls": {
-    "summary": "A **system call** is a request to the operating system (**OS**). Programs use file system calls to access files. The OS checks permissions and performs the requested work.",
-    "points": [
-      "**open()** opens a file and can create one. **creat()** creates a file or empties an existing one. They return a **file descriptor**, a small integer identifying an entry in the process’s open-file table.",
-      "**read()** gets bytes; **write()** stores bytes. Both advance the **file pointer**, the position for the next transfer, by the bytes transferred. **lseek()** moves this pointer for **random access**: accessing a chosen position.",
-      "**close()** releases the descriptor and reduces the shared open-file entry’s reference count. The entry is removed when no references remain. Lock release depends on the lock type. Closing does not guarantee buffered data has reached disk.",
-      "**stat() / fstat()** read **metadata**: size, owner and times. **chmod() / chown()** change permissions or ownership.",
-      "**unlink()** removes a file name; **rename()** changes a name or location. **mkdir() / rmdir()** create or remove directories; rmdir requires an empty directory.",
-      "**flock() / fcntl()** provide locking. **Advisory locks** require programs to cooperate. **Mandatory locks** are enforced by the OS. Ignored advisory locks risk corruption; mandatory locks can unexpectedly block access.",
-      "A **hard link** is another name for the same **inode**, the file’s metadata record. Changes are shared; **copies** are independent. Hard links use a **link count**. **Symbolic links** point to paths and can become dangling when targets disappear."
+  'os.u3.disk-structure': {
+    summary: 'A **hard disk** is a stack of spinning platters. Data lives in **sectors** on circular **tracks**; the same track on every platter forms a **cylinder**.',
+    picture: [{ stack: ['Platter (spinning disk)', 'Track (a ring)', 'Sector (a slice of the ring)', 'Read/write head on an arm'] }],
+    points: [
+      'Access time = **seek time** (move the arm) + **rotational delay** (wait for the sector) + transfer time.',
+      'Seek time is the biggest cost, so the OS orders requests to reduce arm movement.',
+      'SSDs have no moving parts, so they have no seek time.',
     ],
-    "analogy": "A file descriptor is like a claim ticket: use its number to access the opened file.",
-    "example": "Read 10 bytes from position 0. The pointer becomes 10. Use **lseek()** to return to position 0, then read those bytes again."
+    analogy: 'Like an old record player: the arm moves across rings and waits for the right spot to spin under it.',
+    example: 'A disk at 7200 rpm takes about 8.3 ms per rotation, so the average rotational delay is about 4.2 ms.',
   },
-  "os.u5.threats": {
-    "summary": "A **threat** is a possible danger to security. A **vulnerability** is a weakness that makes harm possible. An **attack** is an actual attempt to break security. Threats can come from programs or networks.",
-    "points": [
-      "**Confidentiality** means keeping information private. **Integrity** means protecting it from unauthorised changes. **Availability** means keeping services usable. **Theft of service** means using resources without permission.",
-      "**Masquerading** means pretending to be another user. **Replay** means sending a captured valid message again. **Man-in-the-middle** means secretly intercepting, and possibly changing, communication. **Session hijacking** means taking over an active session, such as a logged-in connection.",
-      "A **Trojan horse** looks useful but secretly performs harmful actions using your permissions. A **trap door**, or **backdoor**, is a hidden way around normal security checks. A **logic bomb** causes harm when a condition is met.",
-      "A **buffer overflow** happens when a program writes beyond a memory area's limit. It can overwrite a **return address**, which tells the program where to continue, and redirect execution.",
-      "Defences include checking size limits and using safer languages. **DEP/NX** marks memory as non-executable. **Stack canaries** detect overwriting using a checked marker. **ASLR** randomises memory locations.",
-      "A **virus** attaches to another program or file. A **worm** spreads independently, often through networks.",
-      "**Port scanning** checks for accessible network services. **Denial of service (DoS)** makes a service unavailable. **Distributed DoS (DDoS)** attacks come from many machines."
+  'os.u3.disk-scheduling': {
+    summary: '**Disk scheduling** decides the order in which to serve requests for different cylinders so that the disk arm moves as little as possible.',
+    picture: [{ table: { head: ['Algorithm', 'Idea'], rows: [['FCFS', 'In arrival order'], ['SSTF', 'Nearest first'], ['SCAN', 'Sweep one way to the end, then back'], ['C-SCAN', 'Sweep one way, jump back to start'], ['LOOK / C-LOOK', 'Like SCAN / C-SCAN, but turn at the last request']] } }],
+    points: [
+      'Total head movement = sum of the distances between successive positions.',
+      'SSTF is fast but can starve far-away requests.',
+      'SCAN is called the **elevator** algorithm.',
     ],
-    "analogy": "An unlocked door is a vulnerability; a possible break-in is a threat; trying to enter is an attack.",
-    "example": "A calculator app secretly stealing files is a **Trojan horse**."
-  }
+    analogy: 'Like a lift in a building: it goes up serving every floor on the way, then comes down (SCAN), instead of zigzagging in request order.',
+    example: 'Head at 53, requests 98 183 37 122 14 124 65 67: FCFS moves 640 cylinders, SSTF only 236.',
+  },
+  'os.u3.disk-management': {
+    summary: '**Disk management** is the OS\'s housekeeping for disks: formatting, splitting into partitions, setting up the boot block, and handling bad sectors.',
+    picture: [{ flow: ['Low-level format (sectors)', 'Partition', 'Logical format (file system)', 'Boot block', 'Map out bad blocks'] }],
+    points: [
+      'Low-level formatting creates sectors; logical formatting creates the file system.',
+      'The **boot block** holds the bootstrap program that starts the OS.',
+      'Bad sectors are replaced with spare ones (sector sparing).',
+    ],
+    analogy: 'Like preparing a new notebook: rule the pages, divide it into subjects, write your name on the first page, and skip torn pages.',
+    example: 'Installing Windows: create a partition, format it as NTFS, and the installer writes the boot loader.',
+  },
+  'os.u3.buffering': {
+    summary: 'A **buffer** is a memory area that holds data while it travels between a device and a program, because they work at different speeds or in different chunk sizes.',
+    picture: [{ flow: ['Device fills buffer A', 'Program reads buffer B', 'Swap A and B', 'Repeat'], loop: 'Double buffering' }],
+    points: [
+      '**Single** buffering: one buffer; **double**: two take turns; **circular**: a ring of buffers.',
+      '**Synchronous** I/O waits; **asynchronous** I/O carries on and is told later.',
+      'Caching keeps data for reuse; spooling queues jobs for a device.',
+    ],
+    analogy: 'Like a tray between a cook and a waiter: the cook fills one tray while the waiter carries the other.',
+    example: 'When streaming a video, the player fills a buffer ahead of time so short network slowdowns do not pause playback.',
+  },
+  'os.u3.swap-space': {
+    summary: '**Swap space** is a part of the disk that the OS uses as extra memory when RAM is full. It is about speed and space, not about storing files.',
+    picture: [{ flow: ['RAM full', 'Move idle pages to swap space', 'Bring them back when used'] }],
+    points: [
+      'Can be a separate **swap partition** (faster) or a **swap file** (easier to resize).',
+      'Too much swapping means thrashing: the system becomes very slow.',
+      'Linux decides how eagerly to swap with a setting called swappiness.',
+    ],
+    analogy: 'Like a store room next to your shop: extra stock goes there when the shop floor is full, and you fetch it when a customer asks.',
+    example: 'A laptop with 8 GB RAM and a 4 GB swap file can keep running when programs need 10 GB, but slower.',
+  },
+
+  // ======================= UNIT IV =======================
+  'os.u4.threads': {
+    summary: 'A **thread** is a smaller unit of work inside a process. Threads of one process share its code, data and files, but each has its own stack and registers.',
+    picture: [{ tree: { root: 'One process (shared code, data, files)', kids: ['Thread 1: own stack', 'Thread 2: own stack', 'Thread 3: own stack'] } }],
+    points: [
+      'Threads are cheaper to create and switch than processes.',
+      'Benefits: responsiveness, resource sharing, economy, using multiple cores.',
+      'Models: many-to-one, one-to-one, many-to-many (user threads to kernel threads).',
+    ],
+    analogy: 'A process is a kitchen; threads are cooks sharing the same fridge and stove, each working on a different dish.',
+    example: 'A word processor uses one thread to accept typing, another for spell check and another for auto-save.',
+  },
+  'os.u4.thread-apis': {
+    summary: '**Thread APIs** are the library functions used to create and manage threads: Pthreads in C, Windows threads, and Java threads.',
+    picture: [{ flow: ['pthread_create()', 'thread runs its function', 'pthread_join() waits', 'pthread_exit()'] }],
+    points: [
+      'pthread_create starts a thread; pthread_join waits for it to finish.',
+      'In Java: extend Thread or implement Runnable, then call start().',
+      'Thread pools reuse a fixed set of threads instead of creating new ones each time.',
+    ],
+    analogy: 'Like hiring helpers for a task: you give each one a job (function), and you wait until all report back (join).',
+    example: 'A program sums an array with 4 threads, each summing a quarter, then joins them and adds the four results.',
+  },
+  'os.u4.sync-issues': {
+    summary: 'When threads share data and run at the same time, the result can depend on timing: a **race condition**. **Synchronisation** makes them take turns on shared data.',
+    picture: [{ flow: ['Entry section (ask to enter)', 'Critical section (use shared data)', 'Exit section (leave)', 'Remainder'] }],
+    points: [
+      'The code that touches shared data is the **critical section**.',
+      'A good solution gives **mutual exclusion**, **progress**, and **bounded waiting**.',
+      'Without it, updates get lost.',
+    ],
+    analogy: 'Like a single-person bathroom: only one person inside at a time, others wait, and everyone gets a turn eventually.',
+    example: 'Two threads both do count = count + 1 starting from 5; without synchronisation the result can be 6 instead of 7.',
+  },
+  'os.u4.sync-solutions': {
+    summary: 'Critical sections can be protected in **software** (Peterson\'s solution), with special **hardware** instructions (test-and-set), or with OS tools like **mutex locks** and **semaphores**.',
+    picture: [{ table: { head: ['Tool', 'Idea'], rows: [['Peterson', 'Two flags + a turn variable'], ['Test-and-set', 'Atomic hardware check-and-lock'], ['Mutex', 'acquire() / release()'], ['Semaphore', 'Counter with wait() / signal()']] } }],
+    points: [
+      'A **binary semaphore** acts like a mutex; a **counting semaphore** allows several at once.',
+      'wait() decreases the count and blocks if it is below zero; signal() increases it.',
+      'Busy waiting (spinning) wastes CPU; blocking semaphores avoid it.',
+    ],
+    analogy: 'A semaphore is like a parking lot display: "3 spaces free". A car entering lowers it; leaving raises it; at 0 cars wait.',
+    example: 'A printer pool with 3 printers uses a semaphore starting at 3; the 4th print job waits until one is free.',
+  },
+  'os.u4.classical': {
+    summary: 'Three famous puzzles test any synchronisation method: the **bounded buffer** (producer-consumer), **readers-writers**, and **dining philosophers**.',
+    picture: [{ tree: { root: 'Classic problems', kids: ['Bounded buffer', 'Readers-writers', 'Dining philosophers'] } }],
+    points: [
+      'Bounded buffer: producers must wait when full, consumers when empty (semaphores full, empty, mutex).',
+      'Readers-writers: many can read together, but a writer needs the data alone.',
+      'Dining philosophers: five people, five chopsticks; careless locking causes deadlock.',
+    ],
+    analogy: 'Readers-writers is like a notice board: many can read it at once, but only one person may pin a new notice, and nobody reads while it is being changed.',
+    example: 'A video player (consumer) and downloader (producer) share a buffer of 10 chunks; the downloader pauses when all 10 are full.',
+  },
+  'os.u4.deadlock-intro': {
+    summary: 'A **deadlock** is when processes wait for each other in a circle, so none can ever move.',
+    picture: [{ flow: ['P1 holds A, wants B', 'P2 holds B, wants A', 'Both wait forever'] }],
+    points: [
+      'Four conditions must all hold: **mutual exclusion**, **hold and wait**, **no pre-emption**, **circular wait**.',
+      'Break any one condition and deadlock cannot happen.',
+    ],
+    analogy: 'Like two cars meeting on a one-lane bridge from opposite sides: each waits for the other to reverse, and nobody does.',
+    example: 'Process 1 locks the printer and wants the scanner; process 2 locks the scanner and wants the printer.',
+  },
+  'os.u4.rag': {
+    summary: 'A **resource allocation graph** draws processes as circles and resources as boxes. Arrows show who holds and who wants what. A **cycle** warns of deadlock.',
+    picture: [{ flow: ['P1', 'requests R1', 'held by P2', 'requests R2', 'held by P1'], label: 'A cycle in the graph' }],
+    points: [
+      'Request edge: process → resource. Assignment edge: resource → process.',
+      'One instance per resource: a cycle means deadlock.',
+      'Several instances: a cycle means deadlock is only possible.',
+    ],
+    analogy: 'Like drawing who borrowed whose notes in a class: if the arrows form a loop and everyone is waiting, nobody can study.',
+    example: 'P1 → R1 → P2 → R2 → P1 with single instances: P1 and P2 are deadlocked.',
+  },
+  'os.u4.deadlock-prevention': {
+    summary: '**Deadlock prevention** makes sure at least one of the four deadlock conditions can never be true.',
+    picture: [{ table: { head: ['Break this', 'How'], rows: [['Mutual exclusion', 'Make resources shareable (where possible)'], ['Hold and wait', 'Ask for everything at once'], ['No pre-emption', 'Take resources back'], ['Circular wait', 'Number resources, request in order']] } }],
+    points: [
+      'Ordering resources (always lock 1 before 2) is the most practical method.',
+      'Prevention can waste resources and lower throughput.',
+    ],
+    analogy: 'Like a traffic rule that all cars must turn left at a roundabout: a circular jam can never form.',
+    example: 'If every process must lock the printer before the scanner, the printer-scanner deadlock can never occur.',
+  },
+  'os.u4.deadlock-avoidance': {
+    summary: '**Deadlock avoidance** grants a request only if the system stays **safe**. The **Banker\'s algorithm** checks this using each process\'s maximum needs.',
+    picture: [{ flow: ['Need = Max − Allocation', 'Find a process whose Need ≤ Available', 'It finishes and returns its resources', 'Repeat; if all finish, the state is safe'] }],
+    points: [
+      'A **safe state** has an order (safe sequence) in which all processes can finish.',
+      'An unsafe state is not deadlock yet, but could become one.',
+      'Each process must declare its maximum needs in advance.',
+    ],
+    analogy: 'Like a bank that lends money only if it can still pay every customer\'s maximum withdrawal in some order.',
+    example: 'With Available = (3, 3, 2), the safe sequence P1, P3, P4, P0, P2 lets every process finish.',
+  },
+  'os.u4.deadlock-recovery': {
+    summary: 'If a deadlock has already happened, the OS breaks it by **stopping processes** or **taking resources away** from some of them.',
+    picture: [{ tree: { root: 'Recover from deadlock', kids: ['Kill all deadlocked processes', 'Kill one at a time until it clears', 'Pre-empt resources and roll back'] } }],
+    points: [
+      'Choose the victim with the lowest cost (priority, work done, resources held).',
+      '**Rollback**: restart the victim from a safe checkpoint.',
+      'Avoid **starvation**: do not pick the same victim every time.',
+    ],
+    analogy: 'Like clearing a traffic jam by towing one car away, then letting the rest move.',
+    example: 'A database detects two transactions waiting for each other and aborts the newer one, which restarts later.',
+  },
+
+  // ======================= UNIT V =======================
+  'os.u5.file-concepts': {
+    summary: 'A **file** is a named collection of data on storage. The OS gives it a name, type, attributes (size, owner, dates) and operations (create, read, write, delete).',
+    picture: [{ tree: { root: 'A file has', kids: ['Name and type', 'Attributes', 'Operations', 'Access method'] } }],
+    points: [
+      'Access methods: **sequential** (in order), **direct** (jump to any block), **indexed**.',
+      'The OS keeps an **open-file table** for files in use.',
+      'File types are often shown by extension: .txt, .c, .exe.',
+    ],
+    analogy: 'A file is like a labelled folder in a cabinet: the label (name, owner, date) is on the outside, the papers (data) are inside.',
+    example: 'notes.txt: type text, size 2 KB, owner Ravi, created 10 Nov; you can open, read, write or delete it.',
+  },
+  'os.u5.allocation': {
+    summary: '**Allocation methods** decide which disk blocks a file uses: all together (**contiguous**), chained (**linked**), or listed in an index block (**indexed**).',
+    picture: [{ table: { head: ['Method', 'Good', 'Bad'], rows: [['Contiguous', 'Fast, easy random access', 'Hard to grow, fragmentation'], ['Linked', 'Easy to grow', 'Slow random access'], ['Indexed', 'Fast random access, grows easily', 'Index block overhead']] } }],
+    points: [
+      'FAT is a variant of linked allocation that keeps the links in a table.',
+      'Unix inodes use indexed allocation with direct and indirect blocks.',
+    ],
+    analogy: 'Contiguous is a row of seats booked together; linked is a treasure hunt of clues; indexed is a table of contents pointing to each page.',
+    example: 'A 5-block file stored contiguously at blocks 10-14 can jump to block 3 at once; in a linked list it must follow 3 links.',
+  },
+  'os.u5.syscalls': {
+    summary: 'Programs use files only through **system calls**: open, read, write, lseek and close. The OS checks permissions and does the actual disk work.',
+    picture: [{ flow: ['open() → file descriptor', 'read() / write()', 'lseek() to move', 'close()'] }],
+    points: [
+      'open returns a small number called a **file descriptor**.',
+      '0, 1 and 2 are standard input, output and error.',
+      'lseek moves the read/write position for direct access.',
+    ],
+    analogy: 'Like a library: you sign out a book (open), read or write notes (read/write), flip pages (lseek), and return it (close).',
+    example: 'fd = open("data.txt", O_RDONLY); read(fd, buf, 100); close(fd);',
+  },
+  'os.u5.metadata': {
+    summary: '**Metadata** is data about a file: name, size, owner, permissions, timestamps and where its blocks are. It is stored separately from the file\'s contents.',
+    picture: [{ stack: ['Directory entry: name → inode number', 'Inode / FCB: size, owner, permissions, times, block pointers', 'Data blocks: the actual contents'] }],
+    points: [
+      'In Unix, the **inode** holds metadata; the name is in the directory.',
+      'Permissions are read, write, execute for owner, group and others.',
+      'ls -l shows a file\'s metadata.',
+    ],
+    analogy: 'Like a library catalogue card: title, author, shelf location, borrowed by. The card is not the book.',
+    example: '-rw-r--r-- 1 ravi students 2048 Nov 10 notes.txt: owner can read and write, others only read.',
+  },
+  'os.u5.directory': {
+    summary: 'A **directory** maps file names to files. Directories can be one flat list, two levels, a tree, or a graph with shared links.',
+    picture: [{ tree: { root: '/ (root)', kids: ['home', 'etc', 'usr', 'bin'] } }],
+    points: [
+      '**Single-level**: one list for everyone, names clash.',
+      '**Tree**: folders inside folders; paths like /home/ravi/notes.txt.',
+      '**Acyclic graph**: the same file can appear in two folders through links.',
+    ],
+    analogy: 'Like folders on your desk: folders inside folders, and a shortcut in one folder that points to a file in another.',
+    example: '/home/ravi/os/notes.txt is an absolute path; os/notes.txt from /home/ravi is a relative path.',
+  },
+  'os.u5.caching': {
+    summary: 'File systems keep recently used disk data in **RAM caches**, so repeated reads and writes do not have to go to the slow disk.',
+    picture: [{ flow: ['Program reads a block', 'In cache? Use it (fast)', 'Not in cache? Read from disk and keep a copy'] }],
+    points: [
+      'The **buffer cache / page cache** holds disk blocks in RAM.',
+      'Writes may be delayed and grouped (write-back), which is fast but risky if power fails.',
+      'Free RAM is used as cache, which is why "used" memory looks high on Linux.',
+    ],
+    analogy: 'Like keeping your most-used books on your desk instead of walking to the library each time.',
+    example: 'Opening a large file the second time is much faster because it is still in the page cache.',
+  },
+  'os.u5.case-study': {
+    summary: 'Real file systems like **Linux ext4**, **FAT** and **NTFS** put these ideas together. **Journaling** keeps them consistent after a crash.',
+    picture: [{ table: { head: ['File system', 'Used in', 'Key idea'], rows: [['ext4', 'Linux', 'Inodes, extents, journaling'], ['FAT32', 'USB drives', 'File allocation table, simple'], ['NTFS', 'Windows', 'Master file table, journaling, permissions']] } }],
+    points: [
+      '**Journaling**: write what you are about to do in a log first, so a crash can be repaired.',
+      'Unix inode: 12 direct pointers, plus single, double and triple indirect blocks.',
+    ],
+    analogy: 'Journaling is like writing "about to move money from A to B" in a diary before doing it, so after a power cut you know what to finish.',
+    example: 'After a power cut, ext4 replays its journal in seconds instead of checking the whole disk.',
+  },
+  'os.u5.threats': {
+    summary: 'A **threat** is anything that could break security. Threats come from bad **programs** (trojans, trap doors, buffer overflows) and from the **network** (worms, denial of service).',
+    picture: [{ tree: { root: 'Threats', kids: ['Program: trojan horse', 'Program: trap door', 'Program: buffer overflow', 'Network: worm', 'Network: denial of service', 'Network: port scanning'] } }],
+    points: [
+      'A **trojan** looks useful but does harm; a **trap door** is a secret way in.',
+      'A **buffer overflow** writes past an array to run attacker code.',
+      '**DoS** floods a service so real users cannot use it.',
+    ],
+    analogy: 'A trojan is like a gift box with a thief hidden inside; a trap door is a secret back door the builder left in your house.',
+    example: 'A free "game" download that secretly sends your passwords to an attacker is a trojan.',
+  },
+  'os.u5.mechanisms': {
+    summary: 'Basic security answers three questions: **who are you** (authentication), **what may you do** (authorisation and access control), and **can others read it** (encryption).',
+    picture: [{ flow: ['Authenticate (password, OTP, fingerprint)', 'Authorise (check permissions)', 'Access granted or denied'] }],
+    points: [
+      'Passwords are stored as **hashes**, not plain text.',
+      'An **access matrix** lists who can do what to each object.',
+      'Encryption protects data, but cannot stop attacks like a stolen password or a bug in the program.',
+    ],
+    analogy: 'Like a hostel: show your ID at the gate (authentication), your key opens only your room (authorisation), and your diary is in code (encryption).',
+    example: 'Logging in with a password plus an OTP on your phone is two-factor authentication.',
+  },
+  'os.u5.malware': {
+    summary: '**Malware** is software made to cause harm: **viruses** attach to other files, **worms** spread on their own, **trojans** pretend to be useful, **rootkits** hide deep in the system.',
+    picture: [{ table: { head: ['Type', 'How it spreads or hides'], rows: [['Virus', 'Attaches to a file; runs when the file runs'], ['Worm', 'Copies itself over the network'], ['Trojan', 'Disguised as a useful program'], ['Rootkit', 'Hides itself from the OS']] } }],
+    points: [
+      'Viruses need a host and a user action; worms do not.',
+      'Ransomware encrypts your files and demands payment.',
+      'Defences: antivirus, updates, least privilege, backups.',
+    ],
+    analogy: 'A virus is like a cold you catch by touching something; a worm is like a rumour that spreads by itself.',
+    example: 'WannaCry was a ransomware worm that spread through a Windows network flaw and encrypted files.',
+  },
+  'os.u5.logging': {
+    summary: '**Logging** records what happens on the system, **auditing** reviews those records to catch misuse, and **recovery** uses backups and logs to repair damage.',
+    picture: [{ flow: ['Log events', 'Audit the logs', 'Spot misuse', 'Recover from backups'] }],
+    points: [
+      'Logs record logins, file access, errors and admin actions.',
+      'Logs must be protected so attackers cannot erase their traces.',
+      'Regular backups make recovery possible.',
+    ],
+    analogy: 'Like CCTV in a shop: it records everything, the owner reviews it after a theft, and insurance (backup) restores the loss.',
+    example: 'The auth log shows 500 failed logins from one IP address at night: a brute-force attack, so the IP is blocked.',
+  },
 }

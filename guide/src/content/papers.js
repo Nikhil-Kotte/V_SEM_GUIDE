@@ -44,6 +44,7 @@ export const papers = [
   P('os-dec21it', 'os', '2021-12', "Dec '21 (IT)", BANK.os, '20CSC20'),
   P('os-rtos-may26', 'os', '2026-05', "May '26 (ECE RTOS)", BANK.os, 'RTOS', 'related'),
   P('os-rtos-may25', 'os', '2025-05', "May '25 (ECE RTOS)", BANK.os, 'RTOS', 'related'),
+  P('os-rtos-jun24', 'os', '2024-06', "Jun '24 (ECE RTOS)", BANK.os, 'RTOS', 'related'),
 
   // ---------- Computer Networks ----------
   P('cn-nov25', 'cn', '2025-11', "Nov '25", 'PYQs/2025-26/Computer Networks 22ITC10.pdf', '22ITC10'),

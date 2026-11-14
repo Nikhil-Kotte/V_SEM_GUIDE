@@ -1,0 +1,60 @@
+import { Q } from '../pyq-helpers.js'
+
+// Units I, II and the MapReduce half of Unit III: every question in the compiled bank
+// (PYQs/BDA_Unitwise_Questions.pdf, pages 2 to 4) with its paper and marks.
+export default [
+  // ======================= UNIT I =======================
+  Q('bda-what-important', 'bda.u1.challenges-need', 'What is Big Data? Why is it important?', ['bda-jun24:3']),
+  Q('bda-define-two', 'bda.u1.characteristics', 'Define Big Data and list any two characteristics.', ['bda-may26:2']),
+  Q('bda-analytics-importance', 'bda.u1.challenges-need', 'Briefly explain the importance of big data analytics.', ['bda-dec22cse:2']),
+  Q('bda-when-solution', 'bda.u1.challenges-need', 'When should Big Data be considered as a solution?', ['bda-dec22it:2']),
+  Q('bda-social-patterns', 'bda.u1.applications', 'What is Big Data? Explain its role in identifying patterns in social media.', ['bda-dec22it:5']),
+  Q('bda-vs-traditional', 'bda.u1.evolution', 'Explain how Big Data differs from traditional data processing.', ['bda-nov25:5']),
+  Q('bda-three-vs', 'bda.u1.characteristics', 'List and explain the three Vs of big data / recall the definitions of the basic three Vs.', ['bda-jun23:3', 'bda-dec23cse:3']),
+  Q('bda-three-characteristics', 'bda.u1.characteristics', 'Illustrate and write the three characteristics of data.', ['bda-dec23cse:4']),
+  Q('bda-veracity', 'bda.u1.characteristics', 'Illustrate the significance of Veracity in the 4 Vs of big data.', ['bda-dec22cse:2']),
+  Q('bda-types', 'bda.u1.data-types', 'Illustrate Big Data types, each with an example.', ['bda-dec22cse:5']),
+  Q('bda-five-sources', 'bda.u1.sources', 'Choose any five sources of big data and write the corresponding real-world use cases.', ['bda-dec23cse:5']),
+  Q('bda-use-cases', 'bda.u1.applications', 'Describe a few use cases where Big Data is applicable.', ['bda-dec22it:5']),
+  Q('bda-healthcare', 'bda.u1.applications', 'Explain the need for big data in the healthcare industry.', ['bda-dec23cse:5']),
+  Q('bda-bda-vs-ds', 'bda.u1.bi-ds', 'Recall the similarities between Big Data Analytics and Data Science.', ['bda-dec23cse:4']),
+
+  // ======================= UNIT II =======================
+  Q('bda-hadoop-stack', 'bda.u2.need-hadoop', 'Define in brief the Hadoop stack for Big Data.', ['bda-dec24:2']),
+  Q('bda-tech-stack', 'bda.u2.need-hadoop', 'Explain the Big Data technology stack and the role of Hadoop in distributed data processing.', ['bda-may26:5']),
+  Q('bda-stack-arch', 'bda.u2.architecture', 'Describe the architecture of the Hadoop stack with a neat diagram.', ['bda-nov25:5']),
+  Q('bda-ecosystem-why', 'bda.u2.need-hadoop', 'What is the Hadoop ecosystem? Why is this ecosystem needed when Hadoop MapReduce is already available?', ['bda-dec23cse:4']),
+  Q('bda-h1-h2', 'bda.u2.h1-vs-h2', 'Contrast the salient differences between Hadoop 1 and Hadoop 2.', ['bda-dec23cse:3']),
+  Q('bda-hdfs-vs-fs', 'bda.u2.vs-rdbms', 'Differentiate between the Hadoop file system and the traditional file system.', ['bda-nov25:2']),
+  Q('bda-bigdata-vs-sql', 'bda.u2.vs-rdbms', 'Classify between Big Data and SQL.', ['bda-dec23aids:3']),
+  Q('bda-define-hdfs', 'bda.u2.core-components', 'Define the Hadoop File System.', ['bda-dec23aids:3']),
+  Q('bda-hdfs-arch', 'bda.u2.architecture', 'Explain in detail, with a diagram, the architecture of HDFS.', ['bda-dec24:5', 'bda-dec22it:5', 'bda-dec22cse:5']),
+  Q('bda-namenode-datanode', 'bda.u2.core-components', 'Show the architecture of HDFS and explain the functions of the NameNode and DataNode.', ['bda-may26:5']),
+  Q('bda-hdfs-components', 'bda.u2.core-components', 'What are the main components of big data HDFS? Explain in detail.', ['bda-dec23aids:5']),
+  Q('bda-federation', 'bda.u2.core-components', 'Explain HDFS Federation.', ['bda-dec22it:2']),
+  Q('bda-replication', 'bda.u2.architecture', 'Explain in detail the block replication architecture and replication method in HDFS.', ['bda-dec24:5']),
+  Q('bda-fault-tolerance', 'bda.u2.architecture', 'Illustrate how HDFS stores large files using block storage and replication to ensure fault tolerance.', ['bda-may26:5']),
+  Q('bda-read-write', 'bda.u2.hdfs-ops', 'Explain the file read and file write operations of HDFS / the anatomy of a file read and write.', ['bda-jun24:9', 'bda-dec22it:5', 'bda-dec23aids:4']),
+  Q('bda-client-read', 'bda.u2.hdfs-ops', 'How can a client read data from HDFS? Explain with a neat diagram.', ['bda-jun23:5']),
+  Q('bda-cli', 'bda.u2.hdfs-ops', 'Illustrate the command-line interface of Hadoop. Write the syntax of five commands used in the Hadoop CLI.', ['bda-dec24:5']),
+  Q('bda-hdfs-commands', 'bda.u2.hdfs-ops', 'List the HDFS file commands and explain each with an example.', ['bda-dec22cse:5']),
+  Q('bda-touchz', 'bda.u2.hdfs-ops', 'Illustrate the touchz command with an example.', ['bda-dec22cse:2']),
+
+  // ======================= UNIT III: MapReduce =======================
+  Q('bda-define-mr', 'bda.u3.mapreduce-intro', 'Define Map-Reduce.', ['bda-dec22it:2']),
+  Q('bda-mr-working', 'bda.u3.mapreduce-intro', 'Explain the working of MapReduce with an example.', ['bda-dec24:5']),
+  Q('bda-mr-execution', 'bda.u3.mapreduce-intro', 'Analyse the MapReduce execution process, including the map, shuffle and reduce phases, with an example.', ['bda-may26:5']),
+  Q('bda-mr-arch', 'bda.u3.mapreduce-intro', 'What is MapReduce? Explain the MapReduce architecture with a neat sketch.', ['bda-jun23:5', 'bda-dec22it:5', 'bda-dec22cse:5']),
+  Q('bda-wordcount', 'bda.u3.mapreduce-processing', 'Design a MapReduce program for word count and explain it.', ['bda-nov25:5']),
+  Q('bda-cat-sql', 'bda.u3.mapreduce-intro', 'Explain how the cat command in MapReduce relates to SQL.', ['bda-dec23cse:5']),
+  Q('bda-dev-steps', 'bda.u3.mapreduce-processing', 'Design / illustrate the steps in developing a MapReduce application, with an example.', ['bda-nov25:5', 'bda-dec22it:5', 'bda-dec23aids:4']),
+  Q('bda-run-script', 'bda.u3.mapreduce-processing', 'How do you run a MapReduce program from a script file? Explain.', ['bda-dec23aids:5']),
+  Q('bda-job-task', 'bda.u3.mapreduce-processing', 'Compare the stages of a job and a task in MapReduce.', ['bda-dec22it:5']),
+  Q('bda-mr-failures', 'bda.u3.mapreduce-processing', 'List the various failures in MapReduce.', ['bda-dec22it:2']),
+  Q('bda-mr-types', 'bda.u3.io-formats', 'What is MapReduce? Explain its types and formats.', ['bda-jun24:9', 'bda-dec22it:5']),
+  Q('bda-io-formats', 'bda.u3.io-formats', 'Explain the common Hadoop I/O formats.', ['bda-dec23cse:5']),
+  Q('bda-input-split', 'bda.u3.io-formats', 'Define an input split. Illustrate how the input is split into records in a MapReduce job.', ['bda-jun23:4']),
+  Q('bda-joins', 'bda.u3.joins', 'Explain map-side join and reduce-side join.', ['bda-dec23cse:4']),
+  Q('bda-partitioner', 'bda.u3.secondary-sort', 'What are the key objectives of a partitioner in MapReduce?', ['bda-dec23cse:4']),
+  Q('bda-pipeline', 'bda.u3.pipelining', 'Explain the working of a MapReduce pipeline.', ['bda-dec23cse:5']),
+]

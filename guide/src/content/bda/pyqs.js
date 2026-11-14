@@ -1,7 +1,7 @@
 import { Q, Predict } from '../pyq-helpers.js'
 
 // Every in-scope question from the BDA unit-wise bank (22ADE12 / 22ADC12 / 20ADC14 / 18ITC27 / 18CSE17).
-// MapReduce questions in Unit III are Mid-1 material and are left out; only YARN is in this portion.
+// Unit I, II and MapReduce questions are in pyqs-u12.js.
 export default [
   // ---------------- Unit III: YARN ----------------
   Q('bda-yarn-resources', 'bda.u3.yarn-manage', 'Extend your understanding on resource management by YARN: how does YARN manage resources and applications?', ['bda-dec23cse:4']),

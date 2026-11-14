@@ -1,269 +1,392 @@
-// Simpler explanations of each topic, written by ChatGPT (via scripts/simplify-with-chatgpt.mjs).
-// Stored verbatim; regenerate with:  node scripts/simplify-with-chatgpt.mjs <subject> [--only <id>]
+// Principles of Design Thinking in simple words: a short summary, a picture of the idea, the key
+// points, an everyday comparison and one example for every topic. Keys are syllabus ids.
 export default {
-  "pdt.u3.affinity": {
-    "summary": "An **affinity diagram** helps you find meaning in a messy pile of research notes. You put similar notes together and give each group a name. It is also called the **KJ method**.",
-    "points": [
-      "Write one observation, quote or idea on each **sticky note**. Keep each note separate so you can move it easily.",
-      "Place all the notes randomly on a wall. Start without deciding the groups in advance.",
-      "Work in **silence** first. Team members move notes that seem related next to each other. This lets everyone take part before discussing.",
-      "Once the groups settle, give each one a **header**, or short name that explains its **theme**—the idea shared by its notes. Combine related groups into bigger themes if useful.",
-      "Discuss the patterns. Turn them into **insights**, meaning what you understand from the research, and **needs**, meaning what users require.",
-      "This method organises **qualitative data**, such as people’s comments and experiences. It helps the team notice patterns and reach a shared understanding. It connects **Empathise**, understanding users, with **Define**, stating their problem clearly."
+  // ======================= UNIT I =======================
+  'pdt.u1.impact': {
+    summary: '**Science** finds out how things work; **engineering** uses that to solve people\'s problems. Together they changed health, travel, communication and daily life.',
+    picture: [{ flow: ['Science discovers', 'Engineering builds', 'Society benefits'] }],
+    points: [
+      'Engineering gave us clean water, phones, power, roads and medical devices.',
+      'It also brings problems: pollution, e-waste, job loss.',
+      'Design thinking makes sure engineering solves the right problem for real people.',
     ],
-    "analogy": "It is like sorting mixed clothes into piles. Similar items go together, making the whole pile easier to understand.",
-    "example": "Students say, “The canteen queue is long” and “Ordering takes too much time.” Group these under **Long waits**. A user need could be **getting food faster**."
+    analogy: 'Science is learning how fire works; engineering is building a stove so families can cook safely.',
+    example: 'Mobile networks let farmers check crop prices on their phones and sell at better rates.',
   },
-  "pdt.u3.empathy-map": {
-    "summary": "An **empathy map** is a one-page way to understand a user’s experience. It has four sections, called **quadrants**: **Says, Thinks, Does and Feels**. It helps you understand their needs beyond what they say aloud.",
-    "points": [
-      "**Says**: Record the user’s exact words from an interview. For example, “The food is okay.”",
-      "**Thinks**: Note what the user may be thinking but does not say. Base this on research, and check your guesses.",
-      "**Does**: Record actions you actually observe, such as skipping breakfast.",
-      "**Feels**: Note emotions, such as worry, excitement or frustration. Use interviews and observations to understand these.",
-      "**Pains** are fears, frustrations and obstacles. **Gains** are what users want, need or consider a successful result.",
-      "**Sees / Hears** can add context: what surrounds the user and who influences them.",
-      "To make a map, choose the user and goal. Gather information through interviews and observation. Add sticky notes to the sections. Look for repeated patterns and **contradictions**, where words and actions do not match. Turn these into needs and **insights**—surprising understandings about the user’s needs."
+  'pdt.u1.thinking-behaviour': {
+    summary: 'How we **think** decides how we **act**. Our habits and biases make us repeat old solutions, so changing our thinking helps us find new ones.',
+    picture: [{ flow: ['Beliefs', 'Feelings', 'Actions', 'Results'], loop: 'Results strengthen the beliefs' }],
+    points: [
+      'Habits save time but block new ideas.',
+      'Functional fixedness: seeing an object only in its usual use.',
+      'Designers stay curious and open-minded on purpose.',
     ],
-    "analogy": "It is like understanding a friend: you listen to their words, notice their actions and try to understand their feelings.",
-    "example": "A hostel student says the mess is “okay” but often orders outside food. This contradiction is a clue to investigate. If research shows that fixed timings cause missed meals, an **insight** is that the student needs more flexible meal times."
+    analogy: 'If you believe "I am bad at maths", you avoid practice, score low, and the belief gets stronger.',
+    example: 'Seeing a bottle cap only as a lid, versus using caps as game pieces or plant pots.',
   },
-  "pdt.u3.persona-steps": {
-    "summary": "A **persona** is a made-up character based on research about real users. It represents a user group and helps the team remember their needs, agree on whom to design for, and choose useful features.",
-    "points": [
-      "1–2: **Collect data** through interviews, surveys or watching users. **Form a hypothesis**: an early idea about the different user groups.",
-      "3–4: **Get everyone to accept the hypothesis** so the team shares a starting point. **Decide how many personas** you need, usually 3–5.",
-      "5–6: **Describe the personas** with a name, photo, age, background, goals, frustrations and a quote. **Prepare situations or scenarios**: everyday situations where each persona might need the product.",
-      "7–8: **Get acceptance from the organisation** so it supports using the personas. **Share the knowledge** with everyone working on the project.",
-      "9–10: **Create scenarios** showing how each persona uses the solution. **Make ongoing adjustments** when you learn more about users.",
-      "**Goal-directed** personas focus on what users want to achieve and how. **Role-based** personas focus on their organisational role and supporting data. **Engaging** personas include relatable stories and emotions. **Fictional** personas rely on team assumptions, making them quick but risky.",
-      "The **primary persona** is the main user your design must satisfy. A **secondary persona** is served if possible. A **negative persona** represents someone you are not designing for."
+  'pdt.u1.thinking-types': {
+    summary: '**Linear thinking** goes step by step to one answer. **Lateral thinking** finds clever, indirect solutions. **Design thinking** mixes both and starts from people\'s needs.',
+    picture: [{ table: { head: ['Type', 'Like'], rows: [['Linear', 'Following a recipe exactly'], ['Lateral', 'Inventing a new dish from leftovers'], ['Design', 'Asking guests what they like, then cooking for them']] } }],
+    points: [
+      'Divergent thinking creates many ideas; convergent thinking picks the best one.',
+      'Lateral thinking was named by Edward de Bono.',
     ],
-    "analogy": "A persona is like a class representative: one character helps you remember a larger group's needs.",
-    "example": "Interviews reveal students have short lunch breaks. Your persona, Priya, 19, needs quick canteen ordering. Her scenario shows her ordering before class ends."
+    analogy: 'Linear is walking straight down a road; lateral is finding a shortcut through a side street.',
+    example: 'People complained a lift was slow. Linear fix: a faster motor. Lateral fix: mirrors beside the lift, so the wait felt shorter.',
   },
-  "pdt.u3.problem-statement": {
-    "summary": "A **problem statement** clearly says who has a problem, what they need, and why. It is also called a **POV (point-of-view) statement**. It focuses on the person’s need and leaves room to find different solutions.",
-    "points": [
-      "Use this formula: **[User] needs [need] because [insight]**. An **insight** is a deeper understanding of the user’s situation gained through research.",
-      "Keep it **human-centred**: focus on people and their needs, rather than a company’s goals or a particular technology.",
-      "Make it **broad enough** to allow different ideas, but **narrow enough** for the team to handle. It should give the team a clear, useful challenge.",
-      "Check **impact**: does solving it matter? Check **constraint**: does it respect real limits? Check **equifinality**: can several different solutions meet the need?",
-      "For **ideation**, which means generating ideas, turn it into a **HMW (How might we…?) question**. This guides brainstorming and helps the team choose ideas to **prototype**, or make into early versions for testing."
+  'pdt.u1.importance': {
+    summary: '**Design thinking** matters because it starts with **people**: understand them first, then design and test with them, so the solution is something they actually want.',
+    picture: [{ tree: { root: 'A good solution is', kids: ['Desirable: people want it', 'Feasible: it can be built', 'Viable: it can last as a business'] } }],
+    points: [
+      'Solves the right problem, not just any problem.',
+      'Cheap prototypes catch mistakes before they become costly.',
+      'Brings people from different fields together.',
     ],
-    "analogy": "Think of it like telling a tailor, “I need clothes that let me move comfortably.” You explain your need while leaving room for different designs.",
-    "example": "“Elderly people living alone need to get help quickly when unwell because they may be unable to reach a phone.” The HMW question is: “How might we help them get help easily?” Saying “Build a panic-button app” chooses a solution too early."
+    analogy: 'Like a tailor who measures you before stitching, instead of selling one size to everyone.',
+    example: 'A banking app designed with elderly users has bigger buttons and simpler steps.',
   },
-  "pdt.u4.brainstorming": {
-    "summary": "**Brainstorming** is a group activity where people suggest many ideas for one question. You generate ideas first and judge them later, so people feel comfortable sharing unusual thoughts. Different viewpoints add variety, and one person’s idea can spark another.",
-    "points": [
-      "**Defer judgement:** Do not criticise or rate ideas during idea generation. Save that for later.",
-      "**Encourage wild ideas:** Welcome ideas that seem impossible. They may inspire useful, practical solutions.",
-      "**Build on the ideas of others:** Say “yes, and…” and add something to their suggestion.",
-      "**Stay focused on the topic:** Keep answering your **How might we (HMW)** question. This is the problem written as an open question.",
-      "**One conversation at a time:** Let one person speak so everyone can listen.",
-      "**Be visual:** Use simple sketches and sticky notes to make ideas easy to understand.",
-      "**Go for quantity:** Collect many ideas before choosing. A suggested target is 100 ideas in an hour."
+  'pdt.u1.phases': {
+    summary: 'Design thinking has **five phases**: understand users (**Empathize**), state their problem (**Define**), come up with ideas (**Ideate**), build quick models (**Prototype**) and try them (**Test**).',
+    picture: [{ flow: ['Empathize', 'Define', 'Ideate', 'Prototype', 'Test'] }],
+    points: [
+      'The first two phases understand the problem; the last three find the solution.',
+      'Each phase has its own question and output.',
     ],
-    "analogy": "It is like collecting options for a class picnic. First, everyone suggests places freely. Afterwards, you compare the options and choose.",
-    "example": "Ask, “How might we reduce the canteen queue?” Invite 5–8 people from different backgrounds. Choose a **facilitator**, who guides the session and maintains its rules. Warm up briefly, then spend 15–30 minutes posting ideas on sticky notes. Ideas might include pre-ordering or separate pickup counters. Group similar ideas. Use **dot voting**: everyone puts a few dots beside favourite ideas to create a shortlist."
+    analogy: 'Like a doctor: listen to the patient, diagnose, consider treatments, try one, check if it works.',
+    example: 'Designing a school bag: talk to students, define "bags hurt shoulders", sketch ideas, make a cardboard model, let students try it.',
   },
-  "pdt.u4.doodling": {
-    "summary": "**Doodling** means making quick, rough drawings to explore or explain an idea. You do not need drawing skills. The aim is to make your thinking visible, so you and others can understand and improve it.",
-    "points": [
-      "Doodling is a **thinking aid**. Putting an idea on paper helps you explore it and notice possible connections. The drawing does not need to look neat.",
-      "Drawings can explain shapes, steps and interactions faster than words. **Interactions** are how people use something or respond to one another.",
-      "Doodling can support **focus and memory**. It may help you stay involved during a discussion and remember what was explained.",
-      "A **visual vocabulary** is a small set of simple drawings used to express ideas. Circles, boxes, stick figures, arrows and speech bubbles are enough to start.",
-      "During **ideation**, which means coming up with ideas, sketch each idea. Use a **storyboard**, a sequence of pictures, to show a user's experience. Let teammates add suggestions.",
-      "Shared drawings can help people who speak different languages understand each other. Turn promising doodles into **paper prototypes**, simple paper models used to try out ideas."
+  'pdt.u1.five-stage': {
+    summary: 'The five stages are **not a straight line**. If testing shows a problem, the team goes back to an earlier stage. That looping is what makes design thinking **iterative**.',
+    picture: [{ flow: ['Empathize', 'Define', 'Ideate', 'Prototype', 'Test'], loop: 'Go back to any stage when you learn something new' }],
+    points: [
+      'Linear problem solving assumes you know the problem at the start.',
+      'Design thinking keeps improving the problem and the solution.',
     ],
-    "analogy": "Doodling is like drawing a rough map for a friend. Clear directions matter more than beautiful pictures.",
-    "example": "To improve a college canteen queue, draw students, an ordering counter and a pickup counter. Add arrows to show movement. Discuss the sketch to spot confusing steps."
+    analogy: 'Like writing an essay: draft, get feedback, rewrite, get feedback again, until it is good.',
+    example: 'A canteen app works for students, but testing shows staff miss orders, so the team goes back to understand the staff.',
   },
-  "pdt.u4.games": {
-    "summary": "**Ideation** means coming up with ideas. **Ideation games** make this activity playful by adding rules, time limits or unexpected prompts. They help people feel less afraid of judgement, bring energy to the group and move beyond obvious answers. The aim is to explore many possibilities before choosing one.",
-    "points": [
-      "**Crazy 8s:** Fold a sheet into eight boxes. Sketch eight different ideas in eight minutes. Simple drawings are enough.",
-      "**Worst possible idea / reverse brainstorming:** Suggest ideas that would make the problem worse. Then turn them around to find useful solutions.",
-      "**Random word / random object:** Pick an unrelated word or object. Try connecting it to your problem to get a fresh idea.",
-      "**What if…?:** Change a condition or limit. Ask, “What if this had to be free?” Then explore possible answers.",
-      "**Round robin / 6-3-5 brainwriting:** Brainwriting means writing ideas instead of saying them aloud. In **6-3-5**, six people each write three ideas in five minutes, then pass their sheets to build on others’ ideas.",
-      "**Idea bingo:** Put ideas in a bingo grid. Select a row or column and try combining its ideas.",
-      "**Role storming:** Imagine you are the user or a famous person. Suggest ideas from their viewpoint."
+  'pdt.u1.applications': {
+    summary: 'Design thinking is used everywhere: **products**, **apps**, **hospitals**, **schools**, **banks** and **social problems**.',
+    picture: [{ tree: { root: 'Used in', kids: ['Engineered products', 'Software', 'Healthcare', 'Education', 'Business services', 'Social sector'] } }],
+    points: [
+      'Embrace infant warmer: a cheap warmer for premature babies in places without incubators.',
+      'Oral-B made fatter toothbrush handles after watching how children hold them.',
     ],
-    "analogy": "Like a playground game, a few simple rules give everyone a way to join in.",
-    "example": "To improve a college canteen queue, suggest the worst idea: “Hide the menu.” Flip it into a useful idea: “Display the menu before students reach the counter.”"
+    analogy: 'Like a universal key: the same method opens problems in many different fields.',
+    example: 'Airbnb grew after its founders visited hosts and learned their listing photos were poor.',
   },
-  "pdt.u4.ideation": {
-    "summary": "**Ideation** is the stage in Design Thinking where a team suggests many possible solutions to a clearly stated problem. The rule is simple: **quantity first, judging later**. First collect ideas. Then decide which ones are worth developing.",
-    "points": [
-      "Ideation helps us move beyond the first, obvious answer. That first idea may be useful, but exploring more options can reveal better ones.",
-      "It brings together the team's creativity and different viewpoints. It also helps us explore fresh options before spending money on one solution.",
-      "The **Define** stage makes the user's problem clear. Ideation turns that understanding into possible solutions. A **How might we…?** question invites the team to suggest ways to help.",
-      "**Divergent thinking** means opening up many possibilities. Suggest plenty of ideas without judging them immediately. Unusual ideas are welcome. **Brainstorming** means freely sharing ideas. **Mind maps** visually connect related ideas.",
-      "**Convergent thinking** means narrowing down the ideas. Check **desirability**: do users want it? **Feasibility**: can we build it? **Viability**: can it work within business and cost limits? **Dot voting** lets members mark ideas they prefer.",
-      "Ideation is used for **product features**, **service improvements**, **social problems**, **new business ideas**, and **process redesign**, which means improving how work gets done."
+
+  // ======================= UNIT II =======================
+  'pdt.u2.user-needs': {
+    summary: 'Every user has **unique needs**. Some they **say** (explicit), and some they never mention but clearly have (**latent**). Designers find both by watching, not just asking.',
+    picture: [{ compare: [{ title: 'Explicit need', items: ['What users say', '"I want a cheaper phone"'] }, { title: 'Latent need', items: ['What users really need', '"I fear losing my photos when I switch"'] }] }],
+    points: [
+      'Needs depend on age, ability, place and money.',
+      'Workarounds (taped notes, home-made fixes) reveal unmet needs.',
     ],
-    "analogy": "It is like planning dinner: first list possible dishes, then choose using everyone's preferences, available ingredients, and budget.",
-    "example": "To reduce canteen queues, students suggest pre-ordering, extra counters, and separate pickup lines. They then compare the ideas and choose one to test."
+    analogy: 'A customer asks for a faster horse; what they really need is to get there quicker.',
+    example: 'Students tie strings to their ID cards so they do not lose them: a hidden need for an easy-to-carry ID.',
   },
-  "pdt.u4.methods": {
-    "summary": "**Ideation** means coming up with possible solutions to a problem. **Ideation methods** give you steps to follow, so you can produce more ideas and explore better solutions.",
-    "points": [
-      "**Brainstorming**: A group suggests many ideas quickly. **Defer judgement** means avoid judging ideas while people suggest them. **Brainwriting**: Everyone writes ideas silently, then passes them around so others can add to them. This helps everyone contribute.",
-      "**Mind mapping**: Write the main problem in the centre. Draw branches for related ideas. Add smaller branches for more details.",
-      "**SCAMPER**: Use seven questions to change an existing idea: **Substitute** (replace something), **Combine** (join things), **Adapt** (adjust it), **Modify** (change its features), **Put to other use** (find another use), **Eliminate** (remove something), and **Reverse/Rearrange** (change direction or order).",
-      "**Worst possible idea**: Suggest deliberately terrible solutions. Then turn them around to discover useful ideas.",
-      "**Storyboarding**: Draw the user's experience as a simple comic strip. **Bodystorming / role play**: Act out the situation to explore possible solutions.",
-      "**Analogies**: Borrow a useful solution from another field or situation.",
-      "**Six Thinking Hats**: Examine the problem through six perspectives: facts, feelings, risks, benefits, creativity, and managing the thinking process."
+  'pdt.u2.empathize': {
+    summary: '**Empathizing** means understanding users\' feelings and experiences from **their** point of view, by watching them, talking with them and trying their world yourself.',
+    picture: [{ tree: { root: 'Empathize by', kids: ['Observe', 'Engage (interview)', 'Immerse (experience it)'] } }],
+    points: [
+      '**Empathy** is feeling with someone; **sympathy** is feeling sorry for them.',
+      'Outputs: interview notes, observations, insights, empathy maps.',
+      'Empathy is needed but not enough on its own: you still need to define, ideate and test.',
     ],
-    "analogy": "Ideation methods are like different kitchen tools. Each helps you work with the same ingredients in a different way.",
-    "example": "To improve a college bag, use **SCAMPER**: **Combine** a bag with a rain cover, or **Eliminate** an unnecessary pocket to reduce weight."
+    analogy: 'Empathy is walking in someone\'s shoes; sympathy is watching them walk and feeling sorry.',
+    example: 'A designer of a hospital app sits in the waiting room for a day and learns patients mainly want to know how long the wait is.',
   },
-  "pdt.u4.mind-maps": {
-    "summary": "A **mind map** is a picture of how ideas connect. You start with one topic in the middle and spread related ideas around it using keywords and pictures.",
-    "points": [
-      "Use a blank page in **landscape** orientation. This means keeping the longer side horizontal. Put the **central idea**, your main topic or its picture, in the middle.",
-      "Draw **main branches**, lines from the centre, for major themes. Make them thick near the centre and thinner outward. Use **one keyword per branch**. Add **sub-branches**, smaller lines, for details.",
-      "Use **colours, images and symbols** to make ideas easier to remember.",
-      "Use **arrows** to show connections between different branches. Keep it **free-flowing**: add ideas as they come. Do not stop to edit while creating.",
-      "A mind map shows the **whole problem on one page**. It helps you spot links between ideas and quickly think of new ones.",
-      "It improves **memory and understanding**. It is also easy to share with a group so others can add ideas.",
-      "A **mind map** has a structure: centre, branches and sub-branches. It mainly uses words with images to organise and explore ideas. **Doodling** is free, unstructured drawing, mainly using images and shapes to spark ideas."
+  'pdt.u2.steps': {
+    summary: 'The **Empathize phase** has steps: choose whom to study, prepare, observe them, interview them, experience their life, and write down what you learn.',
+    picture: [{ flow: ['Choose users', 'Prepare questions', 'Observe', 'Interview', 'Immerse', 'Record insights'] }],
+    points: [
+      'Ask open questions ("Tell me about your day") and keep asking "why?".',
+      'Watch what people do, not only what they say.',
     ],
-    "analogy": "Think of a tree. The central idea is its trunk. Main branches hold big themes, and smaller branches hold details.",
-    "example": "Put “Canteen” in the centre. Add branches called “Food”, “Cost” and “Seating”. Under “Food”, add “Taste” and “Variety”."
+    analogy: 'Like a journalist researching a story: visit the place, talk to people, live it a little, then write.',
+    example: 'For street vendors: watch them through a rainy day, ask about payments, help at a stall; insights include no shade and trouble with change.',
   },
-  "pdt.u4.six-hats": {
-    "summary": "**Six Thinking Hats**, developed by **Edward de Bono**, helps a group think about a problem in six different ways, one at a time. Everyone uses the same thinking style together. This is called **parallel thinking**. The hats stand for ways of thinking, not fixed roles or types of people.",
-    "points": [
-      "**White Hat — Facts:** Look at the information available. Ask, “What do we know? What information is missing?”",
-      "**Red Hat — Feelings:** Share emotions and **intuition**, meaning a gut feeling. You do not need to justify these feelings.",
-      "**Black Hat — Caution:** Check risks and weaknesses. Ask, “What could go wrong?”",
-      "**Yellow Hat — Benefits:** Look for value and reasons the idea could work. Ask, “How would this help?”",
-      "**Green Hat — Creativity:** Suggest new ideas and alternatives. Ask, “What else could we try?”",
-      "**Blue Hat — Process control:** Organise the discussion, summarise ideas and decide the next steps."
+  'pdt.u2.developing-empathy': {
+    summary: 'You **develop empathy** by listening carefully, dropping your assumptions, asking "why?", watching closely and experiencing the user\'s situation yourself.',
+    picture: [{ flow: ['Listen', 'Ask why', 'Drop assumptions', 'Observe', 'Experience it'] }],
+    points: [
+      'Immersive learning: do the user\'s task yourself.',
+      'Look for the gap between what people say and what they do.',
     ],
-    "analogy": "Think of a group checking a bike before buying it. Everyone checks the price together, then comfort, then possible problems. They focus on one angle at a time.",
-    "example": "For campus security, **White** checks theft records. **Red** shares students’ fear at night. **Black** considers costs and gate queues. **Yellow** identifies improved safety. **Green** suggests better lighting and QR entry. **Blue** plans a small trial and review. This structure reduces arguments, covers different angles, helps quieter students contribute and saves meeting time."
+    analogy: 'Like learning what a farmer\'s life is like by spending a day in the fields, not by reading about it.',
+    example: 'Designers who used a wheelchair for a day noticed how many college doors were too heavy to open.',
   },
-  "pdt.u5.dfv": {
-    "summary": "A good idea should solve a problem people care about. It should also be possible to make and able to cover its costs over time. Design thinking checks these three things using **desirability**, **feasibility** and **viability**.",
-    "points": [
-      "**Desirable** means people want it. Ask: Does this solve a real problem for users? An idea is useful only if it meets a real need.",
-      "**Feasible** means we can make it work. Ask: Do we have the technology, skills and resources needed to build and run it?",
-      "**Viable** means it makes business sense. Ask: Can it earn or receive enough money to cover its costs and keep going?",
-      "**Desirability** is checked first because design thinking is **human-centred**. This means it starts with people's needs. Something may be easy to build and financially sensible, but still attract no users.",
-      "The **innovation sweet spot** is where all three overlap. People want the solution, we can deliver it, and it can sustain itself financially."
+  'pdt.u2.beginners-mind': {
+    summary: 'A **beginner\'s mindset** means acting as if you know nothing: no assumptions, lots of curiosity, and asking "what?" and "why?" again and again.',
+    picture: [{ flow: ['What is happening?', 'Why?', 'Why does that matter?', 'Root need'] }],
+    points: [
+      'Experts often miss details because they assume.',
+      'The 5 Whys technique digs to the root cause.',
     ],
-    "analogy": "Think of running a regular lunch service. People must want your food, you must be able to cook it, and the money coming in must cover the expenses.",
-    "example": "For a college food-ordering app, students wanting shorter queues shows **desirability**. Available app technology and a canteen tablet support **feasibility**. A small order fee that covers running costs supports **viability**."
+    analogy: 'Like a curious child who keeps asking "but why?" until the real reason comes out.',
+    example: 'Why do students skip the library? Too far. Why does that matter? No time between classes. Real need: study spaces near classrooms.',
   },
-  "pdt.u5.iterate": {
-    "summary": "**Iteration** means repeating parts of the design process and improving your solution using what you learned. You **test**, learn what needs changing, and try again. Your first idea rarely gets everything right, so each round helps the solution work better for users.",
-    "points": [
-      "**Design thinking is not linear**. It does not follow one fixed order. After testing, you can return to any earlier phase.",
-      "**Re-empathise** means understand users again if you misunderstood their needs. **Redefine** means correct or sharpen the problem you are trying to solve.",
-      "**Re-ideate** means think of fresh possible solutions. **Re-prototype** means improve or rebuild a simple version of your solution so users can try it.",
-      "**Iteration** reduces uncertainty and risk. Small, quick improvements usually cost less than one large redesign. They also help you respond when users’ needs change.",
-      "**Test → iterate → implement** connects ideas to real use. Testing gives **evidence**, or observed results. This helps you decide whether to improve, expand, or drop a solution. **Implement** means put it into actual use. Learning can continue afterwards."
+  'pdt.u2.immersion': {
+    summary: 'An **immersion activity** puts you inside the user\'s world to experience it first-hand: plan it, go there, take part, observe, reflect and record.',
+    picture: [{ flow: ['Plan', 'Get permission', 'Take part', 'Observe', 'Reflect', 'Record'] }],
+    points: [
+      'Keep a journal of feelings and problems.',
+      'Ask permission before taking photos or notes.',
     ],
-    "analogy": "Think of adjusting a bicycle seat. You ride, notice discomfort, change the height, and ride again. Each attempt uses feedback from the previous one.",
-    "example": "Suppose students test a college timetable app and struggle to find their classroom. You make the room number clearer in the **prototype**, then test again to check whether the change helps."
+    analogy: 'Like an actor preparing for a role by living like the character for a few days.',
+    example: 'To improve city buses, the team rides the busiest route at rush hour every day for a week.',
   },
-  "pdt.u5.prototype-guidelines": {
-    "summary": "A **prototype** is a simple trial version of an idea. You build it so users can try it and help you learn what works. Good prototyping means starting small, testing a clear question, and being ready to change or throw away your first attempt.",
-    "points": [
-      "**Just start building.** Use paper, cardboard, or a simple screen sketch. Making something can reveal problems that thinking alone may miss.",
-      "**Don't spend too long.** Keep the first attempt quick and cheap. Spending too much effort can make you unwilling to change it.",
-      "**Build with the user in mind.** Decide what you want to learn from users. **Make it interactive**, so they can touch, click, or use it.",
-      "**Answer a specific question.** Test one **assumption** at a time. An assumption is a belief about users or your solution that you have not tested yet.",
-      "**Keep it low-fidelity at first.** Fidelity means how closely a prototype resembles the finished solution. Start with a rough version. Add detail as your confidence grows.",
-      "**Fail early, fail cheap.** Problems found now give you useful information. **Make several versions** to compare different ideas."
+  'pdt.u2.bodystorming': {
+    summary: '**Bodystorming** means acting out a situation with props, so the team **feels** what users would experience and spots problems early.',
+    picture: [{ flow: ['Set up props', 'Play the roles', 'Act it out', 'Spot problems', 'Change and act again'] }],
+    points: [
+      'Brainstorming uses talk; bodystorming uses movement and space.',
+      'Cheap and quick: chairs, tables and cardboard are enough.',
     ],
-    "analogy": "It is like arranging scraps of paper before making a greeting card. You can try several layouts without wasting a finished card.",
-    "example": "For a college canteen app, draw two menu layouts on paper. Ask students to point to where they would order tea. This tests whether the ordering option is easy to find."
+    analogy: 'Like a drama rehearsal: you only find awkward moments when you actually act them out.',
+    example: 'Acting out a hospital check-in shows the counter is too high for a patient on crutches.',
   },
-  "pdt.u5.prototype-importance": {
-    "summary": "A **prototype** is a simple early version of an idea that people can see or try. **Prototyping** helps you learn what works before spending too much time and money on the final product. It gives you something to test and improve.",
-    "points": [
-      "**Test ideas cheaply and early:** Try a basic version first. Find problems while they are still easy and cheap to fix.",
-      "**Get real user feedback:** Let people try the prototype. Their actions and comments show whether your idea meets their needs.",
-      "**Communicate ideas:** Showing a prototype helps your team and **stakeholders**, the people involved in or affected by the project, understand your idea.",
-      "**Reduce risk:** Early testing lowers the chance of building the wrong product. **Fail fast** means finding what does not work as early and cheaply as possible.",
-      "**Spark new ideas:** Making and testing something can help you notice better ways to solve the problem.",
-      "**Support decisions:** Compare different versions. Use what you learn to choose which idea to develop."
+
+  // ======================= UNIT III =======================
+  'pdt.u3.define': {
+    summary: 'The **Define phase** makes sense of what you learned while empathizing and turns it into a **clear statement of the user\'s real problem**.',
+    picture: [{ flow: ['Research findings', 'Patterns', 'Core need', 'Problem statement'] }],
+    points: [
+      'The problem should be about the user, not about a technology.',
+      'Not too broad, not too narrow.',
+      'Tools: affinity diagrams, empathy maps, personas, "How might we…?".',
     ],
-    "analogy": "Prototyping is like cooking a small sample before preparing food for a whole group. You can taste it and adjust the recipe before using all your ingredients.",
-    "example": "Before coding a college canteen app, draw its screens on paper. Ask students to show how they would order food. If they cannot find the menu, improve the layout before coding."
+    analogy: 'Like a doctor turning the patient\'s many symptoms into one clear diagnosis.',
+    example: '"Students need a quick way to find free study seats between classes, because walking to the library wastes their break."',
   },
-  "pdt.u5.prototype-types": {
-    "summary": "A **prototype** is an early version of an idea made to try it out. **Fidelity** means how closely it resembles the final product. Choose the simplest, cheapest prototype that can answer what you need to learn.",
-    "points": [
-      "**Low-fidelity prototypes** show the basic idea with little detail. Examples include paper sketches, storyboards (pictures showing a sequence), cardboard models, sticky-note screens, and role play.",
-      "**Medium-fidelity prototypes** have more detail or interaction. Examples include clickable wireframes (simple screen layouts), simple 3-D prints, and **Wizard-of-Oz** demos.",
-      "In **Wizard of Oz**, a person secretly performs a task that the finished system will do automatically. This lets you test the idea before building the automation.",
-      "**High-fidelity prototypes** closely resemble the intended product. Examples include realistic apps with working interactions and working physical models.",
-      "**Throwaway prototypes** are discarded after testing. **Evolutionary prototypes** are gradually improved into the final product.",
-      "**Physical prototypes** are objects. **Digital prototypes** are screens or apps. **Experience prototypes** let people act out a service, such as ordering at a restaurant.",
-      "**Horizontal prototypes** cover many features with little depth. **Vertical prototypes** explore one feature in full depth."
+  'pdt.u3.analysis-synthesis': {
+    summary: '**Analysis** breaks the research into small pieces. **Synthesis** puts the pieces together into patterns and insights.',
+    picture: [{ flow: ['Raw notes', 'Analysis: break down', 'Synthesis: group into themes', 'Insights'] }],
+    points: [
+      'Analysis asks "what did we see?"; synthesis asks "what does it mean?".',
+      'You need both to reach a good problem statement.',
     ],
-    "analogy": "Prototyping is like trying a cardboard version of a phone stand before making it from stronger material.",
-    "example": "For a college canteen app, start with paper screens to check whether students understand how to order. Build a clickable version when you need to test movement between screens."
+    analogy: 'Analysis is taking apart a LEGO model into bricks; synthesis is building something new from them.',
+    example: '40 interview quotes are split into notes, then grouped into 4 themes: cost, time, safety, comfort.',
   },
-  "pdt.u5.storytelling": {
-    "summary": "**Storytelling** means explaining an idea through a story about a user’s problem and how a solution improves their life. It helps people understand, remember and care about the idea.",
-    "points": [
-      "Start with a **relatable character** and a **goal**. Use your **persona**, a description of a typical user based on research. Show what they want to achieve.",
-      "Show the **conflict**, or problem, that blocks their goal. Include simple details and feelings so people understand why it matters.",
-      "Add a **turning point**, where the solution enters the story. End with a **resolution**, showing how the user’s life improves.",
-      "Follow this **structure**: “Once upon a time…” introduces the user. “Every day…” shows their routine. “But one day…” introduces trouble. “Because of that…” shows them trying the solution. “Until finally…” gives the outcome.",
-      "Keep the story short, simple and **authentic**, meaning based on real user research. Give it one clear message.",
-      "Use stories to test ideas, gather feedback and explain a **prototype**, an early version of a solution. A **storyboard** uses comic-strip frames to show the experience. Stories also help pitch ideas to decision-makers and explain a product’s **value proposition**, or main benefit."
+  'pdt.u3.persona-perspectives': {
+    summary: 'Personas can be made from **four perspectives**: **goal-directed** (what users want to do), **role-based** (their role), **engaging** (a rich story) and **fictional** (the team\'s guesses).',
+    picture: [{ tree: { root: 'Persona perspectives', kids: ['Goal-directed', 'Role-based', 'Engaging', 'Fictional'] } }],
+    points: [
+      'Goal-directed and role-based use real data.',
+      'Engaging personas add story and emotion so the team cares.',
+      'Fictional personas are quick but risky: check them with real users.',
     ],
-    "analogy": "Storytelling is like explaining a match through a player’s struggle and winning moment. The events make the result meaningful.",
-    "example": "Suppose research shows students struggle to find free lab computers. Your story follows Meera: she wastes time searching, tries a computer-availability display and finds a free machine to finish her assignment."
+    analogy: 'Like describing a friend by their goals, their job, their life story, or just your guess about them.',
+    example: '"Priya, 20, a hosteller who wants to save money on food" is a goal-directed persona.',
   },
-  "pdt.u5.test-need": {
-    "summary": "**Testing** means letting real users try a **prototype**, a simple trial version of your solution. You learn what works, what fails and why. This matters because what you think users need may differ from what they actually need.",
-    "points": [
-      "**Validation** means checking your assumptions against real user behaviour. Testing helps you check whether your solution meets their needs.",
-      "Testing finds **usability problems**, or difficulties people face while using something. Finding these early makes them cheaper to fix and **reduces risk** before full development.",
-      "Testing can help **refine the problem**. You may discover that you misunderstood the user's main difficulty.",
-      "Watching users builds **empathy**, which means understanding their experiences and difficulties. Testing also helps you **choose between alternative prototypes** using evidence.",
-      "**User feedback** can be **direct**, meaning what users say, or **observed**, meaning what they do. Observed behaviour is often more reliable. A **feedback capture grid** organises findings into **Likes**, **Criticisms**, **Questions** and **Ideas**.",
-      "Testing is not the final stop. Findings can take you back to **Define** the problem, **Ideate** possible solutions or **Prototype** an improved version."
+  'pdt.u3.persona-steps': {
+    summary: 'A **persona** is a made-up character based on real research, who stands for a group of users. You build it step by step from the data you collected.',
+    picture: [{ flow: ['Collect user data', 'Find patterns', 'Group similar users', 'Write the persona (name, photo, goals, pains)', 'Share and use it'] }],
+    points: [
+      'It keeps the team focused on real people.',
+      'Include goals, frustrations, behaviours and a short story.',
     ],
-    "analogy": "Testing is like asking someone to taste your cooking before serving everyone. Their reaction helps you decide what needs changing.",
-    "example": "Students try a library app prototype. They say it looks good but struggle to find the renew button. Record the appearance under **Likes** and the difficulty under **Criticisms**. Make the button easier to find, then test again."
+    analogy: 'Like a character in a novel written from interviews with many real people.',
+    example: '"Ravi, 19, day scholar, travels 1 hour by bus, wants notes he can read on his phone."',
   },
-  "pdt.u5.user-test": {
-    "summary": "A **user test** is a planned session where real users try a **prototype**, an early version of your design. You watch them do realistic tasks to learn what works and what needs fixing.",
-    "points": [
-      "**Plan** what you want to learn. Write 3–5 tasks that users would actually do. **Recruit** 5–8 people who match your **personas**, descriptions of your target users. Small tests can reveal many common usability problems.",
-      "**Prepare** the prototype, a session script and a way to record observations. Get **consent**, meaning users agree to take part and to any recording.",
-      "**Introduce** the session: “We’re testing the prototype, not you.” Use **think-aloud testing**: ask users to say what they are thinking as they use it.",
-      "**Show, don’t tell**: let users try it without coaching. Observe where they pause or struggle. Ask **open questions**, such as “What did you expect here?”",
-      "Other methods include **A/B testing**, comparing results from two versions; **observation** where people normally use the product; and **interviews and surveys** after use.",
-      "**Record** observations in a **feedback capture grid**, a table for organising feedback. **Debrief** with your team: discuss repeated problems and decide what to change."
+  'pdt.u3.problem-statement': {
+    summary: 'A **problem statement** (point of view) clearly says **who** the user is, **what** they need, and **why**, framed around the user.',
+    picture: [{ flow: ['User', 'needs', 'because (insight)'] }],
+    points: [
+      'Format: [User] needs [need] because [insight].',
+      'Turn it into "How might we…?" questions for ideation.',
+      'Why-How laddering moves up (why?) to broaden and down (how?) to make it concrete.',
     ],
-    "analogy": "It is like watching someone follow your directions. Where they get confused shows which directions need improving.",
-    "example": "A user says your wallet feels bulky. Ask why and watch what they carry. Try a removable coin pouch, then **re-test**. Improve **desirability**—how well it meets users’ needs—while keeping **feasibility** (can we make it?) and **viability** (can it work financially?)."
+    analogy: 'Like a clear question on an exam paper: a fuzzy question gets fuzzy answers.',
+    example: '"An elderly person living alone needs an easy way to call for help, because they fear falling with no one around."',
   },
-  "pdt.u5.value-prop": {
-    "summary": "A **value proposition** tells a specific customer how your solution helps them. It also explains why they should choose it over other options. Focus on the benefit the customer gets.",
-    "points": [
-      "Know your customer through research. Their **jobs** are tasks they want to finish. **Pains** are problems they face. **Gains** are results they want.",
-      "State the **main benefit** in one clear sentence. Use everyday words your customer understands. Avoid technical words when simpler ones work.",
-      "Be specific. Say what improves, and use numbers when you can support them. Explain your **main difference** from the alternatives customers already use.",
-      "Keep the message short: a **headline** for the main benefit, a **sub-headline** for extra detail, and three bullet points. **Test** it with users and improve it using their feedback.",
-      "A **value proposition canvas** matches the **customer profile**—their jobs, pains and gains—with the **value map**—what your product offers and how it helps.",
-      "A **pain reliever** describes how your product reduces a customer’s problem. For example, a reminder can help someone avoid forgetting a deadline.",
-      "Ads communicate value quickly: show the **pain**, introduce the product as the solution, and show the **gain**. Customer reviews can provide proof."
+  'pdt.u3.affinity': {
+    summary: 'An **affinity diagram** turns a messy pile of research notes into clear themes: write each observation on a sticky note, then group similar notes together.',
+    picture: [{ flow: ['One note per observation', 'Put all notes on a wall', 'Group similar notes', 'Name each group'] }],
+    points: [
+      'Done silently at first so no one dominates.',
+      'Themes become insights for the problem statement.',
     ],
-    "analogy": "Think of it like recommending a lunch box: explain how it keeps your friend’s food warm and fits their bag.",
-    "example": "For students who miss assignment deadlines, TaskBuddy is a planner that sends reminders before work is due. Unlike a paper diary, it actively alerts you."
-  }
+    analogy: 'Like sorting a heap of laundry into shirts, trousers and socks.',
+    example: '60 notes about the canteen become themes: queues, prices, menu variety, hygiene.',
+  },
+  'pdt.u3.empathy-map': {
+    summary: 'An **empathy map** is a one-page picture of a user split into four parts: what they **say**, **think**, **do** and **feel**, often with pains and gains.',
+    picture: [{ table: { head: ['Says', 'Thinks'], rows: [['"The bus is always late"', '"I will miss my first class"'], ['Does: leaves home at 6:30', 'Feels: stressed, tired']] } }],
+    points: [
+      'Built from interviews and observations.',
+      'Gaps between says and does reveal hidden needs.',
+    ],
+    analogy: 'Like a quick sketch of a person\'s day from the inside.',
+    example: 'A first-year student says "I am fine", but does skip meals and feels homesick.',
+  },
+
+  // ======================= UNIT IV =======================
+  'pdt.u4.ideation': {
+    summary: '**Ideation** is the phase where the team comes up with lots of possible solutions. Get many ideas first and judge them later.',
+    picture: [{ flow: ['"How might we…?"', 'Many ideas (go wide)', 'Group and vote', 'Pick the best few'] }],
+    points: [
+      'Quantity leads to quality.',
+      'Wild ideas are welcome; they can be tamed later.',
+    ],
+    analogy: 'Like fishing with a big net: catch a lot, then keep the best fish.',
+    example: '"How might we reduce canteen queues?" yields 50 ideas, including pre-orders, more counters and a token app.',
+  },
+  'pdt.u4.methods': {
+    summary: '**Ideation methods** help teams get more and better ideas: brainstorming, mind maps, SCAMPER, worst possible idea, storyboards and Six Thinking Hats.',
+    picture: [{ tree: { root: 'Ideation tools', kids: ['Brainstorming', 'Mind mapping', 'SCAMPER', 'Worst possible idea', 'Storyboarding', 'Six Thinking Hats'] } }],
+    points: [
+      'SCAMPER: Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse.',
+      'Different tools suit different teams and problems.',
+    ],
+    analogy: 'Like having different kitchen tools: a whisk, a knife and a blender each help in different ways.',
+    example: 'SCAMPER on an umbrella: combine it with a torch for night walks.',
+  },
+  'pdt.u4.brainstorming': {
+    summary: '**Brainstorming** is a group session to produce as many ideas as possible on one question, following rules that keep criticism out until later.',
+    picture: [{ tree: { root: 'Brainstorming rules', kids: ['Defer judgement', 'Go for quantity', 'Encourage wild ideas', 'Build on others\' ideas', 'One conversation at a time', 'Stay on topic', 'Be visual'] } }],
+    points: [
+      'Time-box it (15 to 30 minutes).',
+      'A facilitator keeps it moving.',
+    ],
+    analogy: 'Like a popcorn machine: let all the ideas pop first, then pick the good ones.',
+    example: '"How to improve campus security?" yields ideas like better lighting, an SOS app and student patrols.',
+  },
+  'pdt.u4.mind-maps': {
+    summary: 'A **mind map** starts with one central idea and branches out into related ideas and keywords, so you can see connections at a glance.',
+    picture: [{ tree: { root: 'Healthy campus', kids: ['Food', 'Exercise', 'Sleep', 'Mental health'] } }],
+    points: [
+      'Use keywords, colours and small pictures.',
+      'Good for organising thoughts and finding new links.',
+    ],
+    analogy: 'Like a tree: the trunk is the main idea, branches are topics, and leaves are details.',
+    example: 'A mind map on "reduce plastic" branches into home, college, shops and events, each with ideas.',
+  },
+  'pdt.u4.games': {
+    summary: '**Ideation games** turn idea generation into play, with rules, time limits or random prompts, so people relax and get more creative.',
+    picture: [{ tree: { root: 'Ideation games', kids: ['Worst possible idea', 'Random word', 'Crazy 8s', 'Role-play'] } }],
+    points: [
+      'Crazy 8s: sketch 8 ideas in 8 minutes.',
+      'Worst possible idea: invert bad ideas into good ones.',
+    ],
+    analogy: 'Like warm-up games before a match: they loosen people up.',
+    example: '"Worst way to run a library": no books allowed. Inverted: a library with books delivered to your desk.',
+  },
+  'pdt.u4.six-hats': {
+    summary: '**Six Thinking Hats** (Edward de Bono) make a group look at a problem from six angles, one at a time.',
+    picture: [{ table: { head: ['Hat', 'Focus'], rows: [['White', 'Facts'], ['Red', 'Feelings'], ['Black', 'Risks'], ['Yellow', 'Benefits'], ['Green', 'New ideas'], ['Blue', 'Process control']] } }],
+    points: [
+      'Everyone wears the same hat at the same time, so there are no arguments.',
+      'The blue hat runs the meeting.',
+    ],
+    analogy: 'Like looking at a house from every side before deciding to buy it.',
+    example: 'Campus security: white (theft numbers), red (students feel unsafe at night), black (cost), yellow (safer campus), green (an SOS app), blue (next steps).',
+  },
+  'pdt.u4.doodling': {
+    summary: '**Doodling**, quick rough drawings, helps you think, remember and share ideas visually, even if you "cannot draw".',
+    picture: [{ compare: [{ title: 'Mind map', items: ['Words and branches', 'Organises ideas'] }, { title: 'Doodling', items: ['Quick pictures', 'Sparks and shares ideas'] }] }],
+    points: [
+      'Stick figures, arrows and boxes are enough.',
+      'Pictures are remembered better than words.',
+    ],
+    analogy: 'Like drawing a quick map on a napkin to explain directions.',
+    example: 'A three-panel doodle shows a student, a long queue, and a phone ordering app, explaining the idea in seconds.',
+  },
+
+  // ======================= UNIT V =======================
+  'pdt.u5.prototype-types': {
+    summary: 'Prototypes range from **low-fidelity** (paper sketches, cardboard) to **high-fidelity** (realistic, working models). Use the cheapest one that answers your question.',
+    picture: [{ flow: ['Sketch', 'Paper / cardboard', 'Clickable mock-up', 'Working model'], label: 'Low to high fidelity' }],
+    points: [
+      'Low-fidelity: fast, cheap, easy to change.',
+      'High-fidelity: realistic, but costly and slow.',
+      'Other kinds: storyboard, role-play, Wizard of Oz.',
+    ],
+    analogy: 'Like trying clothes: a paper sketch, then a cheap cloth sample, then the final stitched dress.',
+    example: 'A paper app sketch tests the flow; a Figma clickable mock-up tests the look.',
+  },
+  'pdt.u5.prototype-guidelines': {
+    summary: 'Good prototyping: **start quickly and cheaply**, build just enough to test one question, keep the user in mind, and be ready to throw it away.',
+    picture: [{ tree: { root: 'Prototyping guidelines', kids: ['Just start building', 'Do not spend too long', 'Test one question', 'Think of the user', 'Build to think', 'Fail fast'] } }],
+    points: [
+      'A prototype is for learning, not for showing off.',
+      'Do not get attached to it.',
+    ],
+    analogy: 'Like a rough draft of an essay: write it fast to see if the idea works.',
+    example: 'A cardboard model of a smart dustbin tests whether people use the foot pedal.',
+  },
+  'pdt.u5.storytelling': {
+    summary: '**Storytelling** presents an idea as a story about a real user\'s problem and how their life gets better, which makes people understand and remember it.',
+    picture: [{ flow: ['Meet the character', 'Their problem', 'The solution arrives', 'Life is better'] }],
+    points: [
+      'Good stories have a relatable character, conflict, a clear message and emotion.',
+      'Use them to pitch ideas and to test reactions with users.',
+    ],
+    analogy: 'Like an advertisement that shows a family\'s problem and how the product fixes it.',
+    example: '"Meena misses her bus every day because the timetable is wrong; with the live-tracking app, she reaches college on time."',
+  },
+  'pdt.u5.prototype-importance': {
+    summary: '**Prototypes** turn ideas into something people can see and use, so you learn what works before spending real time and money.',
+    picture: [{ flow: ['Idea', 'Quick prototype', 'User feedback', 'Improve or drop'] }],
+    points: [
+      'Catches mistakes early when they are cheap to fix.',
+      'Makes ideas easy to discuss.',
+      'Helps users react to something real.',
+    ],
+    analogy: 'Like a test drive before buying a car.',
+    example: 'A cardboard ATM mock-up shows users cannot see the screen in sunlight, before any machine is built.',
+  },
+  'pdt.u5.value-prop': {
+    summary: 'A **value proposition** is a clear statement of the benefit your solution gives a specific customer, and why it beats the alternatives.',
+    picture: [{ flow: ['For (target customer)', 'who (need)', 'our product (what it is)', 'gives (key benefit)', 'unlike (alternatives)'] }],
+    points: [
+      'Keep it short, clear and specific.',
+      'Focus on the benefit, not the features.',
+    ],
+    analogy: 'Like a shop\'s signboard that tells you in one line why to come in.',
+    example: '"For busy students, our app delivers hot canteen food to your classroom in 10 minutes, unlike the 25-minute queue."',
+  },
+  'pdt.u5.test-need': {
+    summary: '**Testing** puts the prototype in front of real users to learn what works and what does not, because the designer\'s guesses are often wrong.',
+    picture: [{ flow: ['Prototype', 'Real users try it', 'Watch and listen', 'Learn and improve'] }],
+    points: [
+      'Reveals problems the team never imagined.',
+      'Saves money by fixing things early.',
+    ],
+    analogy: 'Like tasting your dish before serving it to guests.',
+    example: 'Testing a ticket app shows elderly users cannot find the "pay" button.',
+  },
+  'pdt.u5.user-test': {
+    summary: 'A **user test** is a planned session where real users try your prototype on realistic tasks while you watch, ask "why?" and record what happens.',
+    picture: [{ flow: ['Plan tasks', 'Recruit users', 'Let them try (do not help)', 'Ask why', 'Record and learn'] }],
+    points: [
+      'Show, do not tell: let users explore.',
+      'Note where they get stuck or confused.',
+    ],
+    analogy: 'Like watching a friend play a board game you invented to see which rules confuse them.',
+    example: 'Users found the wallet prototype too bulky, so the next version used a thinner material and fewer card slots.',
+  },
+  'pdt.u5.dfv': {
+    summary: 'The best solutions are **desirable** (people want it), **feasible** (it can be built) and **viable** (it can make money or be sustained).',
+    picture: [{ tree: { root: 'Sweet spot', kids: ['Desirable: people want it', 'Feasible: we can build it', 'Viable: it can last'] } }],
+    points: [
+      'Missing any one circle means the idea fails.',
+      'Testing checks all three.',
+    ],
+    analogy: 'Like a good restaurant dish: tasty (desirable), possible to cook (feasible) and priced so the restaurant profits (viable).',
+    example: 'A flying car may be desirable but not yet feasible or viable for most people.',
+  },
+  'pdt.u5.iterate': {
+    summary: '**Iteration** means going round the design loop again, using what testing taught you to redefine, re-ideate and re-prototype.',
+    picture: [{ flow: ['Test', 'Learn', 'Change', 'Test again'], loop: 'Repeat until users are happy' }],
+    points: [
+      'Each round makes the solution better.',
+      'Skipping iteration leads to products nobody wants.',
+    ],
+    analogy: 'Like a sculptor who keeps chipping and checking until the statue looks right.',
+    example: 'WhatsApp added "delete for everyone" after users kept asking to undo mistakes.',
+  },
 }

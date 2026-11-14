@@ -1,7 +1,7 @@
 import { Q, Predict, Model } from '../pyq-helpers.js'
 
 // Every in-scope question from the Dec '25 (22MEO01) and May '26 (22MEC36) papers, one entry per distinct question.
-// Empathise-phase and Unit I/II questions are Mid-1 and left out.
+// Unit I and II questions are in pyqs-u12.js.
 const MODEL = { note: 'From the department model paper (22MEC36)' }
 
 export default [

@@ -1,5 +1,7 @@
 import pyqs from './pyqs.js'
+import pyqsU12 from './pyqs-u12.js'
 import topics from './topics.js'
+import topicsU12 from './topics-u12.js'
 import simple from './simple.js'
 import videos from './videos.js'
 import u3 from './answers-u3.js'
@@ -8,4 +10,4 @@ import u5 from './answers-u5.js'
 import model from './answers-model.js'
 import { withSimple } from '../with-simple.js'
 
-export default { pyqs, topics: withSimple(topics, simple, videos), videos, answers: { ...u3, ...u4, ...u5, ...model } }
+export default { pyqs: [...pyqsU12, ...pyqs], topics: withSimple({ ...topicsU12, ...topics }, simple, videos), videos, answers: { ...u3, ...u4, ...u5, ...model } }

@@ -1,7 +1,7 @@
 import { Q, Predict } from '../pyq-helpers.js'
 
 // Every in-scope question from the CN unit-wise bank (pages 7–14) and the Nov '25 / Dec '24 papers.
-// Routing questions on Mid-1 topics (design issues, Dijkstra, flooding, distance vector) are left out.
+// Routing questions on design issues, Dijkstra, flooding and distance vector are in pyqs-u12.js.
 export default [
   // ---------------- Unit III: routing ----------------
   Q('cn-link-state', 'cn.u3.link-state', 'Explain link state routing (algorithm) with an example. Discuss the steps involved in the link state routing algorithm.', ['cn-dec23cet:5', 'cn-dec23it:5', 'cn-dec22it:5', 'cn-dec22ece:5', 'cn-dec21ece:5']),

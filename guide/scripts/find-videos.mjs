@@ -33,6 +33,33 @@ const SUBJECT_WORDS = {
 
 // Better search words where the syllabus title alone is vague. Keyed by topic id or "sim:<id>".
 const QUERY = {
+  'se.u1.practice': 'software engineering practice essence general principles',
+  'se.u1.process': 'software process framework activities umbrella activities',
+  'se.u1.generic-model': 'generic process model framework activities',
+  'se.u1.specialized': 'specialized process models component based formal methods',
+  'se.u2.am': 'agile modeling principles',
+  'se.u2.asd': 'adaptive software development ASD agile',
+  'se.u2.fdd': 'feature driven development FDD agile',
+  'se.u2.eliciting': 'requirements elicitation techniques',
+  'se.u2.negotiating': 'negotiating requirements requirement engineering',
+  'se.u2.validating': 'requirements validation requirement engineering',
+  'se.u2.problem-analysis': 'problem analysis software requirements',
+  'se.u2.groundwork': 'establishing the groundwork requirements engineering',
+  'se.u3.decomposition': 'decomposition techniques software project estimation',
+  'se.u3.problem-based': 'problem based estimation LOC FP',
+  'se.u3.sizing': 'software sizing estimation',
+  'se.u3.quality-planning': 'software quality planning project',
+  'se.u3.schedule-staffing': 'project scheduling staffing software',
+  'se.u4.code-inspection': 'code inspection review process',
+  'se.u4.coding': 'coding principles guidelines standards',
+  'se.u4.incremental-code': 'incremental development of code',
+  'se.u4.component-design': 'component level design',
+  'se.u5.deployment': 'software deployment planning rollback',
+  'se.u5.reviews': 'formal technical review FTR',
+  'se.u5.quality-models': 'McCall quality model factors',
+  'se.u5.quality-concepts': 'software quality concepts',
+  'se.u5.testing-process': 'software testing life cycle STLC process',
+  'se.u5.auto-manual': 'manual testing vs automation testing',
   'sim:os-page-replacement': 'page replacement algorithms FIFO LRU optimal numerical',
   'sim:os-disk-scheduling': 'disk scheduling algorithms FCFS SSTF SCAN C-SCAN numerical',
   'sim:os-bankers': 'bankers algorithm numerical example',
@@ -84,17 +111,30 @@ async function search(query) {
   return out
 }
 
+// Words that say nothing about the topic itself, so they do not count as a title match.
+const FILLER = new Set(['and', 'the', 'with', 'for', 'its', 'their', 'from', 'into', 'using', 'what', 'how', 'why', 'are',
+  'example', 'examples', 'explained', 'introduction', 'basics', 'part', 'lecture', 'lec', 'hindi', 'english', 'tutorial'])
+const stem = (w) => (w.length > 5 ? w.slice(0, 5) : w)
+
+function coreWords(query) {
+  const subjectWords = new Set(words(SUBJECT_WORDS[subject]))
+  return [...new Set(words(query).filter((w) => !subjectWords.has(w) && !FILLER.has(w)).map(stem))]
+}
+
+// Relevance first: at least half of the topic's own words must be in the title. Then popularity
+// and a known lecture channel break ties. No video is better than a wrong one.
 function pick(results, query) {
-  const want = words(query)
+  const want = coreWords(query)
   const scored = results
-    .filter((v) => v.id && secs(v.length) >= 150 && secs(v.length) <= 60 * 60)
-    .slice(0, 12)
+    .filter((v) => v.id && secs(v.length) >= 150 && secs(v.length) <= 60 * 60 && !/#shorts/i.test(v.title))
+    .slice(0, 15)
     .map((v) => {
-      const have = new Set(words(v.title))
+      const have = new Set(words(v.title).map(stem))
       const match = want.filter((w) => have.has(w)).length / Math.max(1, want.length)
-      const score = Math.log10(v.views + 10) + (TRUSTED.includes(v.channel) ? 1.5 : 0) + match * 3
-      return { ...v, score }
+      const score = match * 4 + Math.log10(v.views + 10) * 0.6 + (TRUSTED.includes(v.channel) ? 0.7 : 0)
+      return { ...v, match, score }
     })
+    .filter((v) => v.match >= 0.5)
     .sort((a, b) => b.score - a.score)
   const chosen = []
   for (const v of scored) {

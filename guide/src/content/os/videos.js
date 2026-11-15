@@ -19,18 +19,11 @@ export default {
   ],
   "os.u1.functions": [
     {
-      "id": "WJ-UaAaumNA",
-      "title": "L-1.1: Introduction to Operating System and its Functions with English Subtitles",
-      "channel": "Gate Smashers",
-      "length": "18:59",
-      "views": 5500125
-    },
-    {
-      "id": "RozoeWzT7IM",
-      "title": "Introduction to Operating System and its Functions | Operating System | Lecture 1",
-      "channel": "Jenny's Lectures CS IT",
-      "length": "23:56",
-      "views": 2010660
+      "id": "rAMVA1QJUhU",
+      "title": "Functions of Operating Systems || Operating system Components || Concepts  | Functionalities || OS",
+      "channel": "Sudhakar Atchala",
+      "length": "18:09",
+      "views": 150668
     }
   ],
   "os.u1.kernel-approaches": [
@@ -76,13 +69,6 @@ export default {
   ],
   "os.u1.system-overview": [
     {
-      "id": "OdziYWEkDIM",
-      "title": "Every Computer Component Explained in 3 Minutes",
-      "channel": "The Paint Explainer",
-      "length": "3:12",
-      "views": 1871327
-    },
-    {
       "id": "YV4PgC-HRj8",
       "title": "Computer System Structure || 4 Components of Computer System || Abstract view of Operating System",
       "channel": "Sudhakar Atchala",
@@ -92,18 +78,11 @@ export default {
   ],
   "os.u1.types": [
     {
-      "id": "Ij71sDmmKpc",
-      "title": "Types of Operating System | Batch, Real-time, Distributed, Network, Time-sharing Operating System",
-      "channel": "Learn Coding",
-      "length": "18:19",
-      "views": 2499013
-    },
-    {
-      "id": "povNcHSasgs",
-      "title": "L-1.2: Batch Operating System | Types of Operating System",
-      "channel": "Gate Smashers",
-      "length": "7:12",
-      "views": 2340951
+      "id": "GWsxSvdd09o",
+      "title": "Types of Operating Systems",
+      "channel": "Sudhakar Atchala",
+      "length": "14:16",
+      "views": 184421
     }
   ],
   "os.u1.unix-arch": [
@@ -112,46 +91,32 @@ export default {
       "title": "Architecture || Components of UNIX || LINUX|| Operating System || OS || What is kernel and shell",
       "channel": "Sudhakar Atchala",
       "length": "9:25",
-      "views": 87894
-    },
-    {
-      "id": "7JF-cCpw6VA",
-      "title": "UNIX Architecture | Explanation in Hindi | Operating System Important Topics",
-      "channel": "Easy Engineering Classes",
-      "length": "5:32",
-      "views": 91104
+      "views": 87958
     }
   ],
   "os.u2.algorithms": [
     {
-      "id": "MZdVAVMgNpA",
-      "title": "L-2.3: First Come First Serve(FCFS) CPU Scheduling Algorithm with Example",
-      "channel": "Gate Smashers",
-      "length": "10:34",
-      "views": 4400441
+      "id": "j5Rt_at1oyk",
+      "title": "Round Robin Scheduling Algorithm| Preemptive | Operating System  | OS",
+      "channel": "Sudhakar Atchala",
+      "length": "10:44",
+      "views": 468534
     },
     {
-      "id": "WYo1SpUh9FI",
-      "title": "FCFS(First Come First Serve) CPU Scheduling Algorithm with example | Operating System",
-      "channel": "Jenny's Lectures CS IT",
-      "length": "17:50",
-      "views": 1385446
+      "id": "Tcuyr91Y_Ro",
+      "title": "Shortest Remaining Time First Scheduling Algorithm || SRTF || Preemptive || Operating Systems || OS",
+      "channel": "Sudhakar Atchala",
+      "length": "8:03",
+      "views": 347092
     }
   ],
   "os.u2.context-switch": [
-    {
-      "id": "arlIBez-W_I",
-      "title": "Lecture 11: Context Switching in OS | Medium Term Scheduler | Orphan/Zombie Process",
-      "channel": "CodeHelp - by Babbar",
-      "length": "40:41",
-      "views": 201930
-    },
     {
       "id": "W8vM3Qn-1aM",
       "title": "Context Switching In Operating System ||   Process Management In Operating Systems",
       "channel": "Sudhakar Atchala",
       "length": "11:03",
-      "views": 78365
+      "views": 78396
     }
   ],
   "os.u2.criteria": [
@@ -204,18 +169,11 @@ export default {
   ],
   "os.u2.pcb": [
     {
-      "id": "4s2MKuVYKV8",
-      "title": "Process Control Block",
-      "channel": "Neso Academy",
-      "length": "7:02",
-      "views": 702284
-    },
-    {
-      "id": "hWR8fOtD_g4",
-      "title": "Process Control Block (PCB) ll Operating System ll Explained with Examples in Hindi",
-      "channel": "5 Minutes Engineering",
-      "length": "9:23",
-      "views": 254320
+      "id": "clYXGBVuEgE",
+      "title": "Process Control Block In Operating Systems ||  PCB In OS  ||   Process In operating systems",
+      "channel": "Sudhakar Atchala",
+      "length": "8:51",
+      "views": 108239
     }
   ],
   "os.u2.program-process": [
@@ -268,50 +226,36 @@ export default {
   ],
   "os.u2.services": [
     {
-      "id": "TQWERtMoKbI",
-      "title": "Operating System Services",
-      "channel": "Neso Academy",
-      "length": "13:17",
-      "views": 583489
-    },
-    {
       "id": "q7SqTVrdmUM",
       "title": "Operating System Services",
       "channel": "Sudhakar Atchala",
       "length": "8:25",
-      "views": 228628
+      "views": 228680
     }
   ],
   "os.u2.states": [
     {
-      "id": "2dJdHMpCLIg",
-      "title": "L-1.5: Process States in Operating System| Schedulers(Long term,Short term,Medium term)",
-      "channel": "Gate Smashers",
-      "length": "20:54",
-      "views": 2534446
-    },
-    {
-      "id": "jZ_6PXoaoxo",
-      "title": "Process State",
-      "channel": "Neso Academy",
-      "length": "8:53",
-      "views": 619609
+      "id": "SGxFMEZ-ypc",
+      "title": "Process States ||  Diagram of Process States ||  Process State Transition Diagram - Operating System",
+      "channel": "Sudhakar Atchala",
+      "length": "9:52",
+      "views": 117704
     }
   ],
   "os.u2.syscalls": [
     {
-      "id": "tWPa-rZiGM8",
-      "title": "L-1.7: System Calls in Operating system and its types in Hindi",
-      "channel": "Gate Smashers",
-      "length": "10:07",
-      "views": 2022724
+      "id": "d3aCjfuMCIU",
+      "title": "System Calls in Operating System || Types of system Calls || Operating System",
+      "channel": "Sudhakar Atchala",
+      "length": "10:20",
+      "views": 237909
     },
     {
-      "id": "lhToWeuWWfw",
-      "title": "System Calls",
-      "channel": "Neso Academy",
-      "length": "12:39",
-      "views": 997848
+      "id": "MPxvzUNupNI",
+      "title": "System calls in Operating Systems || System Call Implementation || System call Parameter Passing",
+      "channel": "Sudhakar Atchala",
+      "length": "12:16",
+      "views": 75878
     }
   ],
   "os.u2.syscalls-vs-programs": [
@@ -364,34 +308,34 @@ export default {
   ],
   "os.u3.disk-management": [
     {
-      "id": "ZjMwUhapSEM",
-      "title": "Disk Management",
-      "channel": "TutorialsPoint",
-      "length": "14:59",
-      "views": 121901
+      "id": "Gb4Pt4MP7RY",
+      "title": "Disk Management in Operating Systems || Disk Formatting || Partitioning || Boot Block || Bad Block",
+      "channel": "Sudhakar Atchala",
+      "length": "10:24",
+      "views": 44733
     },
     {
       "id": "m1oNigNpT5M",
       "title": "Hard disk Architecture ||  Magnetic Disk Architecture || Operating Systems || Disk Management",
       "channel": "Sudhakar Atchala",
       "length": "5:51",
-      "views": 104225
+      "views": 104313
     }
   ],
   "os.u3.disk-scheduling": [
-    {
-      "id": "9uoa_p8q47Y",
-      "title": "L-6.3: Disk Scheduling Algorithm | Operating System",
-      "channel": "Gate Smashers",
-      "length": "6:08",
-      "views": 1356422
-    },
     {
       "id": "p48PdudrrgU",
       "title": "FCFS Disk Scheduling Algorithm || Operating System | OS",
       "channel": "Sudhakar Atchala",
       "length": "5:45",
-      "views": 181262
+      "views": 181427
+    },
+    {
+      "id": "Ft5o11WJ2Bc",
+      "title": "SCAN Disk Scheduling Algorithm || Operating System | OS",
+      "channel": "Sudhakar Atchala",
+      "length": "5:37",
+      "views": 159889
     }
   ],
   "os.u3.disk-structure": [
@@ -400,14 +344,7 @@ export default {
       "title": "Overview of Mass Storage Structures in Operating Systems || Magnetic Disk || Magnetic Tape",
       "channel": "Sudhakar Atchala",
       "length": "10:52",
-      "views": 37115
-    },
-    {
-      "id": "Ja9EeFVid6I",
-      "title": "7.1- Disk Structure In Operating System In Hindi | Disk Structure In OS In Hindi |",
-      "channel": "TutorialsSpace- Er. Deepak Garg",
-      "length": "10:09",
-      "views": 80680
+      "views": 37124
     }
   ],
   "os.u3.linux-mm": [
@@ -442,13 +379,6 @@ export default {
       "channel": "Sudhakar Atchala",
       "length": "7:12",
       "views": 150771
-    },
-    {
-      "id": "ZR1Tet4rbOo",
-      "title": "How Operating Systems Work: Processes, Memory and Files",
-      "channel": "Anton Putra",
-      "length": "10:01",
-      "views": 9207
     }
   ],
   "os.u3.mm-syscalls": [
@@ -469,66 +399,45 @@ export default {
   ],
   "os.u3.page-faults": [
     {
-      "id": "o2_iCzS9-ZQ",
-      "title": "L-5.19: Virtual Memory | Page fault | Significance of virtual memory | Operating System",
-      "channel": "Gate Smashers",
-      "length": "20:18",
-      "views": 1817918
+      "id": "3CC7WOwDjac",
+      "title": "Virtual Memory or Demand Paging or Page Faults in operating systems",
+      "channel": "Sudhakar Atchala",
+      "length": "12:39",
+      "views": 251536
+    }
+  ],
+  "os.u3.page-replacement": [
+    {
+      "id": "bOFDyPKTgXM",
+      "title": "Need of page replacement or page replacement algorithms in operating systems",
+      "channel": "Sudhakar Atchala",
+      "length": "4:13",
+      "views": 100253
+    }
+  ],
+  "os.u3.paging": [
+    {
+      "id": "j0IqYWyBAKE",
+      "title": "paging in operating system | OS Paging with Example | non contiguous memory allocation in os",
+      "channel": "Sudhakar Atchala",
+      "length": "27:29",
+      "views": 388149
     },
     {
       "id": "3CC7WOwDjac",
       "title": "Virtual Memory or Demand Paging or Page Faults in operating systems",
       "channel": "Sudhakar Atchala",
       "length": "12:39",
-      "views": 251438
-    }
-  ],
-  "os.u3.page-replacement": [
-    {
-      "id": "8rcUs5RutX0",
-      "title": "L-5.22: Page Replacement Introduction | FIFO Page Replacement algorithm | Operating System",
-      "channel": "Gate Smashers",
-      "length": "16:07",
-      "views": 2799386
-    },
-    {
-      "id": "16kaPQtYo28",
-      "title": "Page replacement Algorithms | FIFO | Example | OS | Lec-26 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "15:12",
-      "views": 1156824
-    }
-  ],
-  "os.u3.paging": [
-    {
-      "id": "6c-mOFZwP_8",
-      "title": "L-5.9: What is Paging | Memory management |  Operating System",
-      "channel": "Gate Smashers",
-      "length": "25:54",
-      "views": 2667816
-    },
-    {
-      "id": "2pgI46Q72fA",
-      "title": "Paging | Memory Organisation | Part -1/2 | Operating Systems | Lec-19 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "11:51",
-      "views": 490961
+      "views": 251536
     }
   ],
   "os.u3.segmentation": [
     {
-      "id": "dz9Tk6KCMlQ",
-      "title": "L-5.17: Segmentation Vs Paging | Segmentation Working | Operating system",
-      "channel": "Gate Smashers",
-      "length": "16:30",
-      "views": 1711314
-    },
-    {
-      "id": "Ge8Ix11rVMs",
-      "title": "Segmentation | Introduction | OS | Lec-29 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "6:41",
-      "views": 353328
+      "id": "H7cJsF79iew",
+      "title": "segmentation in operating system | segmentation in memory management | non contiguous allocation",
+      "channel": "Sudhakar Atchala",
+      "length": "8:50",
+      "views": 234475
     }
   ],
   "os.u3.sharing-permissions": [
@@ -558,18 +467,11 @@ export default {
   ],
   "os.u3.swapping": [
     {
-      "id": "Qt49Hzh_TDc",
-      "title": "Memory Swapping | OS | Lec-18 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "6:46",
-      "views": 403617
-    },
-    {
       "id": "ZN-baY3x85o",
       "title": "swapping in operating system | swapping in memory management",
       "channel": "Sudhakar Atchala",
       "length": "9:22",
-      "views": 193117
+      "views": 193163
     }
   ],
   "os.u4.classical": [
@@ -578,30 +480,30 @@ export default {
       "title": "Dining Philosophers Problem || Classical Problems of Process Synchronization || Operating Systems",
       "channel": "Sudhakar Atchala",
       "length": "14:43",
-      "views": 118953
+      "views": 119048
     },
     {
-      "id": "iMD1Z3f9ioI",
-      "title": "L-3.2: Producer Consumer Problem | Process Synchronization Problem in Operating System",
-      "channel": "Gate Smashers",
-      "length": "26:36",
-      "views": 1753951
+      "id": "ntFKeKUQiQo",
+      "title": "Readers Writers problem | classical problems of synchronization part 2 | operating system",
+      "channel": "Sudhakar Atchala",
+      "length": "22:15",
+      "views": 82249
     }
   ],
   "os.u4.deadlock-avoidance": [
     {
-      "id": "7gMLNiEz3nw",
-      "title": "L-4.5: Deadlock Avoidance Banker's Algorithm with Example |With English Subtitles",
-      "channel": "Gate Smashers",
-      "length": "24:04",
-      "views": 4035604
+      "id": "u2yvDHVVgZk",
+      "title": "Deadlock Avoidance part 2 | Banker's algorithm | safety algorithm in deadlock avoidance",
+      "channel": "Sudhakar Atchala",
+      "length": "17:31",
+      "views": 281718
     },
     {
-      "id": "bYFVbzLLxfY",
-      "title": "Lec23 Deadlock Avoidance: Banker's Algorithm with example | Operating System",
-      "channel": "Jenny's Lectures CS IT",
-      "length": "21:12",
-      "views": 879443
+      "id": "JYW0EXLFz94",
+      "title": "Deadlock Avoidance part 3 |  Banker's algorithm | resource request algorithm in deadlock avoidance",
+      "channel": "Sudhakar Atchala",
+      "length": "10:29",
+      "views": 106301
     }
   ],
   "os.u4.deadlock-intro": [
@@ -622,50 +524,29 @@ export default {
   ],
   "os.u4.deadlock-prevention": [
     {
-      "id": "pPM9Ajqmy_4",
-      "title": "L-4.4: Deadlock Handling Methods and Deadlock Prevention | Operating System",
-      "channel": "Gate Smashers",
-      "length": "24:49",
-      "views": 1703776
-    },
-    {
-      "id": "ZI9FFrGd4vc",
-      "title": "Deadlock handling Methods | Deadlock Prevention |  OS | Lec-65 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "12:47",
-      "views": 337278
+      "id": "GAde3Skbs8I",
+      "title": "deadlock prevention in os | deadlock prevention in operating system",
+      "channel": "Sudhakar Atchala",
+      "length": "13:06",
+      "views": 171592
     }
   ],
   "os.u4.deadlock-recovery": [
-    {
-      "id": "2-7JGoy52Qo",
-      "title": "Lec25 Deadlock Detection and Recovery : Wait-for Graph and Banker's algorithm | Operating System",
-      "channel": "Jenny's Lectures CS IT",
-      "length": "19:07",
-      "views": 407293
-    },
     {
       "id": "kOYTmxKpIms",
       "title": "Deadlock Recovery in operating system",
       "channel": "Sudhakar Atchala",
       "length": "6:10",
-      "views": 143976
+      "views": 144016
     }
   ],
   "os.u4.rag": [
     {
-      "id": "BW74JYB3QOM",
-      "title": "L-4.2: Resource Allocation Graph in Deadlock | Single Instance with example | Operating System",
-      "channel": "Gate Smashers",
-      "length": "26:18",
-      "views": 1580553
-    },
-    {
-      "id": "qPuf5B5xPCs",
-      "title": "Lec20 Resource Allocation Graph in Deadlock | with example | Operating System",
-      "channel": "Jenny's Lectures CS IT",
-      "length": "25:09",
-      "views": 395507
+      "id": "7Z5gQSn4O3o",
+      "title": "deadlock characterization part 2 | resource allocation graph in operating system | os",
+      "channel": "Sudhakar Atchala",
+      "length": "10:48",
+      "views": 104604
     }
   ],
   "os.u4.sync-issues": [
@@ -716,23 +597,9 @@ export default {
       "channel": "Sudhakar Atchala",
       "length": "14:11",
       "views": 153344
-    },
-    {
-      "id": "FYi7Y8gbTk0",
-      "title": "threads in operating system | types of threads | single threaded | multi threaded process |",
-      "channel": "SRT Telugu Lectures",
-      "length": "5:25",
-      "views": 19570
     }
   ],
   "os.u5.allocation": [
-    {
-      "id": "J6wVO4pvUCw",
-      "title": "L-7.3: Allocation Methods in operating system in hindi | Contiguous vs NonContiguous",
-      "channel": "Gate Smashers",
-      "length": "5:59",
-      "views": 684759
-    },
     {
       "id": "gK6L3v1b8AM",
       "title": "Allocation Methods | File Allocation Methods | Contiguous | linked | indexed | chain | os | files",
@@ -747,14 +614,7 @@ export default {
       "title": "Efficiency and Performance of File System | Unified Buffer Cache| operating systems | file system",
       "channel": "Sudhakar Atchala",
       "length": "5:10",
-      "views": 39212
-    },
-    {
-      "id": "Ua0TTIyp0UU",
-      "title": "17.  Page Cache, Page Write-Back and Buffer Cache in Linux",
-      "channel": "RAM BABU",
-      "length": "32:14",
-      "views": 1599
+      "views": 39226
     }
   ],
   "os.u5.case-study": [
@@ -775,18 +635,11 @@ export default {
   ],
   "os.u5.directory": [
     {
-      "id": "ywWPul7VAwM",
-      "title": "L69: File Directories | Single-Level, Two Level, Tree Structural and Acyclic Graph Directories",
-      "channel": "Easy Engineering Classes",
-      "length": "11:09",
-      "views": 344320
-    },
-    {
       "id": "eK_mEHG20PA",
       "title": "Directory Structure | tree structured directory | acyclic graph directory | operating system | files",
       "channel": "Sudhakar Atchala",
       "length": "10:04",
-      "views": 331419
+      "views": 331521
     }
   ],
   "os.u5.file-concepts": [
@@ -795,14 +648,7 @@ export default {
       "title": "File Concept Part 2 | File Operations | File Types | File System | Operating System | File Managemen",
       "channel": "Sudhakar Atchala",
       "length": "9:17",
-      "views": 119275
-    },
-    {
-      "id": "Fqp2c5ZA9ec",
-      "title": "Unit 5 File Management 5.1 File Concepts: Attributes, Operations, File Types & File System Structure",
-      "channel": "ALU FOUNDATION",
-      "length": "21:54",
-      "views": 1811
+      "views": 119336
     }
   ],
   "os.u5.malware": [
@@ -887,28 +733,21 @@ export default {
   ],
   "sim:os-bankers": [
     {
-      "id": "7gMLNiEz3nw",
-      "title": "L-4.5: Deadlock Avoidance Banker's Algorithm with Example |With English Subtitles",
-      "channel": "Gate Smashers",
-      "length": "24:04",
-      "views": 4035604
+      "id": "u2yvDHVVgZk",
+      "title": "Deadlock Avoidance part 2 | Banker's algorithm | safety algorithm in deadlock avoidance",
+      "channel": "Sudhakar Atchala",
+      "length": "17:31",
+      "views": 281718
     },
     {
-      "id": "bYFVbzLLxfY",
-      "title": "Lec23 Deadlock Avoidance: Banker's Algorithm with example | Operating System",
-      "channel": "Jenny's Lectures CS IT",
-      "length": "21:12",
-      "views": 879443
+      "id": "JYW0EXLFz94",
+      "title": "Deadlock Avoidance part 3 |  Banker's algorithm | resource request algorithm in deadlock avoidance",
+      "channel": "Sudhakar Atchala",
+      "length": "10:29",
+      "views": 106301
     }
   ],
   "sim:os-disk-scheduling": [
-    {
-      "id": "xouo556RGiE",
-      "title": "L-6.6: SCAN Algorithm in Disk scheduling with Example | Operating System",
-      "channel": "Gate Smashers",
-      "length": "7:54",
-      "views": 1511738
-    },
     {
       "id": "xnDXeSEeac4",
       "title": "Disk Scheduling Algorithms One-Shot | FCFS, SSTF, SCAN, C-SCAN, LOOK & C-LOOK with Examples | OS",

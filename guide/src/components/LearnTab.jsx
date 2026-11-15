@@ -10,6 +10,7 @@ import StatusMark from './bits/StatusMark.jsx'
 import Blocks from './Blocks.jsx'
 import Icon from './Icon.jsx'
 import Tally from './Tally.jsx'
+import { DoodleFor } from './art/doodles.jsx'
 
 // Unit completion as a StatusMark: dashed ring → progress arc → check.
 function UnitProgress({ topics, store }) {
@@ -162,10 +163,11 @@ export default function LearnTab({ subject, data, focus }) {
             <div className={`unit-head${ui === 0 ? ' is-first' : ''}`}>
               <span className="unit-num">Unit {u.unit}</span>
               <RevealHeading id={`unit-${u.unit}`} text={u.title} />
+              <DoodleFor i={ui} />
               <UnitProgress topics={u.topics} store={store} />
             </div>
             {u.topics.map((t) => rank[t.id] < limit && (
-              <TopicCard key={t.id} subject={subject} topic={t} content={data.topics[t.id]} pyqs={data.bySyllabus[t.id] || []} />
+              <TopicCard key={t.id} no={rank[t.id] + 1} subject={subject} topic={t} content={data.topics[t.id]} pyqs={data.bySyllabus[t.id] || []} />
             ))}
           </section>
         ))}

@@ -10,6 +10,12 @@ import NumericalsTab from '../components/NumericalsTab.jsx'
 import RevisionTab from '../components/RevisionTab.jsx'
 import DownloadsTab from '../components/DownloadsTab.jsx'
 import TabBar from '../components/TabBar.jsx'
+import ReadProgress from '../components/ReadProgress.jsx'
+import CoverArt from '../components/art/covers.jsx'
+import { Underline } from '../components/ink/Ink.jsx'
+import Ring from '../components/ink/Ring.jsx'
+import CountUp from '../components/ink/CountUp.jsx'
+import UnitBars from '../components/viz/UnitBars.jsx'
 
 const TABS = [
   ['learn', 'Learn'],
@@ -35,7 +41,6 @@ export default function Subject() {
   }, [subj, tab, item]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!subject) return <Navigate to="/" replace />
-  if (tab === 'lab') return <Navigate to={`/lab/${subj}`} replace />
   if (!validTab) return <Navigate to={`/s/${subj}`} replace />
 
   const topicIds = data ? data.units.flatMap((u) => u.topics.map((t) => t.id)) : []
@@ -44,25 +49,29 @@ export default function Subject() {
 
   return (
     <>
-      <section className="page-head">
-        <div className="container">
+      <section className="page-head" style={{ '--pen': subject.accent, '--pen-tint': subject.tint }}>
+        <div className="container page-head__grid">
+          <div>
           <nav className="crumbs" aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><span>{subject.short}</span></nav>
           <div className="page-head__row">
             <span className="badge badge--lg" style={{ background: subject.tint, color: subject.accent }} aria-hidden="true">{subject.short}</span>
             <div>
-              <h1>{subject.name}</h1>
+              <h1><span className="page-head__title">{subject.name}<Underline double delay={250} /></span></h1>
               <p className="page-head__meta">
                 <span className="code">{subject.code}</span>
-                <span><b className="num">{topicIds.length || '...'}</b> topics</span>
-                <span><b className="num">{data ? pyqCount : '...'}</b> {subj === 'fds' ? 'related past questions' : 'past questions'}</span>
+                <span><b>{topicIds.length ? <CountUp value={topicIds.length} /> : '...'}</b> topics</span>
+                <span><b>{data ? <CountUp value={pyqCount} /> : '...'}</b> {subj === 'fds' ? 'related past questions' : 'past questions'}</span>
                 <span><b className="num">{done}</b> done</span>
               </p>
             </div>
           </div>
-          {topicIds.length > 0 && (
-            <div className="progress page-head__progress" role="progressbar" aria-label="Topics done"
-              aria-valuemin={0} aria-valuemax={topicIds.length} aria-valuenow={done}>
-              <i style={{ transform: `scaleX(${done / topicIds.length})` }} />
+          </div>
+          <div className="page-head__art" key={subj}><CoverArt id={subj} /></div>
+          {data && (
+            <div className="page-head__side sheet">
+              <p className="page-head__side-title">Asked per unit, and how much you have done</p>
+              <Ring value={done / topicIds.length} size={84} label={`${done} of ${topicIds.length} topics done`} />
+              <UnitBars subject={subject} data={data} isDone={store.done} />
             </div>
           )}
         </div>
@@ -73,6 +82,7 @@ export default function Subject() {
           <TabBar ariaLabel={`${subject.short} sections`}
             items={TABS.map(([id, label]) => ({ to: `/s/${subj}/${id}`, label, current: tab === id }))} />
         </div>
+        <ReadProgress />
       </div>
 
       <div className="container">

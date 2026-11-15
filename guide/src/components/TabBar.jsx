@@ -1,8 +1,8 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-// Row of links with a ballpoint underline that slides to the current one.
-// The underline moves with transform only (translateX + scaleX), so it stays smooth on slow phones.
+// Row of links with a ballpoint underline that slides to the current one and is drawn again
+// each time it lands. The underline moves with transform only (translateX + scaleX).
 // items: [{ to, label, current, ariaLabel? }]
 export default function TabBar({ items, ariaLabel, className = '' }) {
   const listRef = useRef(null)
@@ -47,7 +47,11 @@ export default function TabBar({ items, ariaLabel, className = '' }) {
         ))}
         {bar && (
           <li aria-hidden="true" className={`tabbar__ink${bar.ready ? ' is-ready' : ''}`}
-            style={{ transform: `translateX(${bar.x}px) scaleX(${bar.w / 100})` }} />
+            style={{ transform: `translateX(${bar.x}px) scaleX(${bar.w / 100})` }}>
+            <svg key={activeIndex} viewBox="0 0 100 8" preserveAspectRatio="none" focusable="false">
+              <path pathLength={1} d="M3 4.600c16-2.200 30-2.400 47-1.400 17 1 31 .6 47-1" />
+            </svg>
+          </li>
         )}
       </ul>
     </nav>

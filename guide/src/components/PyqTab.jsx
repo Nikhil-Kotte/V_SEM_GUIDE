@@ -9,6 +9,9 @@ import GlideSelect from './bits/GlideSelect.jsx'
 import Icon from './Icon.jsx'
 import Tally from './Tally.jsx'
 import { useReveal } from './Reveal.jsx'
+import { Stamp } from './ink/Desk.jsx'
+import TopicFrequency from './viz/TopicFrequency.jsx'
+import PaperDots from './viz/PaperDots.jsx'
 import { ArrowDown01Icon, Tick02Icon, ViewIcon } from '@hugeicons/core-free-icons'
 
 // GlideSelect colours follow the site theme through CSS variables.
@@ -68,6 +71,8 @@ export default function PyqTab({ subject, data, focus }) {
         </p>
       </div>
 
+      {!isRelatedOnly && <TopicFrequency data={data} topic={topic} onPick={setTopic} unit={unit} />}
+
       <div className="pyq-toolbar">
         <div className="seg" role="group" aria-label="Sort questions">
           <button type="button" aria-pressed={sort === 'repeated'} onClick={() => setSort('repeated')}>Most repeated</button>
@@ -98,10 +103,10 @@ export default function PyqTab({ subject, data, focus }) {
       {filtered.model.length > 0 && (
         <>
           <div className="unit-head is-first">
-            <h2>Mid-2 model questions</h2>
+            <h2>Model questions</h2>
           </div>
           <p className="muted tab-intro">
-            The model question list given for Mid-2, in its original wording, each with a simple answer. Past-paper questions follow below.
+            The model question list from your faculty, in its original wording, each with a simple answer. Past-paper questions follow below.
           </p>
           <ol className="pyq-list">{filtered.model.map((q) => <Pyq key={q.id} q={q} subject={subject} open={focus === q.id} />)}</ol>
           {filtered.past.length > 0 && (
@@ -112,7 +117,7 @@ export default function PyqTab({ subject, data, focus }) {
         </>
       )}
 
-      {filtered.past.length > 0 && <ol className="pyq-list">{filtered.past.map((q) => <Pyq key={q.id} q={q} subject={subject} open={focus === q.id} />)}</ol>}
+      {filtered.past.length > 0 && <ol className="pyq-list">{filtered.past.map((q, i) => <Pyq key={q.id} q={q} subject={subject} open={focus === q.id} top={sort === 'repeated' && i < 3 && q.count >= 3} />)}</ol>}
 
       {filtered.predicted.length > 0 && (
         <>
@@ -130,7 +135,7 @@ export default function PyqTab({ subject, data, focus }) {
   )
 }
 
-function Pyq({ q, subject, open: openInitially }) {
+function Pyq({ q, subject, open: openInitially, top }) {
   const [open, setOpen] = useState(openInitially)
   const [showPapers, setShowPapers] = useState(false)
   const store = useStore()
@@ -146,7 +151,7 @@ function Pyq({ q, subject, open: openInitially }) {
             : <span className={`pyq-kind${q.kind === 'model' ? ' is-model' : ''}`}>{q.kind === 'model' ? 'Model' : 'Likely'}</span>}
         </div>
         <div className="pyq-body">
-          <p className="pyq-q">{q.q}</p>
+          <p className="pyq-q">{q.q}{top && <Stamp className="pyq__stamp">Most asked</Stamp>}</p>
           <div className="pyq-foot">
             <p className="pyq-meta">
               {q.maxMarks > 0 && <span>{q.maxMarks} marks</span>}
@@ -154,6 +159,7 @@ function Pyq({ q, subject, open: openInitially }) {
               {q.kind === 'related-course' && <span className="chip chip-related">Related course (22ADC09)</span>}
               {q.numerical && <span className="chip chip-num">Numerical</span>}
               {topic && <Link to={`/s/${subject.id}/learn/${encodeURIComponent(topic.id)}`} className="text-link">{topic.title}</Link>}
+              {q.count > 0 && <PaperDots subjectId={subject.id} asks={q.asks} />}
               {q.asks.length > 0 && (
                 <button type="button" className="link-btn" aria-expanded={showPapers} aria-controls={`p-${q.id}`} onClick={() => setShowPapers((s) => !s)}>
                   {q.asks.length} paper{q.asks.length > 1 ? 's' : ''}

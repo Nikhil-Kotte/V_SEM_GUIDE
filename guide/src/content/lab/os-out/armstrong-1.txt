@@ -1,2 +1,0 @@
-Enter the number: 153
-153 is an armstrong number

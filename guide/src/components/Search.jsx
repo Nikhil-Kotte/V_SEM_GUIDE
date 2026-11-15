@@ -1,6 +1,19 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ArrowRight01Icon, Search01Icon } from '@hugeicons/core-free-icons'
 import { loadAll } from '../lib/useSubject.js'
+import Icon from './Icon.jsx'
+import { Tape } from './ink/Desk.jsx'
+
+const TRY = ['banker', 'tcp header', 'cocomo', 'k-means', 'scrum']
+
+// Highlighter over the words that matched.
+function Marked({ text, words }) {
+  if (!words.length) return text
+  // `words` are already reduced to letters and digits, so they are safe inside a RegExp.
+  const re = new RegExp(`(${words.join('|')})`, 'ig')
+  return text.split(re).map((part, i) => (i % 2 ? <mark key={i}>{part}</mark> : part))
+}
 
 // Ctrl/⌘-K search across every topic and past question.
 export default function Search({ onClose }) {
@@ -12,18 +25,8 @@ export default function Search({ onClose }) {
 
   useEffect(() => {
     inputRef.current?.focus()
-    const vivas = Promise.all(['cn', 'os', 'se'].map((id) => import(`../content/lab/viva-${id}.js`).then((m) => [id, m.default])))
-    Promise.all([loadAll(), vivas]).then(([all, vivaSets]) => {
+    loadAll().then((all) => {
       const items = []
-      // Lab viva questions: theory and per experiment.
-      for (const [lab, v] of vivaSets) {
-        const add = (group, q) => items.push({
-          kind: `${lab.toUpperCase()} Lab, viva`, title: q.q, text: q.q,
-          to: `/lab/${lab}/viva?exp=${encodeURIComponent(group)}&q=${encodeURIComponent(`${group}.${q.id}`)}`,
-        })
-        v.theory.forEach((q) => add('theory', q))
-        Object.entries(v.experiments).forEach(([e, qs]) => qs.forEach((q) => add(e, q)))
-      }
       for (const s of all) {
         for (const u of s.units) {
           for (const t of u.topics) {
@@ -63,12 +66,16 @@ export default function Search({ onClose }) {
   }, [query, index])
 
   useEffect(() => setSel(0), [query])
+  const words = query.toLowerCase().replace(/[^a-z0-9²\s]/g, '').split(/\s+/).filter(Boolean)
 
   const go = (r) => { onClose(); navigate(r.to) }
 
   return (
     <div className="search-overlay" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div className="search-panel" role="dialog" aria-modal="true" aria-label="Search the guide">
+        <Tape side="l" />
+        <div className="search-panel__field">
+        <Icon icon={Search01Icon} size={22} />
         <input
           ref={inputRef} value={query} placeholder="Search topics and questions, e.g. banker, tcp header, mccall"
           aria-label="Search" role="combobox" aria-expanded={results.length > 0} aria-controls="search-results"
@@ -80,14 +87,24 @@ export default function Search({ onClose }) {
             if (e.key === 'Enter' && results[sel]) go(results[sel])
           }}
         />
+        </div>
         <div className="search-results" id="search-results" role="listbox">
           {query && !results.length && <p className="muted" style={{ padding: '12px 14px' }}>No matches. Try fewer words.</p>}
-          {!query && <p className="muted" style={{ padding: '12px 14px', margin: 0 }}>Type to search every subject. <kbd>↑</kbd> <kbd>↓</kbd> to move, <kbd>Enter</kbd> to open.</p>}
+          {!query && (
+            <div className="search-hint">
+              <span className="hand">Try:</span>
+              <span className="search-try">
+                {TRY.map((t) => <button key={t} type="button" className="chip" onClick={() => { setQuery(t); inputRef.current?.focus() }}>{t}</button>)}
+              </span>
+              <span className="muted" style={{ fontSize: 14 }}><kbd>↑</kbd> <kbd>↓</kbd> to move, <kbd>Enter</kbd> to open.</span>
+            </div>
+          )}
           {results.map((r, i) => (
-            <a key={r.to} href={'#' + r.to} role="option" aria-selected={i === sel}
+            <a key={r.to} href={'#' + r.to} role="option" aria-selected={i === sel} style={{ '--i': i }}
               onMouseEnter={() => setSel(i)} onClick={(e) => { e.preventDefault(); go(r) }}>
               <div className="kind">{r.kind}</div>
-              <div className="title">{r.title}</div>
+              <div className="title"><Marked text={r.title} words={words} /></div>
+              <Icon icon={ArrowRight01Icon} className="icon go" />
             </a>
           ))}
         </div>

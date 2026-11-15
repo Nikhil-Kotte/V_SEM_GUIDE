@@ -1,2 +1,0 @@
-$ gcc sender.c -o sender && ./sender
-Enter a message: Hello from the sender process

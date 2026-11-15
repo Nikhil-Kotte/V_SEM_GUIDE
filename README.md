@@ -1,4 +1,4 @@
-# V Sem Externals Study Guide
+# V SEM EXTERNAL GUIDE
 
 An interactive, plain-language study guide for the V Semester (CSE) external exams, covering all five units of:
 Software Engineering, Operating Systems, Computer Networks, Fundamentals of Data Science,
@@ -36,7 +36,7 @@ npm run build
 - Syllabus allowlist: `guide/src/content/syllabus.js` (only these topics are in scope).
 - Past papers registry: `guide/src/content/papers.js`. PYQs per subject: `guide/src/content/<subject>/pyqs.js` (repeat counts are computed from the papers listed, never typed in).
 - Notes and model answers: `guide/src/content/<subject>/topics*.js` and `answers-*.js`. Simple words: `simple.js` (written by hand; each has a summary, a picture, points, an analogy and an example).
-- Videos: `node scripts/find-videos.mjs <subject>` fills `<subject>/videos.js` from real YouTube search results (relevance first; a topic with no good match gets none). Remove a bad pick with `node scripts/prune-videos.mjs <subject> <topic id>`.
+- Videos: `node scripts/find-videos.mjs <subject>` fills `<subject>/videos.js` from real YouTube search results (relevance first; a topic with no good match gets none). Remove a bad pick with `node scripts/prune-videos.mjs <subject> <topic id>`. Sudhakar Atchala's lectures take priority: `node scripts/find-videos.mjs <subject> --prefer "Sudhakar Atchala"` switches every topic he covers to his videos only, and leaves the others as they are.
 - Diagrams: add an entry to `guide/scripts/diagrams.manifest.json`, run `npm run diagrams`, look at it, then set `"verified": true`.
 - After adding files to `Material/` or `PYQs/`, run `npm run materials`. After pushing, `npm run check-downloads` verifies every download link.
 

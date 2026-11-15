@@ -1,2 +1,0 @@
-Enter the number: 10
-10 is even number

@@ -1,0 +1,166 @@
+/* =========================================================================
+   V-SEM guide · "Answer booklet" design system. See DESIGN.md.
+   ========================================================================= */
+
+/* ---------- Tokens ---------- */
+:root {
+  /* Semantic colour: light (booklet paper) */
+  --bg: #f4f5f1;
+  --surface: #ffffff;
+  --surface-2: #eceee7;
+  --code-bg: #eef0ea;
+  --text: #1a1e29;
+  --text-soft: #454b5a;
+  --text-faint: #5c6271;
+  --line: rgba(26, 30, 41, .12);
+  --line-strong: rgba(26, 30, 41, .26);
+
+  --accent: #2340a6;            /* ballpoint */
+  --accent-soft: #e3e8f8;
+  --on-accent: #ffffff;
+  --hot: #b8322a;               /* examiner's red pen */
+  --hot-soft: #f9e3e0;
+  --ok: #276f44;                /* tick */
+  --ok-soft: #e0f0e5;
+  --highlight: #fff0a3;         /* highlighter */
+  --margin: #e7a39c;            /* booklet margin rule */
+  --focus: var(--accent);
+
+  /* Subject pens (badges + SVG diagrams) */
+  --blue: #2340a6;   --blue-tint: #e3e8f8;
+  --coral: #a84a1f;  --coral-tint: #f8e6dc;
+  --green: #276f44;  --mint: #e0f0e5;
+  --gold: #7d5c0c;   --yellow-tint: #f6edd2;
+  --violet: #5b45b0; --violet-tint: #ece7fa;
+  --rose: #a3305b;   --rose-tint: #f8e3eb;
+
+  /* Legacy aliases kept for content + SVG diagrams. --ink/--cream stay fixed in both themes. */
+  --ink: #1a1e29;
+  --cream: #f4f5f1;
+  --coral-deep: var(--hot);
+  --yellow: #ffe066;
+  --band: var(--surface);
+  --on-band: var(--text);
+  --on-coral: var(--text);
+
+  /* Type */
+  --font-body: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif;
+  --font-display: var(--font-body);
+  --font-mono: 'Atkinson Hyperlegible Mono', ui-monospace, 'Cascadia Mono', Menlo, monospace;
+  --fs-xs: 13px;
+  --fs-sm: 14.5px;
+  --fs-base: 17px;
+  --fs-md: 19px;
+  --fs-lg: 22px;
+  --fs-xl: clamp(24px, 2.6vw, 28px);
+  --fs-2xl: clamp(28px, 3.6vw, 36px);
+  --fs-3xl: clamp(34px, 5.4vw, 52px);
+  --fs-hero: clamp(42px, 8vw, 92px);
+  --measure: 54ch;
+
+  /* Space (4px base) */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
+  --gutter: clamp(16px, 3.5vw, 64px);
+  --header-h: 64px;
+
+  /* Shape + depth */
+  --radius: 14px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+  --pill: 999px;
+  --shadow-1: 0 1px 2px rgba(26, 30, 41, .06), 0 4px 12px -6px rgba(26, 30, 41, .14);
+  --shadow-2: 0 18px 48px -16px rgba(26, 30, 41, .32), 0 2px 6px rgba(26, 30, 41, .08);
+  --shadow: var(--shadow-1);
+
+  /* Motion: pen stroke */
+  --ease-out: cubic-bezier(.25, 1, .5, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease: var(--ease-out);
+  --dur-1: 120ms;
+  --dur-2: 180ms;
+  --dur-3: 280ms;
+  --dur-4: 450ms;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #171a22;
+  --surface: #1e222c;
+  --surface-2: #272c38;
+  --code-bg: #1a1e27;
+  --text: #e9ebf1;
+  --text-soft: #b9becb;
+  --text-faint: #9298a8;
+  --line: rgba(233, 235, 241, .12);
+  --line-strong: rgba(233, 235, 241, .26);
+
+  --accent: #9db1ff;
+  --accent-soft: #252e4a;
+  --on-accent: #171a22;
+  --hot: #ff8f80;
+  --hot-soft: #3d2528;
+  --ok: #6fcb93;
+  --ok-soft: #1e3427;
+  --highlight: #4a4220;
+  --margin: #5a3a3a;
+
+  --blue: #9db1ff;   --blue-tint: #252e4a;
+  --coral: #f5a27e;  --coral-tint: #3b2a22;
+  --green: #6fcb93;  --mint: #1e3427;
+  --gold: #e2c26a;   --yellow-tint: #363020;
+  --violet: #bba8ff; --violet-tint: #2e2848;
+  --rose: #f59bbd;   --rose-tint: #3b2431;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 12px -6px rgba(0, 0, 0, .5);
+  --shadow-2: 0 18px 48px -16px rgba(0, 0, 0, .7), 0 2px 6px rgba(0, 0, 0, .3);
+  color-scheme: dark;
+}
+
+
+/* ---------- Desk additions: paper, ink, sticky notes ---------- */
+:root {
+  --font-hand: 'Kalam', 'Segoe Print', 'Bradley Hand', cursive;
+  --radius-paper: 4px;
+  --rule-gap: 32px;
+  --paper-rule: rgba(35, 64, 166, .075);
+  --paper-grid: rgba(35, 64, 166, .09);
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1  0 0 0 0 .12  0 0 0 0 .16  .13 0 0 0 -.02'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --torn: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='12' preserveAspectRatio='none'%3E%3Cpath d='M0 12V5l9-3 8 4 11-5 9 4 12-3 7 4 13-5 10 3 9-2 11 4 8-4 12 3 9-3 10 5 11-4 9 2 12-4 8 4 11-3 9 3 13-4 9 4v6z'/%3E%3C/svg%3E");
+
+  --sticky-yellow: #fdf1a8;
+  --sticky-green: #d2edd9;
+  --sticky-blue: #d8e1fb;
+  --sticky-violet: #e3dafa;
+  --sticky-rose: #fad8e4;
+  --sticky-coral: #fbe0d0;
+  --tape: rgba(255, 221, 102, .62);
+  --tape-edge: rgba(125, 92, 12, .18);
+  --stamp: var(--hot);
+  --desk-shade: rgba(26, 30, 41, .05);
+
+  --shadow-paper: 0 1px 1px rgba(26, 30, 41, .05), 0 5px 12px -7px rgba(26, 30, 41, .22), 0 20px 36px -26px rgba(26, 30, 41, .32);
+  --shadow-lift: 0 2px 3px rgba(26, 30, 41, .06), 0 16px 28px -12px rgba(26, 30, 41, .28), 0 40px 60px -34px rgba(26, 30, 41, .4);
+
+  --ease-spring: cubic-bezier(.34, 1.45, .5, 1);
+  --dur-5: 700ms;
+  --dur-6: 1100ms;
+}
+
+:root[data-theme='dark'] {
+  --paper-rule: rgba(157, 177, 255, .07);
+  --paper-grid: rgba(157, 177, 255, .09);
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .9  0 0 0 0 .92  0 0 0 0 1  .09 0 0 0 -.015'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --sticky-yellow: #4d4420;
+  --sticky-green: #20392a;
+  --sticky-blue: #273256;
+  --sticky-violet: #342c57;
+  --sticky-rose: #46273a;
+  --sticky-coral: #432c22;
+  --tape: rgba(226, 194, 106, .34);
+  --tape-edge: rgba(0, 0, 0, .3);
+  --desk-shade: rgba(0, 0, 0, .22);
+  --shadow-paper: 0 1px 1px rgba(0, 0, 0, .3), 0 6px 14px -7px rgba(0, 0, 0, .6), 0 22px 40px -26px rgba(0, 0, 0, .8);
+  --shadow-lift: 0 2px 3px rgba(0, 0, 0, .3), 0 18px 30px -12px rgba(0, 0, 0, .7), 0 40px 60px -30px rgba(0, 0, 0, .9);
+}

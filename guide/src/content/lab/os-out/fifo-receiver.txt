@@ -1,2 +1,0 @@
-$ gcc receiver.c -o receiver && ./receiver
-Received message: Hello from the sender process

@@ -1,2 +1,0 @@
-Enter the number: 1441
-1441 is a palindrome number.

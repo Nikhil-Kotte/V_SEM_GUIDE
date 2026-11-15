@@ -147,18 +147,18 @@ export default {
   ],
   "cn.u2.aloha": [
     {
-      "id": "WYM9nFYnYAg",
-      "title": "Lec-33: What is Pure Aloha in Hindi | MAC Layer Protocol",
-      "channel": "Gate Smashers",
-      "length": "10:50",
-      "views": 1017894
+      "id": "qz3eMslL8MY",
+      "title": "Pure Aloha in Computer Networks",
+      "channel": "Sudhakar Atchala",
+      "length": "9:52",
+      "views": 160811
     },
     {
-      "id": "j4-r0e7DjqY",
-      "title": "Pure Aloha",
-      "channel": "Neso Academy",
-      "length": "12:10",
-      "views": 675248
+      "id": "jyvFWnJzTk8",
+      "title": "Slotted Aloha in Computer Networks",
+      "channel": "Sudhakar Atchala",
+      "length": "6:59",
+      "views": 84053
     }
   ],
   "cn.u2.channel-allocation": [
@@ -179,82 +179,75 @@ export default {
   ],
   "cn.u2.csma": [
     {
-      "id": "v_z888gQWq0",
-      "title": "Lec-36: Carrier Sense Multiple Access/ Collision Detection | CSMA/CD | Computer Networks",
-      "channel": "Gate Smashers",
-      "length": "14:39",
-      "views": 997980
+      "id": "8wptjECeGA8",
+      "title": "CSMA (Carrier Sense Multiple Access) Protocol in Computer Networks",
+      "channel": "Sudhakar Atchala",
+      "length": "9:21",
+      "views": 134086
     },
     {
-      "id": "MAZi6VoekYw",
-      "title": "Carrier Sense Multiple Access (CSMA) – Part 1",
-      "channel": "Neso Academy",
-      "length": "12:47",
-      "views": 647415
+      "id": "xGzDbJz-AJ8",
+      "title": "CSMA/CD protocol in computer networks | Carrier Sense Multiple Access With Collision Detection  | CN",
+      "channel": "Sudhakar Atchala",
+      "length": "8:36",
+      "views": 133644
     }
   ],
   "cn.u2.dll-design": [
+    {
+      "id": "Q9G-oEYnAgE",
+      "title": "Cyclic Redundancy Check || CRC || Error Detection || Data Link Layer Design Issues || Error Control",
+      "channel": "Sudhakar Atchala",
+      "length": "12:12",
+      "views": 401875
+    },
     {
       "id": "VzydkaO27V0",
       "title": "Framing in Data Link Layer || Design Issues || Byte Stuffing|  Bit Stuffing || Character Count || CN",
       "channel": "Sudhakar Atchala",
       "length": "11:09",
-      "views": 270904
-    },
-    {
-      "id": "oQ96ceboZuo",
-      "title": "Data link layer | design issues | Computer Networks | CN | Lec-42 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "6:17",
-      "views": 256851
+      "views": 271128
     }
   ],
   "cn.u2.error-correction": [
     {
-      "id": "U7-h2hyM1Dc",
-      "title": "Lec-28: Introduction to Error detection and Correction | Computer Networks",
-      "channel": "Gate Smashers",
-      "length": "10:44",
-      "views": 1758206
+      "id": "kFH4sT_NMHM",
+      "title": "Introduction to Error Detection and Correction in Computer Networks || Data Link Layer || CN",
+      "channel": "Sudhakar Atchala",
+      "length": "10:35",
+      "views": 154484
     },
     {
-      "id": "nUwGf5ZgqsA",
-      "title": "Error Correction with Example | Hamming Code | CN | Computer Networks | Lec-55 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "8:22",
-      "views": 864418
+      "id": "lRUvRDie4KM",
+      "title": "Error Control in Data link layer || Design Issues || Error Detection and Correction  || CN",
+      "channel": "Sudhakar Atchala",
+      "length": "10:14",
+      "views": 116180
     }
   ],
   "cn.u2.error-detection": [
     {
-      "id": "U7-h2hyM1Dc",
-      "title": "Lec-28: Introduction to Error detection and Correction | Computer Networks",
-      "channel": "Gate Smashers",
-      "length": "10:44",
-      "views": 1758206
+      "id": "Q9G-oEYnAgE",
+      "title": "Cyclic Redundancy Check || CRC || Error Detection || Data Link Layer Design Issues || Error Control",
+      "channel": "Sudhakar Atchala",
+      "length": "12:12",
+      "views": 401875
     },
     {
-      "id": "cb0T4UE0c4w",
-      "title": "Hamming Code || Error Detection and Error Correction",
+      "id": "deBEd184NeQ",
+      "title": "Parity Check || Error Detection || Data Link Layer Design Issues || Error Control || Even || Odd",
       "channel": "Sudhakar Atchala",
-      "length": "14:33",
-      "views": 664769
+      "length": "7:12",
+      "views": 217677
     }
   ],
   "cn.u2.gbn": [
     {
-      "id": "QD3oCelHJ20",
-      "title": "Go-Back-N ARQ",
-      "channel": "Neso Academy",
-      "length": "10:55",
-      "views": 1147491
-    },
-    {
-      "id": "zc88y9HTAOA",
-      "title": "Lec-24: Go-Back-N ARQ (Automatic Repeat Request) | Data Link layer",
-      "channel": "Gate Smashers",
-      "length": "9:40",
-      "views": 861651
+      "id": "SmsJyMye43E",
+      "title": "Go-Back-N ARQ Protocol || Data link layer || Computer networks",
+      "channel": "Sudhakar Atchala",
+      "length": "7:06",
+      "views": 215728
     }
   ],
   "cn.u2.simplex": [
@@ -263,46 +256,39 @@ export default {
       "title": "Simplex Stop and Wait Protocol for Noiseless(Error Free) Channel | Elementary Data Link Protocols|CN",
       "channel": "Sudhakar Atchala",
       "length": "11:51",
-      "views": 80998
+      "views": 81067
     },
     {
-      "id": "3f_g_bho-K0",
-      "title": "Simplest protocol/Unrestricted simplex protocol",
-      "channel": "Sarayu Prasad",
-      "length": "5:26",
-      "views": 28142
+      "id": "M4YHXvEuZP4",
+      "title": "Unrestricted Simplex Protocol | Elementary Data Link Protocols | Data Link Layer | Computer Networks",
+      "channel": "Sudhakar Atchala",
+      "length": "10:35",
+      "views": 67509
     }
   ],
   "cn.u2.sliding-window": [
     {
-      "id": "LnbvhoxHn8M",
-      "title": "Sliding Window Protocol",
-      "channel": "Neso Academy",
-      "length": "7:54",
-      "views": 938034
+      "id": "0Ico08tGVHU",
+      "title": "Flow Control || Data Link Layer Design Issues|| Stop and Wait Protocol ||  Sliding Window Protocol",
+      "channel": "Sudhakar Atchala",
+      "length": "8:46",
+      "views": 147071
     },
     {
-      "id": "7Eo4Kd3gkA0",
-      "title": "Sliding window protocol | Types of sliding window protocol | 1 Bit | Go-Back-N ARQ |Selective Repeat",
+      "id": "WgSuj2TEmwU",
+      "title": "1 Bit Sliding Window protocol | One Bit Sliding Window protocol | Data link layer| Computer networks",
       "channel": "Sudhakar Atchala",
-      "length": "7:24",
-      "views": 206189
+      "length": "11:00",
+      "views": 109026
     }
   ],
   "cn.u2.sr": [
     {
-      "id": "WfIhQ3o2xow",
-      "title": "Selective Repeat ARQ",
-      "channel": "Neso Academy",
-      "length": "5:07",
-      "views": 777734
-    },
-    {
-      "id": "08y_Vrs1vHo",
-      "title": "Lec-25: Selective Repeat ARQ (Automatic Repeat Request) | Data Link Layer",
-      "channel": "Gate Smashers",
-      "length": "7:39",
-      "views": 541299
+      "id": "lHYVToJtkF4",
+      "title": "Selective Repeat ARQ Protocol || Data link layer || Computer networks",
+      "channel": "Sudhakar Atchala",
+      "length": "8:10",
+      "views": 147972
     }
   ],
   "cn.u2.stop-wait": [
@@ -311,14 +297,14 @@ export default {
       "title": "Simplex Stop and Wait Protocol for Noiseless(Error Free) Channel | Elementary Data Link Protocols|CN",
       "channel": "Sudhakar Atchala",
       "length": "11:51",
-      "views": 80998
+      "views": 81067
     },
     {
-      "id": "YIX1NfaUpsU",
-      "title": "Lec-23: Stop and Wait ARQ protocol | Data link layer",
-      "channel": "Gate Smashers",
-      "length": "5:56",
-      "views": 962792
+      "id": "ls1b4Xp6Blg",
+      "title": "Simplex Stop and Wait Protocol for Noisy Channel | Error Channel | Elementary Data Link Protocols|CN",
+      "channel": "Sudhakar Atchala",
+      "length": "7:49",
+      "views": 65333
     }
   ],
   "cn.u3.bgp": [
@@ -339,34 +325,20 @@ export default {
   ],
   "cn.u3.distance-vector": [
     {
-      "id": "5ZuP5qjbKSI",
-      "title": "Lec-62: Distance vector routing algorithm in hindi | Computer Networks",
-      "channel": "Gate Smashers",
-      "length": "26:00",
-      "views": 1765079
-    },
-    {
-      "id": "qvBpF2qkK_Y",
-      "title": "Distance Vector routing algorithm | Data Communication | Lec-25 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "16:06",
-      "views": 689013
+      "id": "JMzbdR9iBFY",
+      "title": "Distance Vector Routing Algorithm in Computer Networks",
+      "channel": "Sudhakar Atchala",
+      "length": "15:14",
+      "views": 608798
     }
   ],
   "cn.u3.flooding": [
-    {
-      "id": "JU7-pzKhyX4",
-      "title": "Flooding Routing Algorithm |  Data Communication | Lec-20 | Bhanu Priya",
-      "channel": "Education 4u",
-      "length": "10:10",
-      "views": 178590
-    },
     {
       "id": "1ONDcHE1W2E",
       "title": "Flooding in computer networks || Flooding routing algorithm in computer networks || CN",
       "channel": "Sudhakar Atchala",
       "length": "5:17",
-      "views": 155745
+      "views": 155933
     }
   ],
   "cn.u3.ip-addresses": [
@@ -419,18 +391,11 @@ export default {
   ],
   "cn.u3.link-state": [
     {
-      "id": "kW6zV-040SY",
-      "title": "Lec-64: Link state routing in computer networks in Hindi",
-      "channel": "Gate Smashers",
-      "length": "14:36",
-      "views": 1161203
-    },
-    {
       "id": "eXXM7ukL4_k",
       "title": "Link State Routing Algorithm in Computer Networks",
       "channel": "Sudhakar Atchala",
       "length": "13:56",
-      "views": 374264
+      "views": 374818
     }
   ],
   "cn.u3.nl-design": [
@@ -439,7 +404,14 @@ export default {
       "title": "Network Layer Design Issues",
       "channel": "Sudhakar Atchala",
       "length": "17:29",
-      "views": 221890
+      "views": 222118
+    },
+    {
+      "id": "nwcvcOUGTRA",
+      "title": "Data Link Layer Design Issues || Services Provided to Network Layer",
+      "channel": "Sudhakar Atchala",
+      "length": "5:02",
+      "views": 185508
     }
   ],
   "cn.u3.optimality": [
@@ -485,18 +457,11 @@ export default {
   ],
   "cn.u3.shortest-path": [
     {
-      "id": "XB4MIexjvY0",
-      "title": "3.6 Dijkstra Algorithm - Single Source Shortest Path - Greedy Method",
-      "channel": "Abdul Bari",
-      "length": "18:35",
-      "views": 5001937
-    },
-    {
-      "id": "Gd92jSu_cZk",
-      "title": "L-4.10: Dijkstra's Algorithm - Single Source Shortest Path - Greedy Method",
-      "channel": "Gate Smashers",
-      "length": "15:49",
-      "views": 4015334
+      "id": "p9fPBS2S_Vk",
+      "title": "Shortest Path Routing Algorithm || Dijkstra's  algorithm || Computer Networks",
+      "channel": "Sudhakar Atchala",
+      "length": "11:44",
+      "views": 383382
     }
   ],
   "cn.u4.congestion": [
@@ -565,18 +530,11 @@ export default {
   ],
   "cn.u4.tcp-connect": [
     {
-      "id": "qIEHUUt2Wfc",
-      "title": "Lec-71: TCP connection Establishment and connection Termination | Transport layer",
-      "channel": "Gate Smashers",
-      "length": "15:12",
-      "views": 934032
-    },
-    {
       "id": "WqV0TRTvvqA",
       "title": "TCP Connection Establishment || Three Way Handshake || Transport layer || Computer Networks",
       "channel": "Sudhakar Atchala",
       "length": "6:37",
-      "views": 169023
+      "views": 169207
     }
   ],
   "cn.u4.tcp-header": [
@@ -597,34 +555,34 @@ export default {
   ],
   "cn.u4.tcp-intro": [
     {
-      "id": "c8aet11HNxg",
-      "title": "Lec-69: TCP: Transmission control protocol | TCP Header | Transport layer | part -1",
-      "channel": "Gate Smashers",
-      "length": "14:51",
-      "views": 1285521
+      "id": "YB-k9F-NqxQ",
+      "title": "TCP Header Format || Transport Layer || Computer Networks || Transmission Control Protocol",
+      "channel": "Sudhakar Atchala",
+      "length": "14:03",
+      "views": 128373
     },
     {
-      "id": "wvPe4Zb0tUA",
-      "title": "The TCP/IP Protocol Suite",
-      "channel": "Neso Academy",
-      "length": "10:09",
-      "views": 684884
+      "id": "KY_Bqp2xDVc",
+      "title": "TCP vs UDP || Differences between TCP and UDP Protocols || Transport Layer || Computer Networks",
+      "channel": "Sudhakar Atchala",
+      "length": "9:18",
+      "views": 82639
     }
   ],
   "cn.u4.tcp-release": [
     {
-      "id": "qIEHUUt2Wfc",
-      "title": "Lec-71: TCP connection Establishment and connection Termination | Transport layer",
-      "channel": "Gate Smashers",
-      "length": "15:12",
-      "views": 934032
+      "id": "gP3m1ZNmGNE",
+      "title": "TCP Connection Termination || Three || Four  Way Handshake || Transport layer || Computer Networks",
+      "channel": "Sudhakar Atchala",
+      "length": "5:21",
+      "views": 56657
     },
     {
-      "id": "WqV0TRTvvqA",
-      "title": "TCP Connection Establishment || Three Way Handshake || Transport layer || Computer Networks",
+      "id": "o6bQQk2pgjo",
+      "title": "Connection Management in TCP || Connection Establishment || Data Transfer || Connection Termination",
       "channel": "Sudhakar Atchala",
-      "length": "6:37",
-      "views": 169023
+      "length": "18:44",
+      "views": 94449
     }
   ],
   "cn.u4.tcp-timers": [
@@ -665,30 +623,23 @@ export default {
       "title": "TCP Services || Transport Services || Responsibilities of Transport Layer || Computer Networks",
       "channel": "Sudhakar Atchala",
       "length": "8:42",
-      "views": 142581
-    },
-    {
-      "id": "g_I_mOLp-6A",
-      "title": "54. #Transportlayer, #services Introduction to Transport Layer -Services -Computer Networks",
-      "channel": "Preethi J",
-      "length": "30:11",
-      "views": 45030
+      "views": 142726
     }
   ],
   "cn.u4.udp": [
     {
-      "id": "uwoD5YsGACg",
-      "title": "TCP vs UDP Comparison",
-      "channel": "PowerCert Animated Videos",
-      "length": "4:37",
-      "views": 2047511
+      "id": "EijM6WO9kno",
+      "title": "UDP Header format || UDP features ||  User Datagram Protocol",
+      "channel": "Sudhakar Atchala",
+      "length": "5:18",
+      "views": 96121
     },
     {
-      "id": "HF_znV8x9a0",
-      "title": "Lec-75: UDP (User Datagram Protocol) header in Computer Networks in Hindi",
-      "channel": "Gate Smashers",
-      "length": "11:48",
-      "views": 716329
+      "id": "eRIbNKBHFK4",
+      "title": "UDP Services || Computer Networks || Network Layer",
+      "channel": "Sudhakar Atchala",
+      "length": "8:21",
+      "views": 26627
     }
   ],
   "cn.u5.delivery": [

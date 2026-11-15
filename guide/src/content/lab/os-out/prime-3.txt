@@ -1,2 +1,0 @@
-Enter the number: -89
-Neither Prime nor composite

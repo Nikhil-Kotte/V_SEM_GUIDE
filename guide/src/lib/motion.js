@@ -10,13 +10,13 @@ function hasWebGL2() {
   }
 }
 
-// Decorative WebGL/GSAP effects only run when the device can handle them and the user hasn't asked for less motion.
+// Decorative WebGL effects only run when the browser has WebGL2, the user hasn't asked for less
+// motion and isn't on a data-saver connection.
 export function useFancyMotion() {
   const [ok, setOk] = useState(false)
   useEffect(() => {
     const mq = window.matchMedia(reducedQuery)
-    const lowPower = (navigator.hardwareConcurrency || 8) <= 2 || navigator.connection?.saveData
-    const update = () => setOk(!mq.matches && !lowPower && hasWebGL2())
+    const update = () => setOk(!mq.matches && !navigator.connection?.saveData && hasWebGL2())
     update()
     mq.addEventListener?.('change', update)
     return () => mq.removeEventListener?.('change', update)

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 // localStorage can throw (private mode, blocked storage) — the guide must still work without it.
+// The key keeps its old name so progress saved by earlier versions is not lost.
 const KEY = 'mid2-guide-v1'
 
 function readAll() {

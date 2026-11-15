@@ -1,0 +1,14 @@
+/* Print: revision sheets and notes on paper */
+@media print {
+  .site-header, .subject-tabs, .site-footer, .outline, .mobile-picker, .pyq-actions, .done-check, .skip-link { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .rev-card, .topic { break-inside: avoid; border-color: #bbb; }
+  .rev-list { grid-template-columns: 1fr 1fr; }
+  a { text-decoration: none; }
+}
+/* Decoration stays on screen: no textures, tape, stamps or tilts on real paper */
+@media print {
+  body, .sheet, .topic, .rev-card { background-image: none !important; box-shadow: none !important; }
+  .tape, .stamp, .paperclip, .staple, .doodle, .hero-ink, .read-progress, .topic::after, figure.diagram::before { display: none !important; }
+  .rev-card, .topic, .callout, figure.diagram { transform: none !important; }
+}

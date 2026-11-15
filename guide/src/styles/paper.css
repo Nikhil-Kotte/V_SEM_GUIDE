@@ -1,0 +1,185 @@
+/* =========================================================================
+   Paper, ink and desk objects. Decoration only: nothing here carries meaning
+   that isn't also in the text.
+   ========================================================================= */
+
+/* The desk: grain plus faint ruled lines */
+body {
+  background-color: var(--bg);
+  background-image:
+    var(--paper-grain),
+    repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--rule-gap) - 1px), var(--paper-rule) calc(var(--rule-gap) - 1px), var(--paper-rule) var(--rule-gap));
+}
+
+.hand { font-family: var(--font-hand); font-weight: 400; letter-spacing: 0; line-height: 1.25; }
+
+/* ---------- Sheets ---------- */
+.sheet {
+  position: relative;
+  background-color: var(--surface);
+  background-image: var(--paper-grain);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-paper);
+  box-shadow: var(--shadow-paper);
+}
+.sheet--ruled {
+  background-image:
+    var(--paper-grain),
+    repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--rule-gap) - 1px), var(--paper-rule) calc(var(--rule-gap) - 1px), var(--paper-rule) var(--rule-gap));
+}
+.sheet--grid {
+  background-image:
+    var(--paper-grain),
+    linear-gradient(var(--paper-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-grid) 1px, transparent 1px);
+  background-size: auto, 20px 20px, 20px 20px;
+  background-position: 0 0, -1px -1px, -1px -1px;
+}
+/* Three punched holes down the left edge */
+.sheet--punched::after {
+  content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 14px; pointer-events: none;
+  background:
+    radial-gradient(circle, var(--bg) 0 5px, var(--line-strong) 5.2px 6px, transparent 6.4px) center 44px / 14px 14px no-repeat,
+    radial-gradient(circle, var(--bg) 0 5px, var(--line-strong) 5.2px 6px, transparent 6.4px) center 50% / 14px 14px no-repeat,
+    radial-gradient(circle, var(--bg) 0 5px, var(--line-strong) 5.2px 6px, transparent 6.4px) center calc(100% - 44px) / 14px 14px no-repeat;
+}
+/* Torn bottom or top edge */
+.torn-b { -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 11px) no-repeat, var(--torn) bottom / 240px 12px repeat-x; mask: linear-gradient(#000 0 0) top / 100% calc(100% - 11px) no-repeat, var(--torn) bottom / 240px 12px repeat-x; }
+.torn-t { position: relative; }
+.torn-t::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 12px; background: inherit; background-image: none;
+  -webkit-mask: var(--torn) bottom / 240px 12px repeat-x; mask: var(--torn) bottom / 240px 12px repeat-x;
+}
+
+/* A wobbly pen box drawn round something (needs the #rough filter mounted by Layout) */
+.rough-box { position: relative; }
+.rough-box::before {
+  content: ''; position: absolute; inset: 0; border: 1.6px solid var(--rough-color, currentColor); border-radius: var(--rough-radius, 10px);
+  filter: url(#rough); pointer-events: none;
+}
+
+/* ---------- Ink strokes (SVG) ---------- */
+.ink { display: block; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.ink--fill { fill: currentColor; stroke: none; }
+svg.ink-armed path, svg.ink-armed circle, svg.ink-armed line, svg.ink-armed polyline { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; }
+svg.ink-armed.is-drawn path, svg.ink-armed.is-drawn circle, svg.ink-armed.is-drawn line, svg.ink-armed.is-drawn polyline {
+  stroke-dashoffset: 0; opacity: 1;
+  transition: stroke-dashoffset var(--ink-dur, var(--dur-5)) var(--ease-in-out) var(--ink-delay, 0ms), opacity 1ms linear var(--ink-delay, 0ms);
+}
+svg.ink-armed.is-drawn [data-late] { transition-delay: calc(var(--ink-delay, 0ms) + var(--ink-dur, var(--dur-5)) * .8); transition-duration: 220ms; }
+
+.ink-underline { position: absolute; left: -2%; right: -2%; bottom: -.22em; width: 104%; height: .42em; color: var(--accent); }
+.ink-wrap { position: relative; display: inline-block; white-space: nowrap; }
+.ink-hl { position: absolute; left: -.1em; right: -.1em; top: .12em; bottom: 0; width: calc(100% + .2em); height: calc(100% - .12em); color: var(--highlight); stroke-width: 15; stroke-linecap: butt; z-index: -1; }
+.ink-arrow { width: 54px; height: 38px; color: var(--accent); }
+.ink-tick { width: 1.1em; height: 1.1em; color: var(--ok); stroke-width: 2.6; display: inline-block; vertical-align: -.15em; }
+
+/* ---------- Desk objects ---------- */
+.tape {
+  position: absolute; z-index: 2; width: 86px; height: 24px; left: 50%; top: -12px; margin-left: -43px;
+  background: var(--tape); box-shadow: inset 0 0 0 1px var(--tape-edge); transform: rotate(var(--tape-rot, -2.5deg));
+  clip-path: polygon(0 0, 100% 0, 97.5% 26%, 100% 52%, 97.5% 78%, 100% 100%, 0 100%, 2.5% 76%, 0 50%, 2.5% 24%);
+  pointer-events: none;
+}
+.tape--l { left: 22px; margin-left: 0; --tape-rot: -7deg; }
+.tape--r { left: auto; right: 22px; margin-left: 0; --tape-rot: 6deg; }
+
+.stamp {
+  display: inline-block; flex: none; font-weight: 800; font-size: 12.5px; letter-spacing: .09em; text-transform: uppercase; line-height: 1;
+  color: var(--stamp); border: 2px solid currentColor; border-radius: 6px; padding: .36em .6em .3em;
+  transform: rotate(var(--stamp-rot, -7deg)); opacity: .86; filter: url(#rough); white-space: nowrap; user-select: none;
+}
+.stamp--ok { --stamp: var(--ok); }
+.stamp--ink { --stamp: var(--accent); }
+.stamp--lg { font-size: 17px; border-width: 3px; padding: .4em .7em .34em; }
+.stamp.is-thump { animation: stamp-in var(--dur-4) var(--ease-out) both; }
+@keyframes stamp-in { from { opacity: 0; transform: rotate(var(--stamp-rot, -7deg)) scale(2.4); } 60% { opacity: 1; } }
+
+.sticky {
+  position: relative; display: block; padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  background: var(--sticky, var(--sticky-yellow)); color: var(--text);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .0) 0, rgba(0, 0, 0, .035) 100%);
+  border-radius: 2px 2px 14px 2px / 2px 2px 26px 2px;
+  box-shadow: 0 1px 1px rgba(26, 30, 41, .06), 0 10px 14px -10px rgba(26, 30, 41, .35);
+  transform: rotate(var(--tilt, 0deg));
+}
+.sticky--green { --sticky: var(--sticky-green); }
+.sticky--blue { --sticky: var(--sticky-blue); }
+.sticky--violet { --sticky: var(--sticky-violet); }
+.sticky--rose { --sticky: var(--sticky-rose); }
+.sticky--coral { --sticky: var(--sticky-coral); }
+:root[data-theme='dark'] .sticky { box-shadow: 0 1px 1px rgba(0, 0, 0, .3), 0 10px 14px -10px rgba(0, 0, 0, .8); }
+
+.paperclip { position: absolute; z-index: 2; top: -14px; right: 22px; width: 22px; height: 52px; color: var(--text-faint); transform: rotate(8deg); pointer-events: none; }
+.staple { position: absolute; z-index: 2; width: 22px; height: 5px; border-radius: 2px; background: linear-gradient(180deg, #c9ced8, #8d93a1); box-shadow: 0 1px 1px rgba(0, 0, 0, .25); pointer-events: none; }
+
+/* ---------- Progress ring ---------- */
+.ring { position: relative; display: inline-grid; place-items: center; flex: none; width: var(--ring, 56px); height: var(--ring, 56px); color: var(--ok); }
+.ring svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+.ring__track { fill: none; stroke: var(--line-strong); stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; }
+.ring__arc { fill: none; stroke: currentColor; stroke-width: 4.5; stroke-linecap: round; transition: stroke-dashoffset var(--dur-6) var(--ease-out); }
+.ring__label { position: relative; font-weight: 800; font-size: calc(var(--ring, 56px) * .27); line-height: 1; color: var(--text); font-variant-numeric: tabular-nums; }
+.ring__label small { font-size: .62em; font-weight: 700; color: var(--text-faint); }
+.ring.is-full .ring__label { color: var(--ok); }
+
+/* ---------- Doodles ---------- */
+.doodle { display: inline-block; flex: none; width: 1.4em; height: 1.4em; color: var(--accent); vertical-align: middle; }
+.doodle--hot { color: var(--hot); }
+.doodle--gold { color: var(--gold); }
+
+/* ---------- Reveal variants (see Reveal.jsx) ---------- */
+.rv-armed[data-rv='deal'] { transform: translateY(46px) rotate(calc(var(--deal, 1) * 5deg)) scale(.94); }
+.rv-armed[data-rv='pop'] { transform: scale(.82); }
+.rv-armed[data-rv='slide'] { transform: translateX(-22px); }
+.rv-armed[data-rv='deal'].is-in, .rv-armed[data-rv='pop'].is-in {
+  transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-5) var(--ease-spring);
+  transition-delay: calc(var(--rv-i, 0) * 70ms);
+}
+
+/* ---------- Ink ripple on primary buttons ---------- */
+.btn-primary, .btn-ink { position: relative; overflow: hidden; isolation: isolate; }
+.btn-primary::after, .btn-ink::after {
+  content: ''; position: absolute; z-index: -1; left: 50%; top: 50%; width: 120%; aspect-ratio: 1; border-radius: 50%;
+  background: color-mix(in srgb, var(--on-accent) 22%, transparent); transform: translate(-50%, -50%) scale(0); opacity: 0;
+}
+.btn-primary:active::after, .btn-ink:active::after { transform: translate(-50%, -50%) scale(1); opacity: 1; transition: transform var(--dur-3) var(--ease-out), opacity var(--dur-3) var(--ease-out); }
+
+/* Theme switch: the new theme spreads from the button like ink (View Transitions) */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { animation: theme-ink var(--dur-5) var(--ease-in-out) both; }
+@keyframes theme-ink { from { clip-path: circle(0 at var(--vt-x, 90%) var(--vt-y, 32px)); } to { clip-path: circle(150vmax at var(--vt-x, 90%) var(--vt-y, 32px)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) { animation: none; }
+  .stamp.is-thump { animation: none; }
+}
+
+/* ---------- Pen illustrations (components/art) ---------- */
+.art { display: block; width: 100%; height: auto; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.art .f-tint { fill: var(--art-tint, var(--accent-soft)); }
+.art .f-paper { fill: var(--surface); }
+.art .f-ink { fill: currentColor; stroke: none; }
+.art .hl { fill: var(--yellow); stroke: none; opacity: .75; }
+:root[data-theme='dark'] .art .hl { fill: #b89a2e; opacity: .6; }
+.art .soft { opacity: .45; }
+.art .hot { stroke: var(--hot); }
+.art .ok { stroke: var(--ok); stroke-width: 3; }
+
+.hero-desk { color: var(--text); stroke-width: 1.8; }
+.hero-desk [data-depth] { will-change: transform; }
+.hero-desk .f-b1 { fill: var(--blue-tint); }
+.hero-desk .f-b2 { fill: var(--coral-tint); }
+.hero-desk .f-b3 { fill: var(--mint); }
+.hero-desk .f-staple { fill: var(--text-faint); stroke: none; }
+.hero-desk .pen { stroke: var(--accent); stroke-width: 2.2; }
+.hero-desk .hot { stroke: var(--hot); }
+.hero-desk .f-ruler { fill: color-mix(in srgb, var(--gold) 22%, var(--surface)); }
+.hero-desk .f-hl-body { fill: var(--yellow); }
+.hero-desk .f-hl-cap { fill: color-mix(in srgb, var(--yellow) 70%, var(--gold)); }
+.hero-desk .f-hl-tip { fill: var(--yellow); }
+.hero-desk .f-pen { fill: var(--surface); }
+.hero-desk .f-pen-grip { fill: var(--accent); }
+.hero-desk .f-pen-tip { fill: var(--text-faint); }
+:root[data-theme='dark'] .hero-desk .f-hl-body, :root[data-theme='dark'] .hero-desk .f-hl-tip { fill: #c9aa3a; }
+:root[data-theme='dark'] .hero-desk .f-hl-cap { fill: #a3872a; }
+.imp { color: var(--hot); font-weight: 700; font-size: 1.05em; display: inline-block; transform: rotate(-6deg); }

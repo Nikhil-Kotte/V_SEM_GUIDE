@@ -1,37 +1,55 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { LazyMotion, MotionConfig, m as M } from 'motion/react'
 import { Search01Icon, Moon02Icon, Sun03Icon, Menu01Icon, Cancel01Icon, GithubIcon } from '@hugeicons/core-free-icons'
 import { subjects } from '../content/subjects.js'
-import { getPref, setPref } from '../lib/storage.js'
+import { syllabus } from '../content/syllabus.js'
+import { getPref, setPref, useStore } from '../lib/storage.js'
 import { REPO } from '../config.js'
 import Icon from './Icon.jsx'
-import TabBar from './TabBar.jsx'
+import CoverArt from './art/covers.jsx'
+import { Star } from './art/doodles.jsx'
+import { InkDefs } from './ink/Desk.jsx'
 
 const Search = lazy(() => import('./Search.jsx'))
 const loadFeatures = () => import('./motionFeatures.js').then((mod) => mod.default)
 
-const LABS = ['cn', 'os', 'se']
-const NAV = [
-  ...subjects.map((s) => ({ to: `/s/${s.id}`, label: s.short, ariaLabel: s.name })),
-  ...LABS.map((id) => ({ to: `/lab/${id}`, label: `${id.toUpperCase()} Lab`, ariaLabel: `${id.toUpperCase()} lab external guide` })),
-]
+const ALL_TOPICS = subjects.flatMap((s) => syllabus[s.id].flatMap((u) => u.topics.map((t) => t.id)))
 
-// The first paint shows content at once; only later navigations fade in.
+// The first paint shows content at once; only later navigations slide in.
 let firstPaint = true
 
 const systemTheme = () => (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+const isCurrent = (pathname, to) => pathname === to || pathname.startsWith(to + '/')
 
 export default function Layout() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [theme, setTheme] = useState(() => getPref('theme', null) || systemTheme())
   const { pathname } = useLocation()
+  const store = useStore()
   const dark = theme === 'dark'
   const menuBtn = useRef(null)
 
   useEffect(() => { document.documentElement.dataset.theme = theme }, [theme])
-  const toggleTheme = () => { const next = dark ? 'light' : 'dark'; setTheme(next); setPref('theme', next) }
+
+  // The new theme spreads out from the button like ink, where the browser can do it.
+  const toggleTheme = (e) => {
+    const next = dark ? 'light' : 'dark'
+    const apply = () => {
+      flushSync(() => setTheme(next))
+      document.documentElement.dataset.theme = next
+    }
+    setPref('theme', next)
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!document.startViewTransition || still) { apply(); return }
+    const r = e.currentTarget.getBoundingClientRect()
+    const root = document.documentElement
+    root.style.setProperty('--vt-x', `${r.left + r.width / 2}px`)
+    root.style.setProperty('--vt-y', `${r.top + r.height / 2}px`)
+    document.startViewTransition(apply)
+  }
 
   useEffect(() => {
     const onKey = (e) => {
@@ -58,20 +76,32 @@ export default function Layout() {
     return () => window.removeEventListener('keydown', onKey)
   }, [menuOpen])
 
-  const items = NAV.map((i) => ({ ...i, current: pathname === i.to || pathname.startsWith(i.to + '/') }))
-  // Animate between sections (home, a subject, a lab), not between tabs of the same subject.
+  // Animate between sections (home, a subject), not between tabs of the same subject.
   const section = pathname.split('/').slice(0, 3).join('/') || '/'
-  const initial = firstPaint ? false : { opacity: 0, y: 6 }
+  // A new section arrives like a sheet laid on the desk.
+  const initial = firstPaint ? false : { opacity: 0, x: 34, y: 10, rotate: 0.7 }
   useEffect(() => { firstPaint = false }, [])
+
+  const doneCount = ALL_TOPICS.filter((id) => store.done(id)).length
 
   return (
     <LazyMotion features={loadFeatures}>
       <MotionConfig reducedMotion="user">
+        <InkDefs />
         <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus() }}>Skip to content</a>
         <header className="site-header">
           <div className="container bar">
-            <Link to="/" className="brand" aria-label="V-SEM externals guide home">V-SEM <small>Externals</small></Link>
-            <TabBar items={items} ariaLabel="Subjects and labs" className="site-nav" />
+            <Link to="/" className="brand rough-box" aria-label="V SEM External Guide, home">V SEM <small>EXTERNAL GUIDE</small></Link>
+            <nav className="site-nav" aria-label="Subjects">
+              <ul>
+                {subjects.map((s) => (
+                  <li key={s.id}>
+                    <Link to={`/s/${s.id}`} className="divider" style={{ '--pen': s.accent, '--pen-tint': s.tint }}
+                      aria-label={s.name} aria-current={isCurrent(pathname, `/s/${s.id}`) ? 'page' : undefined}>{s.short}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
             <div className="bar-actions">
               <button type="button" className="search-btn" onClick={() => setSearchOpen(true)} aria-label="Search (press /)" aria-keyshortcuts="/ Control+K">
                 <Icon icon={Search01Icon} /> <span className="search-text">Search</span> <kbd>/</kbd>
@@ -80,25 +110,24 @@ export default function Layout() {
                 <Icon icon={dark ? Sun03Icon : Moon02Icon} />
               </button>
               <button type="button" ref={menuBtn} className="icon-btn menu-btn" aria-expanded={menuOpen} aria-controls="site-menu"
-                aria-label="All subjects and labs" onClick={() => setMenuOpen((o) => !o)}>
+                aria-label="All subjects" onClick={() => setMenuOpen((o) => !o)}>
                 <Icon icon={menuOpen ? Cancel01Icon : Menu01Icon} />
               </button>
             </div>
           </div>
           {menuOpen && (
-            <nav id="site-menu" className="site-menu" aria-label="All subjects and labs">
+            <nav id="site-menu" className="site-menu" aria-label="All subjects">
               <div className="container">
                 <p className="site-menu__title">Subjects</p>
                 <ul>
-                  {subjects.map((s) => (
-                    <li key={s.id}><Link to={`/s/${s.id}`} aria-current={items.find((i) => i.to === `/s/${s.id}`)?.current ? 'page' : undefined}>
-                      <span className="badge" style={{ background: s.tint, color: s.accent }}>{s.short}</span>{s.name}
-                    </Link></li>
+                  {subjects.map((s, i) => (
+                    <li key={s.id} style={{ '--i': i }}>
+                      <Link to={`/s/${s.id}`} style={{ '--pen': s.accent, '--pen-tint': s.tint }}
+                        aria-current={isCurrent(pathname, `/s/${s.id}`) ? 'page' : undefined}>
+                        <CoverArt id={s.id} />{s.name}
+                      </Link>
+                    </li>
                   ))}
-                </ul>
-                <p className="site-menu__title">Lab externals</p>
-                <ul className="site-menu__labs">
-                  {LABS.map((id) => <li key={id}><Link to={`/lab/${id}`}>{id.toUpperCase()} Lab</Link></li>)}
                 </ul>
               </div>
             </nav>
@@ -106,14 +135,18 @@ export default function Layout() {
         </header>
 
         <M.div id="main" tabIndex={-1} key={section} className="route"
-          initial={initial} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}>
+          initial={initial} animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
+          transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}>
           <Outlet />
         </M.div>
 
         <footer className="site-footer">
           <div className="container row">
-            <span>Notes rewritten in plain language from your V Sem course material.</span>
+            <span className="footer-note">
+              <Star className="doodle--gold" />
+              <span>Notes rewritten in plain language from your V Sem course material.</span>
+            </span>
+            <span className="footer-done"><b className="num">{doneCount}</b> of <span className="num">{ALL_TOPICS.length}</span> topics ticked off</span>
             <a href={REPO} target="_blank" rel="noreferrer" className="footer-link"><Icon icon={GithubIcon} /> All files on GitHub</a>
           </div>
         </footer>

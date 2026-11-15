@@ -8,6 +8,8 @@ import Icon from './Icon.jsx'
 import Tally from './Tally.jsx'
 import SpringCheck from './bits/SpringCheck.jsx'
 import VideoLinks from './VideoLinks.jsx'
+import { Stamp } from './ink/Desk.jsx'
+import { useDrawOn } from './ink/useDrawOn.js'
 
 // The detailed exam answers for this topic's past questions, right under the notes.
 function TopicAnswers({ subject, pyqs }) {
@@ -56,16 +58,19 @@ function SimpleWords({ s }) {
   )
 }
 
-export default function TopicCard({ subject, topic, content, pyqs }) {
+export default function TopicCard({ subject, topic, content, pyqs, no }) {
   const store = useStore()
+  const hlRef = useDrawOn()
   const done = store.done(topic.id)
   const asked = pyqs.filter((q) => q.count > 0)
   const totalAsks = new Set(asked.flatMap((q) => q.asks.map((a) => a.paperId))).size
 
   return (
     <article className={`topic rv${done ? ' is-done' : ''}`} id={topic.id} aria-labelledby={`${topic.id}-title`}>
+      {done && <Stamp tone="ok" size="lg" thump className="topic__stamp">Done</Stamp>}
       <div className="topic-head">
         <div>
+          {no != null && <span className="topic__no" aria-hidden="true">{no}.</span>}
           <h3 id={`${topic.id}-title`}>{topic.title}</h3>
           <div className="asked">
             {totalAsks > 0
@@ -99,7 +104,7 @@ export default function TopicCard({ subject, topic, content, pyqs }) {
 
       {content ? (
         <>
-          <p className="one-line"><b>In one line:</b> <span className="hl"><Inline text={content.oneLine} /></span></p>
+          <p className="one-line"><b>In one line:</b> <span className="hl" ref={hlRef}><Inline text={content.oneLine} /></span></p>
           {content.simple && <SimpleWords s={content.simple} />}
           <VideoLinks videos={content.videos} />
           {content.simple && <h4 className="notes-label">Detailed notes</h4>}

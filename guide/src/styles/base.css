@@ -1,0 +1,101 @@
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 64px);
+  scrollbar-color: var(--line-strong) transparent;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  caret-color: var(--accent);
+}
+img, svg { max-width: 100%; }
+a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-xs); }
+::selection { background: var(--highlight); color: var(--text); }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+}
+p { margin: 0 0 .9em; text-wrap: pretty; }
+code, kbd {
+  font-family: var(--font-mono);
+  font-size: .88em;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs);
+  padding: .06em .34em;
+}
+kbd { font-size: .78em; color: var(--text-soft); }
+
+.skip-link {
+  position: absolute; left: 12px; top: -48px; z-index: 100;
+  background: var(--accent); color: var(--on-accent); padding: 10px 16px; border-radius: var(--radius-sm);
+}
+.skip-link:focus { top: 12px; }
+
+.container { width: 100%; max-width: 2560px; margin: 0 auto; padding: 0 var(--gutter); }
+.label { font-size: var(--fs-sm); font-weight: 600; color: var(--text-soft); }
+.muted { color: var(--text-soft); }
+.faint { color: var(--text-faint); }
+.num { font-variant-numeric: tabular-nums; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.icon { width: 1.15em; height: 1.15em; flex: none; }
+
+/* ---------- Buttons & chips ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  min-height: 40px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text);
+  border-radius: var(--radius-sm); padding: .5em 1em;
+  font-weight: 700; font-size: 15px; text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: background-color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease), transform var(--dur-1) var(--ease);
+}
+.btn:hover { border-color: var(--text-soft); }
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.btn-ink, .btn-primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn-ink:hover, .btn-primary:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 88%, var(--text)); }
+.btn-cream, .btn-quiet { background: transparent; }
+.btn-sm { min-height: 34px; padding: .3em .8em; font-size: 14px; }
+.btn .icon { width: 1.1em; height: 1.1em; }
+
+.chip {
+  display: inline-flex; align-items: center; gap: .35em;
+  border: 1px solid var(--line); border-radius: var(--pill);
+  padding: .14em .65em; font-size: var(--fs-xs); font-weight: 600; color: var(--text-soft);
+  background: var(--surface); white-space: normal; max-width: 100%; overflow-wrap: anywhere;
+}
+a.chip { text-decoration: none; transition: border-color var(--dur-2) var(--ease); }
+a.chip:hover { border-color: var(--text-soft); color: var(--text); }
+.chip-hot { background: var(--hot-soft); border-color: transparent; color: var(--hot); }
+.chip-warm { background: var(--yellow-tint); border-color: transparent; color: var(--text); }
+.chip-num { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+.chip-pred { background: transparent; border-style: dashed; }
+.chip-related { background: var(--violet-tint); border-color: transparent; color: var(--text); }
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(40px, 6vw, 80px) 0; }
+.section-head { display: grid; gap: var(--sp-2); margin-bottom: var(--sp-5); max-width: var(--measure); }
+.section-head h2 { font-size: var(--fs-2xl); }
+.section-head p { margin: 0; color: var(--text-soft); }
+
+.progress { height: 4px; background: var(--surface-2); border-radius: var(--pill); overflow: hidden; }
+.progress > i {
+  display: block; height: 100%; width: 100%; border-radius: inherit; background: var(--ok);
+  transform-origin: left; transition: transform var(--dur-4) var(--ease);
+}
+

@@ -1,6 +1,10 @@
 // Find YouTube videos for every syllabus topic (and every Numericals tool) of a subject.
 //
 //   node scripts/find-videos.mjs <subject> [--refresh] [--only <topic id>]
+//   node scripts/find-videos.mjs <subject> --prefer "Sudhakar Atchala"
+//
+// --prefer: for every topic, look for that channel's own lecture on it. When the channel has one,
+// the topic links to that channel's videos only; when it has none, the existing picks stay.
 //
 // Searches YouTube for each topic, reads the real results (video id, title, channel, length, views)
 // from the search page, and keeps the two best: long enough to teach, short enough to watch, from a
@@ -10,6 +14,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { pathToFileURL } from 'node:url'
 import { join, dirname } from 'node:path'
+import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { syllabus } from '../src/content/syllabus.js'
 
@@ -17,6 +22,7 @@ const here = dirname(fileURLToPath(import.meta.url))
 const [subject, ...rest] = process.argv.slice(2)
 const refresh = rest.includes('--refresh')
 const only = rest.includes('--only') ? rest[rest.indexOf('--only') + 1] : null
+const prefer = rest.includes('--prefer') ? rest[rest.indexOf('--prefer') + 1] : null
 if (!syllabus[subject]) {
   console.error(`Usage: node scripts/find-videos.mjs <${Object.keys(syllabus).join('|')}> [--refresh] [--only <id>]`)
   process.exit(1)
@@ -184,6 +190,41 @@ function pick(results, query) {
   return chosen
 }
 
+// The preferred channel teaches many courses, so its videos must clearly be about this topic:
+// the title names the subject, and most of the topic's own words are in it (whole words, plural or not).
+const SUBJECT_MARK = {
+  os: /operating system|os/i,
+  cn: /computer network|cn|data link|network layer|transport layer|application layer/i,
+  se: /software engineering|se|software/i,
+  fds: /data science|python|pandas|numpy|machine learning/i,
+  bda: /big data|hadoop|spark|hive|pig|map ?reduce|hdfs|yarn/i,
+  pdt: /design thinking/i,
+}
+const plain = (w) => w.replace(/(ies)$/, 'y').replace(/(?<!s)s$/, '')
+function pickFrom(results, query, channel) {
+  const want = [...new Set(coreWords(query).length ? words(query).filter((w) => !FILLER.has(w) && !words(SUBJECT_WORDS[subject]).includes(w)).map(plain) : [])]
+  const need = want.length <= 2 ? want.length : Math.ceil(want.length * 0.67)
+  return results
+    .filter((v) => v.channel === channel && v.id && secs(v.length) >= 120 && secs(v.length) <= 90 * 60 && !/#shorts/i.test(v.title))
+    .filter((v) => SUBJECT_MARK[subject].test(v.title))
+    .map((v) => {
+      const have = new Set(words(v.title).map(plain))
+      return { ...v, hits: want.filter((w) => have.has(w)).length }
+    })
+    .filter((v) => want.length > 0 && v.hits >= need)
+    .sort((a, b) => b.hits - a.hits || b.views - a.views)
+    .slice(0, 2)
+    .map(({ id, title, channel: c, length, views }) => ({ id, title, channel: c, length, views }))
+}
+
+// Search pages cached per run of --prefer, so tuning the rules does not search YouTube again.
+const CACHE = join(tmpdir(), 'v-sem-video-search.json')
+const cache = existsSync(CACHE) ? JSON.parse(readFileSync(CACHE, 'utf8')) : {}
+async function cachedSearch(q) {
+  if (!cache[q]?.length) { cache[q] = await search(q); writeFileSync(CACHE, JSON.stringify(cache)) }
+  return cache[q]
+}
+
 const file = join(here, `../src/content/${subject}/videos.js`)
 const data = existsSync(file) ? { ...(await import(pathToFileURL(file).href)).default } : {}
 
@@ -197,6 +238,26 @@ for (const m of reg.matchAll(/'([a-z]+-[a-z-]+)': \{ subject: '([a-z]+)'/g)) {
 let found = 0
 for (const [key, query] of jobs) {
   if (only && key !== only) continue
+  if (prefer) {
+    try {
+      let vids = []
+      for (let attempt = 0; attempt < 3 && !vids.length; attempt++) {
+        if (attempt) await sleep(4000 * attempt)
+        const res = await cachedSearch(`${query} ${prefer}`)
+        if (!res.length) continue
+        vids = pickFrom(res, query, prefer)
+        break
+      }
+      // Already linked to the channel but the search missed it: keep those, drop the others.
+      if (!vids.length) vids = (data[key] || []).filter((v) => v.channel === prefer)
+      if (vids.length) { data[key] = vids; found++ }
+      console.log(`${vids.length ? 'ok ' : '-- '}${key}  ${vids.map((v) => v.title).join(' | ')}`)
+    } catch (e) {
+      console.log(`!! ${key}  ${e.message}`)
+    }
+    await sleep(1500)
+    continue
+  }
   if (data[key]?.length && !refresh && !only) continue
   try {
     // YouTube sometimes answers a burst of searches with an empty page; back off and retry.

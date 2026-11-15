@@ -159,3 +159,17 @@
   .hero-kicker .doodle { animation: none; }
   .booklet { transform: none; }
 }
+
+/* ---------- Exam dates; a subject whose paper is over is blacked out ---------- */
+.booklet__exam { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-2); margin-top: -4px; }
+.booklet__date { font-weight: 800; font-size: 17px; }
+.booklet__when { font-size: 19px; font-weight: 700; color: var(--hot); transform: rotate(-2deg); }
+.booklet.is-over .booklet__cover { background-color: #0d0e12; border-color: #000; color: #8a8f9c; }
+.booklet.is-over .booklet__cover::before { border-left-color: #2c2f38; }
+.booklet.is-over .booklet__art, .booklet.is-over .booklet__top, .booklet.is-over .booklet__foot, .booklet.is-over .booklet__exam { filter: grayscale(1); opacity: .32; }
+.booklet.is-over .booklet__label { background: #181a20; border-color: #2c2f38; box-shadow: none; }
+.booklet.is-over .booklet__name { color: #8a8f9c; text-decoration: line-through; text-decoration-thickness: 2px; }
+.booklet.is-over .booklet__blurb { color: #6b7080; }
+.booklet.is-over .booklet__note { display: none; }
+.booklet.is-over .booklet__cover::after { display: none; }
+.booklet__over { position: absolute; left: 50%; top: 38%; translate: -50% -50%; z-index: 2; --stamp: #ff8f80; opacity: 1; font-size: 22px; background: #0d0e12; }

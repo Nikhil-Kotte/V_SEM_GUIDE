@@ -10,6 +10,7 @@ import NumericalsTab from '../components/NumericalsTab.jsx'
 import RevisionTab from '../components/RevisionTab.jsx'
 import DownloadsTab from '../components/DownloadsTab.jsx'
 import TabBar from '../components/TabBar.jsx'
+import { examCountdown, examDay, examOver } from '../lib/exam.js'
 import ReadProgress from '../components/ReadProgress.jsx'
 import CoverArt from '../components/art/covers.jsx'
 import { Underline } from '../components/ink/Ink.jsx'
@@ -59,6 +60,7 @@ export default function Subject() {
               <h1><span className="page-head__title">{subject.name}<Underline double delay={250} /></span></h1>
               <p className="page-head__meta">
                 <span className="code">{subject.code}</span>
+                <span className={`page-head__exam${examOver(subject.exam) ? ' is-over' : ''}`}>Exam <b>{examDay(subject.exam)}</b>, {examCountdown(subject.exam)}</span>
                 <span><b>{topicIds.length ? <CountUp value={topicIds.length} /> : '...'}</b> topics</span>
                 <span><b>{data ? <CountUp value={pyqCount} /> : '...'}</b> {subj === 'fds' ? 'related past questions' : 'past questions'}</span>
                 <span><b className="num">{done}</b> done</span>

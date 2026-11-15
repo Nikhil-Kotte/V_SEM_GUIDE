@@ -8,6 +8,7 @@ import { syllabus } from '../content/syllabus.js'
 import { getPref, setPref, useStore } from '../lib/storage.js'
 import { REPO } from '../config.js'
 import Icon from './Icon.jsx'
+import { examCountdown, examDay, examOver } from '../lib/exam.js'
 import CoverArt from './art/covers.jsx'
 import { Star } from './art/doodles.jsx'
 import { InkDefs } from './ink/Desk.jsx'
@@ -96,8 +97,9 @@ export default function Layout() {
               <ul>
                 {subjects.map((s) => (
                   <li key={s.id}>
-                    <Link to={`/s/${s.id}`} className="divider" style={{ '--pen': s.accent, '--pen-tint': s.tint }}
-                      aria-label={s.name} aria-current={isCurrent(pathname, `/s/${s.id}`) ? 'page' : undefined}>{s.short}</Link>
+                    <Link to={`/s/${s.id}`} className={`divider${examOver(s.exam) ? ' is-over' : ''}`} style={{ '--pen': s.accent, '--pen-tint': s.tint }}
+                      title={`${s.name}: ${examDay(s.exam)}, ${examCountdown(s.exam)}`}
+                      aria-label={`${s.name}, exam ${examDay(s.exam)}, ${examCountdown(s.exam)}`} aria-current={isCurrent(pathname, `/s/${s.id}`) ? 'page' : undefined}>{s.short}</Link>
                   </li>
                 ))}
               </ul>
@@ -122,9 +124,9 @@ export default function Layout() {
                 <ul>
                   {subjects.map((s, i) => (
                     <li key={s.id} style={{ '--i': i }}>
-                      <Link to={`/s/${s.id}`} style={{ '--pen': s.accent, '--pen-tint': s.tint }}
+                      <Link to={`/s/${s.id}`} style={{ '--pen': s.accent, '--pen-tint': s.tint }} className={examOver(s.exam) ? 'is-over' : undefined}
                         aria-current={isCurrent(pathname, `/s/${s.id}`) ? 'page' : undefined}>
-                        <CoverArt id={s.id} />{s.name}
+                        <CoverArt id={s.id} /><span>{s.name}<small className="site-menu__exam">{examDay(s.exam)}, {examCountdown(s.exam)}</small></span>
                       </Link>
                     </li>
                   ))}

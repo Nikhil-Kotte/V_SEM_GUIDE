@@ -189,3 +189,10 @@
 .footer-done { font-family: var(--font-hand); font-size: 19px; color: var(--accent); }
 .footer-done b { color: var(--ok); font-weight: 700; }
 .footer-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+
+/* A subject whose exam is over */
+.divider.is-over { background: #0d0e12; color: #8a8f9c; border-color: #000; border-bottom-color: var(--line-strong); text-decoration: line-through; }
+.divider.is-over[aria-current='page'] { background: #0d0e12; color: #c9cdd8; box-shadow: inset 0 3px 0 #555a68; background-image: none; }
+.site-menu__exam { display: block; font-weight: 600; font-size: 13px; color: var(--text-soft); }
+.site-menu a.is-over { background: #0d0e12; color: #8a8f9c; border-color: #000; text-decoration: line-through; }
+.site-menu a.is-over .art, .site-menu a.is-over .site-menu__exam { opacity: .35; color: #8a8f9c; }

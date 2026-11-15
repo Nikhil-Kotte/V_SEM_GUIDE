@@ -7,6 +7,7 @@ import { loadAll } from '../lib/useSubject.js'
 import { getPref, useStore } from '../lib/storage.js'
 import { useFancyMotion, usePrefersReducedMotion } from '../lib/motion.js'
 import { tiltHandlers } from '../lib/useTilt.js'
+import { examCountdown, examDay, examOver } from '../lib/exam.js'
 import HeroHeading from '../components/HeroHeading.jsx'
 import Icon from '../components/Icon.jsx'
 import Tally from '../components/Tally.jsx'
@@ -131,7 +132,7 @@ export default function Home() {
         <div className="container" ref={listRef}>
           <div className="section-head">
             <RevealHeading id="subjects-title" text="Pick a booklet" />
-            <p>Each subject has the same five tabs: <b>Learn</b>, <b>PYQs</b>, <b>Numericals</b>, <b>Quick revision</b> and <b>Downloads</b>.</p>
+            <p>In the order of the exams, 10 AM to 1 PM. Each subject has the same five tabs: <b>Learn</b>, <b>PYQs</b>, <b>Numericals</b>, <b>Quick revision</b> and <b>Downloads</b>.</p>
           </div>
 
           <ul className="booklets">
@@ -140,16 +141,22 @@ export default function Home() {
               const ids = topicsOf(s.id).map((t) => t.id)
               const done = ids.filter((id) => store.done(id)).length
               const top = d?.ranked.find((q) => q.count > 0)
+              const over = examOver(s.exam)
               return (
                 <li key={s.id} className="rv" data-rv="deal" style={{ '--deal': i % 2 ? 1 : -1 }}>
-                  <Link to={`/s/${s.id}`} className="booklet" style={{ '--pen': s.accent, '--pen-tint': s.tint, '--art-tint': 'var(--surface)' }} {...tilt}>
+                  <Link to={`/s/${s.id}`} className={`booklet${over ? ' is-over' : ''}`} style={{ '--pen': s.accent, '--pen-tint': s.tint, '--art-tint': 'var(--surface)' }} {...tilt}>
                     <span className="booklet__cover">
                       <Staple style={{ left: 8, top: '22%' }} /><Staple style={{ left: 8, top: '74%' }} />
                       <span className="booklet__top">
                         <span className="booklet__code">{s.code}</span>
                         <Ring value={done / ids.length} size={54} color="var(--pen)" label={`${done} of ${ids.length} topics done`} />
                       </span>
+                      <span className="booklet__exam">
+                        <span className="booklet__date">{examDay(s.exam)}</span>
+                        <span className="hand booklet__when">{examCountdown(s.exam)}</span>
+                      </span>
                       <span className="booklet__art"><CoverArt id={s.id} /></span>
+                      {over && <Stamp size="lg" className="booklet__over">Exam over</Stamp>}
                       <span className="booklet__label">
                         <span className="booklet__name">{s.name}</span>
                         <span className="booklet__blurb">{s.blurb}</span>
@@ -170,9 +177,13 @@ export default function Home() {
             })}
             {comingSoon.map((s) => (
               <li key={s.id} className="rv" data-rv="deal">
-                <Link to={`/${s.id}`} className="booklet is-soon">
+                <Link to={`/${s.id}`} className={`booklet is-soon${examOver(s.exam) ? ' is-over' : ''}`}>
                   <span className="booklet__cover">
                     <span className="booklet__top"><span className="booklet__code">{s.short}</span></span>
+                    <span className="booklet__exam">
+                      <span className="booklet__date">{examDay(s.exam)}</span>
+                      <span className="hand booklet__when">{examCountdown(s.exam)}</span>
+                    </span>
                     <span className="booklet__art booklet__art--blank"><Stamp tone="ink" size="lg">Coming soon</Stamp></span>
                     <span className="booklet__label">
                       <span className="booklet__name">{s.name}</span>

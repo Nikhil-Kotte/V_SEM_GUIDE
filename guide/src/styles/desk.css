@@ -247,3 +247,6 @@ figure.diagram figcaption .src { font-family: var(--font-body); }
 @media (prefers-reduced-motion: reduce) {
   .callout, figure.diagram, .rev-card, .page-head__art { transform: none !important; }
 }
+
+.page-head__exam b { color: var(--hot); }
+.page-head__exam.is-over, .page-head__exam.is-over b { color: var(--text-faint); text-decoration: line-through; }

@@ -859,3 +859,22 @@ export const CnRto = () => (
     msgs={[{ from: 'l', t: 0, label: 'seq 1000' }, { from: 'r', t: 1.4, label: 'ACK 1500' }, { from: 'l', t: 2.8, label: 'seq 1500', lost: true }, { from: 'l', t: 6, label: 'seq 1500 (again)', color: C.red }, { from: 'r', t: 7.4, label: 'ACK 2000' }]}
     notes={[{ side: 'l', t: 0, text: 'start timer' }, { side: 'l', t: 2.8, text: 'start timer' }, { side: 'l', t: 4.4, text: '… RTO …', color: C.gold }, { side: 'l', t: 6, text: 'timeout → resend', color: C.red }]} />
 )
+
+// Class Test I, Q7(b): the network as printed, with the shortest-path tree from A.
+export const CnDijkstraCt1 = () => (
+  <Graph id="cn-dij1" h={270}
+    nodes={{ A: [60, 140], B: [190, 55], C: [190, 225], D: [370, 55], E: [370, 225], F: [520, 140] }}
+    edges={[['A', 'B', 4], ['A', 'C', 5], ['B', 'C', 11], ['B', 'D', 9], ['B', 'E', 7], ['C', 'E', 3], ['D', 'E', 13], ['D', 'F', 2], ['E', 'F', 6]]}
+    hi={['A-B', 'A-C', 'C-E', 'B-D', 'E-F']}
+    notes={{ A: '0', B: '4', C: '5', D: '13', E: '8', F: '14' }}
+    label="Shortest-path tree from A: B 4, C 5, E 8 via C, D 13 via B, F 14 via C and E" />
+)
+
+// Class Test II, Q7(b): four routers; the route A → B → C → D is highlighted.
+export const CnDvCt2 = () => (
+  <Graph id="cn-dv2" h={260}
+    nodes={{ A: [70, 130], B: [280, 45], C: [280, 215], D: [490, 130] }}
+    edges={[['A', 'B', 2], ['A', 'C', 5], ['B', 'C', 1], ['B', 'D', 4], ['C', 'D', 2]]}
+    hi={['A-B', 'B-C', 'C-D']}
+    label="Distance vector example: the best route from A to D is A, B, C, D with cost 5" />
+)

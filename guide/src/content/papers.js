@@ -5,6 +5,7 @@
 // never counted as an extra paper.
 // relation: 'same' = this course or its renamed predecessor (20CSC22 -> 22CSC21 etc.)
 //           'related' = a different course with overlapping topics (counted, but labelled)
+//           'mid' = this semester's class test (mid-term) for the course; questions asked there rank first
 
 const BANK = {
   se: 'PYQs/SE_PYQs_Unit_Wise.pdf',
@@ -47,6 +48,8 @@ export const papers = [
   P('os-rtos-jun24', 'os', '2024-06', "Jun '24 (ECE RTOS)", BANK.os, 'RTOS', 'related'),
 
   // ---------- Computer Networks ----------
+  P('cn-ct2', 'cn', '2026-11', "Class Test II, Nov '26", 'PYQs/CN MIDS.pdf', '22ITC10N', 'mid'),
+  P('cn-ct1', 'cn', '2026-09', "Class Test I, Sep '26", 'PYQs/CN MIDS.pdf', '22ITC10N', 'mid'),
   P('cn-nov25', 'cn', '2025-11', "Nov '25", 'PYQs/2025-26/Computer Networks 22ITC10.pdf', '22ITC10'),
   P('cn-may25', 'cn', '2025-05', "May '25", BANK.cn, '22ITC10'),
   P('cn-dec24', 'cn', '2024-12', "Dec '24", 'PYQs/2024-25/22ITC10  Computer Networks.pdf', '22ITC10'),

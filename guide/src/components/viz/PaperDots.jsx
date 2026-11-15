@@ -16,7 +16,7 @@ export default function PaperDots({ subjectId, asks }) {
       <span className="dots__line" aria-hidden="true">
         {all.map((p, i) => (
           <i key={p.id} title={p.label} style={{ '--i': i }}
-            className={asked.has(p.id) ? `is-on${p.relation === 'related' ? ' is-related' : ''}` : undefined} />
+            className={asked.has(p.id) ? `is-on${p.relation === 'related' ? ' is-related' : p.relation === 'mid' ? ' is-mid' : ''}` : undefined} />
         ))}
       </span>
       <span className="dots__label" aria-hidden="true">{all[0].label} to {all[all.length - 1].label}</span>

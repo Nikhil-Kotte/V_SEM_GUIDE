@@ -11,7 +11,7 @@ export default [
   Q('cn-intra-inter', 'cn.u3.bgp', 'Distinguish between intra-AS and inter-AS routing.', ['cn-dec21it:5']),
 
   // ---------------- Unit III: QoS ----------------
-  Q('cn-traffic-shaping', 'cn.u3.qos', 'Explain the leaky bucket and token bucket algorithms. What is traffic shaping? Explain two methods to shape traffic.', ['cn-dec23cet:4', 'cn-may25:5']),
+  Q('cn-traffic-shaping', 'cn.u3.qos', 'Describe the working of the leaky bucket and token bucket traffic shaping algorithms. What is traffic shaping?', ['cn-ct2:4', 'cn-dec23cet:4', 'cn-may25:5']),
   Q('cn-leaky-qos', 'cn.u3.qos', 'How does the leaky bucket algorithm improve Quality of Service?', ['cn-dec22it:3']),
   Q('cn-qos', 'cn.u3.qos', 'Define QoS. Elaborate the characteristics of QoS.', ['cn-jun22:5']),
   Q('cn-qos-notes', 'cn.u3.qos', 'Write short notes on the data-flow characteristics: (i) reliability (ii) jitter (iii) bandwidth.', ['cn-jun22:6']),
@@ -21,7 +21,7 @@ export default [
   Q('cn-num-leaky', 'cn.u3.qos', 'A leaky bucket outputs 5 gallons/min. Input is a burst of 100 gallons/min for 12 s, then nothing for 48 s. How many gallons are left (trace the output)?', ['cn-jun24:9'], { numerical: true }),
 
   // ---------------- Unit III: IPv4 ----------------
-  Q('cn-ipv4-header', 'cn.u3.ipv4', 'Draw the header format of IPv4 and explain its fields. What are the key fields in an IP datagram?', ['cn-dec21it:5', 'cn-dec22ece:2']),
+  Q('cn-ipv4-header', 'cn.u3.ipv4', 'Draw and explain the IPv4 datagram header format. What are the key fields in an IP datagram?', ['cn-ct2:4', 'cn-dec21it:5', 'cn-dec22ece:2']),
   Q('cn-ipv4-options', 'cn.u3.ipv4', 'Explain the need for options in IPv4 and list the options with a brief description.', ['cn-jun23:5']),
   Q('cn-ip-checksum', 'cn.u3.ipv4', 'Explain the procedure for checksum calculation and verification in IPv4. What part of the packet is covered by the checksum, and why? Are options included?', ['cn-jun24:5']),
   Q('cn-fragmentation', 'cn.u3.ipv4', 'Elaborate the concept of packet fragmentation.', ['cn-dec22it:4']),
@@ -42,7 +42,7 @@ export default [
   Q('cn-ipv6-why', 'cn.u3.ipv6', 'How does IPv6 solve the address exhaustion faced by IPv4? Why is IPv6 preferred, and how do IPv4 and IPv6 compare in scalability?', ['cn-dec24:5', 'cn-jun22:3', 'cn-jun24:3', 'cn-may25:5']),
   Q('cn-ipv6-transition', 'cn.u3.ipv6', 'Why is the IPv4-to-IPv6 transition required? List three transition strategies; how do tunnelling and dual stack differ, and when is each used?', ['cn-dec23it:4', 'cn-dec22iot:4']),
   Q('cn-ipv6-header', 'cn.u3.ipv6', 'Explain the IPv6 datagram with a neat diagram: its message format and fixed header.', ['cn-dec22ece:5', 'cn-dec22cse:5']),
-  Q('cn-ipv4-vs-ipv6', 'cn.u3.ipv6', 'Distinguish between IPv4 and IPv6.', ['cn-jun22:5']),
+  Q('cn-ipv4-vs-ipv6', 'cn.u3.ipv6', 'Differences between IPv4 and IPv6.', ['cn-ct2:3', 'cn-jun22:5']),
 
   // ---------------- Unit IV: transport service & elements ----------------
   Q('cn-elements', 'cn.u4.elements', 'What are the essential elements of a transport protocol? Explain the elements of the transport layer.', ['cn-dec24:5', 'cn-dec22ece:5']),

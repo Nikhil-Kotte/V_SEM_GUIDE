@@ -49,7 +49,8 @@ export default function PyqTab({ subject, data, focus }) {
     const past = data.ranked.filter((q) => q.kind !== 'predicted' && q.kind !== 'model' && keep(q))
     const predicted = data.ranked.filter((q) => q.kind === 'predicted' && keep(q))
     const model = data.ranked.filter((q) => q.kind === 'model' && keep(q))
-    return { past: sort === 'recent' ? sortByRecent(past) : past, predicted, model }
+    const sorted = sort === 'recent' ? sortByRecent(past) : past
+    return { past: sorted.filter((q) => !q.mid), mid: sorted.filter((q) => q.mid), predicted, model }
   }, [data, unit, topic, numOnly, hidePractised, sort, store])
 
   useEffect(() => {
@@ -101,7 +102,21 @@ export default function PyqTab({ subject, data, focus }) {
         <label className="toggle"><input type="checkbox" checked={hidePractised} onChange={(e) => setHidePractised(e.target.checked)} /> Hide practised</label>
       </div>
 
-      {filtered.past.length === 0 && filtered.predicted.length === 0 && filtered.model.length === 0 && <div className="empty">No questions match these filters.</div>}
+      {filtered.past.length === 0 && filtered.mid.length === 0 && filtered.predicted.length === 0 && filtered.model.length === 0 && <div className="empty">No questions match these filters.</div>}
+
+      {filtered.mid.length > 0 && (
+        <section className="mid-block" aria-labelledby="mid-title">
+          <div className="unit-head is-first">
+            <h2 id="mid-title">Asked in your class tests</h2>
+            <Stamp tone="ink">Top priority</Stamp>
+          </div>
+          <p className="muted tab-intro">
+            The questions from this semester&apos;s class tests (mid-terms), in their original wording. The external paper is set the same way, so learn these first. Each has a full answer.
+          </p>
+          <ol className="pyq-list">{filtered.mid.map((q) => <Pyq key={q.id} q={q} subject={subject} open={focus === q.id} />)}</ol>
+          {filtered.past.length > 0 && <div className="unit-head"><h2>From past papers</h2></div>}
+        </section>
+      )}
 
       {filtered.model.length > 0 && (
         <>
@@ -112,7 +127,7 @@ export default function PyqTab({ subject, data, focus }) {
             The model question list from your faculty, in its original wording, each with a simple answer. Past-paper questions follow below.
           </p>
           <ol className="pyq-list">{filtered.model.map((q) => <Pyq key={q.id} q={q} subject={subject} open={focus === q.id} />)}</ol>
-          {filtered.past.length > 0 && (
+          {(filtered.past.length > 0 || filtered.mid.length > 0) && (
             <div className="unit-head">
               <h2>From past papers</h2>
             </div>
@@ -154,7 +169,7 @@ function Pyq({ q, subject, open: openInitially, top }) {
             : <span className={`pyq-kind${q.kind === 'model' ? ' is-model' : ''}`}>{q.kind === 'model' ? 'Model' : 'Likely'}</span>}
         </div>
         <div className="pyq-body">
-          <p className="pyq-q">{q.q}{top && <Stamp className="pyq__stamp">Most asked</Stamp>}</p>
+          <p className="pyq-q">{q.q}{q.mid ? <Stamp tone="ink" className="pyq__stamp">Class test</Stamp> : top && <Stamp className="pyq__stamp">Most asked</Stamp>}</p>
           <div className="pyq-foot">
             <p className="pyq-meta">
               {q.maxMarks > 0 && <span>{q.maxMarks} marks</span>}
@@ -185,7 +200,7 @@ function Pyq({ q, subject, open: openInitially, top }) {
             <ul className="papers" id={`p-${q.id}`} aria-label="Papers that asked this">
               {q.asks.map((a) => (
                 <li key={a.paperId}>
-                  <Link className={`chip${a.paper.relation === 'related' ? ' chip-related' : ''}`} to={viewerPath(a.paper.source, `${a.paper.course} ${a.paper.label}`)}
+                  <Link className={`chip${a.paper.relation === 'related' ? ' chip-related' : a.paper.relation === 'mid' ? ' chip-mid' : ''}`} to={viewerPath(a.paper.source, `${a.paper.course} ${a.paper.label}`)}
                     title={`${a.paper.course}${a.paper.relation === 'related' ? ' (related course)' : ''}: open the paper`}>
                     {a.paper.label}{a.marks ? `, ${a.marks} marks` : ''}
                   </Link>

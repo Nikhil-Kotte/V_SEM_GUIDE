@@ -1,7 +1,8 @@
 import { paperById } from '../content/papers.js'
 
 // Repeat count = number of *distinct* papers that asked the question.
-// Ranking: most repeated first, then most recently asked, then highest marks.
+// Ranking: questions from this semester's class tests (mid-terms) first, because the external paper
+// tends to ask the same way; then most repeated, then most recently asked, then highest marks.
 export function enrich(q) {
   const seen = new Map()
   for (const a of q.asks) {
@@ -18,13 +19,14 @@ export function enrich(q) {
     latest: asks[0]?.paper.date || '',
     latestLabel: asks[0]?.paper.label || '',
     maxMarks: Math.max(0, ...asks.map((a) => a.marks || 0)),
+    mid: asks.some((a) => a.paper.relation === 'mid'),
   }
 }
 
 export function rankPyqs(list) {
   return list.map(enrich).sort((a, b) =>
-    (b.count - a.count) || b.latest.localeCompare(a.latest) || (b.maxMarks - a.maxMarks))
+    (b.mid - a.mid) || (b.count - a.count) || b.latest.localeCompare(a.latest) || (b.maxMarks - a.maxMarks))
 }
 
 export const sortByRecent = (list) =>
-  [...list].sort((a, b) => b.latest.localeCompare(a.latest) || (b.count - a.count))
+  [...list].sort((a, b) => (b.mid - a.mid) || b.latest.localeCompare(a.latest) || (b.count - a.count))

@@ -8,7 +8,7 @@ import {
   CnComponents, CnDataFlow, CnTopologies, CnOsiEncap, CnOsiVsTcpip, CnAddresses, CnSwitching, CnCables, CnFiber, CnSpectrum,
   CnFrame, CnByteStuffing, CnBitStuffing, CnCharCount, CnHamming, CnCrcFlow, CnStopWait, CnPar, CnGbn, CnSr, CnWindow,
   CnAlohaVulnerable, CnAlohaThroughput, CnCsmaCd, CnDijkstra, CnFlooding, CnSinkTree, CnDvNet, CnCountToInfinity, CnClassful,
-  CnSockets, CnCwnd, CnSmtp, CnTelnet, CnUtopia, CnMux, CnNesting, CnRto,
+  CnSockets, CnCwnd, CnSmtp, CnTelnet, CnUtopia, CnMux, CnNesting, CnRto, CnDijkstraCt1, CnDvCt2,
 } from './cn.jsx'
 
 export const svgDiagrams = {
@@ -59,4 +59,6 @@ export const svgDiagrams = {
   'cn-mux': { Component: CnMux, caption: 'Static channel allocation: FDM divides the frequency band, TDM divides time into slots.' },
   'cn-nesting': { Component: CnNesting, caption: 'A segment is carried inside a packet, which is carried inside a frame.' },
   'cn-rto': { Component: CnRto, caption: 'The retransmission timer: if no ACK arrives within RTO, the segment is sent again.' },
+  'cn-dijkstra-ct1': { Component: CnDijkstraCt1, caption: 'Class Test I network: red edges form the shortest-path tree from A; each node shows its final distance.' },
+  'cn-dv-ct2': { Component: CnDvCt2, caption: 'Class Test II network (link costs A–B 2, A–C 5, B–C 1, B–D 4, C–D 2); red: the best route from A to D.' },
 }

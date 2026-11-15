@@ -9,6 +9,7 @@ import PyqTab from '../components/PyqTab.jsx'
 import NumericalsTab from '../components/NumericalsTab.jsx'
 import RevisionTab from '../components/RevisionTab.jsx'
 import DownloadsTab from '../components/DownloadsTab.jsx'
+import BankTab from '../components/BankTab.jsx'
 import TabBar from '../components/TabBar.jsx'
 import { examCountdown, examDay, examOver } from '../lib/exam.js'
 import ReadProgress from '../components/ReadProgress.jsx'
@@ -25,13 +26,16 @@ const TABS = [
   ['revision', 'Quick revision'],
   ['downloads', 'Downloads'],
 ]
+// Shown only for subjects whose content has a per-unit 2-mark bank (data.bank2m).
+const BANK_TAB = ['bank', '2-mark bank']
 
 export default function Subject() {
   const { subj, tab = 'learn', item } = useParams()
   const subject = subjectById[subj]
   const data = useSubject(subj)
   const store = useStore()
-  const validTab = TABS.some(([t]) => t === tab)
+  const validTab = TABS.some(([t]) => t === tab) || tab === BANK_TAB[0]
+  const tabs = data?.bank2m ? [TABS[0], TABS[1], BANK_TAB, ...TABS.slice(2)] : TABS
   // Fade between tabs, but not on the first render of the page.
   const mounted = useRef(false)
   useEffect(() => { mounted.current = true }, [])
@@ -43,6 +47,7 @@ export default function Subject() {
 
   if (!subject) return <Navigate to="/" replace />
   if (!validTab) return <Navigate to={`/s/${subj}`} replace />
+  if (tab === BANK_TAB[0] && data && !data.bank2m) return <Navigate to={`/s/${subj}`} replace />
 
   const topicIds = data ? data.units.flatMap((u) => u.topics.map((t) => t.id)) : []
   const done = topicIds.filter((id) => store.done(id)).length
@@ -82,7 +87,7 @@ export default function Subject() {
       <div className="subject-tabs">
         <div className="container">
           <TabBar ariaLabel={`${subject.short} sections`}
-            items={TABS.map(([id, label]) => ({ to: `/s/${subj}/${id}`, label, current: tab === id }))} />
+            items={tabs.map(([id, label]) => ({ to: `/s/${subj}/${id}`, label, current: tab === id }))} />
         </div>
         <ReadProgress />
       </div>
@@ -96,6 +101,7 @@ export default function Subject() {
             transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}>
             {tab === 'learn' ? <LearnTab subject={subject} data={data} focus={item} />
               : tab === 'pyqs' ? <PyqTab subject={subject} data={data} focus={item} />
+                : tab === 'bank' ? <BankTab subject={subject} data={data} focus={item} />
                 : tab === 'numericals' ? <NumericalsTab subject={subject} data={data} />
                   : tab === 'revision' ? <RevisionTab subject={subject} data={data} />
                     : <DownloadsTab subject={subject} />}

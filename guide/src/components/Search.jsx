@@ -37,6 +37,11 @@ export default function Search({ onClose }) {
             })
           }
         }
+        for (const u of s.bank2m || []) {
+          for (const b of u.items) {
+            items.push({ kind: `${s.subject.short}, Unit ${u.unit} 2-mark bank`, title: b.q, text: b.q, to: `/s/${s.subject.id}/bank/${encodeURIComponent(b.id)}` })
+          }
+        }
         for (const q of s.ranked) {
           items.push({
             kind: `${s.subject.short}, ${q.kind === 'predicted' ? 'likely question' : q.count ? `asked in ${q.count} paper${q.count > 1 ? 's' : ''}` : 'question'}`,

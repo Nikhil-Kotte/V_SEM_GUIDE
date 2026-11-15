@@ -196,3 +196,11 @@
 .site-menu__exam { display: block; font-weight: 600; font-size: 13px; color: var(--text-soft); }
 .site-menu a.is-over { background: #0d0e12; color: #8a8f9c; border-color: #000; text-decoration: line-through; }
 .site-menu a.is-over .art, .site-menu a.is-over .site-menu__exam { opacity: .35; color: #8a8f9c; }
+
+/* Small phones: keep the full name and all three header buttons on one line */
+@media (max-width: 480px) {
+  .site-header .bar { gap: var(--sp-2); }
+  .brand { font-size: 15.5px; padding: 4px 8px 3px; gap: 5px; }
+  .brand small { font-size: 14px; }
+  .bar-actions { gap: 6px; }
+}

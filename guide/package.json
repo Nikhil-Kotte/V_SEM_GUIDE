@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-content.mjs && vite build",
+    "build": "node scripts/check-content.mjs && vite build && node scripts/copy-files.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",

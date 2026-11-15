@@ -15,6 +15,12 @@ function walk(dir) {
 
 // Which subject a past paper or bank belongs to, by filename.
 const PAPER_RULES = [
+  ['se', /^PYQs\/SE MIDS/i],
+  ['os', /^PYQs\/OS MIDS/i],
+  ['cn', /^PYQs\/CN MIDS/i],
+  ['fds', /^PYQs\/FDS MIDS/i],
+  ['bda', /^PYQs\/BDA MIDS/i],
+  ['pdt', /^PYQs\/PDT MIDS|^PYQs\/PDT Model/i],
   ['se', /software engineering|^PYQs\/SE_/i],
   ['os', /operating systems|^PYQs\/OS_/i],
   ['cn', /computer networks|^PYQs\/CN_|Data Communication/i],
@@ -34,9 +40,11 @@ for (const file of walk(join(ROOT, 'PYQs'))) {
   const rule = PAPER_RULES.find(([, re]) => re.test(rel))
   if (!rule) { console.warn('Unmatched paper:', rel); continue }
   const isBank = !/\/20\d\d-\d\d\//.test(rel)
+  const isMids = / MIDS\.pdf$/i.test(rel)
   const year = rel.match(/(20\d\d-\d\d)/)?.[1]
-  const name = rel.includes('New Doc') ? 'Fundamentals of Design Thinking 22MEC36 (May 2026).pdf' : basename(file)
-  items.push({ subject: rule[0], group: isBank ? 'bank' : 'paper', year, path: rel, name, ext: 'pdf', size: statSync(file).size })
+  const name = rel.includes('New Doc') ? 'Fundamentals of Design Thinking 22MEC36 (May 2026).pdf'
+    : isMids ? `${rule[0].toUpperCase()} mid-term papers.pdf` : basename(file)
+  items.push({ subject: rule[0], group: isMids ? 'mids' : isBank ? 'bank' : 'paper', year, path: rel, name, ext: extname(file).slice(1).toLowerCase(), size: statSync(file).size })
 }
 // CSV with 0 bytes is a placeholder, not a useful download.
 const out = items.filter((i) => i.size > 0)

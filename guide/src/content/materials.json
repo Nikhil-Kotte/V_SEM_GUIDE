@@ -781,11 +781,27 @@
  },
  {
   "subject": "bda",
+  "group": "mids",
+  "path": "PYQs/BDA MIDS.pdf",
+  "name": "BDA mid-term papers.pdf",
+  "ext": "pdf",
+  "size": 1477179
+ },
+ {
+  "subject": "bda",
   "group": "bank",
   "path": "PYQs/BDA_Unitwise_Questions.pdf",
   "name": "BDA_Unitwise_Questions.pdf",
   "ext": "pdf",
   "size": 18559
+ },
+ {
+  "subject": "cn",
+  "group": "mids",
+  "path": "PYQs/CN MIDS.pdf",
+  "name": "CN mid-term papers.pdf",
+  "ext": "pdf",
+  "size": 1964750
  },
  {
   "subject": "cn",
@@ -796,12 +812,52 @@
   "size": 52825
  },
  {
+  "subject": "fds",
+  "group": "mids",
+  "path": "PYQs/FDS MIDS.pdf",
+  "name": "FDS mid-term papers.pdf",
+  "ext": "pdf",
+  "size": 3407592
+ },
+ {
+  "subject": "os",
+  "group": "mids",
+  "path": "PYQs/OS MIDS.pdf",
+  "name": "OS mid-term papers.pdf",
+  "ext": "pdf",
+  "size": 2424670
+ },
+ {
   "subject": "os",
   "group": "bank",
   "path": "PYQs/OS_Unitwise_Question_Bank.pdf",
   "name": "OS_Unitwise_Question_Bank.pdf",
   "ext": "pdf",
   "size": 41677
+ },
+ {
+  "subject": "pdt",
+  "group": "mids",
+  "path": "PYQs/PDT MIDS.pdf",
+  "name": "PDT mid-term papers.pdf",
+  "ext": "pdf",
+  "size": 1767769
+ },
+ {
+  "subject": "pdt",
+  "group": "bank",
+  "path": "PYQs/PDT Model questions for 2 mid.docx",
+  "name": "PDT Model questions for 2 mid.docx",
+  "ext": "docx",
+  "size": 13777
+ },
+ {
+  "subject": "se",
+  "group": "mids",
+  "path": "PYQs/SE MIDS.pdf",
+  "name": "SE mid-term papers.pdf",
+  "ext": "pdf",
+  "size": 2251055
  },
  {
   "subject": "se",

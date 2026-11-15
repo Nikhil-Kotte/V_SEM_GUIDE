@@ -106,7 +106,7 @@ export default function TopicCard({ subject, topic, content, pyqs, no }) {
         <>
           <p className="one-line"><b>In one line:</b> <span className="hl" ref={hlRef}><Inline text={content.oneLine} /></span></p>
           {content.simple && <SimpleWords s={content.simple} />}
-          <VideoLinks videos={content.videos} />
+          {content.simple && <VideoLinks videos={content.videos} />}
           {content.simple && <h4 className="notes-label">Detailed notes</h4>}
           <div className="prose"><Blocks blocks={content.blocks} /></div>
           {content.terms?.length > 0 && (
@@ -116,6 +116,7 @@ export default function TopicCard({ subject, topic, content, pyqs, no }) {
             </div>
           )}
           {content.exam && <div className="topic-exam"><Blocks blocks={[{ exam: content.exam }]} /></div>}
+          {!content.simple && <VideoLinks videos={content.videos} />}
         </>
       ) : (
         <p className="muted" style={{ marginTop: 16 }}>Notes for this topic are being written. Meanwhile, check the past questions and the original material in Downloads.</p>

@@ -1,0 +1,38 @@
+/* =========================================================================
+   In-site PDF viewer and the question-paper shelf
+   ========================================================================= */
+.viewer { min-height: calc(100vh - var(--header-h)); background: var(--desk-shade); }
+.viewer__bar { position: sticky; top: var(--header-h); z-index: 30; background-color: var(--bg); background-image: var(--paper-grain); border-bottom: 1px solid var(--line-strong); }
+.viewer__bar-in { display: flex; align-items: center; gap: var(--sp-3); min-height: 58px; flex-wrap: wrap; padding-block: 8px; }
+.viewer__title { flex: 1 1 200px; min-width: 0; font-size: var(--fs-md); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.viewer__pages { font-family: var(--font-hand); font-size: 19px; color: var(--accent); }
+.viewer__tools { display: flex; align-items: center; gap: 6px; }
+.viewer__zoom { min-width: 64px; }
+.viewer__tools .icon-btn:disabled { opacity: .4; cursor: not-allowed; }
+.viewer__stage { display: grid; justify-items: center; gap: var(--sp-4); padding: var(--sp-5) 8px var(--sp-8); overflow-x: auto; }
+.pdf-page { position: relative; max-width: none; background: #fff; box-shadow: var(--shadow-paper); border-radius: 2px; }
+.pdf-page canvas { display: block; width: 100%; height: 100%; }
+.pdf-page__n { position: absolute; right: -2px; bottom: -22px; font-family: var(--font-hand); font-size: 15px; color: var(--text-faint); }
+.viewer__loading, .viewer-empty { padding: var(--sp-8) var(--sp-4); text-align: center; color: var(--text-soft); }
+.viewer-empty .btn { margin-top: var(--sp-3); }
+@media (max-width: 600px) { .viewer__dl { display: none; } .viewer__stage { padding-inline: 0; } }
+
+.shelf { margin: 0 0 var(--sp-6); max-width: 880px; }
+.shelf__head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); width: 100%; padding: var(--sp-4) var(--sp-5); border: 0; background: none; text-align: left; cursor: pointer; }
+.shelf__head > span { display: grid; }
+.shelf__title { font-size: 24px; font-weight: 700; color: var(--accent); }
+.shelf__chev { color: var(--text-faint); transition: transform var(--dur-3) var(--ease); }
+.shelf__head[aria-expanded='true'] .shelf__chev { transform: rotate(180deg); color: var(--accent); }
+.shelf__body { padding: 0 var(--sp-5) var(--sp-5); display: grid; gap: var(--sp-4); }
+.shelf__group-title { font-size: 15px; color: var(--text-soft); margin-bottom: var(--sp-2); }
+.shelf__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-2); grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); }
+.shelf__list li { animation: result-in var(--dur-3) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 30ms); }
+.shelf__paper {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--sp-2); padding: 10px 12px; text-decoration: none;
+  border: 1px solid var(--line); border-radius: var(--radius-paper); background: var(--surface);
+  transition: transform var(--dur-2) var(--ease-spring), border-color var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
+}
+.shelf__paper:hover { transform: translateY(-2px) rotate(-.4deg); border-color: var(--hot); box-shadow: var(--shadow-1); }
+.shelf__icon { color: var(--hot); }
+.shelf__name { font-weight: 600; font-size: 14.5px; line-height: 1.3; overflow-wrap: anywhere; }
+.shelf__year { font-size: 12.5px; color: var(--text-faint); }

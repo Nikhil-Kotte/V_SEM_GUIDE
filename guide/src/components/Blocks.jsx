@@ -10,6 +10,7 @@ const CALLOUTS = {
   exam: 'How to write it in the exam',
   warn: 'Careful',
   analogy: 'Think of it like this',
+  example: 'Example',
   note: 'Note',
   fix: 'Your slides vs. the standard definition',
   gap: 'Not in your notes: standard textbook coverage',
@@ -22,12 +23,13 @@ const CALLOUTS = {
 //   { steps: [...] }                numbered flow
 //   { table: { head, rows } }       table
 //   { compare: [{ title, items }] } side-by-side cards
-//   { tip|exam|warn|analogy|note|fix|gap: 'text' or [blocks] }
+//   { tip|exam|warn|analogy|example|note|fix|gap: 'text' or [blocks] }
 //   { img: 'diagram-id' }           extracted or SVG diagram
 //   { code: '...' }                 code sample
 //   { formula: '...' }              formula line
 //   { sim: 'sim-id' }               interactive simulator
 //   { terms: [[term, definition]] } glossary chips
+//   { def: 'Term', text: '...' }    a formal definition, set apart as a card
 //   { flow: [...], loop }           picture: boxes joined by arrows (loop = text for the arrow back)
 //   { stack: [...] }                picture: layers, top to bottom
 //   { tree: { root, kids: [...] } } picture: one idea splitting into its kinds
@@ -86,6 +88,15 @@ function Block({ b, level }) {
         </aside>
       )
     }
+  }
+  if (b.def) {
+    return (
+      <div className="defn" role="note" aria-label={`Definition: ${b.def}`}>
+        <span className="defn__tag">Definition</span>
+        <dfn className="defn__term"><Inline text={b.def} /></dfn>
+        <p className="defn__text"><Inline text={b.text} /></p>
+      </div>
+    )
   }
   if (b.flow) {
     return (

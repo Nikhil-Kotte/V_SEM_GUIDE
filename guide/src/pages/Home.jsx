@@ -8,6 +8,7 @@ import { getPref, useStore } from '../lib/storage.js'
 import { useFancyMotion, usePrefersReducedMotion } from '../lib/motion.js'
 import { tiltHandlers } from '../lib/useTilt.js'
 import { examCountdown, examDay, examOver } from '../lib/exam.js'
+import { TIMETABLE, viewerPath } from '../lib/files.js'
 import HeroHeading from '../components/HeroHeading.jsx'
 import Icon from '../components/Icon.jsx'
 import Tally from '../components/Tally.jsx'
@@ -132,7 +133,7 @@ export default function Home() {
         <div className="container" ref={listRef}>
           <div className="section-head">
             <RevealHeading id="subjects-title" text="Pick a booklet" />
-            <p>In the order of the exams, 10 AM to 1 PM. Each subject has the same five tabs: <b>Learn</b>, <b>PYQs</b>, <b>Numericals</b>, <b>Quick revision</b> and <b>Downloads</b>.</p>
+            <p>In the order of the exams, 10 AM to 1 PM (<Link to={viewerPath(TIMETABLE, 'Exam time-table, November 2026')} className="text-link">see the official time-table</Link>). Each subject has the same five tabs: <b>Learn</b>, <b>PYQs</b>, <b>Numericals</b>, <b>Quick revision</b> and <b>Downloads</b>.</p>
           </div>
 
           <ul className="booklets">

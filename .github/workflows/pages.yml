@@ -31,6 +31,8 @@ jobs:
       - run: npm test
       - run: npm run check
       - run: npx vite build
+      # PDFs from Material/, PYQs/ and the time-table, so the site's own viewer can show them.
+      - run: node scripts/copy-files.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: guide/dist

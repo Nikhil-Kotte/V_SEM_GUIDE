@@ -1,6 +1,8 @@
 import { Download04Icon, File01Icon, Pdf01Icon, Ppt01Icon, Doc01Icon, Csv01Icon, FileScriptIcon, ViewIcon } from '@hugeicons/core-free-icons'
 import materials from '../content/materials.json'
-import { rawUrl, viewUrl } from '../config.js'
+import { Link } from 'react-router-dom'
+import { viewUrl } from '../config.js'
+import { downloadUrl, isPdf, viewerPath } from '../lib/files.js'
 import Icon from './Icon.jsx'
 
 const size = (b) => (b > 1024 * 1024 ? `${(b / 1024 / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(b / 1024))} KB`)
@@ -11,6 +13,7 @@ export default function DownloadsTab({ subject }) {
   const groups = [
     ['material', 'Study material', 'Slides, notes and textbooks from your course.', files.filter((f) => f.group === 'material')],
     ['papers', 'Past papers', 'Full question papers, newest first.', files.filter((f) => f.group === 'paper').sort((a, b) => (b.year || '').localeCompare(a.year || ''))],
+    ['mids', 'Mid-term papers', 'Question papers from the mid-term exams.', files.filter((f) => f.group === 'mids')],
     ['bank', 'Compiled question bank', 'Unit-wise collection of older questions.', files.filter((f) => f.group === 'bank')],
   ]
 
@@ -19,7 +22,7 @@ export default function DownloadsTab({ subject }) {
       <div className="section-head">
         <h2>Download the original files</h2>
         <p>
-          <b>Open</b> previews the file on GitHub. <b>Download</b> fetches the original. Some browsers open PDFs in a new tab instead of saving them; use your browser&apos;s save button there.
+          <b>Open</b> shows a PDF right here on the site. Slides and Word files open on GitHub, or use <b>Download</b> to get the original.
         </p>
       </div>
       {groups.map(([key, title, sub, list]) => list.length > 0 && (
@@ -37,8 +40,10 @@ export default function DownloadsTab({ subject }) {
                   <div className="dl-sub"><span className="dl-type">{f.ext}</span>{f.year ? `${f.year}, ` : ''}{size(f.size)}{f.ext === 'ppt' || f.ext === 'pptx' ? ', opens in PowerPoint or Google Slides' : ''}</div>
                 </div>
                 <div className="dl-actions">
-                  <a className="btn btn-sm" href={viewUrl(f.path)} target="_blank" rel="noreferrer" aria-label={`Open ${f.name} on GitHub`}><Icon icon={ViewIcon} /> Open</a>
-                  <a className="btn btn-sm btn-primary" href={rawUrl(f.path)} download={f.name} rel="noreferrer" aria-label={`Download ${f.name}`}><Icon icon={Download04Icon} /> Download</a>
+                  {isPdf(f.path)
+                    ? <Link className="btn btn-sm" to={viewerPath(f.path, f.name)} aria-label={`Open ${f.name}`}><Icon icon={ViewIcon} /> Open</Link>
+                    : <a className="btn btn-sm" href={viewUrl(f.path)} target="_blank" rel="noreferrer" aria-label={`Open ${f.name} on GitHub`}><Icon icon={ViewIcon} /> Open</a>}
+                  <a className="btn btn-sm btn-primary" href={downloadUrl(f.path)} download={f.name} rel="noreferrer" aria-label={`Download ${f.name}`}><Icon icon={Download04Icon} /> Download</a>
                 </div>
               </li>
             ))}

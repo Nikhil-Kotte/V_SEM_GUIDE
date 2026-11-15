@@ -3,7 +3,8 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { topicIndex } from '../content/syllabus.js'
 import { sortByRecent } from '../lib/rank.js'
 import { useStore } from '../lib/storage.js'
-import { rawUrl } from '../config.js'
+import { viewerPath } from '../lib/files.js'
+import PaperShelf from './PaperShelf.jsx'
 import Blocks from './Blocks.jsx'
 import GlideSelect from './bits/GlideSelect.jsx'
 import Icon from './Icon.jsx'
@@ -70,6 +71,8 @@ export default function PyqTab({ subject, data, focus }) {
               : 'The circled number is how many different papers asked the question. Ties go to the one asked most recently. Only questions inside your syllabus are listed.'}
         </p>
       </div>
+
+      <PaperShelf subject={subject} />
 
       {!isRelatedOnly && <TopicFrequency data={data} topic={topic} onPick={setTopic} unit={unit} />}
 
@@ -182,10 +185,10 @@ function Pyq({ q, subject, open: openInitially, top }) {
             <ul className="papers" id={`p-${q.id}`} aria-label="Papers that asked this">
               {q.asks.map((a) => (
                 <li key={a.paperId}>
-                  <a className={`chip${a.paper.relation === 'related' ? ' chip-related' : ''}`} href={rawUrl(a.paper.source)} target="_blank" rel="noreferrer"
+                  <Link className={`chip${a.paper.relation === 'related' ? ' chip-related' : ''}`} to={viewerPath(a.paper.source, `${a.paper.course} ${a.paper.label}`)}
                     title={`${a.paper.course}${a.paper.relation === 'related' ? ' (related course)' : ''}: open the paper`}>
                     {a.paper.label}{a.marks ? `, ${a.marks} marks` : ''}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

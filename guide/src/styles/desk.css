@@ -250,3 +250,15 @@ figure.diagram figcaption .src { font-family: var(--font-body); }
 
 .page-head__exam b { color: var(--hot); }
 .page-head__exam.is-over, .page-head__exam.is-over b { color: var(--text-faint); text-decoration: line-through; }
+
+/* Formal definitions: an index card with a ballpoint rule */
+.defn {
+  position: relative; max-width: var(--measure); padding: var(--sp-3) var(--sp-4) var(--sp-3) var(--sp-5); border-radius: var(--radius-paper);
+  background-color: var(--surface); background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 27px, var(--paper-rule) 27px, var(--paper-rule) 28px);
+  border: 1px solid var(--line-strong); border-left: 4px solid var(--accent); box-shadow: var(--shadow-1);
+}
+.defn__tag { display: block; font-family: var(--font-hand); font-size: 16px; font-weight: 700; color: var(--hot); line-height: 1.2; }
+.defn__term { display: block; font-style: normal; font-weight: 800; font-size: var(--fs-md); margin: 2px 0 4px; }
+.defn__text { margin: 0; }
+.callout.example { background: var(--sticky-blue); transform: rotate(-.3deg); }
+.callout.example .callout-title { color: var(--accent); }

@@ -42,6 +42,11 @@
 .prose li::marker { color: var(--text-faint); }
 .prose strong, .prose b { font-weight: 700; }
 
+/* Notes fill the full card width and read as justified text */
+.topic .one-line, .topic .prose p, .topic .prose ul, .topic .prose ol, .topic .prose h4,
+.topic .callout, .topic .formula, .topic .sim-note { max-width: none; }
+.topic .one-line, .topic .prose p, .topic .prose li, .topic .callout { text-align: justify; hyphens: auto; }
+
 /* Blocks */
 .callout { border-radius: var(--radius-sm); padding: var(--sp-3) var(--sp-4); background: var(--surface-2); max-width: var(--measure); }
 .callout .callout-title { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14.5px; margin-bottom: 4px; }

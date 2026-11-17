@@ -17,8 +17,8 @@ const simKeys = [...readFileSync(src('sims/registry.js'), 'utf8').matchAll(/^\s*
 
 // Topics the user's syllabus does NOT include (Kafka and secondary sorting are back in scope with BDA Units II and III). Old papers asked these; they must not sneak back in.
 // (Access matrix and deadlock detection were allowed back in: they are asked under "basic security
-// mechanisms" and "deadlock recovery" in the user's portion.)
-const EXCLUDED = [/\bRAID\b/, /\bSCTP\b/, /spark sql/i, /\bMLlib\b/, /\bGraphX\b/, /\bICMP\b/]
+// mechanisms" and "deadlock recovery" in the user's portion; RAID too, since OS Class Test II asked it.)
+const EXCLUDED = [/\bSCTP\b/, /spark sql/i, /\bMLlib\b/, /\bGraphX\b/, /\bICMP\b/]
 
 for (const [subject, units] of Object.entries(syllabus)) {
   const ids = new Set(units.flatMap((u) => u.topics.map((t) => t.id)))

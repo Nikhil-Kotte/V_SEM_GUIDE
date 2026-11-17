@@ -3,7 +3,7 @@
 async (page) => {
   // Layout audit: for each route × viewport, report horizontal overflow, clipped text, and image problems.
   const base = 'http://localhost:5173/V_SEM_GUIDE/#'
-  const subjects = ['se', 'os', 'cn', 'fds', 'bda', 'pdt']
+  const subjects = ['se', 'os', 'fds', 'bda', 'pdt']
   const tabs = ['learn', 'pyqs', 'numericals', 'revision', 'downloads']
   const routes = ['/', '/drrm', ...subjects.flatMap((s) => tabs.map((t) => `/s/${s}/${t}`))]
   const viewports = [[390, 844], [820, 1180], [1440, 900], [2000, 1000]]

@@ -63,30 +63,6 @@ function OS() {
   )
 }
 
-// Computer Networks: routers, links and packets on the way.
-function CN() {
-  return (
-    <Art>
-      <path className="soft" d="M36 34 96 22M36 34 62 84M96 22l52 30M62 84l48 8M148 52l-38 40M148 52l26 54M110 92l64 14M62 84 30 116" />
-      <path d="M36 34 96 22l52 30-38 40-48-8z" />
-      <rect className="f-ink" x="62" y="24" width="9" height="7" rx="1.5" transform="rotate(-11 66 28)" />
-      <rect className="hl" x="120" y="34" width="10" height="8" rx="1.5" transform="rotate(30 125 38)" />
-      <rect className="f-ink" x="124" y="68" width="9" height="7" rx="1.5" transform="rotate(-46 128 72)" />
-      <path className="hot" d="M78 78l8 10m0-10-8 10" />
-      <circle className="f-tint" cx="36" cy="34" r="12" />
-      <circle className="f-paper" cx="96" cy="22" r="10" />
-      <circle className="f-tint" cx="148" cy="52" r="13" />
-      <circle className="f-paper" cx="62" cy="84" r="11" />
-      <circle className="f-tint" cx="110" cy="92" r="10" />
-      <path d="M31 34h10m-5-5v10M143 52h10m-5-5v10" />
-      <rect className="f-paper" x="160" y="98" width="28" height="18" rx="2" />
-      <path d="M154 122h40M168 107h12" />
-      <rect className="f-paper" x="16" y="108" width="28" height="18" rx="2" />
-      <path d="M10 132h40M24 117h12" />
-    </Art>
-  )
-}
-
 // Data Science: a scatter plot, the line through it and a small table.
 function FDS() {
   return (
@@ -166,7 +142,7 @@ function PDT() {
   )
 }
 
-const COVERS = { se: SE, os: OS, cn: CN, fds: FDS, bda: BDA, pdt: PDT }
+const COVERS = { se: SE, os: OS, fds: FDS, bda: BDA, pdt: PDT }
 
 export default function CoverArt({ id }) {
   const C = COVERS[id]

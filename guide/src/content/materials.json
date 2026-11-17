@@ -72,78 +72,6 @@
   "size": 293123
  },
  {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/80pagenotes.pdf",
-  "name": "80pagenotes.pdf",
-  "ext": "pdf",
-  "size": 40029650
- },
- {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/CN - Notes3.pdf",
-  "name": "CN - Notes3.pdf",
-  "ext": "pdf",
-  "size": 3203513
- },
- {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/CN Unit 2 .pptx",
-  "name": "CN Unit 2 .pptx",
-  "ext": "pptx",
-  "size": 3233374
- },
- {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/CSMA.pptx",
-  "name": "CSMA.pptx",
-  "ext": "pptx",
-  "size": 234757
- },
- {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/Medium_Access_Control(MAC).pptx",
-  "name": "Medium_Access_Control(MAC).pptx",
-  "ext": "pptx",
-  "size": 203746
- },
- {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/Network_Layer.pptx",
-  "name": "Network_Layer.pptx",
-  "ext": "pptx",
-  "size": 253660
- },
- {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/Routing_Algorithm.pptx",
-  "name": "Routing_Algorithm.pptx",
-  "ext": "pptx",
-  "size": 194338
- },
- {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/Sliding_Window_Protocol.pptx",
-  "name": "Sliding_Window_Protocol.pptx",
-  "ext": "pptx",
-  "size": 92198
- },
- {
-  "subject": "cn",
-  "group": "material",
-  "path": "Material/CN/Unit-I.ppt",
-  "name": "Unit-I.ppt",
-  "ext": "ppt",
-  "size": 2089984
- },
- {
   "subject": "fds",
   "group": "material",
   "path": "Material/FDS/Unit-2.1(FDS).pdf",
@@ -600,24 +528,6 @@
   "size": 66662
  },
  {
-  "subject": "cn",
-  "group": "paper",
-  "year": "2022-23",
-  "path": "PYQs/2022-23/Computer Networks 20ITC20.pdf",
-  "name": "Computer Networks 20ITC20.pdf",
-  "ext": "pdf",
-  "size": 595281
- },
- {
-  "subject": "cn",
-  "group": "paper",
-  "year": "2022-23",
-  "path": "PYQs/2022-23/Data Communication and Computer Networks 20CSC21.pdf",
-  "name": "Data Communication and Computer Networks 20CSC21.pdf",
-  "ext": "pdf",
-  "size": 200480
- },
- {
   "subject": "os",
   "group": "paper",
   "year": "2022-23",
@@ -634,33 +544,6 @@
   "name": "Software Engineering 20CSC22.pdf",
   "ext": "pdf",
   "size": 601664
- },
- {
-  "subject": "cn",
-  "group": "paper",
-  "year": "2023-24",
-  "path": "PYQs/2023-24/Computer Networks 20CIC04.pdf",
-  "name": "Computer Networks 20CIC04.pdf",
-  "ext": "pdf",
-  "size": 487740
- },
- {
-  "subject": "cn",
-  "group": "paper",
-  "year": "2023-24",
-  "path": "PYQs/2023-24/Computer Networks 20ITC20.pdf",
-  "name": "Computer Networks 20ITC20.pdf",
-  "ext": "pdf",
-  "size": 604162
- },
- {
-  "subject": "cn",
-  "group": "paper",
-  "year": "2023-24",
-  "path": "PYQs/2023-24/Data Communication and Computer Networks 20CSC21.pdf",
-  "name": "Data Communication and Computer Networks 20CSC21.pdf",
-  "ext": "pdf",
-  "size": 624603
  },
  {
   "subject": "os",
@@ -717,15 +600,6 @@
   "size": 597630
  },
  {
-  "subject": "cn",
-  "group": "paper",
-  "year": "2024-25",
-  "path": "PYQs/2024-25/22ITC10  Computer Networks.pdf",
-  "name": "22ITC10  Computer Networks.pdf",
-  "ext": "pdf",
-  "size": 486033
- },
- {
   "subject": "bda",
   "group": "paper",
   "year": "2025-26",
@@ -733,15 +607,6 @@
   "name": "Big Data Analytics 22ADE12.pdf",
   "ext": "pdf",
   "size": 541639
- },
- {
-  "subject": "cn",
-  "group": "paper",
-  "year": "2025-26",
-  "path": "PYQs/2025-26/Computer Networks 22ITC10.pdf",
-  "name": "Computer Networks 22ITC10.pdf",
-  "ext": "pdf",
-  "size": 657660
  },
  {
   "subject": "pdt",
@@ -794,22 +659,6 @@
   "name": "BDA_Unitwise_Questions.pdf",
   "ext": "pdf",
   "size": 18559
- },
- {
-  "subject": "cn",
-  "group": "mids",
-  "path": "PYQs/CN MIDS.pdf",
-  "name": "CN mid-term papers.pdf",
-  "ext": "pdf",
-  "size": 1964750
- },
- {
-  "subject": "cn",
-  "group": "bank",
-  "path": "PYQs/CN_Unitwise_PYQs.pdf",
-  "name": "CN_Unitwise_PYQs.pdf",
-  "ext": "pdf",
-  "size": 52825
  },
  {
   "subject": "fds",

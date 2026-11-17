@@ -13,6 +13,9 @@ function walk(dir) {
   })
 }
 
+// Subjects that have been taken off the site (exam over). Their files stay in the repo but are not listed.
+const REMOVED = new Set(['cn'])
+
 // Which subject a past paper or bank belongs to, by filename.
 const PAPER_RULES = [
   ['se', /^PYQs\/SE MIDS/i],
@@ -47,6 +50,6 @@ for (const file of walk(join(ROOT, 'PYQs'))) {
   items.push({ subject: rule[0], group: isMids ? 'mids' : isBank ? 'bank' : 'paper', year, path: rel, name, ext: extname(file).slice(1).toLowerCase(), size: statSync(file).size })
 }
 // CSV with 0 bytes is a placeholder, not a useful download.
-const out = items.filter((i) => i.size > 0)
+const out = items.filter((i) => i.size > 0 && !REMOVED.has(i.subject))
 writeFileSync(OUT, JSON.stringify(out, null, 1))
 console.log(`materials.json: ${out.length} files`)

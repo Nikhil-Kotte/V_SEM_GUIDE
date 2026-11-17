@@ -10,7 +10,6 @@
 const BANK = {
   se: 'PYQs/SE_PYQs_Unit_Wise.pdf',
   os: 'PYQs/OS_Unitwise_Question_Bank.pdf',
-  cn: 'PYQs/CN_Unitwise_PYQs.pdf',
   bda: 'PYQs/BDA_Unitwise_Questions.pdf',
 }
 
@@ -33,6 +32,8 @@ export const papers = [
   P('se-dec21', 'se', '2021-12', "Dec '21", BANK.se, '20CSC22'),
 
   // ---------- Operating Systems ----------
+  P('os-ct2', 'os', '2026-11', "Class Test II, Nov '26", 'PYQs/OS MIDS.pdf', '22CSC15N', 'mid'),
+  P('os-ct1', 'os', '2026-09', "Mid-1, Sep '26", 'PYQs/OS MIDS.pdf', '22CSC15N', 'mid'),
   P('os-nov25', 'os', '2025-11', "Nov '25", 'PYQs/2025-26/Operating Systems 22CSC15N.pdf', '22CSC15N'),
   P('os-may25', 'os', '2025-05', "May '25 (CSM)", BANK.os, '22CSC15N'),
   P('os-dec24', 'os', '2024-12', "Dec '24", 'PYQs/2024-25/22CSC15N Operating Systems.pdf', '22CSC15N'),
@@ -47,24 +48,6 @@ export const papers = [
   P('os-rtos-may25', 'os', '2025-05', "May '25 (ECE RTOS)", BANK.os, 'RTOS', 'related'),
   P('os-rtos-jun24', 'os', '2024-06', "Jun '24 (ECE RTOS)", BANK.os, 'RTOS', 'related'),
 
-  // ---------- Computer Networks ----------
-  P('cn-ct2', 'cn', '2026-11', "Class Test II, Nov '26", 'PYQs/CN MIDS.pdf', '22ITC10N', 'mid'),
-  P('cn-ct1', 'cn', '2026-09', "Class Test I, Sep '26", 'PYQs/CN MIDS.pdf', '22ITC10N', 'mid'),
-  P('cn-nov25', 'cn', '2025-11', "Nov '25", 'PYQs/2025-26/Computer Networks 22ITC10.pdf', '22ITC10'),
-  P('cn-may25', 'cn', '2025-05', "May '25", BANK.cn, '22ITC10'),
-  P('cn-dec24', 'cn', '2024-12', "Dec '24", 'PYQs/2024-25/22ITC10  Computer Networks.pdf', '22ITC10'),
-  P('cn-jun24', 'cn', '2024-06', "Jun '24", BANK.cn, '20ITC20'),
-  P('cn-dec23it', 'cn', '2023-12', "Dec '23 (IT)", 'PYQs/2023-24/Computer Networks 20ITC20.pdf', '20ITC20'),
-  P('cn-dec23cet', 'cn', '2023-12', "Dec '23 (CET)", 'PYQs/2023-24/Computer Networks 20CIC04.pdf', '20CIC04'),
-  P('cn-dec23cse', 'cn', '2023-12', "Dec '23 (CSE)", 'PYQs/2023-24/Data Communication and Computer Networks 20CSC21.pdf', '20CSC21'),
-  P('cn-jun23', 'cn', '2023-06', "Jun '23", BANK.cn, '20ITC20'),
-  P('cn-dec22it', 'cn', '2023-01', "Dec '22–Jan '23 (IT)", 'PYQs/2022-23/Computer Networks 20ITC20.pdf', '20ITC20'),
-  P('cn-dec22cse', 'cn', '2023-01', "Dec '22–Jan '23 (CSE)", 'PYQs/2022-23/Data Communication and Computer Networks 20CSC21.pdf', '20CSC21'),
-  P('cn-dec22iot', 'cn', '2022-12', "Dec '22 (IoT)", BANK.cn, '20ITC20'),
-  P('cn-dec22ece', 'cn', '2022-12', "Dec '22 (ECE)", BANK.cn, 'CN (ECE)'),
-  P('cn-jun22', 'cn', '2022-06', "Jun '22", BANK.cn, '20ITC20'),
-  P('cn-dec21it', 'cn', '2021-12', "Dec '21 (IT)", BANK.cn, '20ITC20'),
-  P('cn-dec21ece', 'cn', '2021-12', "Dec '21 (ECE)", BANK.cn, 'CN (ECE)'),
 
   // ---------- Fundamentals of Data Science ----------
   // 22CSC59 is a new course with no past papers yet. The closest is 22ADC09 (R-based).

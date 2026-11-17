@@ -31,7 +31,6 @@ if (!syllabus[subject]) {
 const SUBJECT_WORDS = {
   se: 'software engineering',
   os: 'operating system',
-  cn: 'computer networks',
   fds: 'data science',
   bda: 'big data hadoop',
   pdt: 'design thinking',
@@ -100,8 +99,6 @@ const QUERY = {
   'os.u3.mm-syscalls': 'mmap system call linux memory',
   'os.u4.thread-apis': 'pthread create join tutorial',
   'os.u5.caching': 'page cache buffer cache file system',
-  'cn.u5.delivery': 'POP3 vs IMAP',
-  'cn.u5.formats': 'email message format MIME',
   'se.u2.am': 'agile modeling principles Scott Ambler',
   'sim:os-page-replacement': 'page replacement algorithms FIFO LRU optimal numerical',
   'sim:os-disk-scheduling': 'disk scheduling algorithms FCFS SSTF SCAN C-SCAN numerical',
@@ -109,8 +106,6 @@ const QUERY = {
   'sim:se-cocomo': 'COCOMO model numerical example software engineering',
   'sim:se-fp': 'function point analysis numerical example',
   'sim:se-cyclomatic': 'cyclomatic complexity numerical example',
-  'sim:cn-cidr': 'subnetting CIDR numerical example',
-  'sim:cn-cwnd': 'TCP congestion control slow start numerical',
   'sim:fds-metrics': 'regression metrics MAE MSE RMSE R squared explained',
   'sim:fds-kmeans': 'k means clustering numerical example',
 }
@@ -194,7 +189,6 @@ function pick(results, query) {
 // the title names the subject, and most of the topic's own words are in it (whole words, plural or not).
 const SUBJECT_MARK = {
   os: /operating system|os/i,
-  cn: /computer network|cn|data link|network layer|transport layer|application layer/i,
   se: /software engineering|se|software/i,
   fds: /data science|python|pandas|numpy|machine learning/i,
   bda: /big data|hadoop|spark|hive|pig|map ?reduce|hdfs|yarn/i,

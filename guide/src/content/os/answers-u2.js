@@ -25,12 +25,12 @@ export default {
   'os-num-sjf-srtf': {
     blocks: [
       { h: 'SJF (non-pre-emptive)' },
-      { flow: ['0 P1 5', '5 P4 6', '6 P2 9', '9 P3 12'], label: 'SJF Gantt chart' },
+      { img: 'os-gantt-sjf-mid' },
       'At t = 0 only P1 has arrived, so it runs to completion. At t = 5, P4 (1) is shortest, then P2 and P3 (both 3; P2 arrived first).',
       table([['P1', '0', '5', '5', '5', '0'], ['P2', '1', '3', '9', '8', '5'], ['P3', '2', '3', '12', '10', '7'], ['P4', '4', '1', '6', '2', '1']]),
       'Average TAT = 25 / 4 = **6.25**. Average WT = 13 / 4 = **3.25**.',
       { h: 'SRTF (pre-emptive SJF)' },
-      { flow: ['0 P1 1', '1 P2 4', '4 P4 5', '5 P3 8', '8 P1 12'], label: 'SRTF Gantt chart' },
+      { img: 'os-gantt-srtf-mid' },
       'At t = 1, P2 (3) is shorter than P1\'s remaining 4, so it pre-empts. At t = 4, P2 ends and P4 (1) is shortest; then P3 (3), then P1 (4).',
       table([['P1', '0', '5', '12', '12', '7'], ['P2', '1', '3', '4', '3', '0'], ['P3', '2', '3', '8', '6', '3'], ['P4', '4', '1', '5', '1', '0']]),
       'Average TAT = 22 / 4 = **5.5**. Average WT = 10 / 4 = **2.5**. SRTF does better because short jobs never wait behind P1.',

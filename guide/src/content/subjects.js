@@ -16,13 +16,6 @@ const list = [
     load: () => import('./os/index.js'),
   },
   {
-    id: 'cn', short: 'CN', code: '22ITC10N', name: 'Computer Networks',
-    exam: '2026-11-17',
-    blurb: 'How packets find their way, and how apps talk.',
-    accent: 'var(--green)', tint: 'var(--mint)', materialDir: 'Material/CN',
-    load: () => import('./cn/index.js'),
-  },
-  {
     id: 'fds', short: 'FDS', code: '22CSC59', name: 'Fundamentals of Data Science',
     exam: '2026-11-28',
     blurb: 'pandas, cleaning, testing ideas, and machine learning.',

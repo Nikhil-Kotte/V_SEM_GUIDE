@@ -17,7 +17,7 @@ describe('exam dates', () => {
     expect(examCountdown('2026-11-17', at('2026-11-17T14:00:00+05:30'))).toBe('exam over')
   })
   it('lists the subjects in exam order', () => {
-    expect(subjects.map((s) => s.id)).toEqual(['cn', 'os', 'se', 'fds', 'bda', 'pdt'])
+    expect(subjects.map((s) => s.id)).toEqual(['os', 'se', 'fds', 'bda', 'pdt'])
     expect(subjects.every((s) => /^2026-1[12]-\d\d$/.test(s.exam))).toBe(true)
   })
 })

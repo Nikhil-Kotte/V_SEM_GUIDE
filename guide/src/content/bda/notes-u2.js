@@ -1,8 +1,10 @@
-// Big Data Analytics, Unit II (Hadoop ecosystem) and the MapReduce half of Unit III. Keys are syllabus ids.
+// Big Data Analytics, Unit II: Hadoop, HDFS and data ingestion.
+// Follows the BDA unit slides.
 export default {
   'bda.u2.need-hadoop': {
     oneLine: 'Hadoop is needed because one machine cannot store or process big data; Hadoop spreads both storage and processing across many cheap machines and survives their failures.',
     blocks: [
+      { def: "Apache Hadoop", text: "An **open-source framework for distributed storage and processing of very large data sets across clusters of commodity computers** using simple programming models. It scales from one server to thousands, each offering local storage and computation, and handles failures in software (Doug Cutting, based on Google's GFS and MapReduce papers)." },
       { compare: [
         { title: 'Problem with one big server', items: ['Disk too small, too slow to read terabytes', 'Very expensive to scale up', 'One failure stops everything'] },
         { title: 'What Hadoop does', items: ['Splits data across many machines (HDFS)', 'Runs processing where the data is (MapReduce)', 'Copies data so failures do not lose it'] },
@@ -15,10 +17,10 @@ export default {
     exam: 'Explain why one server is not enough, how Hadoop solves it, and draw the Hadoop stack with its main tools.',
     revise: ['Distribute storage and processing', 'HDFS, YARN, MapReduce + tools'],
   },
-
   'bda.u2.design-principles': {
     oneLine: 'Hadoop is built on a few principles: move computation to the data, scale out with cheap machines, expect failures and replicate, write once and read many times.',
     blocks: [
+      { def: "Hadoop design principles", text: "The ideas behind Hadoop: **move computation to the data** (data locality), **scale out on commodity hardware**, **assume failures and handle them in software** (replication, task re-execution), **write once, read many**, and simple programming abstractions (map and reduce) hiding distribution." },
       { ul: [
         '**Data locality**: send the small program to where the big data is, not the data to the program.',
         '**Scale out**: add more commodity machines instead of buying a bigger one.',
@@ -32,10 +34,10 @@ export default {
     exam: 'List and explain the design principles with one line each.',
     revise: ['Data locality, scale out, fault tolerance, write once read many'],
   },
-
   'bda.u2.vs-rdbms': {
     oneLine: 'An RDBMS suits structured data with frequent updates and fast queries; Hadoop suits huge volumes of any data, written once and analysed in large batches.',
     blocks: [
+      { def: "Hadoop vs RDBMS", text: "An **RDBMS** stores structured data with a fixed schema (schema-on-write) and is optimised for transactions and interactive SQL on gigabytes; **Hadoop** stores any type of data with schema-on-read and is optimised for batch processing of terabytes to petabytes on clusters of commodity machines." },
       { table: { head: ['', 'RDBMS / SQL', 'Hadoop'], rows: [
         ['Data', 'Structured', 'Structured, semi-structured, unstructured'],
         ['Schema', 'On write (fixed before loading)', 'On read'],
@@ -52,10 +54,11 @@ export default {
     exam: 'Give the RDBMS vs Hadoop table, and the HDFS vs traditional file system table if asked.',
     revise: ['RDBMS: structured, updates, fast queries', 'Hadoop: any data, batch, scale out'],
   },
-
   'bda.u2.core-components': {
     oneLine: 'Hadoop\'s core is HDFS for storage, YARN for resource management, MapReduce for processing and Hadoop Common for shared libraries.',
     blocks: [
+      { def: "Hadoop core components", text: "**HDFS** (Hadoop Distributed File System: distributed, fault-tolerant storage), **YARN** (Yet Another Resource Negotiator: cluster resource management and job scheduling), **MapReduce** (programming model for parallel processing) and **Hadoop Common** (shared libraries and utilities)." },
+      { def: "HDFS", text: "A **distributed file system** designed to store very large files across many commodity machines with high throughput and fault tolerance: files are split into large **blocks (128 MB)** that are **replicated (default 3)** across DataNodes; a **NameNode** keeps the metadata." },
       { tree: { root: 'Hadoop core', kids: ['HDFS: distributed storage', 'YARN: resource management and scheduling', 'MapReduce: distributed processing', 'Hadoop Common: shared utilities'] } },
       { h: 'HDFS components' },
       { table: { head: ['Component', 'Role'], rows: [
@@ -70,24 +73,28 @@ export default {
     exam: 'List the four core components with one line each, then explain NameNode, DataNode and Secondary NameNode.',
     revise: ['HDFS, YARN, MapReduce, Common', 'NameNode = metadata; DataNode = blocks'],
   },
-
   'bda.u2.architecture': {
     oneLine: 'Hadoop uses a master-worker architecture: the NameNode and ResourceManager are masters, while each worker node runs a DataNode (storage) and a NodeManager (processing).',
     blocks: [
+      { def: "Hadoop architecture", text: "A **master–slave architecture**: the storage layer (HDFS) has a **NameNode** (master, metadata) and **DataNodes** (slaves, blocks); the processing/resource layer (YARN) has a **ResourceManager** (master) and **NodeManagers** (slaves) that run containers for MapReduce or other applications." },
+      {"img": "bda-hadoop-stack"},
+      {"img": "bda-hdfs-arch"},
       { stack: ['Master: NameNode (HDFS) + ResourceManager (YARN)', 'Worker 1: DataNode + NodeManager', 'Worker 2: DataNode + NodeManager', 'Worker n: DataNode + NodeManager'], label: 'Hadoop cluster' },
       { h: 'HDFS architecture' },
       { ul: ['Files are split into **128 MB blocks**.', 'Each block is **replicated** (default 3) on different DataNodes, ideally on different racks (**rack awareness**).', 'Clients ask the NameNode **where** blocks are, then read and write data **directly** with DataNodes.', 'DataNodes send heartbeats every 3 seconds; if one goes silent, its blocks are re-replicated.'] },
       { h: 'Block replication (fault tolerance)' },
       'Default placement: first replica on the writer\'s node, second on a node in a different rack, third on another node in that second rack. A rack failure then cannot destroy all copies.',
+      {"h": "Hadoop framework architecture (Class Test I, question 6b)"},
+      {"ul": ["**HDFS layer**: NameNode (namespace and block map), Secondary NameNode (checkpoints), DataNodes (store and serve blocks, send heartbeats and block reports); 128 MB blocks replicated 3 times, rack-aware placement.", "**YARN layer**: ResourceManager (cluster-wide scheduler), NodeManager on every node (launches and monitors containers), ApplicationMaster per job (negotiates resources, tracks tasks).", "**Processing**: MapReduce (and Spark, Tez) jobs run as YARN applications close to their data (data locality).", "**Hadoop Common**: Java libraries and utilities used by all modules."]},
     ],
     terms: [['Rack awareness', 'Placing replicas on different racks to survive a rack failure.'], ['Heartbeat', 'A periodic "I am alive" message from a DataNode to the NameNode.']],
     exam: 'Draw the master-worker cluster and the HDFS architecture (client, NameNode, DataNodes, replicated blocks), and explain replica placement.',
     revise: ['128 MB blocks, 3 replicas', 'Rack-aware placement', 'Client gets locations from NameNode, data from DataNodes'],
   },
-
   'bda.u2.h1-vs-h2': {
     oneLine: 'Hadoop 2 split Hadoop 1\'s overloaded JobTracker into YARN (ResourceManager plus per-application ApplicationMaster), removing the bottleneck and letting engines other than MapReduce run.',
     blocks: [
+      { def: "Hadoop 1 vs Hadoop 2", text: "**Hadoop 1** combined resource management and processing in MapReduce (JobTracker/TaskTracker, single NameNode, fixed map/reduce slots, ~4,000 nodes). **Hadoop 2** introduced **YARN** to separate resource management from processing, plus NameNode **High Availability** and **Federation**, supporting many processing engines and ~10,000+ nodes." },
       { table: { head: ['', 'Hadoop 1', 'Hadoop 2'], rows: [
         ['Components', 'HDFS + MapReduce', 'HDFS + YARN + MapReduce'],
         ['Resource management', 'JobTracker (also schedules tasks)', 'ResourceManager + ApplicationMaster'],
@@ -101,10 +108,11 @@ export default {
     exam: 'Give the Hadoop 1 vs Hadoop 2 table and explain why YARN was introduced.',
     revise: ['H1: JobTracker, slots, MR only', 'H2: YARN, containers, many engines, HA'],
   },
-
   'bda.u2.hdfs-ops': {
     oneLine: 'HDFS operations are file read and write (the client talks to the NameNode for locations and to DataNodes for data) and shell commands such as hdfs dfs -put, -get, -ls and -cat.',
     blocks: [
+      { def: "HDFS operations", text: "Reading and writing files in HDFS: on a **read**, the client gets block locations from the NameNode and streams blocks directly from the nearest DataNodes; on a **write**, the NameNode allocates blocks and the client writes through a **pipeline** of replica DataNodes. Users manage files with the **hdfs dfs** (hadoop fs) shell commands." },
+      {"img": "bda-hdfs-read"},
       { h: 'Anatomy of a file write' },
       { flow: ['Client asks NameNode to create the file', 'NameNode checks permissions, picks DataNodes', 'Client streams the block to DataNode 1', 'DN1 forwards to DN2, DN2 to DN3 (pipeline)', 'ACKs flow back', 'Client tells NameNode the file is complete'] },
       { h: 'Anatomy of a file read' },
@@ -120,15 +128,17 @@ export default {
         ['hdfs dfs -touchz /data/empty.txt', 'Create an empty (zero-length) file'],
         ['hdfs dfs -setrep 2 /data/in/local.txt', 'Change the replication factor'],
       ] } },
+      {"h": "Commonly used HDFS commands (Class Test I, question 7b)"},
+      {"table": {"head": ["Command", "Syntax", "Purpose"], "rows": [["mkdir", "hdfs dfs -mkdir /user/data", "Create a directory"], ["ls", "hdfs dfs -ls /user/data", "List files and directories"], ["put / copyFromLocal", "hdfs dfs -put marks.csv /user/data", "Copy a local file into HDFS"], ["get / copyToLocal", "hdfs dfs -get /user/data/marks.csv .", "Copy an HDFS file to the local system"], ["cat", "hdfs dfs -cat /user/data/marks.csv", "Display file contents"], ["cp / mv", "hdfs dfs -cp /a /b ; hdfs dfs -mv /a /b", "Copy / move within HDFS"], ["rm", "hdfs dfs -rm [-r] /user/data/old", "Delete a file (or directory)"], ["touchz", "hdfs dfs -touchz /user/data/empty.txt", "Create an empty file"], ["du / df", "hdfs dfs -du -h /user/data", "Disk usage / free space"], ["setrep", "hdfs dfs -setrep 2 /user/data/marks.csv", "Change the replication factor"]]}},
     ],
     terms: [['Write pipeline', 'DataNodes forward a block to each other to make the replicas.'], ['touchz', 'HDFS command that creates a zero-length file.']],
     exam: 'Draw the read and write data flows step by step, then list five HDFS commands with syntax and purpose.',
     revise: ['Write: NameNode picks nodes, pipeline of DataNodes', 'Read: locations from NameNode, data from nearest DataNode', '-put, -get, -ls, -cat, -rm, -touchz'],
   },
-
   'bda.u2.ingestion-layer': {
     oneLine: 'The data ingestion layer brings data from source systems into the big data platform, handling different formats, speeds and volumes reliably.',
     blocks: [
+      { def: "Data ingestion layer", text: "The first layer of a big data architecture that **imports data from diverse sources into the storage/processing layers**, in **batch** (periodic bulk loads) or **real time** (streaming), while handling formats, validation, prioritisation and routing." },
       { flow: ['Sources (DBs, logs, sensors, APIs)', 'Ingestion layer (collect, validate, route)', 'Storage (HDFS, HBase, data lake)', 'Processing'] },
       { ul: ['**Collects** data from many sources.', '**Validates** and lightly cleans it.', '**Buffers** bursts so the storage is not overwhelmed.', '**Routes** each stream to the right destination.', 'Must be scalable, fault tolerant and secure.'] },
     ],
@@ -136,24 +146,28 @@ export default {
     exam: 'Define the ingestion layer, draw where it sits, and list its responsibilities.',
     revise: ['Collect, validate, buffer, route'],
   },
-
   'bda.u2.etl-elt': {
     oneLine: 'ETL transforms data before loading it into the warehouse; ELT loads raw data first and transforms it inside the big data platform, which suits huge, varied data.',
     blocks: [
+      { def: "ETL (Extract, Transform, Load)", text: "A data-integration approach in which data is **extracted** from sources, **transformed** (cleaned, joined, aggregated, converted) on a separate staging/ETL server, and then **loaded** into a target data warehouse; only processed, structured data reaches the target." },
+      { def: "ELT (Extract, Load, Transform)", text: "An approach in which **raw data is extracted and loaded first** into the target (data lake, Hadoop, cloud warehouse) and **transformed later inside the target** using its processing power (Hive, Spark, SQL), keeping the raw data for future uses." },
+      {"img": "bda-etl-elt"},
       { compare: [
         { title: 'ETL', items: ['Extract → Transform → Load', 'Transform on a separate server', 'Only clean, structured data stored', 'Classic data warehouses'] },
         { title: 'ELT', items: ['Extract → Load → Transform', 'Transform inside the target (Hadoop, cloud)', 'Raw data kept for later use', 'Data lakes, big data'] },
       ] },
       { flow: ['Extract from sources', 'Load raw into HDFS / data lake', 'Transform with Hive, Spark when needed'], label: 'ELT' },
+      {"table": {"head": ["Basis", "ETL", "ELT"], "rows": [["Order", "Extract → Transform → Load", "Extract → Load → Transform"], ["Where transformation happens", "Separate staging/ETL server", "Inside the target system"], ["Data loaded", "Clean, structured data only", "Raw data (all types)"], ["Speed of loading", "Slower (transform first)", "Faster (load immediately)"], ["Target", "Data warehouse", "Data lake, Hadoop, cloud DW"], ["Flexibility", "Fixed schema; re-run to change", "Schema-on-read; transform again any time"], ["Tools", "Informatica, Talend, SSIS", "Hive, Spark, Snowflake, BigQuery"], ["Best for", "Smaller, structured, compliance-heavy data", "Big data, varied data, fast ingestion"]]}},
     ],
     terms: [['ETL', 'Extract, transform, load.'], ['ELT', 'Extract, load, transform.']],
     exam: 'Explain ETL and ELT with a flow each and a comparison table, and say why ELT suits big data.',
     revise: ['ETL: transform first', 'ELT: load first, transform later'],
   },
-
   'bda.u2.ingestion-tools': {
     oneLine: 'Hadoop ingestion tools: Sqoop moves data between relational databases and HDFS, Flume collects log and event streams, and Kafka is a distributed message queue for real-time streams.',
     blocks: [
+      { def: "Data ingestion tools", text: "Tools that move data into Hadoop: **Apache Sqoop** (bulk transfer between relational databases and HDFS/Hive/HBase), **Apache Flume** (collects, aggregates and moves large amounts of log/event data), **Apache Kafka** (distributed publish–subscribe messaging for real-time streams) and **Apache NiFi** (automated data flows)." },
+      {"img": "bda-ingestion"},
       { table: { head: ['Tool', 'Moves', 'Example'], rows: [
         ['Sqoop', 'Bulk data between RDBMS and HDFS/Hive (both ways)', 'sqoop import --connect jdbc:mysql://db/shop --table orders --target-dir /data/orders'],
         ['Flume', 'Streaming logs and events into HDFS (source → channel → sink)', 'Web server logs into HDFS every minute'],
@@ -161,15 +175,17 @@ export default {
         ['NiFi', 'Visual data-flow automation between systems', 'Route sensor data to different stores'],
       ] } },
       { flow: ['Flume source (log)', 'Channel (memory / file)', 'Sink (HDFS)'], label: 'Flume agent' },
+      {"tip": "Class Test I question 2 (2 marks): name Sqoop, Flume and Kafka (and NiFi) with one line each on what they ingest."},
+      {"code": "sqoop import --connect jdbc:mysql://db/college --table students --target-dir /user/data/students -m 1\nflume-ng agent --conf conf --conf-file weblog.conf --name agent1"},
     ],
     terms: [['Sqoop', 'Tool for bulk transfer between relational databases and Hadoop.'], ['Flume', 'Tool for collecting and moving large volumes of log data.'], ['Kafka', 'A distributed publish-subscribe messaging system.']],
     exam: 'Explain Sqoop, Flume and Kafka with what each moves and a one-line example, and draw a Flume agent.',
     revise: ['Sqoop: RDBMS ↔ HDFS', 'Flume: logs', 'Kafka: real-time streams'],
   },
-
   'bda.u2.ingestion-types': {
     oneLine: 'Data is ingested in batches (periodically, in bulk), in real time (continuously as it arrives), or with a lambda architecture that combines both.',
     blocks: [
+      { def: "Types of data ingestion", text: "**Batch ingestion** collects and loads data in scheduled groups (hourly/daily bulk loads, e.g. Sqoop); **real-time (streaming) ingestion** moves each record as it is produced (Kafka, Flume); **lambda/hybrid** architectures combine both." },
       { table: { head: ['Type', 'How', 'Use', 'Tools'], rows: [
         ['Batch', 'Large chunks at set intervals', 'Daily sales reports', 'Sqoop, scheduled jobs'],
         ['Real-time (streaming)', 'Each event as it happens', 'Fraud alerts, live dashboards', 'Kafka, Flume, Spark Streaming'],
@@ -180,91 +196,5 @@ export default {
     terms: [['Batch ingestion', 'Loading data in large groups at intervals.'], ['Streaming ingestion', 'Loading each record as soon as it is produced.'], ['Lambda architecture', 'Combining a batch layer and a real-time layer.']],
     exam: 'Explain batch, real-time and lambda ingestion with uses and tools.',
     revise: ['Batch, streaming, micro-batch, lambda'],
-  },
-
-  'bda.u3.mapreduce-intro': {
-    oneLine: 'MapReduce is Hadoop\'s programming model: map turns input records into key-value pairs, the framework shuffles and sorts them by key, and reduce combines the values for each key.',
-    blocks: [
-      { flow: ['Input splits', 'Map: (k1, v1) → list(k2, v2)', 'Shuffle and sort: group by key', 'Reduce: (k2, list(v2)) → (k3, v3)', 'Output'] },
-      { h: 'Architecture (Hadoop 2)' },
-      { ul: ['The client submits a job to the **ResourceManager**.', 'An **ApplicationMaster** is started for the job; it asks for containers.', 'Map tasks run on NodeManagers near their data (data locality); reduce tasks pull map outputs.', 'An optional **combiner** does a mini-reduce on each mapper\'s output to cut network traffic.', 'A **partitioner** decides which reducer each key goes to (default: hash of key mod number of reducers).'] },
-      { tip: 'The cat command (asked): a map-only job with an identity mapper just copies input to output, like cat; adding a reducer that groups by key is like SQL\'s GROUP BY, and joining two inputs on a key is like SQL\'s JOIN.' },
-    ],
-    terms: [['Map', 'The function that turns each input record into key-value pairs.'], ['Reduce', 'The function that combines all values for a key.'], ['Shuffle', 'Moving and grouping map outputs by key for the reducers.'], ['Partitioner', 'Decides which reducer receives each key.']],
-    exam: 'Define MapReduce, draw the map, shuffle and sort, reduce flow, and explain the roles of combiner and partitioner.',
-    revise: ['Map → shuffle/sort → reduce', 'Combiner = local reduce', 'Partitioner = hash(key) mod R'],
-  },
-
-  'bda.u3.mapreduce-processing': {
-    oneLine: 'Processing data with MapReduce means writing a mapper, a reducer and a driver, packaging them as a JAR and running the job on HDFS input; word count is the standard example.',
-    blocks: [
-      { h: 'Word count' },
-      { flow: ['Input: "deer bear river" / "car car river"', 'Map: (deer,1) (bear,1) (river,1) (car,1) (car,1) (river,1)', 'Shuffle: bear [1], car [1,1], deer [1], river [1,1]', 'Reduce: bear 1, car 2, deer 1, river 2'] },
-      { code: "public void map(LongWritable key, Text value, Context ctx) {\n  for (String w : value.toString().split(\"\\\\s+\"))\n    ctx.write(new Text(w), new IntWritable(1));\n}\npublic void reduce(Text key, Iterable<IntWritable> vals, Context ctx) {\n  int sum = 0;\n  for (IntWritable v : vals) sum += v.get();\n  ctx.write(key, new IntWritable(sum));\n}" },
-      { h: 'Steps to develop and run a MapReduce application' },
-      { steps: ['Write the Mapper, Reducer and Driver classes.', 'Test locally on small data (local mode).', 'Package into a JAR.', 'Put the input in HDFS: hdfs dfs -put input.txt /in', 'Run: hadoop jar wc.jar WordCount /in /out', 'Check the output: hdfs dfs -cat /out/part-r-00000', 'Tune (combiner, number of reducers) and monitor with the web UI.'] },
-      'A job is the whole program; it is split into **tasks** (map tasks and reduce tasks) that run in parallel. Streaming lets mappers and reducers be scripts (Python) instead of Java.',
-      { h: 'Failures in MapReduce' },
-      { ul: ['**Task failure**: a task crashes or hangs; it is retried (up to 4 times) on another node.', '**Node (NodeManager) failure**: its tasks are rescheduled elsewhere.', '**ApplicationMaster failure**: restarted by the ResourceManager.', '**ResourceManager failure**: high availability with a standby.'] },
-    ],
-    terms: [['Driver', 'The class that configures and submits the MapReduce job.'], ['Job', 'A complete MapReduce program run.'], ['Task', 'One map or reduce unit of work within a job.']],
-    exam: 'Trace word count through map, shuffle and reduce with a small input, show the mapper and reducer code, list the development steps, and list the failure types.',
-    revise: ['Mapper, reducer, driver, JAR, hadoop jar', 'Job → map and reduce tasks', 'Failures: task, node, AM, RM'],
-  },
-
-  'bda.u3.io-formats': {
-    oneLine: 'Input formats decide how files are split and read into key-value records (TextInputFormat, KeyValueTextInputFormat, SequenceFileInputFormat); output formats decide how results are written.',
-    blocks: [
-      { table: { head: ['Input format', 'Key', 'Value'], rows: [
-        ['TextInputFormat (default)', 'Byte offset of the line', 'The line'],
-        ['KeyValueTextInputFormat', 'Text before the tab', 'Text after the tab'],
-        ['NLineInputFormat', 'Byte offset', 'Line; each split has N lines'],
-        ['SequenceFileInputFormat', 'Stored key', 'Stored value (binary)'],
-        ['DBInputFormat', 'Record id', 'Row from a database'],
-      ] } },
-      { ul: ['Output formats: TextOutputFormat (default, key TAB value), SequenceFileOutputFormat, MultipleOutputs, DBOutputFormat.', 'MapReduce **types**: keys and values use Writable classes (Text, IntWritable, LongWritable).'] },
-      { h: 'Input splits' },
-      'An **input split** is the chunk of input one map task processes (usually one HDFS block, 128 MB). The **RecordReader** turns a split into records; a line that crosses a block boundary is read completely by the split where it starts.',
-    ],
-    terms: [['InputFormat', 'Defines how input is split and read into records.'], ['Input split', 'The logical chunk of data for one mapper.'], ['RecordReader', 'Turns a split into key-value records.']],
-    exam: 'List the input formats with their key and value, the output formats, and explain input splits and RecordReader.',
-    revise: ['TextInputFormat: (offset, line)', 'Split ≈ block; one mapper per split'],
-  },
-
-  'bda.u3.joins': {
-    oneLine: 'A map-side join joins datasets inside the mappers (fast, but needs sorted, partitioned inputs or one small table in memory); a reduce-side join tags records in the mappers and joins them in the reducers (general but slower).',
-    blocks: [
-      { compare: [
-        { title: 'Map-side join', items: ['Join happens in the mapper', 'One table small enough to cache in memory (distributed cache), or both sorted and partitioned the same way', 'No shuffle needed, so fast'] },
-        { title: 'Reduce-side join', items: ['Mappers emit (join key, tagged record)', 'Shuffle brings matching keys to the same reducer', 'Reducer combines records from both sources', 'Works for any size, but shuffles a lot of data'] },
-      ] },
-      { flow: ['Customers: (101, Ravi)', 'Orders: (101, Book)', 'Map: emit key 101 with tag', 'Reduce: 101 → Ravi, Book'], label: 'Reduce-side join' },
-    ],
-    terms: [['Map-side join', 'Joining in the map phase without a shuffle.'], ['Reduce-side join', 'Joining in the reducers after the shuffle groups matching keys.'], ['Distributed cache', 'A way to copy small files to every node for tasks to use.']],
-    exam: 'Explain both joins with a customers and orders example, and compare their requirements and speed.',
-    revise: ['Map-side: small table cached, fast', 'Reduce-side: tag, shuffle, join; general'],
-  },
-
-  'bda.u3.secondary-sort': {
-    oneLine: 'Secondary sorting makes the values for each key reach the reducer in a chosen order, by putting part of the value into a composite key and using a custom partitioner and grouping comparator.',
-    blocks: [
-      'MapReduce sorts by key, but the **values** for a key arrive in no particular order. To get them sorted (e.g. temperatures per year in order):',
-      { steps: ['Make a **composite key** (natural key + the value to sort on), e.g. (year, temperature).', 'Use a **custom partitioner** on the natural key only, so all records of a year go to one reducer.', 'Use a **sort comparator** that orders by year, then temperature.', 'Use a **grouping comparator** on the natural key, so one reduce call sees the whole year with values in order.'] },
-      'Example: finding the maximum temperature per year becomes trivial: the first value each reducer call sees is the highest.',
-    ],
-    terms: [['Secondary sort', 'Sorting the values for each key, not just the keys.'], ['Composite key', 'A key made of the natural key plus a sort field.'], ['Grouping comparator', 'Decides which keys are grouped into one reduce call.']],
-    exam: 'Explain why values are unsorted, then the four steps (composite key, partitioner, sort comparator, grouping comparator) with the temperature example.',
-    revise: ['Composite key + partitioner + sort comparator + grouping comparator'],
-  },
-
-  'bda.u3.pipelining': {
-    oneLine: 'Complex processing is split into a chain of MapReduce jobs, where each job\'s output in HDFS is the next job\'s input; tools like JobControl and Oozie manage the chain.',
-    blocks: [
-      { flow: ['Job 1: clean the logs', 'HDFS', 'Job 2: count visits per page', 'HDFS', 'Job 3: find the top 10 pages'] },
-      { ul: ['**ChainMapper / ChainReducer**: several mappers run one after another inside one job (map+ / reduce / map*).', '**JobControl**: runs jobs in order of their dependencies.', '**Apache Oozie**: a workflow scheduler for Hadoop jobs defined as a DAG.', 'Drawback: every job writes to and reads from disk, which is slow; Spark keeps intermediate data in memory instead.'] },
-    ],
-    terms: [['Job chaining', 'Running several MapReduce jobs in sequence.'], ['Oozie', 'A workflow scheduler for Hadoop jobs.'], ['ChainMapper', 'Runs several mapper classes in one map task.']],
-    exam: 'Explain why jobs are pipelined, draw a three-job chain, and name ChainMapper, JobControl and Oozie.',
-    revise: ['Output of one job = input of the next', 'ChainMapper, JobControl, Oozie'],
   },
 }

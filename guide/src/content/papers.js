@@ -19,6 +19,8 @@ const P = (id, subject, date, label, source, course, relation = 'same', note) =>
 
 export const papers = [
   // ---------- Software Engineering ----------
+  P('se-ct2', 'se', '2026-11', "Class Test II, Nov '26", 'PYQs/SE MIDS.pdf', '22CSC21N', 'mid'),
+  P('se-ct1', 'se', '2026-09', "Class Test I, Sep '26", 'PYQs/SE MIDS.pdf', '22CSC21N', 'mid'),
   P('se-nov25', 'se', '2025-11', "Nov '25", 'PYQs/2025-26/Software Engineering 22CSC21.pdf', '22CSC21'),
   P('se-may25', 'se', '2025-05', "May '25", BANK.se, '22CSC21'),
   P('se-dec24', 'se', '2024-12', "Dec '24", 'PYQs/2024-25/22CSC21 Software engineering.pdf', '22CSC21'),
@@ -51,11 +53,15 @@ export const papers = [
 
   // ---------- Fundamentals of Data Science ----------
   // 22CSC59 is a new course with no past papers yet. The closest is 22ADC09 (R-based).
+  P('fds-ct2', 'fds', '2026-11', "Class Test II, Nov '26", 'PYQs/FDS MIDS.pdf', '22CSC59', 'mid'),
+  P('fds-ct1', 'fds', '2026-09', "Class Test I, Sep '26", 'PYQs/FDS MIDS.pdf', '22CSC59', 'mid'),
   P('fds-ids-dec24', 'fds', '2024-12', "Dec '24 (22ADC09 Intro to DS)", 'PYQs/2024-25/22ADC09 Introduction to Data Science.pdf', '22ADC09', 'related',
     'Different course (R-based). Questions are adapted to Python.'),
 
   // ---------- Big Data Analytics ----------
   // Past papers are 22ADE12/20ADC14, whose units differ from 22CSE19. Only in-syllabus questions are kept.
+  P('bda-ct2', 'bda', '2026-11', "Class Test II, Nov '26", 'PYQs/BDA MIDS.pdf', '22CSE19', 'mid'),
+  P('bda-ct1', 'bda', '2026-09', "Class Test I, Sep '26", 'PYQs/BDA MIDS.pdf', '22CSC19', 'mid'),
   P('bda-may26', 'bda', '2026-05', "May '26", BANK.bda, '22ADE12'),
   P('bda-nov25', 'bda', '2025-11', "Nov '25", 'PYQs/2025-26/Big Data Analytics 22ADE12.pdf', '22ADE12'),
   P('bda-dec24', 'bda', '2024-12', "Dec '24", 'PYQs/2024-25/22ADE12 Big Data Analytics.pdf', '22ADE12'),
@@ -67,6 +73,8 @@ export const papers = [
   P('bda-dec22cse', 'bda', '2022-12', "Dec '22 (CSE)", BANK.bda, '20ADC14'),
 
   // ---------- Principles of Design Thinking ----------
+  P('pdt-ct2', 'pdt', '2026-11', "Class Test II, Nov '26", 'PYQs/PDT MIDS.pdf', '22MEO01', 'mid'),
+  P('pdt-ct1', 'pdt', '2026-09', "Class Test I, Sep '26", 'PYQs/PDT MIDS.pdf', '22MEO01', 'mid'),
   P('pdt-may26', 'pdt', '2026-05', "May '26 (22MEC36)", 'PYQs/2025-26/New Doc 08-31-2026 15.21.pdf', '22MEC36',
     'same', 'Fundamentals of Design Thinking, the sister course with the same syllabus phases.'),
   P('pdt-dec25', 'pdt', '2025-12', "Dec '25", 'PYQs/2025-26/Principles of Design Thinking 22MEO01.pdf', '22MEO01'),

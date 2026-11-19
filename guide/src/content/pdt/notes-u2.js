@@ -1,0 +1,112 @@
+// Principles of Design Thinking, Unit II: empathize.
+// Follows the PDT unit slides and notes.
+export default {
+  'pdt.u2.user-needs': {
+    oneLine: 'Every user has unique needs shaped by their situation; designers uncover both stated needs and the deeper, unspoken (latent) ones by watching and listening.',
+    blocks: [
+      { def: "User needs", text: "The **goals, problems, motivations and desires** that users have when they interact with a product or service. Needs can be **explicit** (stated) or **latent** (unspoken, discovered through observation); design thinking aims to uncover both." },
+      { compare: [
+        { title: 'Explicit (stated) needs', items: ['What users say they want', '"I want a cheaper phone"'] },
+        { title: 'Latent (hidden) needs', items: ['What users need but do not say', '"I am afraid of losing my contacts if I switch"'] },
+      ] },
+      { ul: ['Needs depend on context: age, ability, culture, income, place.', 'Users often cannot describe their needs; watch what they **do**, not only what they **say**.', 'Look for **workarounds** (taped notes, home-made fixes): they reveal unmet needs.'] },
+    ],
+    terms: [['Latent need', 'A need the user has but does not express or even realise.'], ['Workaround', 'A user\'s own fix for a problem a product does not solve.']],
+    exam: 'Differentiate explicit and latent needs with examples, and explain how designers uncover unique needs.',
+    revise: ['Say vs do', 'Workarounds reveal hidden needs'],
+  },
+  'pdt.u2.empathize': {
+    oneLine: 'Empathizing means understanding users\' experiences and feelings from their point of view, by observing, engaging and immersing yourself in their world.',
+    blocks: [
+      { def: "Empathy", text: "The ability to **understand and share the feelings, thoughts and experiences of another person** from their point of view. In design thinking, empathy means setting aside your own assumptions to gain real insight into users and their needs." },
+      { def: "Empathize phase", text: "The first stage of design thinking, in which the team **observes, engages with and immerses itself in the users' experiences** to understand their needs, motivations and pain points." },
+      {"img": "pdt-empathy-sympathy"},
+      { compare: [
+        { title: 'Empathy', items: ['Feeling with someone', 'Understanding their view from inside', '"I see why this is hard for you"'] },
+        { title: 'Sympathy', items: ['Feeling for someone', 'Pity from outside', '"I feel sorry for you"'] },
+      ] },
+      { tree: { root: 'Empathize by', kids: ['Observe: watch users in their setting', 'Engage: interview and talk', 'Immerse: experience it yourself'] } },
+      { h: 'Key outputs of the Empathize phase (asked)' },
+      { ul: ['Interview notes, photos and recordings.', 'Observations and quotes.', 'Insights about needs and pain points.', 'Empathy maps and user journey maps.', 'Material for personas in the Define phase.'] },
+      { tip: 'Empathy is necessary but not sufficient (asked): it gives understanding, but you still need a sharp problem definition, ideas and testing to meet the needs.' },
+      {"table": {"head": ["Empathy", "Sympathy"], "rows": [["Feeling **with** someone: understanding from their perspective", "Feeling **for** someone: pity or concern from your own perspective"], ["Puts you in their shoes", "Keeps you at a distance"], ["Builds connection and insight; leads to action", "Can feel patronising; rarely leads to understanding"], ["\"It sounds really hard; tell me more about it.\"", "\"Oh, I feel so sorry for you.\""]]}},
+      {"tip": "Class Test I question 2 (2 marks): \"Differentiate between empathy and sympathy.\" Give the two definitions and two or three rows of the table."},
+    ],
+    terms: [['Empathy', 'Understanding and sharing another person\'s feelings and perspective.'], ['Pain point', 'A specific problem that frustrates the user.']],
+    exam: 'Define empathy, contrast it with sympathy, explain observe, engage and immerse, and list the outputs of the phase.',
+    revise: ['Observe, engage, immerse', 'Empathy ≠ sympathy'],
+  },
+  'pdt.u2.steps': {
+    oneLine: 'The empathize phase follows steps: decide whom to study, prepare questions, observe and interview users, immerse yourself, and record and share what you learn.',
+    blocks: [
+      { def: "Steps in the empathize phase", text: "The activities that build empathy: **observe** users in their context, **engage** with them (interviews, conversations), **immerse** yourself in their experience, and **document and synthesise** what you learn (empathy maps, journey maps)." },
+      { flow: ['Identify the users', 'Prepare (questions, consent, tools)', 'Observe in context', 'Interview (ask "why?")', 'Immerse / experience it', 'Capture and share insights'] },
+      { h: 'Example: street vendors (asked)' },
+      { ul: ['**Users**: vegetable and food vendors near the college.', '**Observe**: when they set up, how they handle rain, cash and change, waste.', '**Interview**: "What is the hardest part of your day? Why?"', '**Immerse**: spend a morning helping one vendor.', '**Insights**: no shade in rain, difficulty with digital payments, eviction fear.', 'These lead to a **Define** statement and ideas such as foldable shade carts or simple UPI QR stands.'] },
+      {"h": "Applying design thinking to street vendors' challenges (Class Test I, question 6a)"},
+      {"steps": ["**Empathize**: spend time with vendors at markets and roadsides; observe a full day; interview them about income, weather, space, permissions, payments, wastage, police/municipal issues; try selling yourself for an hour.", "**Define**: synthesise insights into a POV, e.g. \"A vegetable vendor needs a way to keep produce fresh and accept digital payments because spoilage and lack of change reduce daily income.\"", "**Ideate**: brainstorm solutions: low-cost solar-powered cooling carts, shared storage, UPI QR stickers with voice confirmation, an app for vending-zone information and permits, group buying from wholesalers.", "**Prototype**: build a cardboard model of the cooled cart, a paper version of the app, a laminated QR kit.", "**Test**: give prototypes to a few vendors for a week; measure spoilage, sales and ease of use; collect feedback.", "**Iterate**: refine (lighter cart, local-language app) and scale with municipal or NGO support."]},
+    ],
+    terms: [['Contextual inquiry', 'Interviewing users while they do their work in their own setting.']],
+    exam: 'List the steps in order with one line each and apply them to the example given in the question.',
+    revise: ['Identify, prepare, observe, interview, immerse, capture'],
+  },
+  'pdt.u2.developing-empathy': {
+    oneLine: 'Empathy is developed by listening actively, setting aside your assumptions, asking open questions, observing closely and spending time in the users\' world.',
+    blocks: [
+      { def: "Developing empathy", text: "Deliberately building an understanding of users by **listening actively, observing without judgement, asking open-ended \"why\" questions, immersing in their environment and suspending one's own assumptions** (a beginner's mindset)." },
+      { tree: { root: 'Developing empathy', kids: ['Listen more than you talk', 'Ask open "why?" questions', 'Drop assumptions and judgement', 'Observe body language and context', 'Experience their situation'] } },
+      { ul: ['Use **immersive or experiential learning**: try the task yourself (use a wheelchair for a day, cook in a small kitchen).', 'Follow "show me" rather than "tell me".', 'Notice contradictions between what users say and what they do.'] },
+      { h: 'Importance of empathy (asked)' },
+      'Without empathy, designers solve their own idea of the problem. With it, they discover real needs, build trust, and create solutions people adopt. Example: designers who spent nights in hospital wards learned that patients most needed rest from noise and light, not new gadgets.',
+    ],
+    terms: [['Active listening', 'Fully concentrating on, understanding and responding to the speaker.'], ['Experiential learning', 'Learning by doing and experiencing.']],
+    exam: 'Explain the ways to develop empathy, the role of immersive learning, and why empathy is important, with an example.',
+    revise: ['Listen, ask why, drop assumptions, observe, experience'],
+  },
+  'pdt.u2.beginners-mind': {
+    oneLine: 'A beginner\'s mindset means approaching users as if you know nothing: no assumptions, lots of curiosity, and asking "what?" and "why?" again and again.',
+    blocks: [
+      { def: "Beginner's mindset", text: "Approaching a problem **as if seeing it for the first time**, setting aside prior knowledge, assumptions and expertise, with curiosity and openness, so that real user needs are noticed rather than filtered through what we think we already know." },
+      { flow: ['What is happening?', 'Why is it happening?', 'Why does that matter?', 'Real need found'] },
+      { ul: ['Do not judge; observe and accept what you see.', 'Question everything, even "obvious" things.', 'Be curious like a child.', 'Listen to understand, not to reply.', 'Use the **5 Whys**: keep asking why to reach the root cause.'] },
+      { h: 'Why it matters' },
+      'Experts carry assumptions that hide what users really do. A beginner\'s mind notices details experts skip, which is where new ideas come from.',
+    ],
+    terms: [['Beginner\'s mindset', 'Approaching a situation with openness and curiosity, without preconceptions.'], ['5 Whys', 'Asking "why?" repeatedly to reach the root cause.']],
+    exam: 'Define the beginner\'s mindset, give its habits, show the what/why chain or 5 Whys, and explain why it helps empathy.',
+    revise: ['No assumptions, curious, ask what and why'],
+  },
+  'pdt.u2.immersion': {
+    oneLine: 'An immersion activity puts the designer into the user\'s world to experience it first-hand: plan it, go there, take part, observe, reflect and record.',
+    blocks: [
+      { def: "Immersion", text: "An empathy technique in which the designer **personally experiences the user's environment and activities first-hand** (living, working or travelling as the user does) to gain deep, intuitive understanding beyond what interviews reveal." },
+      {"img": "pdt-immersion"},
+      { flow: ['Plan: choose the user group and setting', 'Get permission and prepare', 'Go and take part in the activity', 'Observe and note feelings and problems', 'Reflect and discuss as a team', 'Record insights'] },
+      { ul: ['Example: to design for visually impaired students, spend a day blindfolded using the college campus.', 'Example: to redesign a bus service, travel the route at rush hour.', 'Keep a journal, photos (with consent) and quotes.'] },
+      {"h": "Steps in an immersion activity (Class Test I, question 7a)"},
+      {"steps": ["**Plan**: define the goal and questions, select the users and context (e.g. a day in the life of a farmer), get permission and fix time and place.", "**Prepare**: adopt a beginner's mindset, set aside assumptions; prepare a notebook, camera and a discussion guide.", "**Immerse**: enter the user's environment and **do what they do**: follow their routine, use their tools, face their constraints.", "**Observe**: watch actions, workarounds, emotions and pain points; note what people do, not only what they say.", "**Engage**: talk informally, ask open-ended \"why\" questions, listen actively.", "**Record**: capture notes, photos, sketches, quotes and your own feelings in a journal.", "**Reflect and synthesise**: discuss with the team, identify insights and needs, and build empathy maps and personas for the Define phase."]},
+      {"example": "Designing for wheelchair users: the team spends a day moving around the campus in wheelchairs and discovers that ramps are too steep and lift buttons are out of reach, insights no survey had revealed."},
+    ],
+    terms: [['Immersion', 'Experiencing the user\'s environment and tasks yourself.']],
+    exam: 'List the steps of an immersion activity and give an example of applying them.',
+    revise: ['Plan, permission, take part, observe, reflect, record'],
+  },
+  'pdt.u2.bodystorming': {
+    oneLine: 'Bodystorming means physically acting out a situation or a solution with props, so the team feels how users would experience it and spots problems early.',
+    blocks: [
+      { def: "Bodystorming", text: "An empathy and ideation technique in which designers **physically act out a situation or use a product in a real or simulated environment**, using their bodies to experience interactions, emotions and problems, rather than only discussing them (brainstorming with the body)." },
+      { flow: ['Set up the space with simple props', 'Team members play users and staff', 'Act out the scenario', 'Notice problems and feelings', 'Change the idea and act again'] },
+      { h: 'Example' },
+      'To design a hospital check-in, the team turns a classroom into a reception: one person plays a patient on crutches, another the receptionist. Acting it out shows the counter is too high and there is nowhere to rest the crutches, problems nobody saw on paper.',
+      { compare: [
+        { title: 'Brainstorming', items: ['Ideas by talking and writing', 'Sitting at a table'] },
+        { title: 'Bodystorming', items: ['Ideas by acting and moving', 'In a physical space, with props'] },
+      ] },
+      {"example": "Designing a better airline check-in: the team sets up chairs as a mini airport, and members play travellers with heavy bags, a family with children and an elderly passenger. Acting it out reveals that the kiosk screen is too high, the bag-drop is far from the kiosks, and queues block the path, which leads to new design ideas."},
+      {"ul": ["**Steps**: set up the environment (real or mock), assign roles, act out the scenario, observe and record, discuss insights, try variations.", "**Benefits**: reveals physical and emotional aspects of the experience, generates ideas quickly, builds empathy, needs no expensive prototype."]},
+    ],
+    terms: [['Bodystorming', 'Physically enacting a scenario to empathize and generate ideas.'], ['Role-play', 'Acting as a user or another person to understand their experience.']],
+    exam: 'Define bodystorming, give its steps, a worked example, and compare it with brainstorming.',
+    revise: ['Act it out with props', 'Feel the experience, find problems early'],
+  },
+}

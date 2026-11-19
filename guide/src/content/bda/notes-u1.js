@@ -1,8 +1,10 @@
-// Big Data Analytics, Unit I: introduction to big data. Keys are syllabus ids.
+// Big Data Analytics, Unit I: introduction to big data.
+// Follows the BDA unit slides.
 export default {
   'bda.u1.data-types': {
     oneLine: 'Data comes in three shapes: structured (fixed tables), semi-structured (tagged, like JSON and XML) and unstructured (text, images, video), and big data is mostly the last two.',
     blocks: [
+      { def: "Types of digital data", text: "Digital data is classified by its organisation into **structured** (fixed schema in rows and columns: RDBMS tables, spreadsheets), **semi-structured** (self-describing tags or keys without a rigid schema: XML, JSON, e-mail, logs) and **unstructured** (no predefined model: text documents, images, audio, video, social-media posts), which forms about 80% of enterprise data." },
       { table: { head: ['Type', 'Structure', 'Examples', 'Stored in'], rows: [
         ['Structured', 'Fixed schema of rows and columns', 'Bank transactions, student records', 'RDBMS (MySQL, Oracle)'],
         ['Semi-structured', 'Self-describing tags or keys, no fixed table', 'JSON, XML, CSV logs, e-mail', 'NoSQL (MongoDB), HDFS files'],
@@ -10,15 +12,17 @@ export default {
       ] } },
       'Around **80%** of today\'s data is unstructured; traditional databases handle only the structured part well, which is one reason big data tools exist.',
       { code: '{ "id": 101, "name": "Ravi", "skills": ["Python", "SQL"] }   // semi-structured JSON' },
+      {"table": {"head": ["Type", "Characteristics", "Examples", "Stored / processed with"], "rows": [["**Structured**", "Predefined schema; rows and columns; easy to query", "Bank transactions, student records, sales tables", "RDBMS, SQL, data warehouses"], ["**Semi-structured**", "Tags/markers give partial structure; schema is flexible", "XML, JSON, CSV, e-mail headers, web server logs", "NoSQL (MongoDB), Hive with SerDes, parsers"], ["**Unstructured**", "No fixed format; hard to search and analyse", "Text, PDFs, images, audio, video, tweets", "HDFS, data lakes, NLP, computer vision, Spark"]]}},
+      {"tip": "Class Test I question 4(b) (3 marks): \"Explain the various data types with examples.\" The table above plus one line on why unstructured data dominates is the full answer."},
     ],
     terms: [['Structured data', 'Data in a fixed schema of rows and columns.'], ['Semi-structured data', 'Data with tags or keys but no rigid schema.'], ['Unstructured data', 'Data with no predefined format.']],
     exam: 'Define the three types with two examples each, show where each is stored, and say which share of big data each forms.',
     revise: ['Structured: tables', 'Semi: JSON, XML', 'Unstructured: text, images, video'],
   },
-
   'bda.u1.sources': {
     oneLine: 'Big data comes from social media, sensors and IoT, machine logs, transactions, mobile devices, scientific instruments and public records.',
     blocks: [
+      { def: "Sources of big data", text: "The origins of the huge, fast, varied data sets: **social media** (posts, likes), **machine/sensor and IoT data**, **transactional data** (banking, e-commerce), **web and clickstream logs**, **mobile and GPS data**, **public/open data**, **scientific instruments** and **multimedia**." },
       { table: { head: ['Source', 'Real-world use case'], rows: [
         ['Social media (posts, likes)', 'Brand sentiment analysis, trend detection'],
         ['Sensors and IoT (smart meters, wearables)', 'Predictive maintenance, health monitoring'],
@@ -34,10 +38,10 @@ export default {
     exam: 'List at least five sources of big data and give one real-world use case for each in a table.',
     revise: ['People, machines, businesses', 'Social, sensors, logs, transactions, mobile, science, public'],
   },
-
   'bda.u1.evolution': {
     oneLine: 'Big data is data so large, fast or varied that traditional databases cannot store and process it in reasonable time; it grew from files to RDBMS to data warehouses to distributed systems like Hadoop.',
     blocks: [
+      { def: "Evolution of big data", text: "The progression from **small, structured data managed in files and relational databases** (1970s–90s), through **data warehouses and BI** (1990s–2000s), to **massive, fast, varied web, social and sensor data** (2005 onwards) that needed new, distributed technologies such as Hadoop, NoSQL and Spark." },
       { flow: ['File systems (1960s)', 'Relational databases (1970s–80s)', 'Data warehouses and BI (1990s)', 'Web scale data, Google GFS and MapReduce (2003–04)', 'Hadoop, NoSQL, Spark (2006 onward)', 'Cloud and real-time big data'] },
       { h: 'Definition' },
       'Gartner: "Big data is **high-volume, high-velocity and/or high-variety** information assets that demand cost-effective, innovative forms of information processing for enhanced insight and decision making."',
@@ -55,10 +59,11 @@ export default {
     exam: 'Give the Gartner definition, a short timeline of evolution, and the traditional vs big data comparison table.',
     revise: ['Volume, velocity, variety', 'Files → RDBMS → warehouse → Hadoop → Spark'],
   },
-
   'bda.u1.characteristics': {
     oneLine: 'Big data is described by its Vs: Volume (how much), Velocity (how fast), Variety (how many kinds), plus Veracity (how trustworthy) and Value (how useful).',
     blocks: [
+      { def: "Big data", text: "Data sets whose **volume, velocity and variety** exceed the capacity of conventional database tools to capture, store, manage and analyse them within a tolerable time; they need new forms of processing to enable enhanced insight and decision making (Gartner: \"high-volume, high-velocity and high-variety information assets\")." },
+      {"img": "bda-vs"},
       { table: { head: ['V', 'Meaning', 'Example'], rows: [
         ['Volume', 'Huge amounts of data', 'Facebook stores petabytes of photos'],
         ['Velocity', 'Speed of creation and processing', 'Stock ticks every millisecond, live tweets'],
@@ -68,15 +73,18 @@ export default {
       ] } },
       { tip: 'Significance of **veracity** (asked): decisions are only as good as the data. If data is biased, incomplete or noisy, analysis gives wrong answers, so big data projects must clean, validate and track the source of data.' },
       'Some books add **Variability** (meaning and flow change over time) and **Visualisation**.',
+      {"h": "Challenges of managing big data"},
+      {"ul": ["**Storage**: data grows faster than storage capacity and budgets; needs distributed, scalable storage (HDFS).", "**Processing speed**: batch tools are too slow for velocity; needs parallel and real-time processing.", "**Variety and integration**: combining structured, semi-structured and unstructured data from many sources.", "**Data quality (veracity)**: noise, duplicates, inconsistency and uncertainty.", "**Security and privacy**: protecting sensitive data spread across clusters; compliance.", "**Skills and cost**: shortage of skilled people; cost of infrastructure.", "**Extracting value**: finding useful insight in huge data quickly; visualising it."]},
+      {"tip": "Class Test I question 5(a) (4 marks): explain the 5 Vs with an example each, then list the challenges."},
     ],
     terms: [['Volume', 'The amount of data.'], ['Velocity', 'The speed at which data is generated and processed.'], ['Variety', 'The different types and sources of data.'], ['Veracity', 'The trustworthiness and quality of data.']],
     exam: 'Explain each V with a definition and an example in a table, and stress veracity and value.',
     revise: ['Volume, velocity, variety (3V)', '+ veracity, value (5V)'],
   },
-
   'bda.u1.challenges-need': {
     oneLine: 'Big data is needed because traditional systems cannot cope with today\'s data, but handling it brings challenges in storage, processing, quality, security, integration and skills.',
     blocks: [
+      { def: "Need for big data analytics", text: "Big data analytics is the process of **examining large and varied data sets to uncover hidden patterns, unknown correlations, market trends and customer preferences** that help organisations make better, faster decisions. It is needed because traditional systems cannot store or process such data, while the data holds major competitive value." },
       { h: 'Why big data (and when to use it)' },
       { ul: ['Data volumes exceed what one server can store or process.', 'Decisions need near real-time analysis (fraud, traffic).', 'Data is varied and unstructured (text, images).', 'Insight from all data, not samples, gives a competitive advantage.'] },
       'Consider big data as a solution when the data is too large, too fast or too varied for a normal database, **and** the insight is worth the cost.',
@@ -89,23 +97,24 @@ export default {
     exam: 'Explain why big data is needed and when to use it, list the challenges, and the importance of big data analytics.',
     revise: ['Need: too big, too fast, too varied', 'Challenges: storage, processing, quality, security, skills'],
   },
-
   'bda.u1.integration': {
     oneLine: 'The big data integration process brings data from many sources into one usable store: identify sources, ingest, clean and transform, store, and make it available for analysis.',
     blocks: [
+      { def: "Big data integration", text: "The process of **combining data from many different sources, formats and velocities (structured, semi-structured and unstructured; batch and streaming) into a unified, consistent view** that can be stored and analysed: it involves extraction, ingestion, cleansing, transformation, schema mapping, entity resolution and loading into a data lake or warehouse." },
       { flow: ['Identify sources', 'Ingest (batch or stream)', 'Clean and validate', 'Transform and enrich', 'Store (HDFS, data lake, warehouse)', 'Serve to analytics'] },
       { ul: ['Handles different formats, schemas and speeds.', 'Keeps track of metadata and data lineage (where data came from).', 'Tools: Sqoop, Flume, Kafka, NiFi, Spark.'] },
       { h: 'Issues' },
       'Schema mismatch, duplicates, inconsistent formats, late or missing data, and very high volume.',
+      {"tip": "Class Test I question 1 (2 marks): \"Define the big data integration process.\" Give the definition and its steps: extract/ingest → cleanse → transform and map schemas → resolve duplicates → load into a unified store."},
     ],
     terms: [['Data lineage', 'A record of where data came from and how it changed.'], ['Data lake', 'A store that keeps raw data of all types until it is needed.']],
     exam: 'Draw the integration pipeline from sources to analytics and explain each stage and its issues.',
     revise: ['Sources, ingest, clean, transform, store, serve'],
   },
-
   'bda.u1.applications': {
     oneLine: 'Big data is used in healthcare, retail, banking, telecom, social media, transport, government and agriculture to predict, personalise and optimise.',
     blocks: [
+      { def: "Applications of big data", text: "Uses of big data analytics across domains: **healthcare** (diagnosis, epidemic tracking), **banking and finance** (fraud detection, risk), **retail and e-commerce** (recommendations), **telecom** (churn), **social media** (sentiment, trends), **transport and smart cities**, **manufacturing** (predictive maintenance) and **government**." },
       { table: { head: ['Domain', 'Application'], rows: [
         ['Healthcare', 'Predicting outbreaks, personalised treatment, analysing medical images and patient records'],
         ['Retail and e-commerce', 'Recommendations, demand forecasting, dynamic pricing'],
@@ -124,10 +133,11 @@ export default {
     exam: 'Give a table of domains and applications, then expand on healthcare or social media if asked.',
     revise: ['Healthcare, retail, banking, telecom, social, transport'],
   },
-
   'bda.u1.bi-ds': {
     oneLine: 'Business intelligence reports what happened from structured data; data science uses statistics and machine learning on all data to predict; analytics is the umbrella for both.',
     blocks: [
+      { def: "Business intelligence (BI)", text: "The set of **technologies, processes and practices that collect, integrate, analyse and present business data** (usually structured data in a data warehouse) as reports, dashboards and OLAP views to support **better business decision making** about what has happened and what is happening." },
+      {"img": "bda-bi-ds"},
       { table: { head: ['', 'Business intelligence', 'Data science'], rows: [
         ['Focus', 'Past and present (what happened?)', 'Future (what will happen?)'],
         ['Data', 'Structured, from warehouses', 'Structured and unstructured'],
@@ -136,29 +146,34 @@ export default {
       ] } },
       { h: 'Big data analytics and data science: similarities (asked)' },
       { ul: ['Both extract insight from data.', 'Both use statistics, programming and visualisation.', 'Both follow collect, clean, analyse, interpret.', 'Big data analytics focuses on scale and tools; data science on methods and models.'] },
+      {"h": "Importance and applications of BI in big data analytics (Class Test I, question 5b)"},
+      {"ul": ["**Fact-based decisions**: dashboards and KPIs replace guesswork.", "**Single version of truth**: integrates data from many systems into a warehouse/lake.", "**Speed**: self-service reports and near-real-time dashboards on big data (BI tools on Hive/Spark).", "**Finds trends and problems** early: sales drops, inventory issues, customer churn.", "**Competitive advantage and efficiency**: better planning, cost reduction, targeted marketing."]},
+      {"table": {"head": ["Domain", "BI application"], "rows": [["Retail", "Sales dashboards by region and product, inventory optimisation"], ["Banking", "Branch performance, loan defaults, fraud monitoring"], ["Healthcare", "Patient admissions, bed occupancy, treatment outcomes"], ["Telecom", "Churn analysis, network usage"], ["Education", "Results analysis, attendance, admissions trends"]]}},
     ],
     terms: [['Business intelligence', 'Tools and processes for reporting and analysing business data.'], ['OLAP', 'Online analytical processing: fast multidimensional analysis of data.']],
     exam: 'Compare BI and data science in a table and list the similarities between big data analytics and data science.',
     revise: ['BI: what happened; DS: what will happen'],
   },
-
   'bda.u1.architecture': {
     oneLine: 'A typical analytical architecture moves data from sources into a staging area and an enterprise data warehouse, then to analysts\' tools; big data adds a distributed store and processing layer.',
     blocks: [
+      { def: "Big data analytical architecture", text: "The **layered structure of components that ingest, store, process, analyse and present big data**: data sources → ingestion layer → storage layer (HDFS/NoSQL/data lake) → processing layer (MapReduce/Spark/Hive) → analysis layer (BI, ML) → consumption layer (dashboards, apps), with resource management, security and governance across all layers." },
+      {"img": "bda-analytic-arch"},
       { flow: ['Data sources', 'Data staging (ETL)', 'Enterprise data warehouse', 'Data marts / analytic sandbox', 'Reports, dashboards, analysts'] },
       { h: 'Problems with the traditional architecture' },
       { ul: ['High-value data is locked in the warehouse; analysts wait for IT.', 'Data is moved to a separate place for analysis, which is slow.', 'Only structured data fits.', 'Projects that need new data become slow and costly.'] },
       { h: 'Big data architecture layers' },
       { stack: ['Visualisation and applications', 'Analytics layer (MapReduce, Spark, ML)', 'Storage layer (HDFS, NoSQL, data lake)', 'Ingestion layer (Sqoop, Flume, Kafka)', 'Data sources'], label: 'Big data stack, top to bottom' },
+      {"tip": "Class Test I question 4(a) (4 marks): draw the layered architecture and explain each layer in one or two lines with a tool example."},
     ],
     terms: [['Enterprise data warehouse', 'A central, structured store of an organisation\'s data for reporting.'], ['Analytic sandbox', 'A workspace where analysts can explore data freely.']],
     exam: 'Draw the typical analytical architecture, list its problems, then draw the layered big data architecture.',
     revise: ['Sources, staging, EDW, marts, users', 'Ingest, store, process, visualise'],
   },
-
   'bda.u1.analytics-types': {
     oneLine: 'Analytics comes in three main types: descriptive (what happened), predictive (what will happen) and prescriptive (what should we do), often with diagnostic (why) in between.',
     blocks: [
+      { def: "Types of analytics", text: "Classification of analytics by the question answered: **descriptive** (what happened?), **diagnostic** (why did it happen?), **predictive** (what will happen?) and **prescriptive** (what should we do?); value and complexity increase in that order." },
       { flow: ['Descriptive: what happened?', 'Diagnostic: why?', 'Predictive: what will happen?', 'Prescriptive: what should we do?'] },
       { table: { head: ['Type', 'Techniques', 'Example'], rows: [
         ['Descriptive', 'Reports, dashboards, aggregation', 'Monthly sales report'],

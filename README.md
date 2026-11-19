@@ -8,9 +8,9 @@ Big Data Analytics and Principles of Design Thinking. DRRM is marked "coming soo
 
 Each subject has five tabs:
 
-- **Learn**: every syllabus topic with notes, diagrams, exam tips and links to YouTube lectures. Operating Systems has one set of detailed notes per topic (formal definitions, full explanations, worked examples and diagrams); the other subjects still have a simple-words section followed by detailed notes
+- **Learn**: every syllabus topic with notes, diagrams, exam tips and links to YouTube lectures. Every subject has one set of detailed notes per topic (formal definitions, full explanations, worked examples and diagrams)
 - **PYQs** — questions from this semester's class tests (mid-terms) first, then past questions ranked by how many papers asked them, then by how recently; model answers for the most important ones; and every question paper (past papers, mid-term papers, unit-wise banks) to read on the site
-- **2-mark bank** (Operating Systems) — about 15 short questions per unit with full-mark answers, class-test questions first
+- **2-mark bank** for every subject — about 15 short questions per unit with full-mark answers, class-test questions first
 - **Numericals** — interactive tools (page replacement, disk scheduling, Banker's, COCOMO, function points, cyclomatic complexity, CIDR, TCP congestion window, regression metrics, k-means)
 - **Quick revision** — every topic in one line
 - **Downloads** — the original material and question papers from this repo. PDFs open in the site's own viewer; slides and Word files open on GitHub
@@ -36,8 +36,8 @@ npm run build          # also copies every PDF into dist/files for the in-site v
 ```
 
 - Syllabus allowlist: `guide/src/content/syllabus.js` (only these topics are in scope).
-- Past papers registry: `guide/src/content/papers.js`. Class tests are papers with relation `'mid'` (e.g. `os-ct1`, `os-ct2`); any question asked in one ranks first. OS class-test questions: `os/pyqs-mid.js`, answers `os/answers-mid.js`; 2-mark bank: `os/bank-2m.js` (a bank answer also becomes the model answer of the PYQ it links to with `from`). PYQs per subject: `guide/src/content/<subject>/pyqs.js` (repeat counts are computed from the papers listed, never typed in).
-- Notes and model answers: `guide/src/content/<subject>/topics*.js` and `answers-*.js`; for Operating Systems, `os/notes-u1.js` … `notes-u5.js` (one detailed set per topic, with `{ def }` definition cards and hand-drawn diagrams from `guide/src/components/svg/os.jsx`, built on the shared kit in `svg/kit.jsx`). Simple words, for the other subjects: `simple.js` (written by hand; each has a summary, a picture, points, an analogy and an example).
+- Past papers registry: `guide/src/content/papers.js`. Class tests are papers with relation `'mid'` (e.g. `os-ct1`, `se-ct2`); any question asked in one ranks first. Class-test questions: `<subject>/pyqs-mid.js`, answers `<subject>/answers-mid.js`; 2-mark bank: `<subject>/bank-2m.js` (a bank answer also becomes the model answer of the PYQ it links to with `from`). PYQs per subject: `guide/src/content/<subject>/pyqs.js` (repeat counts are computed from the papers listed, never typed in).
+- Notes and model answers: `guide/src/content/<subject>/notes-u1.js` … `notes-u5.js` (one detailed set per topic, with `{ def }` definition cards and hand-drawn diagrams from `guide/src/components/svg/os.jsx`, `se-models.jsx`, `fds-models.jsx`, `bda-models.jsx` and `pdt-models.jsx`, built on the shared kit in `svg/kit.jsx`). Model answers: `<subject>/answers-*.js`.
 - PDF viewer: `#/view?f=<path>` shows any PDF from `Material/`, `PYQs/` or the time-table. `scripts/copy-files.mjs` puts them in the build, the dev server serves them directly, and PDF.js 4.10.38 is loaded from jsDelivr the first time a PDF is opened.
 - Videos: `node scripts/find-videos.mjs <subject>` fills `<subject>/videos.js` from real YouTube search results (relevance first; a topic with no good match gets none). Remove a bad pick with `node scripts/prune-videos.mjs <subject> <topic id>`. Sudhakar Atchala's lectures take priority: `node scripts/find-videos.mjs <subject> --prefer "Sudhakar Atchala"` switches every topic he covers to his videos only, and leaves the others as they are.
 - Diagrams: add an entry to `guide/scripts/diagrams.manifest.json`, run `npm run diagrams`, look at it, then set `"verified": true`.

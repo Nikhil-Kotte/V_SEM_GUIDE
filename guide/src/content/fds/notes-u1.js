@@ -1,8 +1,11 @@
-// Fundamentals of Data Science, Unit I: introduction, data and pre-processing. Keys are syllabus ids.
+// Fundamentals of Data Science, Unit I: introduction, data and pre-processing.
+// Follows the FDS unit slides and notes.
 export default {
   'fds.u1.what': {
     oneLine: 'Data science is the field of collecting, cleaning, analysing and communicating data to answer questions and make decisions, combining statistics, computing and domain knowledge.',
     blocks: [
+      { def: "Data science", text: "An interdisciplinary field that uses **scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data**, and applies them to make decisions. It combines statistics and mathematics, computer science and domain knowledge." },
+      { img: 'fds-venn' },
       '**Data science** turns raw data into useful knowledge. It sits where **statistics**, **computer science** and **domain (subject) knowledge** meet.',
       { flow: ['Ask a question', 'Collect data', 'Clean and prepare', 'Explore and analyse', 'Model', 'Communicate results', 'Act on them'], loop: 'New questions lead back to the start' },
       { h: 'The data science project life cycle' },
@@ -16,15 +19,18 @@ export default {
       ] } },
       { h: 'Why now?' },
       'Huge amounts of data (phones, sensors, the web), cheap storage, fast computers and free tools (Python, R) make it possible for almost every field to learn from data.',
+      { img: 'fds-lifecycle' },
+      { h: 'Data scientist' },
+      'A **data scientist** asks the right questions, collects and cleans data, explores it, builds models, and communicates the findings so that decisions can be made; often described as "better at statistics than a software engineer and better at software engineering than a statistician".',
     ],
     terms: [['Data science', 'Extracting knowledge and insight from data using statistics, computing and domain knowledge.'], ['Domain knowledge', 'Understanding of the field the data comes from (medicine, finance…).']],
     exam: 'Define data science, draw the Venn of statistics, computing and domain knowledge, and draw the project life cycle.',
     revise: ['Stats + computing + domain', 'Question, collect, clean, explore, model, communicate'],
   },
-
   'fds.u1.where': {
     oneLine: 'Data science is used everywhere: finance, public policy, politics, healthcare, urban planning, education and libraries all make better decisions with data.',
     blocks: [
+      { def: "Applications of data science", text: "The domains in which data science is used to **turn data into decisions**: finance, public policy, politics, healthcare, urban planning, education, libraries, e-commerce, transport and more. Wherever data is collected, data science can find patterns, predict outcomes and recommend actions." },
       { table: { head: ['Field', 'How data science helps', 'Example'], rows: [
         ['Finance', 'Fraud detection, credit scoring, algorithmic trading', 'A bank flags an unusual card payment'],
         ['Public policy', 'Evidence-based policies, targeting benefits', 'Choosing villages for a water scheme'],
@@ -34,15 +40,17 @@ export default {
         ['Education', 'Learning analytics, early warning for dropouts', 'Spotting students at risk of failing'],
         ['Libraries', 'Recommending books, managing collections', 'Suggesting books based on borrowing history'],
       ] } },
+      { h: 'Example: a smart-city system' },
+      'Traffic sensors, GPS from buses, hospital admissions and social-media posts are combined to time traffic signals, re-route buses, predict hospital load, and detect incidents (an accident reported on social media before it reaches the control room).',
     ],
     terms: [['Learning analytics', 'Using student data to improve learning and teaching.']],
     exam: 'Make a table of at least five fields with one use and one concrete example each.',
     revise: ['Finance, policy, politics, health, cities, education, libraries'],
   },
-
   'fds.u1.related-fields': {
     oneLine: 'Data science borrows from and differs from statistics, computer science, engineering, business analytics and social science; it combines their methods to work with large, messy, real-world data.',
     blocks: [
+      { def: "Data science and other fields", text: "Data science is **not a replacement for** statistics, computer science or engineering; it **draws on all of them**: statistics provides the theory of inference, computer science the algorithms and tools to process data at scale, engineering the systems to collect and store it, and the domain the questions and context." },
       { table: { head: ['Field', 'Relationship to data science'], rows: [
         ['Statistics', 'Gives the theory (sampling, inference, models); data science adds large-scale computing and messy data'],
         ['Computer science', 'Gives algorithms, databases, programming, machine learning'],
@@ -51,15 +59,19 @@ export default {
         ['Social science', 'Studies people and society; computational social science uses big data (social media) to study behaviour'],
       ] } },
       { tip: 'One line to remember: statistics asks "what can we infer?", computer science asks "how do we compute it?", and data science asks both, for a real decision.' },
+      { h: 'How the fields contribute to an integrated smart-city system (Class Test I, question 4a)' },
+      { table: { head: ['Field', 'Contribution to integrating traffic, transport, healthcare and social-media data'], rows: [['**Data science**', 'Defines the questions (congestion, emergencies), integrates and cleans the heterogeneous data, builds predictive models (traffic forecasting, hospital demand), and turns results into dashboards and decisions'], ['**Statistics**', 'Sampling and summary statistics, correlation between events (rain vs accidents), hypothesis tests for interventions, confidence in predictions, time-series forecasting'], ['**Computer science**', 'Algorithms and machine learning (clustering hotspots, NLP on social-media posts, route optimisation), databases and big-data processing (Hadoop/Spark), real-time stream processing, security and privacy'], ['**Engineering**', 'Sensors and IoT devices, networks and data pipelines, cloud storage and computing infrastructure, deploying systems that act (adaptive traffic signals, ambulance routing)']] } },
+      'Together: engineering collects the data, computer science processes it at scale, statistics makes the conclusions reliable, and data science ties them into an end-to-end system that serves the city.',
     ],
     terms: [['Computational social science', 'Studying social behaviour with large-scale digital data and computing.']],
     exam: 'For each related field write one line on what it gives to data science and how they differ.',
     revise: ['Statistics: inference', 'CS: algorithms', 'Engineering: pipelines', 'Business: decisions', 'Social science: people'],
   },
-
   'fds.u1.info-science': {
     oneLine: 'Information science studies how information is created, organised and used by people; data science overlaps with it, and iSchools teach both together.',
     blocks: [
+      { def: "Information science", text: "The field concerned with **the collection, classification, storage, retrieval, dissemination and use of information**, with an emphasis on the **people (users)** who seek and use it. Data science overlaps with it through data management and analysis." },
+      { img: 'fds-dikw' },
       { compare: [
         { title: 'Information', items: ['Data given meaning and context', 'Organised for people to use', '"Average marks in Section A are 72"'] },
         { title: 'Data', items: ['Raw facts and numbers', 'No meaning on its own', '"72, 65, 80, 91"'] },
@@ -74,10 +86,10 @@ export default {
     exam: 'Differentiate data and information with examples, draw the DIKW pyramid, and explain the user focus of information science and the role of iSchools.',
     revise: ['Data → information → knowledge → wisdom', 'Information science = people + information'],
   },
-
   'fds.u1.computational-thinking': {
     oneLine: 'Computational thinking is solving problems the way a computer scientist would: decompose the problem, recognise patterns, abstract away detail and design an algorithm.',
     blocks: [
+      { def: "Computational thinking", text: "A **problem-solving process** that formulates a problem and its solution so that it can be carried out by a computer (or a person): it involves **decomposition, pattern recognition, abstraction and algorithm design** (Jeannette Wing)." },
       { flow: ['Decomposition: break it into parts', 'Pattern recognition: spot similarities', 'Abstraction: keep only what matters', 'Algorithm design: write clear steps'] },
       { h: 'Example: finding the class topper' },
       { ul: ['Decompose: read each mark, compare, remember the best.', 'Pattern: the same comparison for every student.', 'Abstract: we only need name and total, not addresses.', 'Algorithm: best = first student; for each next student, if total > best, best = this student.'] },
@@ -87,10 +99,10 @@ export default {
     exam: 'Define computational thinking, explain its four parts, and apply them to a simple everyday problem.',
     revise: ['Decompose, pattern, abstract, algorithm'],
   },
-
   'fds.u1.skills-tools': {
     oneLine: 'A data scientist needs statistics, programming, data wrangling, visualisation, machine learning and communication skills, and uses tools such as Python, R, SQL, spreadsheets and notebooks.',
     blocks: [
+      { def: "Data science skills and tools", text: "The **combination of technical skills** (statistics, programming, databases, machine learning, visualisation) **and soft skills** (domain knowledge, communication, curiosity, critical thinking) needed to work with data, together with the **software tools** that support each step (Python, R, SQL, notebooks, BI tools, big-data platforms)." },
       { tree: { root: 'Data science skills', kids: ['Statistics and maths', 'Programming (Python, R)', 'Databases (SQL)', 'Data wrangling', 'Visualisation', 'Machine learning', 'Communication', 'Domain knowledge'] } },
       { table: { head: ['Tool', 'Used for'], rows: [
         ['Python (NumPy, pandas, Matplotlib, scikit-learn)', 'General analysis and ML'],
@@ -108,10 +120,10 @@ export default {
     exam: 'List the skills with one line each, give a table of tools and uses, and add the project roles if asked.',
     revise: ['Stats, programming, SQL, wrangling, visualisation, ML, communication', 'Python, R, SQL, Jupyter'],
   },
-
   'fds.u1.ethics': {
     oneLine: 'Data science must be fair, private and honest: biased data gives biased results, personal data must be protected, and people should know how their data is used.',
     blocks: [
+      { def: "Data ethics", text: "The branch of ethics that evaluates **data practices** (collecting, generating, analysing and sharing data) that could affect people and society, aiming to ensure **privacy, fairness (no bias), transparency, accountability and responsible use**." },
       { tree: { root: 'Issues', kids: ['Ethics', 'Bias', 'Privacy'] } },
       { h: 'Bias' },
       { ul: ['**Sampling bias**: the data does not represent everyone (a survey only online misses people without internet).', '**Historical bias**: past unfair decisions in the data are repeated by models (hiring data that favoured one group).', '**Confirmation bias**: the analyst looks only for evidence that supports a belief.'] },
@@ -119,15 +131,19 @@ export default {
       { ul: ['Collect only what is needed, with **consent**.', '**Anonymise** data, but beware re-identification by combining datasets.', 'Store securely; follow laws (India\'s DPDP Act 2023, the EU\'s GDPR).'] },
       { h: 'Ethics' },
       'Be transparent about methods, avoid harm, report uncertainty honestly, and do not mislead with selective charts or statistics.',
+      { h: 'Ethical issues with personal and biased data (Class Test I, question 4b)' },
+      { table: { head: ['Issue', 'Problem', 'Responsible practice'], rows: [['**Privacy**', 'Health records, locations and social-media data identify people; leaks or misuse harm them; combining datasets can re-identify "anonymous" people', 'Collect only what is needed (data minimisation), informed consent, anonymise/pseudonymise, encrypt and restrict access, follow laws (DPDP Act 2023, GDPR)'], ['**Bias**', 'Sensors in rich areas, social-media users who are young and urban, historical decisions: models trained on them treat some groups unfairly', 'Check representativeness, re-sample or re-weight, test models for fairness across groups, document limitations'], ['**Responsible use**', 'Data collected for one purpose used for another (surveillance), opaque automated decisions, misleading presentation', 'Purpose limitation, transparency and explainability, human oversight, accountability, honest reporting of uncertainty']] } },
     ],
     terms: [['Bias', 'A systematic error that makes results unfair or wrong for some group.'], ['Anonymisation', 'Removing information that identifies individuals.'], ['Informed consent', 'People agreeing to data use after understanding it.']],
     exam: 'Explain ethics, bias (with types) and privacy, each with an example and a way to reduce the problem.',
     revise: ['Sampling, historical, confirmation bias', 'Consent, anonymise, secure'],
   },
-
   'fds.u1.data-types': {
     oneLine: 'Structured data fits neatly in rows and columns; unstructured data (text, images, audio, video) has no fixed format and is harder to store, search and analyse.',
     blocks: [
+      { def: "Structured data", text: "Data that **conforms to a predefined schema (data model)**: organised in rows and columns with fixed fields and types, stored in relational databases or spreadsheets, and easily queried with SQL. Examples: student marks, attendance, bank transactions." },
+      { def: "Unstructured data", text: "Data that **has no predefined format or organisation**: text, images, audio, video, social-media posts. It makes up most of the world's data (about 80%) and needs special techniques (NLP, computer vision) to analyse. **Semi-structured** data (JSON, XML, e-mail) has tags or keys but no rigid schema." },
+      { img: 'fds-data-types' },
       { table: { head: ['Type', 'Description', 'Examples', 'Stored in'], rows: [
         ['Structured', 'Fixed schema, rows and columns', 'Marks table, bank transactions', 'Relational databases, spreadsheets'],
         ['Semi-structured', 'Has tags or keys but no rigid table', 'JSON, XML, e-mail headers', 'NoSQL stores, files'],
@@ -136,15 +152,21 @@ export default {
       { h: 'Challenges with unstructured data' },
       { ul: ['Hard to search and query directly.', 'Needs special processing (NLP for text, computer vision for images).', 'Very large volume and storage cost.', 'Meaning depends on context (sarcasm in a review).', 'Quality is uneven (spelling errors, noise).'] },
       'About 80% or more of the world\'s data is unstructured.',
+      { h: 'Classifying a city\'s data (Class Test I, question 1)' },
+      { table: { head: ['Data', 'Type', 'Justification'], rows: [['Traffic-sensor data', 'Structured (or semi-structured)', 'Fixed fields: sensor ID, timestamp, vehicle count, speed; fits a table'], ['Social-media posts', 'Unstructured', 'Free text, images, emojis, hashtags; no fixed schema'], ['Hospital records', 'Structured (mostly)', 'Patient ID, age, diagnosis code, admission date in database tables (doctors\' notes and scans inside them are unstructured)']] } },
+      { h: 'Educational institution data (Class Test I, question 5a)' },
+      { table: { head: ['Data', 'Classification'], rows: [['Examination marks', 'Structured'], ['Attendance', 'Structured'], ['Student feedback (ratings + comments)', 'Semi-structured: ratings are structured, comments unstructured'], ['Handwritten answer-script images', 'Unstructured'], ['Social-media comments', 'Unstructured']] } },
+      { h: 'Challenges in handling unstructured data' },
+      { ul: ['**No schema**: cannot be stored in tables or queried with SQL directly; needs data lakes or NoSQL stores.', '**Volume and storage**: images and scans are large; need scalable storage.', '**Extraction**: handwriting needs OCR; comments need NLP (tokenising, sentiment, spelling, slang, multiple languages).', '**Quality and noise**: spam, sarcasm, irrelevant posts, poor scans.', '**Search and indexing** are hard; **integration** with structured records (matching a comment to a student) is difficult.', '**Privacy**: free text and images may contain personal information.', 'Needs specialised skills and tools (ML, computer vision), so it is costly and slow.'] },
     ],
     terms: [['Structured data', 'Data organised into a fixed schema of rows and columns.'], ['Unstructured data', 'Data with no predefined model, such as text or images.'], ['Semi-structured data', 'Data with tags or keys but no fixed table, such as JSON.']],
     exam: 'Define the three types with examples in a table and list the challenges of unstructured data.',
     revise: ['Structured: tables', 'Semi: JSON, XML', 'Unstructured: text, images, video'],
   },
-
   'fds.u1.collections': {
     oneLine: 'Data comes from open data portals, social media, and multimodal sources (text plus images plus sensors); it must then be stored (files, databases, cloud) and presented clearly.',
     blocks: [
+      { def: "Data collection, storage and presentation", text: "**Data collection** is gathering data from sources (surveys, sensors, logs, APIs, web scraping, open datasets); **storage** keeps it in files, databases, warehouses or data lakes so it can be retrieved; **presentation** communicates it through tables, charts and dashboards so people can understand it." },
       { tree: { root: 'Data collections', kids: ['Open data (data.gov.in, Kaggle)', 'Social media (Twitter/X, Reddit APIs)', 'Multimodal (video + audio + text)'] } },
       { ul: [
         '**Open data**: freely available, public datasets from governments and organisations, often in CSV or JSON.',
@@ -159,10 +181,11 @@ export default {
     exam: 'Explain open, social media and multimodal data with an example each, then storage options and presentation.',
     revise: ['Open, social media, multimodal', 'CSV, SQL, NoSQL, cloud'],
   },
-
   'fds.u1.cleaning': {
     oneLine: 'Data cleaning fixes the problems in raw data: missing values, noise, outliers, duplicates and inconsistent formats, so the analysis is not misled.',
     blocks: [
+      { def: "Data cleaning (cleansing)", text: "The process of **detecting and correcting (or removing) inaccurate, incomplete, inconsistent, duplicate or noisy records** in a dataset, so that analysis is based on correct data. Typical tasks: fill missing values, smooth noise, remove outliers and duplicates, fix inconsistencies." },
+      { img: 'fds-preprocess' },
       { flow: ['Find problems', 'Handle missing values', 'Smooth noise and outliers', 'Remove duplicates', 'Fix inconsistencies'] },
       { table: { head: ['Problem', 'Fix'], rows: [
         ['Missing values', 'Ignore the row, fill with mean/median/mode, predict the value, or use a constant like "Unknown"'],
@@ -172,15 +195,17 @@ export default {
       ] } },
       { h: 'Binning example' },
       'Sorted prices: 4, 8, 15, 21, 21, 24, 25, 28, 34. Three equal-frequency bins: (4, 8, 15), (21, 21, 24), (25, 28, 34). Smoothing by bin means gives 9, 9, 9 | 22, 22, 22 | 29, 29, 29.',
+      { h: 'A preprocessing sequence for the institution\'s data (Class Test I, question 5b)' },
+      { steps: ['**Cleaning**: remove duplicate student entries; fill missing marks/attendance (mean or median, or flag); correct invalid values (attendance > 100%); clean feedback text (remove spam, fix encoding); handle outliers.', '**Integration**: merge marks, attendance and feedback on a common key (roll number); resolve schema conflicts ("RollNo" vs "Student_ID") and unit conflicts (marks out of 50 vs 100); link OCR text from answer scripts.', '**Transformation**: normalise marks to 0–1 (min-max) or z-scores; encode categories (section, gender) with one-hot or label encoding; convert text comments to sentiment scores; derive features (attendance %).', '**Reduction**: drop irrelevant columns, select key features or apply PCA; sample or aggregate (per-student averages) to reduce volume.', '**Discretization**: convert continuous values to categories: marks → grades (O, A+, A, …), attendance → Low/Medium/High, by binning.'] },
     ],
     terms: [['Noise', 'Random error or variation in a measured value.'], ['Imputation', 'Filling in missing values with estimates.'], ['Binning', 'Grouping sorted values into bins to smooth them.']],
     exam: 'List the problems in raw data and a fix for each, and work a small binning example.',
     revise: ['Missing, noise, duplicates, inconsistency', 'Fill with mean/median, binning, standardise'],
   },
-
   'fds.u1.integration': {
     oneLine: 'Data integration combines data from several sources into one consistent dataset, solving schema matching, duplicate records and conflicting values.',
     blocks: [
+      { def: "Data integration", text: "The process of **combining data from multiple sources into a coherent, unified view** (data store), resolving schema integration problems, entity identification (the same entity with different names or IDs), redundancy and **data value conflicts** (different units or scales)." },
       { flow: ['Source A (sales DB)', 'Source B (website CSV)', 'Match schemas and keys', 'Resolve conflicts', 'One combined dataset'] },
       { h: 'Issues' },
       { ul: [
@@ -194,25 +219,26 @@ export default {
     exam: 'Define data integration, list its issues (schema, redundancy, duplicates, value conflicts) with an example each.',
     revise: ['Schema matching, redundancy, duplicates, value conflicts'],
   },
-
   'fds.u1.transformation': {
     oneLine: 'Data transformation changes data into a form better for analysis: normalisation and scaling, aggregation, generalisation, attribute construction and encoding.',
     blocks: [
+      { def: "Data transformation", text: "Converting data into **forms appropriate for analysis or mining**: smoothing, aggregation, generalisation, **normalisation** (min-max, z-score, decimal scaling), attribute construction and encoding." },
       { h: 'Normalisation' },
       { formula: 'Min-max: v′ = (v − min) / (max − min)    Z-score: v′ = (v − mean) / std' },
       'Example: marks 40 with min 20 and max 100 → (40 − 20) / 80 = **0.25**. Height 170 cm with mean 160 and std 5 → z = **2**.',
       { tip: 'Why it matters (asked): distance-based methods (k-means, KNN) and gradient-based models are dominated by large-scale features (salary in lakhs vs age in years) unless the features are rescaled to similar ranges.' },
       { h: 'Other transformations' },
       { ul: ['**Smoothing**: remove noise (binning, regression).', '**Aggregation**: daily sales → monthly totals.', '**Generalisation**: street → city → state (concept hierarchy).', '**Attribute construction**: area = length × width.', '**Encoding**: turn categories into numbers.'] },
+      { formula: 'Min-max: v′ = (v − min) / (max − min)      z-score: v′ = (v − μ) / σ      Decimal scaling: v′ = v / 10^j' },
     ],
     terms: [['Normalisation', 'Scaling values into a common range such as 0 to 1.'], ['Z-score', 'How many standard deviations a value is from the mean.'], ['Aggregation', 'Summarising data, such as summing to monthly totals.']],
     exam: 'Give the min-max and z-score formulas with a worked example each, explain why scaling matters for modelling, and list other transformations.',
     revise: ['Min-max to [0, 1]', 'Z-score = (v − mean)/std', 'Smooth, aggregate, generalise, construct'],
   },
-
   'fds.u1.reduction': {
     oneLine: 'Data reduction makes a dataset smaller while keeping its meaning: fewer attributes (dimensionality reduction), fewer records (numerosity reduction) or compression.',
     blocks: [
+      { def: "Data reduction", text: "Obtaining a **reduced representation of the dataset that is much smaller in volume but produces the same (or almost the same) analytical results**: dimensionality reduction (PCA, feature selection), numerosity reduction (sampling, clustering, histograms, regression models) and data compression." },
       { tree: { root: 'Data reduction', kids: ['Dimensionality reduction: PCA, feature selection', 'Numerosity reduction: sampling, histograms, clustering, regression models', 'Data compression: lossless or lossy'] } },
       { ul: [
         '**Dimensionality reduction**: drop or combine columns. PCA makes a few new columns that keep most of the variation; feature selection keeps only useful columns.',
@@ -225,10 +251,10 @@ export default {
     exam: 'Explain why data is reduced and describe the three strategies with one method each.',
     revise: ['Dimensions, numerosity, compression', 'PCA, sampling, histograms'],
   },
-
   'fds.u1.discretization': {
     oneLine: 'Discretisation turns a continuous attribute into intervals (bins or labels), such as ages into "child, adult, senior", which simplifies analysis and some algorithms.',
     blocks: [
+      { def: "Data discretization", text: "Converting **continuous attribute values into a finite set of intervals** and replacing values with interval labels (e.g. age → youth, adult, senior). Methods: binning (equal-width, equal-frequency), histogram analysis, cluster analysis, decision-tree (entropy) based and concept hierarchies." },
       { compare: [
         { title: 'Equal-width binning', items: ['Bins of the same range', 'Ages 0–20, 20–40, 40–60', 'Simple, but sensitive to outliers'] },
         { title: 'Equal-frequency binning', items: ['Bins with the same number of values', 'Each bin has 25% of students', 'Handles skewed data better'] },

@@ -1,23 +1,29 @@
-// Fundamentals of Data Science, Unit II (analytics techniques, statistics) and the start of Unit III
-// (NumPy). Keys are syllabus ids.
+// Fundamentals of Data Science, Unit II: data analysis and statistics.
+// Follows the FDS unit slides and notes.
 export default {
   'fds.u2.analysis-analytics': {
     oneLine: 'Data analysis examines past data to find what happened and why; data analytics is the broader practice that also predicts and recommends, using tools and automation.',
     blocks: [
+      { def: "Data analysis", text: "The process of **inspecting, cleaning, transforming and modelling data to discover useful information** and draw conclusions about what has happened (mostly backward-looking)." },
+      { def: "Data analytics", text: "The **broader science of examining data** with tools and techniques, including analysis, to draw conclusions, **predict outcomes and recommend actions** (forward-looking): descriptive, diagnostic, predictive and prescriptive analytics." },
+      { img: 'fds-analytics' },
       { compare: [
         { title: 'Data analysis', items: ['Inspect, clean and model data to answer a question', 'Mostly looks at the past', '"Why did sales fall in March?"'] },
         { title: 'Data analytics', items: ['The whole discipline, including analysis', 'Also forecasts and recommends', '"What will sales be next quarter, and what should we do?"'] },
       ] },
       { flow: ['Descriptive: what happened?', 'Diagnostic: why did it happen?', 'Predictive: what will happen?', 'Prescriptive: what should we do?'], label: 'Four types of analytics, rising in value and difficulty' },
+      { h: 'Applying the analytics types (Class Test I, question 2)' },
+      { table: { head: ['Manager\'s question', 'Type of analytics', 'Example technique'], rows: [['What happened to sales?', '**Descriptive**', 'Monthly sales totals, charts, dashboards'], ['Why did sales change?', '**Diagnostic**', 'Drill-down by region/product, correlation with price or promotions'], ['What may happen next month?', '**Predictive**', 'Time-series forecasting, regression'], ['(What should we do about it?)', 'Prescriptive', 'Optimise stock and discounts']] } },
     ],
     terms: [['Data analysis', 'Examining data to draw conclusions.'], ['Data analytics', 'The science of analysing data, including prediction and recommendation.']],
     exam: 'Differentiate analysis and analytics, then draw the four types of analytics with the question each answers.',
     revise: ['Descriptive, diagnostic, predictive, prescriptive'],
   },
-
   'fds.u2.descriptive': {
     oneLine: 'Descriptive analysis summarises data: identify the variables, build frequency distributions, and measure centre (mean, median, mode) and spread.',
     blocks: [
+      { def: "Descriptive analysis", text: "Analysis that **summarises and describes the main features of a dataset** (what happened) using measures of central tendency, dispersion, frequency distributions, tables and charts, without drawing conclusions beyond the data." },
+      { def: "Frequency distribution", text: "A table that shows **how often each value (or class interval) occurs** in a dataset; relative frequency = frequency ÷ total, cumulative frequency = running total." },
       { h: 'Variables' },
       { tree: { root: 'Variables', kids: ['Categorical: nominal (colour), ordinal (grade A/B/C)', 'Numerical: discrete (count of children), continuous (height)'] } },
       { h: 'Frequency distribution' },
@@ -29,21 +35,23 @@ export default {
     exam: 'Classify variables, build a frequency table with relative and cumulative columns, and name the measures of centre and spread.',
     revise: ['Nominal, ordinal, discrete, continuous', 'Frequency, relative, cumulative'],
   },
-
   'fds.u2.diagnostic': {
     oneLine: 'Diagnostic analytics asks why something happened, by drilling down into data and finding correlations between variables.',
     blocks: [
+      { def: "Diagnostic analytics", text: "Analytics that answers **\"why did it happen?\"** by drilling down, comparing segments, and finding relationships (correlation) between variables to identify the causes of observed outcomes." },
       { flow: ['Notice a change (sales fell)', 'Drill down by region, product, time', 'Find correlated factors', 'Test the explanation'] },
       { ul: ['Techniques: drill-down, data discovery, correlation analysis, comparisons.', 'Correlation measures how strongly two variables move together, from −1 to +1.', '**Correlation is not causation**: ice-cream sales and drownings both rise in summer, because of heat.'] },
+      { img: 'fds-correlation' },
     ],
     terms: [['Drill-down', 'Breaking a total into finer parts to locate the cause.'], ['Correlation', 'A measure of how two variables vary together.']],
     exam: 'Define diagnostic analytics, list its techniques, explain correlation and give the "correlation is not causation" warning with an example.',
     revise: ['Why did it happen?', 'Drill-down, correlation'],
   },
-
   'fds.u2.predictive-prescriptive': {
     oneLine: 'Predictive analytics forecasts what is likely to happen using models trained on past data; prescriptive analytics recommends the best action to take.',
     blocks: [
+      { def: "Predictive analytics", text: "Uses historical data with **statistical and machine-learning models to forecast what is likely to happen** (e.g. next month's sales, a customer leaving)." },
+      { def: "Prescriptive analytics", text: "Goes a step further and **recommends what action to take** to achieve the best outcome, using optimisation, simulation and decision models." },
       { compare: [
         { title: 'Predictive', items: ['What will happen?', 'Regression, classification, time-series forecasting', '"This customer has a 70% chance of leaving"'] },
         { title: 'Prescriptive', items: ['What should we do?', 'Optimisation, simulation, decision rules', '"Offer this customer a 10% discount"'] },
@@ -54,10 +62,11 @@ export default {
     exam: 'Explain both with techniques and a business example each, showing how prescriptive builds on predictive.',
     revise: ['Predictive: forecast', 'Prescriptive: recommend'],
   },
-
   'fds.u2.exploratory-mechanistic': {
     oneLine: 'Exploratory analysis looks at data with summaries and plots to find patterns before forming hypotheses; mechanistic analysis explains exactly how variables affect each other, typically with regression.',
     blocks: [
+      { def: "Exploratory data analysis (EDA)", text: "An approach (Tukey) to analysing data sets to **summarise their main characteristics, often visually**, to discover patterns, spot anomalies, test assumptions and form hypotheses before formal modelling." },
+      { def: "Mechanistic analysis", text: "Analysis that seeks to understand the **exact mechanism (cause-and-effect relationship)** by which changes in some variables produce changes in others, typically modelled with **regression**." },
       { h: 'Exploratory data analysis (EDA)' },
       { ul: ['Summary statistics (describe()).', 'Plots: histogram, box plot, scatter plot, heatmap.', 'Look for patterns, outliers, missing values, relationships.', 'Goal: understand the data and form questions, not prove anything.'] },
       { h: 'Mechanistic analysis: regression' },
@@ -69,10 +78,10 @@ export default {
     exam: 'Explain EDA with its tools, then mechanistic analysis with the least-squares formulas and a small worked example.',
     revise: ['EDA: summaries and plots', 'b₁ = Sxy / Sxx; b₀ = ȳ − b₁x̄'],
   },
-
   'fds.u2.attributes': {
     oneLine: 'An attribute is a property of an object; attributes are nominal, binary, ordinal or numeric (interval, ratio), and either discrete or continuous.',
     blocks: [
+      { def: "Attribute", text: "A **data field representing a characteristic or feature of a data object** (also called dimension, feature or variable), e.g. a student's age, name or grade. Types: **nominal, binary, ordinal** (qualitative) and **numeric: interval and ratio** (quantitative); discrete or continuous." },
       { table: { head: ['Type', 'Meaning', 'Example', 'Allowed operations'], rows: [
         ['Nominal', 'Names or labels, no order', 'Colour, city', '=, ≠ (mode)'],
         ['Binary', 'Two states', 'Pass/fail, smoker yes/no', 'Mode'],
@@ -90,38 +99,47 @@ export default {
     exam: 'Classify attribute types in a table with examples and operations, and differentiate discrete and continuous.',
     revise: ['Nominal, binary, ordinal, interval, ratio', 'Discrete vs continuous'],
   },
-
   'fds.u2.central-tendency': {
     oneLine: 'Central tendency describes the typical value: the mean (average), the median (middle value) and the mode (most frequent value).',
     blocks: [
+      { def: "Measures of central tendency", text: "Single values that **represent the centre (typical value) of a distribution**: the **mean** (arithmetic average), the **median** (middle value of ordered data) and the **mode** (most frequent value)." },
       { table: { head: ['Measure', 'How', 'Best for'], rows: [['Mean', 'Sum ÷ count', 'Symmetric numeric data'], ['Median', 'Middle of sorted data', 'Skewed data or outliers (salaries)'], ['Mode', 'Most frequent value', 'Categorical data']] } },
       { h: 'Worked example' },
       'Data: 2, 4, 4, 4, 5, 5, 7, 9 (n = 8).',
       { ul: ['Mean = 40 / 8 = **5**.', 'Median = average of 4th and 5th values = (4 + 5) / 2 = **4.5**.', 'Mode = **4** (appears three times).'] },
       { tip: 'One outlier pulls the mean but not the median: add 100 to the data and the mean jumps to 15.6 while the median only moves to 5.' },
       { code: "s = pd.Series([2, 4, 4, 4, 5, 5, 7, 9])\ns.mean(), s.median(), s.mode()[0]   # 5.0, 4.5, 4" },
+      { h: 'Worked example (Class Test I, question 6a): daily complaints 12, 15, 18, 15, 20, 25, 15' },
+      { ul: ['**Mean** = (12 + 15 + 18 + 15 + 20 + 25 + 15) / 7 = 120 / 7 = **17.14**', '**Median**: sorted 12, 15, 15, **15**, 18, 20, 25 → 4th value = **15**', '**Mode** = **15** (occurs 3 times)', '**Range** = 25 − 12 = **13**'] },
+      'Comment: **mean (17.14) > median (15) = mode (15)**, so the distribution is **positively (right) skewed**: most days have about 15 complaints, but a few high days (20, 25) pull the mean up. The median is a better "typical" value here.',
+      { img: 'fds-boxplot' },
     ],
     terms: [['Mean', 'The arithmetic average.'], ['Median', 'The middle value of sorted data.'], ['Mode', 'The most frequent value.']],
     exam: 'Define the three measures, compute them on a small data set, and state when to prefer each.',
     revise: ['Mean = sum/n', 'Median = middle', 'Mode = most frequent'],
   },
-
   'fds.u2.dispersion': {
     oneLine: 'Dispersion measures how spread out data is: range, quartiles and IQR, variance and standard deviation.',
     blocks: [
+      { def: "Measures of dispersion", text: "Measures of **how spread out the data values are** around the centre: range, quartiles and interquartile range (IQR), mean deviation, **variance** and **standard deviation**, and the coefficient of variation." },
       { formula: 'Variance σ² = Σ(x − x̄)² / n  (sample: divide by n − 1)    SD = √variance    IQR = Q3 − Q1' },
       { h: 'Worked example (2, 4, 4, 4, 5, 5, 7, 9)' },
       { ul: ['Range = 9 − 2 = **7**.', 'Deviations from mean 5: −3, −1, −1, −1, 0, 0, 2, 4; squares sum to **32**.', 'Population variance = 32 / 8 = **4**, SD = **2**. Sample variance = 32 / 7 ≈ 4.57, SD ≈ 2.14.', 'Q1 = 4, Q3 = 6, IQR = **2**. Outlier fences: Q1 − 1.5 × IQR = 1 and Q3 + 1.5 × IQR = 9.'] },
       { tip: 'A **box plot** draws min, Q1, median, Q3 and max, so it shows centre, spread and outliers at a glance.' },
+      { h: 'Standard deviation for comparing variability (Class Test I, question 6b)' },
+      { formula: 'σ = √( Σ(xᵢ − μ)² / N )        (sample: s = √( Σ(xᵢ − x̄)² / (n − 1) ))' },
+      { ul: ['Compute the SD of the daily complaints for each month; SD measures the **average distance of the values from the mean**, in the same units as the data.', 'Compare the two months: the month with the **higher SD has more variable** complaint counts; if the means differ a lot, compare the **coefficient of variation** CV = σ / μ × 100%.', '**A higher SD indicates** that values are widely spread from the mean: the complaint numbers are **inconsistent and less predictable**, with more extreme days (spikes); a low SD means complaints are steady around the average.', 'Example: complaints 12, 15, 18, 15, 20, 25, 15 have μ = 17.14 and σ ≈ 3.98 (s ≈ 4.30).'] },
     ],
     terms: [['Variance', 'Average squared distance from the mean.'], ['Standard deviation', 'Square root of the variance, in the data\'s own units.'], ['IQR', 'Interquartile range: Q3 − Q1, the spread of the middle half.']],
     exam: 'Give the formulas, compute range, variance, SD and IQR on a small data set, and explain the box plot.',
     revise: ['Range, IQR, variance, SD', 'Sample variance divides by n − 1'],
   },
-
   'fds.u2.skew-kurtosis': {
     oneLine: 'Skewness measures how lopsided a distribution is; kurtosis measures how heavy its tails are (how many extreme values) compared with a normal distribution.',
     blocks: [
+      { def: "Skewness", text: "A measure of the **asymmetry** of a distribution about its mean: **positive (right) skew** has a long right tail (mean > median), **negative (left) skew** a long left tail (mean < median), zero for a symmetric distribution." },
+      { def: "Kurtosis", text: "A measure of the **\"tailedness\" (peakedness) of a distribution** relative to the normal: **leptokurtic** (> 3, heavy tails, sharp peak), **mesokurtic** (= 3, normal), **platykurtic** (< 3, light tails, flat)." },
+      { img: 'fds-skew' },
       { table: { head: ['Skew', 'Shape', 'Order of mean, median, mode'], rows: [['Positive (right)', 'Long tail to the right', 'Mean > median > mode'], ['Zero', 'Symmetric', 'All equal'], ['Negative (left)', 'Long tail to the left', 'Mean < median < mode']] } },
       'Income is right-skewed (a few very high earners); marks in an easy exam are left-skewed (most score high).',
       { formula: 'Pearson\'s skewness ≈ 3 (mean − median) / SD' },
@@ -132,10 +150,12 @@ export default {
     exam: 'Draw the three skew shapes with mean, median and mode marked, give the formula, and explain the three kurtosis types.',
     revise: ['Right skew: mean > median', 'Leptokurtic: heavy tails'],
   },
-
   'fds.u2.covariance-correlation': {
     oneLine: 'Covariance shows whether two variables move together; Pearson\'s r measures the strength of a straight-line relationship from −1 to +1, and Spearman\'s ρ does the same for ranks.',
     blocks: [
+      { def: "Covariance", text: "A measure of how **two variables change together**: positive if they increase together, negative if one increases as the other decreases. Its magnitude depends on the units: Cov(X, Y) = Σ(xᵢ − x̄)(yᵢ − ȳ) / (n − 1)." },
+      { def: "Pearson's correlation coefficient (r)", text: "A **standardised measure of the strength and direction of the linear relationship** between two continuous variables: r = Cov(X, Y) / (σₓ σᵧ), ranging from **−1 to +1**. **Spearman's ρ** is the Pearson correlation of the **ranks**, measuring monotonic relationships." },
+      { img: 'fds-correlation' },
       { formula: 'cov(x, y) = Σ(x − x̄)(y − ȳ) / (n − 1)    r = Σ(x − x̄)(y − ȳ) / √(Σ(x − x̄)² Σ(y − ȳ)²)' },
       { h: 'Pearson example' },
       'x = 1, 2, 3, 4, 5; y = 2, 4, 5, 4, 5. Σ(x − x̄)(y − ȳ) = 6, Σ(x − x̄)² = 10, Σ(y − ȳ)² = 6. Covariance = 6 / 4 = **1.5**; r = 6 / √60 ≈ **0.77** (fairly strong positive).',
@@ -148,15 +168,19 @@ export default {
         { title: 'Spearman', items: ['Monotonic relationship (ranks)', 'Ordinal or skewed data', 'Robust to outliers'] },
       ] },
       { code: "df['x'].cov(df['y']); df['x'].corr(df['y']); df['x'].corr(df['y'], method='spearman')" },
+      { h: 'Using Pearson\'s r: online-learning time vs exam marks (Class Test I, question 7a)' },
+      { steps: ['Collect paired data for each student: x = online-learning hours, y = exam marks.', 'Draw a **scatter plot** to check the relationship looks linear.', 'Compute r = Σ(x − x̄)(y − ȳ) / √(Σ(x − x̄)² Σ(y − ȳ)²) (or df["hours"].corr(df["marks"]) in pandas).', 'Interpret the sign and size: r > 0 positive, r < 0 negative; |r| ≥ 0.7 strong, 0.4–0.7 moderate, < 0.4 weak; test significance (p-value).'] },
+      '**A strong positive correlation** (e.g. r = 0.85) means students who spend more time on online learning **tend to score higher marks**, and the points lie close to an upward-sloping straight line. It shows **association, not causation**: motivated students may both study online more and score more. r² (0.72) means about 72% of the variation in marks is linearly associated with learning time.',
     ],
     terms: [['Covariance', 'The joint variability of two variables; its sign shows direction.'], ['Pearson\'s r', 'Correlation for linear relationships, from −1 to 1.'], ['Spearman\'s ρ', 'Rank-based correlation for monotonic relationships.']],
     exam: 'Give the formulas, compute covariance and r on small data, compute Spearman\'s ρ from ranks, and compare the two.',
     revise: ['r between −1 and 1', 'ρ = 1 − 6Σd²/(n(n²−1))'],
   },
-
   'fds.u2.sampling-tests': {
     oneLine: 'A sample is a subset that represents a population; parametric tests (t-test, z-test, ANOVA) assume the data follows a distribution such as the normal and compare means.',
     blocks: [
+      { def: "Sampling", text: "Selecting a **subset (sample) of individuals from a population** to estimate characteristics of the whole population: probability methods (simple random, stratified, systematic, cluster) and non-probability methods (convenience, quota, purposive)." },
+      { def: "Parametric tests", text: "Statistical tests that **assume the data follow a known distribution (usually normal) with parameters** such as mean and variance: z-test, t-test, ANOVA, Pearson correlation. Non-parametric tests (Mann–Whitney, chi-square, Spearman) make no such assumption." },
       { tree: { root: 'Sampling methods', kids: ['Simple random', 'Stratified (sample within groups)', 'Systematic (every k-th)', 'Cluster (pick whole groups)', 'Convenience (non-random)'] } },
       { h: 'Making a random sample group column (asked)' },
       { code: "import numpy as np\ndf['sample_group'] = np.random.uniform(0, 1, len(df))   # one random number per row\ntrain = df[df['sample_group'] <= 0.8]                   # about 80%\ntest = df[df['sample_group'] > 0.8]                     # about 20%\n# or: df.sample(frac=0.8, random_state=1)" },
@@ -168,10 +192,11 @@ export default {
     exam: 'List sampling methods, show how to create a random sample column, and list the parametric tests with their assumptions.',
     revise: ['Random, stratified, systematic, cluster', 't-test, z-test, ANOVA assume normality'],
   },
-
   'fds.u2.distributions': {
     oneLine: 'Four common distributions: uniform (all values equally likely), normal (bell curve), exponential (waiting times) and binomial (number of successes in n trials).',
     blocks: [
+      { def: "Probability distribution", text: "A function that gives the **probabilities of the possible values of a random variable**: discrete (binomial, Poisson) or continuous (uniform, normal, exponential)." },
+      { img: 'fds-normal' },
       { table: { head: ['Distribution', 'Shape and use', 'Key formula'], rows: [
         ['Uniform (a, b)', 'Flat: every value equally likely (a fair die, random number)', 'Mean = (a + b)/2'],
         ['Normal (μ, σ)', 'Symmetric bell; heights, exam scores', '68% within 1σ, 95% within 2σ, 99.7% within 3σ'],
@@ -186,10 +211,10 @@ export default {
     exam: 'Describe each distribution with its shape, use and formula, and solve one numeric example for each.',
     revise: ['68-95-99.7 rule', 'Binomial: C(n,k)p^k(1−p)^(n−k)', 'Exponential: P(X>t) = e^(−λt)'],
   },
-
   'fds.u2.cdf': {
     oneLine: 'The cumulative distribution function F(x) = P(X ≤ x) gives the probability of a value up to x; descriptive statistics summarise data with centre, spread and shape.',
     blocks: [
+      { def: "Cumulative distribution function (CDF)", text: "F(x) = **P(X ≤ x)**: the probability that a random variable takes a value **less than or equal to x**. It is non-decreasing, goes from 0 to 1, and P(a < X ≤ b) = F(b) − F(a)." },
       { formula: 'F(x) = P(X ≤ x)    P(a < X ≤ b) = F(b) − F(a)' },
       { ul: ['F rises from 0 to 1 and never goes down.', 'For a die: F(3) = P(X ≤ 3) = 3/6 = **0.5**.', 'For a normal distribution, F(μ) = 0.5.', 'Percentiles come from the CDF: the median is where F(x) = 0.5.'] },
       { h: 'Descriptive statistics' },
@@ -199,80 +224,5 @@ export default {
     terms: [['CDF', 'Cumulative distribution function: P(X ≤ x).'], ['Percentile', 'The value below which a given percentage of data falls.']],
     exam: 'Define the CDF with its properties and an example, then summarise what descriptive statistics measure and show describe().',
     revise: ['F(x) = P(X ≤ x), from 0 to 1', 'Centre, spread, shape, position'],
-  },
-
-  'fds.u3.numpy-arrays': {
-    oneLine: 'A NumPy array (ndarray) is a fast, fixed-type, multi-dimensional grid of numbers; its dtype (int64, float64, bool…) sets how each element is stored.',
-    blocks: [
-      { code: "import numpy as np\na = np.array([1, 2, 3])            # from a list\nb = np.zeros((2, 3)); c = np.ones(4); d = np.arange(0, 10, 2)\ne = np.linspace(0, 1, 5)          # 5 evenly spaced values\na.ndim, a.shape, a.size, a.dtype  # 1, (3,), 3, int64" },
-      { compare: [
-        { title: 'Python list', items: ['Any mix of types', 'Slow loops', 'More memory'] },
-        { title: 'NumPy array', items: ['One fixed type', 'Fast vectorised maths (written in C)', 'Compact memory'] },
-      ] },
-      { h: 'Numerical data types' },
-      { table: { head: ['Type', 'Meaning'], rows: [['int8, int16, int32, int64', 'Signed integers of 8 to 64 bits'], ['uint8…', 'Unsigned integers'], ['float16, float32, float64', 'Decimal numbers'], ['complex64, complex128', 'Complex numbers'], ['bool', 'True / False']] } },
-    ],
-    terms: [['ndarray', 'NumPy\'s n-dimensional array object.'], ['dtype', 'The data type of every element in an array.'], ['Vectorisation', 'Applying an operation to a whole array without a Python loop.']],
-    exam: 'Show ways to create arrays, list the attributes (ndim, shape, size, dtype), compare with lists, and list the numeric dtypes.',
-    revise: ['array, zeros, ones, arange, linspace', 'ndim, shape, size, dtype'],
-  },
-
-  'fds.u3.shapes': {
-    oneLine: 'Array shapes are changed with reshape (new shape, same data), ravel/flatten (to 1-D), transpose (swap axes) and resize.',
-    blocks: [
-      { code: "a = np.arange(12)          # [0 ... 11]\nb = a.reshape(3, 4)        # 3 rows, 4 columns\nb.ravel()                  # back to 1-D (a view if possible)\nb.flatten()                # 1-D copy\nb.T.shape                  # (4, 3) transpose\na.reshape(2, -1).shape     # (2, 6): -1 means 'work it out'\nb.shape = (6, 2)           # change shape in place" },
-      { tip: 'The total number of elements must stay the same: 12 elements can be (3, 4), (2, 6), (12,) but not (5, 3).' },
-    ],
-    terms: [['reshape', 'Return the same data with a new shape.'], ['ravel', 'Flatten to 1-D, returning a view when possible.'], ['Transpose', 'Swap rows and columns.']],
-    exam: 'Explain reshape, ravel vs flatten, transpose and resize with a small example each.',
-    revise: ['reshape keeps size', 'ravel = view, flatten = copy'],
-  },
-
-  'fds.u3.stacking-splitting': {
-    oneLine: 'Stacking joins arrays (hstack side by side, vstack on top, dstack in depth, concatenate along an axis); partitioning splits them (hsplit, vsplit, split).',
-    blocks: [
-      { code: "a = np.array([[1, 2], [3, 4]]); b = np.array([[5, 6], [7, 8]])\nnp.hstack((a, b))     # [[1 2 5 6] [3 4 7 8]]\nnp.vstack((a, b))     # [[1 2] [3 4] [5 6] [7 8]]\nnp.dstack((a, b)).shape   # (2, 2, 2)\nnp.concatenate((a, b), axis=0)  # same as vstack\n\nc = np.arange(12).reshape(3, 4)\nnp.hsplit(c, 2)       # two arrays of shape (3, 2)\nnp.vsplit(c, 3)       # three arrays of shape (1, 4)\nnp.split(c, [1], axis=1)  # split after column 1" },
-    ],
-    terms: [['hstack / vstack', 'Join arrays horizontally / vertically.'], ['hsplit / vsplit', 'Split arrays into column / row blocks.']],
-    exam: 'Show each stacking and splitting function with input and output arrays.',
-    revise: ['hstack, vstack, dstack, concatenate', 'hsplit, vsplit, split'],
-  },
-
-  'fds.u3.dtype-views': {
-    oneLine: 'astype() converts an array to a new data type (a new copy); a view shares the same data as the original, while copy() makes an independent array.',
-    blocks: [
-      { code: "a = np.array([1.7, 2.2, 3.9])\na.astype(int)          # [1 2 3] new array, values truncated\n\nb = np.arange(5)\nv = b.view()           # or slicing: v = b[1:4]\nv[0] = 99              # b changes too (shared data)\nc = b.copy()\nc[0] = -1              # b does NOT change\nv.base is b            # True: v is a view" },
-      { compare: [
-        { title: 'View', items: ['Shares memory with the original', 'Changing it changes the original', 'Fast; made by slicing, view(), reshape'] },
-        { title: 'Copy', items: ['Its own memory', 'Changes stay separate', 'Made by copy(), fancy indexing, astype()'] },
-      ] },
-    ],
-    terms: [['View', 'A new array object looking at the same data.'], ['Copy', 'An independent array with its own data.'], ['astype', 'Converts the array to another dtype.']],
-    exam: 'Explain astype with an example, then views vs copies with code showing that changing a view changes the original.',
-    revise: ['Slices are views', 'copy() and fancy indexing make copies'],
-  },
-
-  'fds.u3.slicing-indexing': {
-    oneLine: 'NumPy arrays are sliced like lists (start:stop:step, per axis), filtered with boolean masks (a[a > 5]) and picked with lists of indices (fancy indexing).',
-    blocks: [
-      { code: "a = np.arange(12).reshape(3, 4)\n# [[ 0  1  2  3]\n#  [ 4  5  6  7]\n#  [ 8  9 10 11]]\na[1, 2]        # 6\na[0:2, 1:3]    # [[1 2] [5 6]]\na[:, 0]        # first column [0 4 8]\na[::-1]        # rows reversed\n\na[a > 5]       # boolean indexing: [ 6  7  8  9 10 11]\na[a % 2 == 0] = 0   # set all even values to 0\n\na[[0, 2]]      # fancy indexing: rows 0 and 2\na[[0, 2], [1, 3]]   # elements (0,1) and (2,3): [1 11]" },
-      { tip: 'Slicing returns a **view**; boolean and fancy indexing return **copies**.' },
-    ],
-    terms: [['Boolean indexing', 'Selecting elements with a True/False mask.'], ['Fancy indexing', 'Selecting elements with arrays or lists of indices.']],
-    exam: 'Show 2-D slicing, boolean indexing and fancy indexing on a small array with outputs, and note view vs copy.',
-    revise: ['a[r, c], a[r1:r2, c1:c2]', 'a[a > 5]', 'a[[0, 2]]'],
-  },
-
-  'fds.u3.broadcasting': {
-    oneLine: 'Broadcasting lets NumPy do maths on arrays of different shapes by stretching the smaller one along dimensions of size 1, without copying data.',
-    blocks: [
-      { h: 'Rules (compare shapes from the right)' },
-      { steps: ['If the arrays have different numbers of dimensions, pad the smaller shape with 1s on the left.', 'Two dimensions are compatible if they are equal or one of them is 1.', 'Size-1 dimensions are stretched to match. Otherwise: error.'] },
-      { code: "a = np.arange(12).reshape(3, 4)\na + 10                    # scalar broadcast to every element\na + np.array([1, 2, 3, 4])        # (3,4) + (4,) → each row\na + np.array([[10], [20], [30]])  # (3,4) + (3,1) → each column\nnp.ones((3, 1)) + np.arange(4)    # (3,1) + (4,) → (3,4)\n# np.ones((3, 4)) + np.ones(3)    # error: 4 vs 3" },
-      { table: { head: ['Shape A', 'Shape B', 'Result'], rows: [['(3, 4)', '(4,)', '(3, 4)'], ['(3, 4)', '(3, 1)', '(3, 4)'], ['(3, 1)', '(1, 4)', '(3, 4)'], ['(3, 4)', '(3,)', 'Error']] } },
-    ],
-    terms: [['Broadcasting', 'Automatic stretching of arrays with compatible shapes in arithmetic.']],
-    exam: 'State the broadcasting rules, show three valid examples with result shapes and one that fails.',
-    revise: ['Compare from the right', 'Equal or 1 is compatible'],
   },
 }

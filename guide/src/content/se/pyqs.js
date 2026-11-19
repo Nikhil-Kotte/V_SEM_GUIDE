@@ -68,7 +68,7 @@ export default [
   Predict('se-pred-incremental', 'se.u4.incremental-code', 'Explain incremental development of code (write a little, test a little).'),
 
   // ---------------- Unit V ----------------
-  Q('se-mccall', 'se.u5.quality-models', "Explain McCall's software quality factors.", ['se-nov25:5', 'se-may25', 'se-dec24:5', 'se-aug22', 'se-dec21', 'se-jun23']),
+  Q('se-mccall', 'se.u5.quality-models', "Classify the quality factors in McCall's model according to their categories.", ['se-ct2:3', 'se-nov25:5', 'se-may25', 'se-dec24:5', 'se-aug22', 'se-dec21', 'se-jun23']),
   Q('se-quality-define', 'se.u5.quality-concepts', 'Define software quality. Explain its significance and core concepts.', ['se-jun24', 'se-dec23:5', 'se-aug23', 'se-aug22']),
   Q('se-quality-factors', 'se.u5.quality-concepts', 'What factors determine software quality? How is quality achieved?', ['se-aug23', 'se-jun23']),
   Q('se-garvin', 'se.u5.quality-models', "Explain Garvin's quality dimensions / quality attributes (reliability, maintainability, usability…).", ['se-jun23']),
@@ -76,7 +76,7 @@ export default [
   Predict('se-pred-hp', 'se.u5.quality-models', 'Explain the HP (FURPS) quality attributes.'),
   Q('se-whitebox', 'se.u5.whitebox', 'Explain white-box testing methods.', ['se-dec24:5', 'se-dec23:5', 'se-aug22', 'se-jun22']),
   Q('se-cyclomatic', 'se.u5.whitebox', 'What is cyclomatic complexity? Give the ways to compute it, flow-graph notation and independent paths.', ['se-nov25:5', 'se-jun22', 'se-jan23:5']),
-  Q('se-basis-path', 'se.u5.whitebox', 'Explain basis path testing.', ['se-jun23', 'se-dec21']),
+  Q('se-basis-path', 'se.u5.whitebox', 'Explain basis path testing with an example.', ['se-ct2:3', 'se-jun23', 'se-dec21']),
   Q('se-loop-testing', 'se.u5.whitebox', 'Explain loop testing.', ['se-nov25:5']),
   Q('se-num-cc', 'se.u5.whitebox', 'For the flow graph with nodes a, (b,c), f, g, h, i, (d,e), j, k and edges a→bc, bc→f, bc→de, f→g, f→h, g→i, h→i, i→j, de→j, j→a, a→k, find the cyclomatic complexity and the independent paths.', ['se-jun23'], { numerical: true }),
   Q('se-wb-vs-bb', 'se.u5.blackbox', 'Differentiate white-box and black-box testing.', ['se-nov25:2', 'se-may25', 'se-jun24', 'se-jun23']),
